@@ -10,16 +10,24 @@ namespace Logic
     {
         IMongoCollection<BsonDocument> employees;
 
-        public EmployeeDAO employeedb;
+        public EmployeesDAO employeedb;
 
         public EmployeeService()
         {
-            employeedb = new EmployeeDAO();
+            employeedb = new EmployeesDAO();
         }
 
         public IMongoCollection<BsonDocument> GetEmployees()
         {
             return employeedb.GetAllEmployees();
         }
+
+        public BsonDocument GetById(string employeeId)
+        {
+            BsonDocument employee = employeedb.GetById(employeeId);
+            return employee;
+        }
+
+     
     }
 }

@@ -26,5 +26,10 @@ namespace Model
         [BsonElement("empty")]
         public bool empty { get; set; }
 
+        
+        public Employee Employee { get; set; }
+
+        public Ticket Ticket { get; set; }
+
     }
 }

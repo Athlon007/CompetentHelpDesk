@@ -9,14 +9,14 @@ using MongoDB.Driver;
 
 namespace DAL
 {
-    public class EmployeeDAO :DAO
+    public class EmployeesDAO :DAO
     {
         private IMongoDatabase database;
         private IMongoCollection<BsonDocument> employees;
 
         public IMongoCollection<BsonDocument> Employees { get; set; }
 
-        public EmployeeDAO()
+        public EmployeesDAO()
         {
             database = Client.GetDatabase("Database name");
         }
@@ -24,6 +24,15 @@ namespace DAL
         {
             Employees = database.GetCollection<BsonDocument>("Employees");
             return Employees;
+        }
+
+        public BsonDocument GetById(string id)
+        {
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("Id", id);
+            var employee = Employees.Find(filter).FirstOrDefault();
+
+            return employee;
         }
     }
 }

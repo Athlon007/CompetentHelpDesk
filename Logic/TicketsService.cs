@@ -24,5 +24,14 @@ namespace Logic
         {
             return ticketsdb.GetAllTickets();
         }
+
+        public BsonDocument GetById(string ticketId)
+        {
+            BsonDocument ticket = ticketsdb.GetById(ticketId);
+            return ticket;
+        }
+
+  
+
     }
 }

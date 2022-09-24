@@ -25,5 +25,14 @@ namespace DAL
             Tickets = database.GetCollection<BsonDocument>("Tickets");
             return Tickets;
         }
+
+        public BsonDocument GetById(string id)
+        {
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("Id", id);
+            var ticket = Tickets.Find(filter).FirstOrDefault();
+
+            return ticket;
+        }
     }
 }

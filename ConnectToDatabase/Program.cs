@@ -12,6 +12,11 @@ namespace ConnectToDatabase
 {
     class Program
     {
+        DAO dao = new DAO();
+        EmployeesDAO employeeDAO = new EmployeesDAO();
+        TicketsDAO ticketsDAO = new TicketsDAO();
+
+
         static void Main(string[] args)
         {
             Program program = new Program();
@@ -25,18 +30,17 @@ namespace ConnectToDatabase
 
         void TestDbConnection()
         {
-            DAO dao = new DAO();
             List<Databases_Model> databases = dao.GetDatabases();   
             dao.Test(databases);
 
             TestEmployeeDatabase();
             TestTicketsDatabase();
+
+            TestDeserializer();
         }
 
         void TestEmployeeDatabase() {
 
-            EmployeeDAO employeeDAO = new EmployeeDAO();
-             
             IMongoCollection<BsonDocument> employees = employeeDAO.GetAllEmployees();
 
             var docs = employees.Find(new BsonDocument()).ToList();
@@ -46,13 +50,15 @@ namespace ConnectToDatabase
                 Console.WriteLine(doc);
             });
 
+            BsonDocument employee = employeeDAO.GetById("1");
+
+            Console.WriteLine($"Employee {employee.GetElement("Id")}");
+            Console.WriteLine($"{employee.GetElement("Username")}");
         }
+
 
         void TestTicketsDatabase()
         {
-
-            TicketsDAO ticketsDAO = new TicketsDAO();
-
             IMongoCollection<BsonDocument> tickets = ticketsDAO.GetAllTickets();
 
             var docs = tickets.Find(new BsonDocument()).ToList();
@@ -61,6 +67,28 @@ namespace ConnectToDatabase
             {
                 Console.WriteLine(doc);
             });
+
+
+            BsonDocument ticket = ticketsDAO.GetById("1");
+
+            Console.WriteLine($"Ticket {ticket.GetElement("Id")}");
+            Console.WriteLine($"{ticket.GetElement("UserId")}");
+        }
+
+
+
+        void TestDeserializer() 
+        {
+            Employee employee = new Employee();
+
+            BsonDocument employeeBsonDocument = employeeDAO.GetById("1");
+
+            Employee employeeClassInstance = employee.ConvertDocumentToObject(employeeBsonDocument);
+
+            Console.WriteLine(employeeClassInstance.GetType());
+
+            Console.WriteLine(employeeClassInstance.Id);
+            Console.WriteLine(employeeClassInstance.Username);
 
         }
 
