@@ -1,5 +1,4 @@
 ﻿using System;
-
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ namespace ConnectToDatabase
     class Program
     {
         DAO dao = new DAO();
-        EmployeesDAO employeeDAO = new EmployeesDAO();
+        EmployeesDAO employeesDAO = new EmployeesDAO();
         TicketsDAO ticketsDAO = new TicketsDAO();
 
 
@@ -41,19 +40,22 @@ namespace ConnectToDatabase
 
         void TestEmployeeDatabase() {
 
-            IMongoCollection<BsonDocument> employees = employeeDAO.GetAllEmployees();
+            IMongoCollection<BsonDocument> employees = employeesDAO.GetAllEmployees();
 
             var docs = employees.Find(new BsonDocument()).ToList();
 
+            Console.WriteLine("Printing employees list:");
             docs.ForEach(doc =>
             {
                 Console.WriteLine(doc);
             });
 
-            BsonDocument employee = employeeDAO.GetById("1");
+            BsonDocument employee = employeesDAO.GetById("1");
 
+            Console.WriteLine("Printing one employee data");
             Console.WriteLine($"Employee {employee.GetElement("Id")}");
             Console.WriteLine($"{employee.GetElement("Username")}");
+            Console.WriteLine();
         }
 
 
@@ -63,6 +65,7 @@ namespace ConnectToDatabase
 
             var docs = tickets.Find(new BsonDocument()).ToList();
 
+            Console.WriteLine("Printing tickets list:");
             docs.ForEach(doc =>
             {
                 Console.WriteLine(doc);
@@ -71,8 +74,10 @@ namespace ConnectToDatabase
 
             BsonDocument ticket = ticketsDAO.GetById("1");
 
+            Console.WriteLine("Printing one ticket data");
             Console.WriteLine($"Ticket {ticket.GetElement("Id")}");
             Console.WriteLine($"{ticket.GetElement("UserId")}");
+            Console.WriteLine();
         }
 
 
@@ -80,16 +85,23 @@ namespace ConnectToDatabase
         void TestDeserializer() 
         {
             Employee employee = new Employee();
+            Ticket ticket = new Ticket();
 
-            BsonDocument employeeBsonDocument = employeeDAO.GetById("1");
+            BsonDocument employeeBsonDocument = employeesDAO.GetById("1");
+            BsonDocument ticketBsonDocument = ticketsDAO.GetById("1");
 
             Employee employeeClassInstance = employee.ConvertDocumentToObject(employeeBsonDocument);
+            Ticket ticketClassInstance = ticket.ConvertDocumentToObject(ticketBsonDocument);
 
-            Console.WriteLine(employeeClassInstance.GetType());
+            Console.WriteLine($"Class: {employeeClassInstance.GetType()}");
+            Console.WriteLine($"Employee id: {employeeClassInstance.Id}");
+            Console.WriteLine($"Username: {employeeClassInstance.Username}");
+            Console.WriteLine();
 
-            Console.WriteLine(employeeClassInstance.Id);
-            Console.WriteLine(employeeClassInstance.Username);
-
+            Console.WriteLine($"Class: {ticketClassInstance.GetType()}");
+            Console.WriteLine($"Ticket id: {ticketClassInstance.Id}");
+            Console.WriteLine($"User id: {ticketClassInstance.UserId}");
+            Console.WriteLine();
         }
 
     }
