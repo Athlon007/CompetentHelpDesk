@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "..\..\..\DemoApp\DemoApp\DemoApp\DemoApp\UI.csproj", "{4B6596B5-9A48-4E67-AF3C-31C8A78CE02E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDbConnection", "ConnectToDatabase\TestDbConnection.csproj", "{E495C433-CDBE-4518-B4BB-9FC53E3242FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4B6596B5-9A48-4E67-AF3C-31C8A78CE02E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B6596B5-9A48-4E67-AF3C-31C8A78CE02E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B6596B5-9A48-4E67-AF3C-31C8A78CE02E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E495C433-CDBE-4518-B4BB-9FC53E3242FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E495C433-CDBE-4518-B4BB-9FC53E3242FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E495C433-CDBE-4518-B4BB-9FC53E3242FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E495C433-CDBE-4518-B4BB-9FC53E3242FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
