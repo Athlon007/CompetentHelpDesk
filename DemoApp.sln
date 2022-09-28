@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{F3D76796-CFC4-4306-BE4E-6BE76D31A03F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "..\..\..\DemoApp\DemoApp\DemoApp\DemoApp\UI.csproj", "{4B6596B5-9A48-4E67-AF3C-31C8A78CE02E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "DemoApp\UI.csproj", "{4B6596B5-9A48-4E67-AF3C-31C8A78CE02E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
