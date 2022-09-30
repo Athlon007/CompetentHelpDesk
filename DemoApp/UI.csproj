@@ -117,6 +117,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom Controls\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\RoundedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\TabControlWithoutBorder.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +154,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />
@@ -167,6 +177,18 @@
     <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
     <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\icon_Ticket_User_Management_Active.png" />
+    <None Include="Resources\icon_Ticket_User_Create_Active.png" />
+    <None Include="Resources\icon_Ticket_Management_Active.png" />
+    <None Include="Resources\icon_Ticket_Create_Active.png" />
+    <None Include="Resources\icon_Home_Active.png" />
+    <None Include="Resources\icon_Ticket_User_Management_Normal.png" />
+    <None Include="Resources\icon_Ticket_User_Create_Normal.png" />
+    <None Include="Resources\icon_Ticket_Management_Normal.png" />
+    <None Include="Resources\icon_Ticket_Create_Normal.png" />
+    <None Include="Resources\icon_Home_Normal.png" />
+    <None Include="Resources\Logo.png" />
+    <None Include="Resources\Logo1.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Logic\Logic.csproj">
