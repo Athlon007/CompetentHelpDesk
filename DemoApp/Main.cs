@@ -22,7 +22,8 @@ namespace DemoApp
         public Main()
         {
             InitializeComponent();
-            databases = new Databases();
+            //databases = new Databases();
+            btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -134,34 +135,47 @@ namespace DemoApp
             btn_UserManagement.Image = Properties.Resources.icon_User_Management_Normal;
             btn_CreateUser.Image = Properties.Resources.icon_User_Create_Normal;
 
-            int index = 0;
-            
-            // Set active button image
-            foreach (Button button in flowPnl_Navigation.Controls.OfType<Button>())
+            switch (buttonIndex)
             {
-                if (index == buttonIndex)
-                {
-                    button.Image = Properties.Resources.icon_Home_Active;
-                }
-                else if (index == buttonIndex)
-                {
-                    button.Image = Properties.Resources.icon_Ticket_Management_Active;
-                }
-                else if (index == buttonIndex)
-                {
-                    button.Image = Properties.Resources.icon_User_Create_Active;
-                }
-                else if (index == buttonIndex)
-                {
-                    button.Image = Properties.Resources.icon_User_Management_Active;
-                }
-                else if (index == buttonIndex)
-                {
-                    button.Image = Properties.Resources.icon_User_Create_Active;
-                }
-
-                index++;
+                case 0:
+                    btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
+                    break;
+                case 1:
+                    btn_TicketManagement.Image = InvertImage(btn_TicketManagement.Image);
+                    break;
+                case 2:
+                    btn_CreateTicket.Image = InvertImage(btn_CreateTicket.Image);
+                    break;
+                case 3:
+                    btn_UserManagement.Image = InvertImage(btn_UserManagement.Image);
+                    break;
+                case 4:
+                    btn_CreateUser.Image = InvertImage(btn_CreateUser.Image);
+                    break;
             }
+        }
+
+        /// <summary>
+        /// Inverts the image.
+        /// </summary>
+        /// <param name="image">Input image.</param>
+        /// <returns>Inverted version of the same image.</returns>
+        private Image InvertImage(Image image)
+        {
+            for (int x = 0; x < image.Width - 1; x++)
+            {
+                for (int y = 0; y < image.Height - 1; y++)
+                {
+                    Color inv = ((Bitmap)image).GetPixel(x, y);
+                    if (inv.A > 0)
+                    {
+                        inv = Color.FromArgb(inv.A, (255 - inv.R), (255 - inv.G), (255 - inv.B));
+                    }
+                    ((Bitmap)image).SetPixel(x, y, inv);
+                }
+            }
+
+            return image;
         }
     }
 }
