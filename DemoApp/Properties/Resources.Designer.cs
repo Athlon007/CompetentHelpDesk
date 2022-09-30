@@ -63,29 +63,9 @@ namespace DemoApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icon_Home_Active {
-            get {
-                object obj = ResourceManager.GetObject("icon_Home_Active", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icon_Home_Normal {
             get {
                 object obj = ResourceManager.GetObject("icon_Home_Normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icon_Ticket_Create_Active {
-            get {
-                object obj = ResourceManager.GetObject("icon_Ticket_Create_Active", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,16 +83,6 @@ namespace DemoApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icon_Ticket_Management_Active {
-            get {
-                object obj = ResourceManager.GetObject("icon_Ticket_Management_Active", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icon_Ticket_Management_Normal {
             get {
                 object obj = ResourceManager.GetObject("icon_Ticket_Management_Normal", resourceCulture);
@@ -123,29 +93,9 @@ namespace DemoApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icon_User_Create_Active {
-            get {
-                object obj = ResourceManager.GetObject("icon_User_Create_Active", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icon_User_Create_Normal {
             get {
                 object obj = ResourceManager.GetObject("icon_User_Create_Normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icon_User_Management_Active {
-            get {
-                object obj = ResourceManager.GetObject("icon_User_Management_Active", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
