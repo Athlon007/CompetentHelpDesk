@@ -23,6 +23,7 @@ namespace DemoApp
         {
             InitializeComponent();
             //databases = new Databases();
+            btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -154,6 +155,11 @@ namespace DemoApp
             }
         }
 
+        /// <summary>
+        /// Inverts the image.
+        /// </summary>
+        /// <param name="image">Input image.</param>
+        /// <returns>Inverted version of the same image.</returns>
         private Image InvertImage(Image image)
         {
             for (int x = 0; x < image.Width - 1; x++)

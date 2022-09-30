@@ -237,7 +237,7 @@ namespace DemoApp
             this.btn_Dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btn_Dashboard.ForeColor = System.Drawing.Color.Black;
-            this.btn_Dashboard.Image = global::DemoApp.Properties.Resources.icon_Home_Active;
+            this.btn_Dashboard.Image = global::DemoApp.Properties.Resources.icon_Home_Normal;
             this.btn_Dashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Dashboard.Location = new System.Drawing.Point(10, 3);
             this.btn_Dashboard.Margin = new System.Windows.Forms.Padding(10, 3, 0, 3);
