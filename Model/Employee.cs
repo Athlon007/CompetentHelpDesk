@@ -50,17 +50,6 @@ namespace Model
             this.Salt = salt;
         }
 
-        //Using collection Employees
-        //using the following script for data
-        // db.Employees.insertOne({'Id': '1', 'Email': 'someone@outlook.com', 'Username': 'Employee1', 'First name': 'First name', 'Last name': 'Last name', 'Password hash': 'PasswordHash', 'Salt':'Salt'})
-
-        //deserialize document to use instance of class in the UI
-        public Employee ConvertDocumentToObject(BsonDocument bsonDocument)
-        {
-            Employee instance = BsonSerializer.Deserialize<Employee>(bsonDocument);
-
-            return instance;
-
-        }
+      
     }
 }

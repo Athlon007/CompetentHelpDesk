@@ -46,17 +46,6 @@ namespace Model
         }
 
 
-        //Using collection Tickets
-        //using the following script for data
-        //db.Tickets.insertOne({'Id':'1', 'Subject': 'Subject', 'Userid': '1', 'Date':'24/09/2022', 'Status': 'Status'})
 
-        //deserialize document to use instance of class in the UI
-        public Ticket ConvertDocumentToObject(BsonDocument bsonDocument)
-        {
-            Ticket instance = BsonSerializer.Deserialize<Ticket>(bsonDocument);
-
-            return instance;
-
-        }
     }
 }
