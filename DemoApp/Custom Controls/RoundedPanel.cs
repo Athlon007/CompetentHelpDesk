@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DemoApp.Custom_Controls
@@ -14,6 +9,7 @@ namespace DemoApp.Custom_Controls
         // Fields
         private int borderRadius = 40;
         private float borderAngle = 90F;
+        private Color surfaceColor;
 
         // Constructor
         public RoundedPanel()
@@ -21,6 +17,7 @@ namespace DemoApp.Custom_Controls
             this.BackColor = Color.White;
             this.ForeColor = Color.Black;
             this.Size = new Size(450, 300);
+            this.DoubleBuffered = true;
         }
 
         // Properties
@@ -32,6 +29,11 @@ namespace DemoApp.Custom_Controls
         public float BorderAngle { 
             get => borderAngle;
             set { borderAngle = value; this.Invalidate(); } 
+        }
+
+        public Color SurfaceColor {
+            get => surfaceColor;
+            set { surfaceColor = value; this.Invalidate(); }
         }
 
         // Methods
@@ -54,18 +56,19 @@ namespace DemoApp.Custom_Controls
 
             // Graphics anti-alias
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            SolidBrush brush = new SolidBrush(Color.White);
+            SolidBrush brush = new SolidBrush(surfaceColor);
             Graphics graphics = e.Graphics;
             graphics.FillRectangle(brush, ClientRectangle);
 
             // Border Radius
             RectangleF rectangleF = new RectangleF(0, 0, this.Width, this.Height);
 
+            
             if (borderRadius > 2)
             {
                 using (GraphicsPath graphicsPath = GetPath(rectangleF, borderRadius))
                 {
-                    using (Pen pen = new Pen(Color.White, 2))
+                    using (Pen pen = new Pen(surfaceColor, 2))
                     {
                         this.Region = new Region(graphicsPath);
                         e.Graphics.DrawPath(pen, graphicsPath);
@@ -77,6 +80,5 @@ namespace DemoApp.Custom_Controls
                 this.Region = new Region(rectangleF);
             }
         }
-
     }
 }
