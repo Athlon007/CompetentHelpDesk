@@ -12,7 +12,7 @@ namespace ConnectToDatabase
 {
     class Program
     {
-        BaseDAO dao = new BaseDAO();
+        BaseDAO baseDAO = new BaseDAO();
         EmployeesDAO employeesDAO = new EmployeesDAO();
         TicketsDAO ticketsDAO = new TicketsDAO();
 
@@ -30,7 +30,7 @@ namespace ConnectToDatabase
 
         void TestDbConnection()
         {
-            List<Databases_Model> databases = dao.GetDatabases();   
+            List<DatabasesModel> databases = baseDAO.GetDatabases();   
             TestDbConnection(databases);
 
             TestEmployeeDatabase();
@@ -43,9 +43,9 @@ namespace ConnectToDatabase
         }
 
 
-        public void TestDbConnection(List<Databases_Model> dbs)
+        public void TestDbConnection(List<DatabasesModel> dbs)
         {
-            var dbList = dao.Client.ListDatabases().ToList();
+           
             Console.WriteLine("The list of databases on this server is: ");
             foreach (var db in dbs)
             {

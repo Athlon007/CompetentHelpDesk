@@ -15,7 +15,7 @@ namespace Logic
             baseDao = new BaseDAO();
         }
 
-        public List<Databases_Model> Get_All_Databases()
+        public List<DatabasesModel> GetDatabases()
         {
             return baseDao.GetDatabases();
         }

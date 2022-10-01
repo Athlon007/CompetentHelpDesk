@@ -19,10 +19,10 @@ namespace DAL
             client = new MongoClient("connection string");
         }
 
-        public List<Databases_Model> GetDatabases()
+        public List<DatabasesModel> GetDatabases()
         {
             //list with existing databases 
-            List<Databases_Model> all_databases = new List<Databases_Model>();
+            List<DatabasesModel> allDatabases = new List<DatabasesModel>();
 
 
             //create a document
@@ -31,9 +31,9 @@ namespace DAL
             {
                 //convert string for db to object with fields from the db model
                 //then add to list (deserialized into database model)
-                all_databases.Add(BsonSerializer.Deserialize<Databases_Model>(db));
+                allDatabases.Add(BsonSerializer.Deserialize<DatabasesModel>(db));
             }
-            return all_databases;
+            return allDatabases;
 
         }
 
