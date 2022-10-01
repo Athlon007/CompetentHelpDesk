@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.IO;
 using DAL;
 using Model;
+using Logic;
 
 
 namespace ConnectToDatabase
 {
     class Program
     {
-        DAO dao = new DAO();
+        BaseDAO baseDAO = new BaseDAO();
         EmployeesDAO employeesDAO = new EmployeesDAO();
         TicketsDAO ticketsDAO = new TicketsDAO();
 
@@ -29,13 +30,30 @@ namespace ConnectToDatabase
 
         void TestDbConnection()
         {
-            List<Databases_Model> databases = dao.GetDatabases();   
-            dao.Test(databases);
+            List<DatabasesModel> databases = baseDAO.GetDatabases();   
+            TestDbConnection(databases);
 
             TestEmployeeDatabase();
             TestTicketsDatabase();
 
             TestDeserializer();
+
+            TestConvertingEmployeeDbToList();
+            TestConvertingTicketsDbToTicketList();
+        }
+
+
+        public void TestDbConnection(List<DatabasesModel> dbs)
+        {
+           
+            Console.WriteLine("The list of databases on this server is: ");
+            foreach (var db in dbs)
+            {
+                Console.WriteLine($"Database: {db.name}");
+                Console.WriteLine($"Size: {db.size}");
+                Console.WriteLine($"IsEmpty: {db.empty}");
+                Console.WriteLine();
+            }
         }
 
         void TestEmployeeDatabase() {
@@ -90,8 +108,8 @@ namespace ConnectToDatabase
             BsonDocument employeeBsonDocument = employeesDAO.GetById("1");
             BsonDocument ticketBsonDocument = ticketsDAO.GetById("1");
 
-            Employee employeeClassInstance = employee.ConvertDocumentToObject(employeeBsonDocument);
-            Ticket ticketClassInstance = ticket.ConvertDocumentToObject(ticketBsonDocument);
+            Employee employeeClassInstance = employeesDAO.ConvertDocumentToObject(employeeBsonDocument);
+            Ticket ticketClassInstance = ticketsDAO.ConvertDocumentToObject(ticketBsonDocument);
 
             Console.WriteLine($"Class: {employeeClassInstance.GetType()}");
             Console.WriteLine($"Employee id: {employeeClassInstance.Id}");
@@ -102,6 +120,51 @@ namespace ConnectToDatabase
             Console.WriteLine($"Ticket id: {ticketClassInstance.Id}");
             Console.WriteLine($"User id: {ticketClassInstance.UserId}");
             Console.WriteLine();
+        }
+
+
+
+        void TestConvertingEmployeeDbToList()
+        {
+            IMongoCollection<BsonDocument> employees = employeesDAO.GetAllEmployees();
+
+            int count = employeesDAO.RetrieveDocumentsCount(employees);
+
+            Console.WriteLine($"Number of employees: {count}");
+
+            List<Employee> employeesList = employeesDAO.ConvertAllDocumentsToEmployeesList(employees);
+
+            Console.WriteLine("The list of employees by their usernames:");
+
+            for (int i = 0; i < employeesList.Count; i++)
+            {
+                Console.WriteLine(employeesList[i].Username);
+            }
+            Console.WriteLine();
+
+
+        }
+
+
+
+        void TestConvertingTicketsDbToTicketList()
+        {
+            IMongoCollection<BsonDocument> tickets = ticketsDAO.GetAllTickets();
+
+            int count = ticketsDAO.RetrieveDocumentsCount(tickets);
+
+            Console.WriteLine($"Number of tickets: {count}");
+
+            List<Ticket>ticketsList = ticketsDAO.ConvertAllDocumentsToTicketsList(tickets);
+
+            Console.WriteLine("The list of tickets by their subject:");
+
+            for (int i = 0; i < ticketsList.Count; i++)
+            {
+                Console.WriteLine(ticketsList[i].Subject);
+            }
+            Console.WriteLine();
+
         }
 
     }

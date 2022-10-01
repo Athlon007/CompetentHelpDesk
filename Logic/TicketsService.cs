@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DAL;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Model;
 
 namespace Logic
 {
@@ -31,7 +32,21 @@ namespace Logic
             return ticket;
         }
 
-  
 
+        public Ticket ConvertDocumentToObject(BsonDocument bsonDocument)
+        {
+            return ticketsdb.ConvertDocumentToObject(bsonDocument);
+
+        }
+
+
+        public List<Ticket> ConvertAllDocumentsToTicketsList(IMongoCollection<BsonDocument> ticketsdb)
+        {
+            TicketsDAO ticketsDAO = new TicketsDAO();   
+            List<Ticket> tickets = ticketsDAO.ConvertAllDocumentsToTicketsList(ticketsdb);
+
+            return tickets;
+
+        }
     }
 }
