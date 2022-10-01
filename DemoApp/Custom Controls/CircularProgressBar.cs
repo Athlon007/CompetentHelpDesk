@@ -14,6 +14,7 @@ namespace DemoApp.Custom_Controls
         private Color middleCircleColor = ColorTranslator.FromHtml("#EAEAEA");
         private Color outerCircleColor = ColorTranslator.FromHtml("#FF8000");
         private Color fontColor = ColorTranslator.FromHtml("#525152");
+        private Color fontSecondaryColor = ColorTranslator.FromHtml("#969696");
 
         // Constructor
         public CircularProgressBar()
@@ -44,13 +45,25 @@ namespace DemoApp.Custom_Controls
         public Color MiddleCircleColor
         {
             get { return middleCircleColor; }
-            set { middleCircleColor = ForeColor = value; Invalidate(); }
+            set { middleCircleColor = value; Invalidate(); }
         }
 
         public Color OuterCircleColor
         {
             get { return outerCircleColor; }
             set { outerCircleColor = value; Invalidate(); }
+        }
+
+        public Color FontColor
+        {
+            get { return fontColor; }
+            set { fontColor = value; Invalidate(); }
+        }
+
+        public Color FontSecondaryColor
+        {
+            get { return fontSecondaryColor; }
+            set { fontSecondaryColor = value; Invalidate(); }
         }
 
         // Override
@@ -73,7 +86,8 @@ namespace DemoApp.Custom_Controls
 
             // Display amount
             StringFormat sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Center };
-            graphics.DrawString($"{ValueSize} / {ValueMax}", Font, new SolidBrush(fontColor), ClientRectangle, sf);
+            graphics.DrawString($"{(ValueSize / ValueMax * 100).ToString("0.0")}%", Font, new SolidBrush(fontColor), ClientRectangle, sf);
+            graphics.DrawString($"{ValueSize} / {ValueMax}", new Font(Font.FontFamily, 13, Font.Style), new SolidBrush(fontSecondaryColor), ClientRectangle.Width - 125, ClientRectangle.Height - 85, sf);
 
             // Paint graphics
             base.OnPaint(e);

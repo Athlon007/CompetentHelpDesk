@@ -9,14 +9,14 @@ using MongoDB.Driver;
 
 namespace DAL
 {
-    public class TicketsDAO: DAO
+    public class TicketDAO: DAO
     {
         private IMongoDatabase database;
         private IMongoCollection<BsonDocument> tickets;
 
         public IMongoCollection<BsonDocument> Tickets { get; set; }
 
-        public TicketsDAO()
+        public TicketDAO()
         {
             database = Client.GetDatabase("Database name");
         }
@@ -33,6 +33,12 @@ namespace DAL
             var ticket = Tickets.Find(filter).FirstOrDefault();
 
             return ticket;
+        }
+
+        public int GetTicketCount(string query)
+        {
+            // Filler data
+            return 1;
         }
     }
 }

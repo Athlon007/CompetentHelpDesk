@@ -119,7 +119,7 @@
     <Compile Include="DAO.cs" />
     <Compile Include="EmployeesDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TicketsDAO.cs" />
+    <Compile Include="TicketDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Core\Compression\Snappy\lib\win\snappy32.dll" />

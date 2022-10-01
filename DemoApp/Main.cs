@@ -23,6 +23,8 @@ namespace DemoApp
         {
             InitializeComponent();
             //databases = new Databases();
+
+            // Invert standard image icon
             btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
         }
 
@@ -37,12 +39,37 @@ namespace DemoApp
 
             // Set tab control panel tabs to invisible
             tabControl.ItemSize = new Size(0, 1);
+
+            // Load dashboard data
+            LoadDashboardData();
         }
 
-        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void LoadDashboardData()
         {
+            TicketService ticketService = new TicketService();
 
+            // Get amount of all incidents (Get sum from service)
+            int ticketSum = ticketService.GetAllTicketsCount();
+
+            // Fill circle progression bar values
+            // Open Incidents
+            circleBar_Open.ValueMax = ticketSum;
+            circleBar_Open.ValueSize = ticketService.GetOpenTicketsCount();
+
+            // Past Deadline Incidents
+            circleBar_PastDeadline.ValueMax = ticketSum;
+            circleBar_Open.ValueSize = ticketService.GetPastDeadLineTicketsCount();
+
+            // Unresolved Incidents
+            circleBar_Unresolved.ValueMax = ticketSum;
+            circleBar_Open.ValueSize = ticketService.GetUnresolvedTicketsCount();
+
+            // Resolved Incidents
+            circleBar_Resolved.ValueMax = ticketSum;
+            circleBar_Open.ValueSize = ticketService.GetResolvedTicketsCount();
         }
+
+
 
         // Navigation buttons
         private void Btn_Dashboard_Click(object sender, EventArgs e)
@@ -51,6 +78,7 @@ namespace DemoApp
             if (tabControl.SelectedIndex != 0)
             {
                 tabControl.SelectedIndex = 0;
+                LoadDashboardData();
             }
         }
 
@@ -91,12 +119,31 @@ namespace DemoApp
         }
 
 
+
         // Tab control
         private void TabControl_IndexChanged(object sender, EventArgs e)
         {
             // Set active button
             SetButtonStyling(tabControl.SelectedIndex);
+
+            // Default behaviour for loading certain tab pages
+            switch (tabControl.SelectedIndex)
+            {
+                case 0: // Dashboard
+                    LoadDashboardData();
+                    break;
+                case 1: // Ticket Management
+                    break;
+                case 2: // Create Ticket
+                    break;
+                case 3: // User Management
+                    break;
+                case 4: // Create User
+                    break;
+            }
         }
+
+
 
         // Styling
         private void SetButtonStyling(int buttonIndex)
@@ -176,6 +223,68 @@ namespace DemoApp
             }
 
             return image;
+        }
+
+        // Dashboard buttons
+        private void Btn_ShowAllIncidents_Click(object sender, EventArgs e)
+        {
+            // Open ticket overview
+            tabControl.SelectedIndex = 1;
+            // Load all tickets
+            LoadTickets("");
+        }
+
+        private void RPnl_D1_Open_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedIndex = 1;
+            // Load all open incidents
+            LoadTickets("open");
+        }
+
+        private void RPnl_D2_Past_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedIndex = 1;
+            // Load all past deadline incidents
+            LoadTickets("pastdeadline");
+        }
+
+        private void RPnl_D3_Unresolved_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedIndex = 1;
+            // Load all unresolved incidents
+            LoadTickets("unresolved");
+        }
+
+        private void RPnl_D4_Resolved_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedIndex = 1;
+            // Load all resolved incidents
+            LoadTickets("resolved");
+        }
+
+        // Methods
+        private void LoadTickets(string type)
+        {
+            // !!Need to figure out a way to not load two times at opening the page, waste of resources... 
+            // 
+            switch (type.ToLower())
+            {
+                case "open":
+                    // Load open tickets
+                    break;
+                case "pastdeadline":
+                    // Load tickets past deadline
+                    break;
+                case "unresolved":
+                    // Load unresolved tickets
+                    break;
+                case "resolved":
+                    // Load resolved tickets
+                    break;
+                default:
+                    // Load all tickets
+                    break;
+            }
         }
     }
 }
