@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -32,54 +33,60 @@ namespace Logic
         }
 
         // Dashboard methods
-        public int GetAllTicketsCount()
+        public long GetTotalTicketCount()
         {
-            // For future reference:
-            //string query = "db.incidents.countDocuments({})";
-            //return ticketsdb.GetTicketsCount(query);
+            return 30; // Dummy data
 
-            //Test sample for now
-            return 99;
+            try
+            {
+                // Get total ticket count
+                return ticketsdb.GetTotalTicketCount();
+            }
+            catch (FormatException ex) // Dummy code... Adjust properly later
+            {
+                throw new FormatException("An error occured handling the format out of the database", ex);
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new ArgumentNullException("Null exception", ex);
+            }
         }
 
-        public int GetOpenTicketsCount()
+        public long GetTicketCountByType(TicketStatus status)
         {
-            // For future reference:
-            //string query = "db.incidents.countDocuments({'status' : 'open'})";
-            //return ticketsdb.GetTicketsCount(query);
+            return 19; // Dummy data...
 
-            // Test sample for now
-            return 19;
+            // Get filter by type
+            string filter = GetTicketCountByTypeFilter(status);
+
+            try
+            {
+                return ticketsdb.GetTicketCountByType(filter);
+            }
+            catch (FormatException ex) // Dummy code... Adjust properly later
+            {
+                throw new FormatException("An error occured handling the format out of the database", ex);
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new ArgumentNullException("Null exception", ex);
+            }
         }
 
-        public int GetPastDeadLineTicketsCount()
+        private string GetTicketCountByTypeFilter(TicketStatus status)
         {
-            // For future reference:
-            //string query = "db.incidents.countDocuments({'status' : 'pastdeadline'})";
-            //return ticketsdb.GetTicketsCount(query);
-
-            // Test sample for now
-            return 3;
-        }
-
-        public int GetUnresolvedTicketsCount()
-        {
-            // For future reference:
-            //string query = "db.incidents.countDocuments({'status' : 'unresolved'})";
-            //return ticketsdb.GetTicketsCount(query);
-
-            // Test sample for now
-            return 7;
-        }
-
-        public int GetResolvedTicketsCount()
-        {
-            // For future reference:
-            //string query = "db.incidents.countDocuments({'status' : 'resolved'})";
-            //return ticketsdb.GetTicketsCount(query);
-
-            // Test sample for now
-            return 70;
+            // Get filter word with appropiate enum
+            switch (status)
+            {
+                case TicketStatus.PastDeadline:
+                    return "pastdeadline";
+                case TicketStatus.Unresolved:
+                    return "unresolved";
+                case TicketStatus.Resolved:
+                    return "resolved";
+                default:
+                    return "open";
+            }
         }
     }
 }

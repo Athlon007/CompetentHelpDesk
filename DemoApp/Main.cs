@@ -12,6 +12,8 @@ namespace DemoApp
     public partial class Main : Form
     { 
         private Databases databases;
+        private TicketService ticketService;
+        private Employee employee;
 
         // Styling variables
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
@@ -22,7 +24,14 @@ namespace DemoApp
         public Main()
         {
             InitializeComponent();
+
+            //!! Probably should have an Employee parameter to display user data and for future references
+            //this.employee = employee;
             //databases = new Databases();
+            ticketService = new TicketService();
+
+            // Set tab control panel tabs to invisible
+            tabControl.ItemSize = new Size(0, 1);
 
             // Invert standard image icon
             btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
@@ -37,36 +46,44 @@ namespace DemoApp
             //    listBox1.Items.Add(db.name);
             //}
 
-            // Set tab control panel tabs to invisible
-            tabControl.ItemSize = new Size(0, 1);
-
             // Load dashboard data
             LoadDashboardData();
         }
 
         private void LoadDashboardData()
         {
-            TicketService ticketService = new TicketService();
+            // Variables (using long due to it being NoSQL/"Big Data")
+            long ticketSum = -1, openTickets = -1, pastDeadlineTickets = -1, unresolvedTickets = -1, resolvedTickets = -1;
 
-            // Get amount of all incidents (Get sum from service)
-            int ticketSum = ticketService.GetAllTicketsCount();
+            try
+            {
+                // Get amount of total, open, past deadline, unresolved and resolved tickets
+                ticketSum = ticketService.GetTotalTicketCount();
+                openTickets = ticketService.GetTicketCountByType(TicketStatus.Open);
+                pastDeadlineTickets = ticketService.GetTicketCountByType(TicketStatus.PastDeadline);
+                unresolvedTickets = ticketService.GetTicketCountByType(TicketStatus.Unresolved);
+                resolvedTickets = ticketService.GetTicketCountByType(TicketStatus.Resolved);
+            }
+            catch (Exception ex)
+            {
+                // Display error, probably want to use a logger
+                MessageBox.Show($"{ex}: error message");
+            }
+            finally
+            {
+                // Fill circle progression bars values
+                circleBar_Open.ValueMax = ticketSum;
+                circleBar_Open.ValueSize = openTickets;
 
-            // Fill circle progression bar values
-            // Open Incidents
-            circleBar_Open.ValueMax = ticketSum;
-            circleBar_Open.ValueSize = ticketService.GetOpenTicketsCount();
+                circleBar_PastDeadline.ValueMax = ticketSum;
+                circleBar_PastDeadline.ValueSize = pastDeadlineTickets;
 
-            // Past Deadline Incidents
-            circleBar_PastDeadline.ValueMax = ticketSum;
-            circleBar_Open.ValueSize = ticketService.GetPastDeadLineTicketsCount();
+                circleBar_Unresolved.ValueMax = ticketSum;
+                circleBar_Unresolved.ValueSize = unresolvedTickets;
 
-            // Unresolved Incidents
-            circleBar_Unresolved.ValueMax = ticketSum;
-            circleBar_Open.ValueSize = ticketService.GetUnresolvedTicketsCount();
-
-            // Resolved Incidents
-            circleBar_Resolved.ValueMax = ticketSum;
-            circleBar_Open.ValueSize = ticketService.GetResolvedTicketsCount();
+                circleBar_Resolved.ValueMax = ticketSum;
+                circleBar_Resolved.ValueSize = resolvedTickets;
+            }
         }
 
 
@@ -78,6 +95,8 @@ namespace DemoApp
             if (tabControl.SelectedIndex != 0)
             {
                 tabControl.SelectedIndex = 0;
+
+                // Load dashboard data
                 LoadDashboardData();
             }
         }
@@ -88,6 +107,9 @@ namespace DemoApp
             if (tabControl.SelectedIndex != 1)
             {
                 tabControl.SelectedIndex = 1;
+
+                // Load all tickets
+                LoadTickets("");
             }
         }
 
@@ -118,6 +140,11 @@ namespace DemoApp
             }
         }
 
+        private void LogOut_Click(object sender, EventArgs e)
+        {
+            // Log out
+        }
+
 
 
         // Tab control
@@ -125,22 +152,6 @@ namespace DemoApp
         {
             // Set active button
             SetButtonStyling(tabControl.SelectedIndex);
-
-            // Default behaviour for loading certain tab pages
-            switch (tabControl.SelectedIndex)
-            {
-                case 0: // Dashboard
-                    LoadDashboardData();
-                    break;
-                case 1: // Ticket Management
-                    break;
-                case 2: // Create Ticket
-                    break;
-                case 3: // User Management
-                    break;
-                case 4: // Create User
-                    break;
-            }
         }
 
 
@@ -230,6 +241,7 @@ namespace DemoApp
         {
             // Open ticket overview
             tabControl.SelectedIndex = 1;
+
             // Load all tickets
             LoadTickets("");
         }
@@ -237,6 +249,7 @@ namespace DemoApp
         private void RPnl_D1_Open_Click(object sender, EventArgs e)
         {
             tabControl.SelectedIndex = 1;
+
             // Load all open incidents
             LoadTickets("open");
         }
@@ -244,6 +257,7 @@ namespace DemoApp
         private void RPnl_D2_Past_Click(object sender, EventArgs e)
         {
             tabControl.SelectedIndex = 1;
+
             // Load all past deadline incidents
             LoadTickets("pastdeadline");
         }
@@ -251,6 +265,7 @@ namespace DemoApp
         private void RPnl_D3_Unresolved_Click(object sender, EventArgs e)
         {
             tabControl.SelectedIndex = 1;
+
             // Load all unresolved incidents
             LoadTickets("unresolved");
         }
@@ -258,6 +273,7 @@ namespace DemoApp
         private void RPnl_D4_Resolved_Click(object sender, EventArgs e)
         {
             tabControl.SelectedIndex = 1;
+
             // Load all resolved incidents
             LoadTickets("resolved");
         }
@@ -265,8 +281,7 @@ namespace DemoApp
         // Methods
         private void LoadTickets(string type)
         {
-            // !!Need to figure out a way to not load two times at opening the page, waste of resources... 
-            // 
+            // Load type of tickets
             switch (type.ToLower())
             {
                 case "open":

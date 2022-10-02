@@ -9,7 +9,7 @@ using MongoDB.Driver;
 
 namespace DAL
 {
-    public class TicketDAO: DAO
+    public class TicketDAO : DAO
     {
         private IMongoDatabase database;
         private IMongoCollection<BsonDocument> tickets;
@@ -35,10 +35,38 @@ namespace DAL
             return ticket;
         }
 
-        public int GetTicketCount(string query)
+        public long GetTotalTicketCount()
         {
-            // Filler data
-            return 1;
+            try
+            {
+                // Update collection in case of change?? Return count of document
+                Tickets = GetAllTickets();
+                return Tickets.CountDocuments(new BsonDocument());
+            }
+            catch // Throw exception, handle the exception in the service layer
+            {
+                throw;
+            }
+        }
+
+        public long GetTicketCountByType(string status)
+        {
+            try
+            {
+                // Filter
+                var filter = Builders<BsonDocument>.Filter.Eq("Status", status);
+
+                // Update collection in case of change??
+                Tickets = GetAllTickets();
+
+                // Get count of documents of type in collection
+                var tickets = Tickets.Find(filter);
+                return tickets.CountDocuments();
+            }
+            catch // Throw exception, handle the exception in the service layer
+            {
+                throw;
+            }
         }
     }
 }
