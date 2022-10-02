@@ -42,6 +42,10 @@ namespace DemoApp
             this.btn_UserManagement = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_CreateUser = new DemoApp.Custom_Controls.RoundedButton();
             this.lbl_LogOut = new System.Windows.Forms.Label();
+            this.tblPnl_Logo = new DemoApp.Custom_Controls.FasterTableLayoutPanel();
+            this.pic_Logo = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl = new DemoApp.Custom_Controls.TabControlWithoutBorder();
             this.tab_Dashboard = new System.Windows.Forms.TabPage();
             this.rPnl_Dashboard = new DemoApp.Custom_Controls.RoundedPanel();
@@ -83,14 +87,12 @@ namespace DemoApp
             this.rPnl_CreateUser = new DemoApp.Custom_Controls.RoundedPanel();
             this.header_CreateUser = new System.Windows.Forms.Panel();
             this.lbl_HeaderCreateUser = new System.Windows.Forms.Label();
-            this.tblPnl_Logo = new DemoApp.Custom_Controls.FasterTableLayoutPanel();
-            this.pic_Logo = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.sideBar.SuspendLayout();
             this.tblPnl_UserInfo.SuspendLayout();
             this.flowPnl_Navigation.SuspendLayout();
+            this.tblPnl_Logo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tab_Dashboard.SuspendLayout();
             this.rPnl_Dashboard.SuspendLayout();
@@ -113,8 +115,6 @@ namespace DemoApp
             this.tab_CreateUser.SuspendLayout();
             this.rPnl_CreateUser.SuspendLayout();
             this.header_CreateUser.SuspendLayout();
-            this.tblPnl_Logo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -365,6 +365,62 @@ namespace DemoApp
             this.lbl_LogOut.Text = "Log out";
             this.lbl_LogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbl_LogOut.Click += new System.EventHandler(this.LogOut_Click);
+            // 
+            // tblPnl_Logo
+            // 
+            this.tblPnl_Logo.ColumnCount = 1;
+            this.tblPnl_Logo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblPnl_Logo.Controls.Add(this.pic_Logo, 0, 2);
+            this.tblPnl_Logo.Controls.Add(this.label1, 0, 1);
+            this.tblPnl_Logo.Controls.Add(this.label2, 0, 0);
+            this.tblPnl_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblPnl_Logo.Location = new System.Drawing.Point(3, 3);
+            this.tblPnl_Logo.Name = "tblPnl_Logo";
+            this.tblPnl_Logo.RowCount = 3;
+            this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblPnl_Logo.Size = new System.Drawing.Size(341, 174);
+            this.tblPnl_Logo.TabIndex = 4;
+            // 
+            // pic_Logo
+            // 
+            this.pic_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pic_Logo.Image = global::DemoApp.Properties.Resources.Logo;
+            this.pic_Logo.Location = new System.Drawing.Point(6, 83);
+            this.pic_Logo.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.pic_Logo.Name = "pic_Logo";
+            this.pic_Logo.Size = new System.Drawing.Size(329, 88);
+            this.pic_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic_Logo.TabIndex = 1;
+            this.pic_Logo.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(335, 29);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Licensed to:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(0, 10);
+            this.label2.Margin = new System.Windows.Forms.Padding(0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(341, 40);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "NoDesk";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // tabControl
             // 
@@ -986,62 +1042,6 @@ namespace DemoApp
             this.lbl_HeaderCreateUser.Text = "Create User";
             this.lbl_HeaderCreateUser.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // tblPnl_Logo
-            // 
-            this.tblPnl_Logo.ColumnCount = 1;
-            this.tblPnl_Logo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblPnl_Logo.Controls.Add(this.pic_Logo, 0, 2);
-            this.tblPnl_Logo.Controls.Add(this.label1, 0, 1);
-            this.tblPnl_Logo.Controls.Add(this.label2, 0, 0);
-            this.tblPnl_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblPnl_Logo.Location = new System.Drawing.Point(3, 3);
-            this.tblPnl_Logo.Name = "tblPnl_Logo";
-            this.tblPnl_Logo.RowCount = 3;
-            this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tblPnl_Logo.Size = new System.Drawing.Size(341, 174);
-            this.tblPnl_Logo.TabIndex = 4;
-            // 
-            // pic_Logo
-            // 
-            this.pic_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pic_Logo.Image = global::DemoApp.Properties.Resources.Logo;
-            this.pic_Logo.Location = new System.Drawing.Point(6, 83);
-            this.pic_Logo.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.pic_Logo.Name = "pic_Logo";
-            this.pic_Logo.Size = new System.Drawing.Size(329, 128);
-            this.pic_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pic_Logo.TabIndex = 1;
-            this.pic_Logo.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(2, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(335, 29);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Licensed to:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(0, 10);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(335, 40);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "NoDesk";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -1060,6 +1060,9 @@ namespace DemoApp
             this.sideBar.PerformLayout();
             this.tblPnl_UserInfo.ResumeLayout(false);
             this.flowPnl_Navigation.ResumeLayout(false);
+            this.tblPnl_Logo.ResumeLayout(false);
+            this.tblPnl_Logo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tab_Dashboard.ResumeLayout(false);
             this.rPnl_Dashboard.ResumeLayout(false);
@@ -1088,9 +1091,6 @@ namespace DemoApp
             this.rPnl_CreateUser.ResumeLayout(false);
             this.header_CreateUser.ResumeLayout(false);
             this.header_CreateUser.PerformLayout();
-            this.tblPnl_Logo.ResumeLayout(false);
-            this.tblPnl_Logo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).EndInit();
             this.ResumeLayout(false);
 
         }

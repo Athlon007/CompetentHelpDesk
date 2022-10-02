@@ -12,7 +12,7 @@ namespace DemoApp
     public partial class Main : Form
     { 
         private Databases databases;
-        private TicketService ticketService;
+        private TicketsService ticketService;
         private Employee employee;
 
         // Styling variables
@@ -28,7 +28,7 @@ namespace DemoApp
             //!! Probably should have an Employee parameter to display user data and for future references
             //this.employee = employee;
             //databases = new Databases();
-            ticketService = new TicketService();
+            ticketService = new TicketsService();
 
             // Set tab control panel tabs to invisible
             tabControl.ItemSize = new Size(0, 1);

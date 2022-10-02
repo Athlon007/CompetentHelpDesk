@@ -13,7 +13,7 @@ namespace ConnectToDatabase
     {
         DAO dao = new DAO();
         EmployeesDAO employeesDAO = new EmployeesDAO();
-        TicketDAO ticketsDAO = new TicketDAO();
+        TicketsDAO ticketsDAO = new TicketsDAO();
 
 
         static void Main(string[] args)

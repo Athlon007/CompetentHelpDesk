@@ -9,14 +9,14 @@ using MongoDB.Driver;
 
 namespace DAL
 {
-    public class TicketDAO : DAO
+    public class TicketsDAO : DAO
     {
         private IMongoDatabase database;
         private IMongoCollection<BsonDocument> tickets;
 
         public IMongoCollection<BsonDocument> Tickets { get; set; }
 
-        public TicketDAO()
+        public TicketsDAO()
         {
             database = Client.GetDatabase("Database name");
         }

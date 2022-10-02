@@ -10,13 +10,13 @@ using MongoDB.Driver;
 
 namespace Logic
 {
-    public class TicketService
+    public class TicketsService
     {
         IMongoCollection<BsonDocument> tickets;
 
-        public TicketDAO ticketsdb;
+        public TicketsDAO ticketsdb;
 
-        public TicketService()
+        public TicketsService()
         {
             //ticketsdb = new TicketsDAO();
         }
