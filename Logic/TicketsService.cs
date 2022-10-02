@@ -7,7 +7,6 @@ using DAL;
 using Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using Model;
 
 namespace Logic
 {
@@ -89,20 +88,21 @@ namespace Logic
                     return "open";
             }
 
-        public Ticket ConvertDocumentToObject(BsonDocument bsonDocument)
-        {
-            return ticketsdb.ConvertDocumentToObject(bsonDocument);
+            public Ticket ConvertDocumentToObject(BsonDocument bsonDocument)
+            {
+                return ticketsdb.ConvertDocumentToObject(bsonDocument);
 
-        }
+            }
 
 
-        public List<Ticket> ConvertAllDocumentsToTicketsList(IMongoCollection<BsonDocument> ticketsdb)
-        {
-            TicketsDAO ticketsDAO = new TicketsDAO();   
-            List<Ticket> tickets = ticketsDAO.ConvertAllDocumentsToTicketsList(ticketsdb);
+            public List<Ticket> ConvertAllDocumentsToTicketsList(IMongoCollection<BsonDocument> ticketsdb)
+            {
+                TicketsDAO ticketsDAO = new TicketsDAO();
+                List<Ticket> tickets = ticketsDAO.ConvertAllDocumentsToTicketsList(ticketsdb);
 
-            return tickets;
+                return tickets;
 
+            }
         }
     }
 }
