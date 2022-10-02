@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1
+      uses: microsoft/setup-msbuild@v1.1
       
     - name: Navigate to Workspace
       run: cd $GITHUB_WORKSPACE
@@ -31,6 +31,6 @@ jobs:
 
     - name: Build Solution
       run: |
-        msbuild.exe ${{env.SOLUTION_FILE_PATH}} /property:Configuration=Release /p:OutputPath=../_build
+        msbuild.exe ${{env.SOLUTION_FILE_PATH}} /property:Configuration=Release /p:OutputPath=../_build -p:VisualStudioVersion=15.0
         
     
