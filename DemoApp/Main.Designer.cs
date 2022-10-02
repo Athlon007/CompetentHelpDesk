@@ -31,21 +31,44 @@ namespace DemoApp
         {
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.sideBar = new System.Windows.Forms.TableLayoutPanel();
-            this.pic_Logo = new System.Windows.Forms.PictureBox();
             this.tblPnl_UserInfo = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_Welcome = new System.Windows.Forms.Label();
             this.lbl_Username = new System.Windows.Forms.Label();
             this.lbl_Role = new System.Windows.Forms.Label();
             this.flowPnl_Navigation = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbl_LogOut = new System.Windows.Forms.Label();
             this.btn_Dashboard = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_TicketManagement = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_CreateTicket = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_UserManagement = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_CreateUser = new DemoApp.Custom_Controls.RoundedButton();
+            this.lbl_LogOut = new System.Windows.Forms.Label();
+            this.tblPnl_Logo = new DemoApp.Custom_Controls.FasterTableLayoutPanel();
+            this.pic_Logo = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl = new DemoApp.Custom_Controls.TabControlWithoutBorder();
             this.tab_Dashboard = new System.Windows.Forms.TabPage();
             this.rPnl_Dashboard = new DemoApp.Custom_Controls.RoundedPanel();
+            this.tblPnl_Dashboard = new DemoApp.Custom_Controls.FasterTableLayoutPanel();
+            this.rPnl_D1_Open = new DemoApp.Custom_Controls.RoundedPanel();
+            this.circleBar_Open = new DemoApp.Custom_Controls.CircularProgressBar();
+            this.lbl_OpenIncidents_Desc = new System.Windows.Forms.Label();
+            this.lbl_OpenIncidents_Title = new System.Windows.Forms.Label();
+            this.rPnl_D3_Unresolved = new DemoApp.Custom_Controls.RoundedPanel();
+            this.circleBar_Unresolved = new DemoApp.Custom_Controls.CircularProgressBar();
+            this.lbl_PastDeadline_Desc = new System.Windows.Forms.Label();
+            this.lbl_PastDeadline_Title = new System.Windows.Forms.Label();
+            this.rPnl_D2_Past = new DemoApp.Custom_Controls.RoundedPanel();
+            this.circleBar_PastDeadline = new DemoApp.Custom_Controls.CircularProgressBar();
+            this.lbl_Unresolved_Desc = new System.Windows.Forms.Label();
+            this.lbl_Unresolved_Title = new System.Windows.Forms.Label();
+            this.rPnl_D4_Resolved = new DemoApp.Custom_Controls.RoundedPanel();
+            this.circleBar_Resolved = new DemoApp.Custom_Controls.CircularProgressBar();
+            this.lbl_Resolved_Desc = new System.Windows.Forms.Label();
+            this.lbl_Resolved_Title = new System.Windows.Forms.Label();
+            this.pnl_DashBoard_Title = new System.Windows.Forms.Panel();
+            this.btn_ShowAllIncidents = new DemoApp.Custom_Controls.RoundedButton();
+            this.lbl_CurrentIncidents = new System.Windows.Forms.Label();
             this.header_Dashboard = new System.Windows.Forms.Panel();
             this.lbl_HeaderDashboard = new System.Windows.Forms.Label();
             this.tab_TicketManagement = new System.Windows.Forms.TabPage();
@@ -66,12 +89,19 @@ namespace DemoApp
             this.lbl_HeaderCreateUser = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.sideBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).BeginInit();
             this.tblPnl_UserInfo.SuspendLayout();
             this.flowPnl_Navigation.SuspendLayout();
+            this.tblPnl_Logo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tab_Dashboard.SuspendLayout();
             this.rPnl_Dashboard.SuspendLayout();
+            this.tblPnl_Dashboard.SuspendLayout();
+            this.rPnl_D1_Open.SuspendLayout();
+            this.rPnl_D3_Unresolved.SuspendLayout();
+            this.rPnl_D2_Past.SuspendLayout();
+            this.rPnl_D4_Resolved.SuspendLayout();
+            this.pnl_DashBoard_Title.SuspendLayout();
             this.header_Dashboard.SuspendLayout();
             this.tab_TicketManagement.SuspendLayout();
             this.rPnl_TicketManagement.SuspendLayout();
@@ -96,6 +126,7 @@ namespace DemoApp
             this.tableLayoutPanel.Controls.Add(this.sideBar, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.tabControl, 1, 0);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -109,35 +140,23 @@ namespace DemoApp
             this.sideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.sideBar.ColumnCount = 1;
             this.sideBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.sideBar.Controls.Add(this.pic_Logo, 0, 0);
             this.sideBar.Controls.Add(this.tblPnl_UserInfo, 0, 2);
             this.sideBar.Controls.Add(this.flowPnl_Navigation, 0, 3);
             this.sideBar.Controls.Add(this.lbl_LogOut, 0, 4);
+            this.sideBar.Controls.Add(this.tblPnl_Logo, 0, 0);
             this.sideBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sideBar.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.sideBar.Location = new System.Drawing.Point(3, 3);
             this.sideBar.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.sideBar.Name = "sideBar";
             this.sideBar.RowCount = 5;
-            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.sideBar.Size = new System.Drawing.Size(347, 1018);
             this.sideBar.TabIndex = 1;
-            // 
-            // pic_Logo
-            // 
-            this.pic_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pic_Logo.Image = global::DemoApp.Properties.Resources.Logo;
-            this.pic_Logo.Location = new System.Drawing.Point(6, 3);
-            this.pic_Logo.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.pic_Logo.Name = "pic_Logo";
-            this.pic_Logo.Size = new System.Drawing.Size(335, 104);
-            this.pic_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pic_Logo.TabIndex = 0;
-            this.pic_Logo.TabStop = false;
             // 
             // tblPnl_UserInfo
             // 
@@ -147,7 +166,8 @@ namespace DemoApp
             this.tblPnl_UserInfo.Controls.Add(this.lbl_Username, 0, 1);
             this.tblPnl_UserInfo.Controls.Add(this.lbl_Role, 0, 2);
             this.tblPnl_UserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblPnl_UserInfo.Location = new System.Drawing.Point(0, 130);
+            this.tblPnl_UserInfo.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.tblPnl_UserInfo.Location = new System.Drawing.Point(0, 200);
             this.tblPnl_UserInfo.Margin = new System.Windows.Forms.Padding(0);
             this.tblPnl_UserInfo.Name = "tblPnl_UserInfo";
             this.tblPnl_UserInfo.RowCount = 3;
@@ -159,7 +179,6 @@ namespace DemoApp
             // 
             // lbl_Welcome
             // 
-            this.lbl_Welcome.AutoSize = true;
             this.lbl_Welcome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.lbl_Welcome.ForeColor = System.Drawing.Color.White;
@@ -172,7 +191,6 @@ namespace DemoApp
             // 
             // lbl_Username
             // 
-            this.lbl_Username.AutoSize = true;
             this.lbl_Username.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.lbl_Username.ForeColor = System.Drawing.Color.White;
@@ -186,7 +204,6 @@ namespace DemoApp
             // 
             // lbl_Role
             // 
-            this.lbl_Role.AutoSize = true;
             this.lbl_Role.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Role.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.lbl_Role.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -206,31 +223,17 @@ namespace DemoApp
             this.flowPnl_Navigation.Controls.Add(this.btn_CreateUser);
             this.flowPnl_Navigation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPnl_Navigation.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowPnl_Navigation.Location = new System.Drawing.Point(0, 280);
+            this.flowPnl_Navigation.Location = new System.Drawing.Point(0, 350);
             this.flowPnl_Navigation.Margin = new System.Windows.Forms.Padding(0, 50, 0, 0);
             this.flowPnl_Navigation.Name = "flowPnl_Navigation";
-            this.flowPnl_Navigation.Size = new System.Drawing.Size(347, 678);
+            this.flowPnl_Navigation.Size = new System.Drawing.Size(347, 608);
             this.flowPnl_Navigation.TabIndex = 2;
             this.flowPnl_Navigation.WrapContents = false;
-            // 
-            // lbl_LogOut
-            // 
-            this.lbl_LogOut.AutoSize = true;
-            this.lbl_LogOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_LogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lbl_LogOut.ForeColor = System.Drawing.Color.White;
-            this.lbl_LogOut.Location = new System.Drawing.Point(3, 958);
-            this.lbl_LogOut.Name = "lbl_LogOut";
-            this.lbl_LogOut.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.lbl_LogOut.Size = new System.Drawing.Size(341, 60);
-            this.lbl_LogOut.TabIndex = 3;
-            this.lbl_LogOut.Text = "Log out";
-            this.lbl_LogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_Dashboard
             // 
             this.btn_Dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(222)))));
-            this.btn_Dashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Dashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_Dashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Dashboard.FlatAppearance.BorderSize = 0;
             this.btn_Dashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(222)))));
@@ -253,7 +256,8 @@ namespace DemoApp
             // 
             // btn_TicketManagement
             // 
-            this.btn_TicketManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_TicketManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btn_TicketManagement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_TicketManagement.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_TicketManagement.FlatAppearance.BorderSize = 0;
             this.btn_TicketManagement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -276,7 +280,8 @@ namespace DemoApp
             // 
             // btn_CreateTicket
             // 
-            this.btn_CreateTicket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_CreateTicket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btn_CreateTicket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_CreateTicket.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_CreateTicket.FlatAppearance.BorderSize = 0;
             this.btn_CreateTicket.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -299,7 +304,8 @@ namespace DemoApp
             // 
             // btn_UserManagement
             // 
-            this.btn_UserManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_UserManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btn_UserManagement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_UserManagement.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_UserManagement.FlatAppearance.BorderSize = 0;
             this.btn_UserManagement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -322,7 +328,8 @@ namespace DemoApp
             // 
             // btn_CreateUser
             // 
-            this.btn_CreateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_CreateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btn_CreateUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_CreateUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_CreateUser.FlatAppearance.BorderSize = 0;
             this.btn_CreateUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -342,6 +349,78 @@ namespace DemoApp
             this.btn_CreateUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_CreateUser.UseVisualStyleBackColor = false;
             this.btn_CreateUser.Click += new System.EventHandler(this.Btn_CreateUser_Click);
+            // 
+            // lbl_LogOut
+            // 
+            this.lbl_LogOut.AutoSize = true;
+            this.lbl_LogOut.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_LogOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_LogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lbl_LogOut.ForeColor = System.Drawing.Color.White;
+            this.lbl_LogOut.Location = new System.Drawing.Point(3, 958);
+            this.lbl_LogOut.Name = "lbl_LogOut";
+            this.lbl_LogOut.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.lbl_LogOut.Size = new System.Drawing.Size(341, 60);
+            this.lbl_LogOut.TabIndex = 3;
+            this.lbl_LogOut.Text = "Log out";
+            this.lbl_LogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_LogOut.Click += new System.EventHandler(this.LogOut_Click);
+            // 
+            // tblPnl_Logo
+            // 
+            this.tblPnl_Logo.ColumnCount = 1;
+            this.tblPnl_Logo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblPnl_Logo.Controls.Add(this.pic_Logo, 0, 2);
+            this.tblPnl_Logo.Controls.Add(this.label1, 0, 1);
+            this.tblPnl_Logo.Controls.Add(this.label2, 0, 0);
+            this.tblPnl_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblPnl_Logo.Location = new System.Drawing.Point(3, 3);
+            this.tblPnl_Logo.Name = "tblPnl_Logo";
+            this.tblPnl_Logo.RowCount = 3;
+            this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblPnl_Logo.Size = new System.Drawing.Size(341, 174);
+            this.tblPnl_Logo.TabIndex = 4;
+            // 
+            // pic_Logo
+            // 
+            this.pic_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pic_Logo.Image = global::DemoApp.Properties.Resources.Logo;
+            this.pic_Logo.Location = new System.Drawing.Point(6, 83);
+            this.pic_Logo.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.pic_Logo.Name = "pic_Logo";
+            this.pic_Logo.Size = new System.Drawing.Size(329, 88);
+            this.pic_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic_Logo.TabIndex = 1;
+            this.pic_Logo.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(335, 29);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Licensed to:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(0, 10);
+            this.label2.Margin = new System.Windows.Forms.Padding(0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(341, 40);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "NoDesk";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // tabControl
             // 
@@ -379,6 +458,8 @@ namespace DemoApp
             this.rPnl_Dashboard.BackColor = System.Drawing.Color.White;
             this.rPnl_Dashboard.BorderAngle = 90F;
             this.rPnl_Dashboard.BorderRadius = 40;
+            this.rPnl_Dashboard.Controls.Add(this.tblPnl_Dashboard);
+            this.rPnl_Dashboard.Controls.Add(this.pnl_DashBoard_Title);
             this.rPnl_Dashboard.Controls.Add(this.header_Dashboard);
             this.rPnl_Dashboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rPnl_Dashboard.ForeColor = System.Drawing.Color.Black;
@@ -386,7 +467,365 @@ namespace DemoApp
             this.rPnl_Dashboard.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_Dashboard.Name = "rPnl_Dashboard";
             this.rPnl_Dashboard.Size = new System.Drawing.Size(1225, 961);
+            this.rPnl_Dashboard.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_Dashboard.TabIndex = 0;
+            // 
+            // tblPnl_Dashboard
+            // 
+            this.tblPnl_Dashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tblPnl_Dashboard.ColumnCount = 2;
+            this.tblPnl_Dashboard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblPnl_Dashboard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblPnl_Dashboard.Controls.Add(this.rPnl_D1_Open, 0, 0);
+            this.tblPnl_Dashboard.Controls.Add(this.rPnl_D3_Unresolved, 0, 1);
+            this.tblPnl_Dashboard.Controls.Add(this.rPnl_D2_Past, 1, 0);
+            this.tblPnl_Dashboard.Controls.Add(this.rPnl_D4_Resolved, 1, 1);
+            this.tblPnl_Dashboard.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.tblPnl_Dashboard.Location = new System.Drawing.Point(0, 120);
+            this.tblPnl_Dashboard.Margin = new System.Windows.Forms.Padding(0);
+            this.tblPnl_Dashboard.Name = "tblPnl_Dashboard";
+            this.tblPnl_Dashboard.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.tblPnl_Dashboard.RowCount = 2;
+            this.tblPnl_Dashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblPnl_Dashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblPnl_Dashboard.Size = new System.Drawing.Size(880, 846);
+            this.tblPnl_Dashboard.TabIndex = 2;
+            // 
+            // rPnl_D1_Open
+            // 
+            this.rPnl_D1_Open.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rPnl_D1_Open.BackColor = System.Drawing.Color.White;
+            this.rPnl_D1_Open.BorderAngle = 90F;
+            this.rPnl_D1_Open.BorderRadius = 40;
+            this.rPnl_D1_Open.Controls.Add(this.circleBar_Open);
+            this.rPnl_D1_Open.Controls.Add(this.lbl_OpenIncidents_Desc);
+            this.rPnl_D1_Open.Controls.Add(this.lbl_OpenIncidents_Title);
+            this.rPnl_D1_Open.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rPnl_D1_Open.ForeColor = System.Drawing.Color.Black;
+            this.rPnl_D1_Open.Location = new System.Drawing.Point(35, 11);
+            this.rPnl_D1_Open.MaximumSize = new System.Drawing.Size(400, 400);
+            this.rPnl_D1_Open.MinimumSize = new System.Drawing.Size(400, 400);
+            this.rPnl_D1_Open.Name = "rPnl_D1_Open";
+            this.rPnl_D1_Open.Size = new System.Drawing.Size(400, 400);
+            this.rPnl_D1_Open.SurfaceColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.rPnl_D1_Open.TabIndex = 0;
+            this.rPnl_D1_Open.Click += new System.EventHandler(this.RPnl_D1_Open_Click);
+            // 
+            // circleBar_Open
+            // 
+            this.circleBar_Open.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_Open.BorderSize = 25;
+            this.circleBar_Open.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.circleBar_Open.FontColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(82)))));
+            this.circleBar_Open.FontSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.circleBar_Open.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_Open.Location = new System.Drawing.Point(80, 140);
+            this.circleBar_Open.Margin = new System.Windows.Forms.Padding(0);
+            this.circleBar_Open.MiddleCircleColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_Open.Name = "circleBar_Open";
+            this.circleBar_Open.OuterCircleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.circleBar_Open.Size = new System.Drawing.Size(240, 240);
+            this.circleBar_Open.TabIndex = 3;
+            this.circleBar_Open.ValueMax = -1F;
+            this.circleBar_Open.ValueSize = -1F;
+            this.circleBar_Open.Click += new System.EventHandler(this.RPnl_D1_Open_Click);
+            // 
+            // lbl_OpenIncidents_Desc
+            // 
+            this.lbl_OpenIncidents_Desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.lbl_OpenIncidents_Desc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl_OpenIncidents_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbl_OpenIncidents_Desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(121)))), ((int)(((byte)(121)))));
+            this.lbl_OpenIncidents_Desc.Location = new System.Drawing.Point(0, 70);
+            this.lbl_OpenIncidents_Desc.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_OpenIncidents_Desc.MaximumSize = new System.Drawing.Size(400, 60);
+            this.lbl_OpenIncidents_Desc.MinimumSize = new System.Drawing.Size(400, 60);
+            this.lbl_OpenIncidents_Desc.Name = "lbl_OpenIncidents_Desc";
+            this.lbl_OpenIncidents_Desc.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lbl_OpenIncidents_Desc.Size = new System.Drawing.Size(400, 60);
+            this.lbl_OpenIncidents_Desc.TabIndex = 2;
+            this.lbl_OpenIncidents_Desc.Text = "These tickets are currently open and require resolving.";
+            this.lbl_OpenIncidents_Desc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_OpenIncidents_Desc.Click += new System.EventHandler(this.RPnl_D1_Open_Click);
+            // 
+            // lbl_OpenIncidents_Title
+            // 
+            this.lbl_OpenIncidents_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.lbl_OpenIncidents_Title.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl_OpenIncidents_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_OpenIncidents_Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.lbl_OpenIncidents_Title.Location = new System.Drawing.Point(0, 0);
+            this.lbl_OpenIncidents_Title.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_OpenIncidents_Title.MaximumSize = new System.Drawing.Size(400, 70);
+            this.lbl_OpenIncidents_Title.MinimumSize = new System.Drawing.Size(400, 70);
+            this.lbl_OpenIncidents_Title.Name = "lbl_OpenIncidents_Title";
+            this.lbl_OpenIncidents_Title.Size = new System.Drawing.Size(400, 70);
+            this.lbl_OpenIncidents_Title.TabIndex = 1;
+            this.lbl_OpenIncidents_Title.Text = "Open incidents";
+            this.lbl_OpenIncidents_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_OpenIncidents_Title.Click += new System.EventHandler(this.RPnl_D1_Open_Click);
+            // 
+            // rPnl_D3_Unresolved
+            // 
+            this.rPnl_D3_Unresolved.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rPnl_D3_Unresolved.BackColor = System.Drawing.Color.White;
+            this.rPnl_D3_Unresolved.BorderAngle = 90F;
+            this.rPnl_D3_Unresolved.BorderRadius = 40;
+            this.rPnl_D3_Unresolved.Controls.Add(this.circleBar_Unresolved);
+            this.rPnl_D3_Unresolved.Controls.Add(this.lbl_PastDeadline_Desc);
+            this.rPnl_D3_Unresolved.Controls.Add(this.lbl_PastDeadline_Title);
+            this.rPnl_D3_Unresolved.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rPnl_D3_Unresolved.ForeColor = System.Drawing.Color.Black;
+            this.rPnl_D3_Unresolved.Location = new System.Drawing.Point(35, 434);
+            this.rPnl_D3_Unresolved.MaximumSize = new System.Drawing.Size(400, 400);
+            this.rPnl_D3_Unresolved.MinimumSize = new System.Drawing.Size(400, 400);
+            this.rPnl_D3_Unresolved.Name = "rPnl_D3_Unresolved";
+            this.rPnl_D3_Unresolved.Size = new System.Drawing.Size(400, 400);
+            this.rPnl_D3_Unresolved.SurfaceColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.rPnl_D3_Unresolved.TabIndex = 1;
+            this.rPnl_D3_Unresolved.Click += new System.EventHandler(this.RPnl_D3_Unresolved_Click);
+            // 
+            // circleBar_Unresolved
+            // 
+            this.circleBar_Unresolved.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_Unresolved.BorderSize = 25;
+            this.circleBar_Unresolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.circleBar_Unresolved.FontColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(82)))));
+            this.circleBar_Unresolved.FontSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.circleBar_Unresolved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_Unresolved.Location = new System.Drawing.Point(80, 140);
+            this.circleBar_Unresolved.Margin = new System.Windows.Forms.Padding(0);
+            this.circleBar_Unresolved.MiddleCircleColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_Unresolved.Name = "circleBar_Unresolved";
+            this.circleBar_Unresolved.OuterCircleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(255)))));
+            this.circleBar_Unresolved.Size = new System.Drawing.Size(240, 240);
+            this.circleBar_Unresolved.TabIndex = 5;
+            this.circleBar_Unresolved.ValueMax = -1F;
+            this.circleBar_Unresolved.ValueSize = -1F;
+            this.circleBar_Unresolved.Click += new System.EventHandler(this.RPnl_D3_Unresolved_Click);
+            // 
+            // lbl_PastDeadline_Desc
+            // 
+            this.lbl_PastDeadline_Desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.lbl_PastDeadline_Desc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl_PastDeadline_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbl_PastDeadline_Desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(121)))), ((int)(((byte)(121)))));
+            this.lbl_PastDeadline_Desc.Location = new System.Drawing.Point(0, 70);
+            this.lbl_PastDeadline_Desc.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_PastDeadline_Desc.MaximumSize = new System.Drawing.Size(400, 60);
+            this.lbl_PastDeadline_Desc.MinimumSize = new System.Drawing.Size(400, 60);
+            this.lbl_PastDeadline_Desc.Name = "lbl_PastDeadline_Desc";
+            this.lbl_PastDeadline_Desc.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lbl_PastDeadline_Desc.Size = new System.Drawing.Size(400, 60);
+            this.lbl_PastDeadline_Desc.TabIndex = 2;
+            this.lbl_PastDeadline_Desc.Text = "These tickets were closed without solution.";
+            this.lbl_PastDeadline_Desc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_PastDeadline_Desc.Click += new System.EventHandler(this.RPnl_D3_Unresolved_Click);
+            // 
+            // lbl_PastDeadline_Title
+            // 
+            this.lbl_PastDeadline_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.lbl_PastDeadline_Title.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl_PastDeadline_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_PastDeadline_Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.lbl_PastDeadline_Title.Location = new System.Drawing.Point(0, 0);
+            this.lbl_PastDeadline_Title.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_PastDeadline_Title.MaximumSize = new System.Drawing.Size(400, 70);
+            this.lbl_PastDeadline_Title.MinimumSize = new System.Drawing.Size(400, 70);
+            this.lbl_PastDeadline_Title.Name = "lbl_PastDeadline_Title";
+            this.lbl_PastDeadline_Title.Size = new System.Drawing.Size(400, 70);
+            this.lbl_PastDeadline_Title.TabIndex = 1;
+            this.lbl_PastDeadline_Title.Text = "Incidents closed without resolve";
+            this.lbl_PastDeadline_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_PastDeadline_Title.Click += new System.EventHandler(this.RPnl_D3_Unresolved_Click);
+            // 
+            // rPnl_D2_Past
+            // 
+            this.rPnl_D2_Past.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rPnl_D2_Past.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rPnl_D2_Past.BorderAngle = 90F;
+            this.rPnl_D2_Past.BorderRadius = 40;
+            this.rPnl_D2_Past.Controls.Add(this.circleBar_PastDeadline);
+            this.rPnl_D2_Past.Controls.Add(this.lbl_Unresolved_Desc);
+            this.rPnl_D2_Past.Controls.Add(this.lbl_Unresolved_Title);
+            this.rPnl_D2_Past.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rPnl_D2_Past.ForeColor = System.Drawing.Color.Black;
+            this.rPnl_D2_Past.Location = new System.Drawing.Point(465, 11);
+            this.rPnl_D2_Past.MaximumSize = new System.Drawing.Size(400, 400);
+            this.rPnl_D2_Past.MinimumSize = new System.Drawing.Size(400, 400);
+            this.rPnl_D2_Past.Name = "rPnl_D2_Past";
+            this.rPnl_D2_Past.Size = new System.Drawing.Size(400, 400);
+            this.rPnl_D2_Past.SurfaceColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.rPnl_D2_Past.TabIndex = 2;
+            this.rPnl_D2_Past.Click += new System.EventHandler(this.RPnl_D2_Past_Click);
+            // 
+            // circleBar_PastDeadline
+            // 
+            this.circleBar_PastDeadline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_PastDeadline.BorderSize = 25;
+            this.circleBar_PastDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.circleBar_PastDeadline.FontColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(82)))));
+            this.circleBar_PastDeadline.FontSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.circleBar_PastDeadline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_PastDeadline.Location = new System.Drawing.Point(85, 140);
+            this.circleBar_PastDeadline.Margin = new System.Windows.Forms.Padding(0);
+            this.circleBar_PastDeadline.MiddleCircleColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_PastDeadline.Name = "circleBar_PastDeadline";
+            this.circleBar_PastDeadline.OuterCircleColor = System.Drawing.Color.Red;
+            this.circleBar_PastDeadline.Size = new System.Drawing.Size(240, 240);
+            this.circleBar_PastDeadline.TabIndex = 4;
+            this.circleBar_PastDeadline.ValueMax = -1F;
+            this.circleBar_PastDeadline.ValueSize = -1F;
+            this.circleBar_PastDeadline.Click += new System.EventHandler(this.RPnl_D2_Past_Click);
+            // 
+            // lbl_Unresolved_Desc
+            // 
+            this.lbl_Unresolved_Desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.lbl_Unresolved_Desc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl_Unresolved_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbl_Unresolved_Desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(121)))), ((int)(((byte)(121)))));
+            this.lbl_Unresolved_Desc.Location = new System.Drawing.Point(0, 70);
+            this.lbl_Unresolved_Desc.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_Unresolved_Desc.MaximumSize = new System.Drawing.Size(400, 60);
+            this.lbl_Unresolved_Desc.MinimumSize = new System.Drawing.Size(400, 60);
+            this.lbl_Unresolved_Desc.Name = "lbl_Unresolved_Desc";
+            this.lbl_Unresolved_Desc.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lbl_Unresolved_Desc.Size = new System.Drawing.Size(400, 60);
+            this.lbl_Unresolved_Desc.TabIndex = 2;
+            this.lbl_Unresolved_Desc.Text = "These tickets require your immediate attention.";
+            this.lbl_Unresolved_Desc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_Unresolved_Desc.Click += new System.EventHandler(this.RPnl_D2_Past_Click);
+            // 
+            // lbl_Unresolved_Title
+            // 
+            this.lbl_Unresolved_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.lbl_Unresolved_Title.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl_Unresolved_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Unresolved_Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.lbl_Unresolved_Title.Location = new System.Drawing.Point(0, 0);
+            this.lbl_Unresolved_Title.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_Unresolved_Title.MaximumSize = new System.Drawing.Size(400, 70);
+            this.lbl_Unresolved_Title.MinimumSize = new System.Drawing.Size(400, 70);
+            this.lbl_Unresolved_Title.Name = "lbl_Unresolved_Title";
+            this.lbl_Unresolved_Title.Size = new System.Drawing.Size(400, 70);
+            this.lbl_Unresolved_Title.TabIndex = 1;
+            this.lbl_Unresolved_Title.Text = "Incidents past deadline";
+            this.lbl_Unresolved_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_Unresolved_Title.Click += new System.EventHandler(this.RPnl_D2_Past_Click);
+            // 
+            // rPnl_D4_Resolved
+            // 
+            this.rPnl_D4_Resolved.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rPnl_D4_Resolved.BackColor = System.Drawing.Color.White;
+            this.rPnl_D4_Resolved.BorderAngle = 90F;
+            this.rPnl_D4_Resolved.BorderRadius = 40;
+            this.rPnl_D4_Resolved.Controls.Add(this.circleBar_Resolved);
+            this.rPnl_D4_Resolved.Controls.Add(this.lbl_Resolved_Desc);
+            this.rPnl_D4_Resolved.Controls.Add(this.lbl_Resolved_Title);
+            this.rPnl_D4_Resolved.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rPnl_D4_Resolved.ForeColor = System.Drawing.Color.Black;
+            this.rPnl_D4_Resolved.Location = new System.Drawing.Point(465, 434);
+            this.rPnl_D4_Resolved.MaximumSize = new System.Drawing.Size(400, 400);
+            this.rPnl_D4_Resolved.MinimumSize = new System.Drawing.Size(400, 400);
+            this.rPnl_D4_Resolved.Name = "rPnl_D4_Resolved";
+            this.rPnl_D4_Resolved.Size = new System.Drawing.Size(400, 400);
+            this.rPnl_D4_Resolved.SurfaceColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.rPnl_D4_Resolved.TabIndex = 3;
+            this.rPnl_D4_Resolved.Click += new System.EventHandler(this.RPnl_D4_Resolved_Click);
+            // 
+            // circleBar_Resolved
+            // 
+            this.circleBar_Resolved.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_Resolved.BorderSize = 25;
+            this.circleBar_Resolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.circleBar_Resolved.FontColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(82)))));
+            this.circleBar_Resolved.FontSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.circleBar_Resolved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_Resolved.Location = new System.Drawing.Point(80, 140);
+            this.circleBar_Resolved.Margin = new System.Windows.Forms.Padding(0);
+            this.circleBar_Resolved.MiddleCircleColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.circleBar_Resolved.Name = "circleBar_Resolved";
+            this.circleBar_Resolved.OuterCircleColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.circleBar_Resolved.Size = new System.Drawing.Size(240, 240);
+            this.circleBar_Resolved.TabIndex = 6;
+            this.circleBar_Resolved.ValueMax = -1F;
+            this.circleBar_Resolved.ValueSize = -1F;
+            this.circleBar_Resolved.Click += new System.EventHandler(this.RPnl_D4_Resolved_Click);
+            // 
+            // lbl_Resolved_Desc
+            // 
+            this.lbl_Resolved_Desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.lbl_Resolved_Desc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl_Resolved_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbl_Resolved_Desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(121)))), ((int)(((byte)(121)))));
+            this.lbl_Resolved_Desc.Location = new System.Drawing.Point(0, 70);
+            this.lbl_Resolved_Desc.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_Resolved_Desc.MaximumSize = new System.Drawing.Size(400, 60);
+            this.lbl_Resolved_Desc.MinimumSize = new System.Drawing.Size(400, 60);
+            this.lbl_Resolved_Desc.Name = "lbl_Resolved_Desc";
+            this.lbl_Resolved_Desc.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lbl_Resolved_Desc.Size = new System.Drawing.Size(400, 60);
+            this.lbl_Resolved_Desc.TabIndex = 2;
+            this.lbl_Resolved_Desc.Text = "Good job! These tickets were succesfully resolved.";
+            this.lbl_Resolved_Desc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_Resolved_Desc.Click += new System.EventHandler(this.RPnl_D4_Resolved_Click);
+            // 
+            // lbl_Resolved_Title
+            // 
+            this.lbl_Resolved_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.lbl_Resolved_Title.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl_Resolved_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Resolved_Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.lbl_Resolved_Title.Location = new System.Drawing.Point(0, 0);
+            this.lbl_Resolved_Title.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_Resolved_Title.MaximumSize = new System.Drawing.Size(400, 70);
+            this.lbl_Resolved_Title.MinimumSize = new System.Drawing.Size(400, 70);
+            this.lbl_Resolved_Title.Name = "lbl_Resolved_Title";
+            this.lbl_Resolved_Title.Size = new System.Drawing.Size(400, 70);
+            this.lbl_Resolved_Title.TabIndex = 1;
+            this.lbl_Resolved_Title.Text = "Resolved incidents";
+            this.lbl_Resolved_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_Resolved_Title.Click += new System.EventHandler(this.RPnl_D4_Resolved_Click);
+            // 
+            // pnl_DashBoard_Title
+            // 
+            this.pnl_DashBoard_Title.Controls.Add(this.btn_ShowAllIncidents);
+            this.pnl_DashBoard_Title.Controls.Add(this.lbl_CurrentIncidents);
+            this.pnl_DashBoard_Title.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_DashBoard_Title.Location = new System.Drawing.Point(0, 60);
+            this.pnl_DashBoard_Title.Name = "pnl_DashBoard_Title";
+            this.pnl_DashBoard_Title.Size = new System.Drawing.Size(1225, 60);
+            this.pnl_DashBoard_Title.TabIndex = 3;
+            // 
+            // btn_ShowAllIncidents
+            // 
+            this.btn_ShowAllIncidents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btn_ShowAllIncidents.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_ShowAllIncidents.FlatAppearance.BorderSize = 0;
+            this.btn_ShowAllIncidents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ShowAllIncidents.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ShowAllIncidents.ForeColor = System.Drawing.Color.White;
+            this.btn_ShowAllIncidents.Location = new System.Drawing.Point(619, 0);
+            this.btn_ShowAllIncidents.Name = "btn_ShowAllIncidents";
+            this.btn_ShowAllIncidents.Size = new System.Drawing.Size(246, 57);
+            this.btn_ShowAllIncidents.TabIndex = 1;
+            this.btn_ShowAllIncidents.Text = "Show all incidents";
+            this.btn_ShowAllIncidents.UseVisualStyleBackColor = false;
+            this.btn_ShowAllIncidents.Click += new System.EventHandler(this.Btn_ShowAllIncidents_Click);
+            // 
+            // lbl_CurrentIncidents
+            // 
+            this.lbl_CurrentIncidents.AutoSize = true;
+            this.lbl_CurrentIncidents.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbl_CurrentIncidents.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
+            this.lbl_CurrentIncidents.Location = new System.Drawing.Point(0, 23);
+            this.lbl_CurrentIncidents.Margin = new System.Windows.Forms.Padding(30, 0, 3, 0);
+            this.lbl_CurrentIncidents.Name = "lbl_CurrentIncidents";
+            this.lbl_CurrentIncidents.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.lbl_CurrentIncidents.Size = new System.Drawing.Size(306, 37);
+            this.lbl_CurrentIncidents.TabIndex = 0;
+            this.lbl_CurrentIncidents.Text = "Current incidents";
+            this.lbl_CurrentIncidents.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // header_Dashboard
             // 
@@ -433,6 +872,7 @@ namespace DemoApp
             this.rPnl_TicketManagement.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_TicketManagement.Name = "rPnl_TicketManagement";
             this.rPnl_TicketManagement.Size = new System.Drawing.Size(1225, 961);
+            this.rPnl_TicketManagement.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_TicketManagement.TabIndex = 1;
             // 
             // header_TicketManagement
@@ -480,6 +920,7 @@ namespace DemoApp
             this.rPnl_CreateTicket.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_CreateTicket.Name = "rPnl_CreateTicket";
             this.rPnl_CreateTicket.Size = new System.Drawing.Size(1225, 961);
+            this.rPnl_CreateTicket.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateTicket.TabIndex = 2;
             // 
             // header_CreateTicket
@@ -527,6 +968,7 @@ namespace DemoApp
             this.rPnl_UserManagement.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_UserManagement.Name = "rPnl_UserManagement";
             this.rPnl_UserManagement.Size = new System.Drawing.Size(1225, 961);
+            this.rPnl_UserManagement.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_UserManagement.TabIndex = 3;
             // 
             // header_UserManagement
@@ -574,6 +1016,7 @@ namespace DemoApp
             this.rPnl_CreateUser.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_CreateUser.Name = "rPnl_CreateUser";
             this.rPnl_CreateUser.Size = new System.Drawing.Size(1225, 961);
+            this.rPnl_CreateUser.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateUser.TabIndex = 4;
             // 
             // header_CreateUser
@@ -606,6 +1049,7 @@ namespace DemoApp
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.ClientSize = new System.Drawing.Size(1598, 1024);
             this.Controls.Add(this.tableLayoutPanel);
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimumSize = new System.Drawing.Size(1620, 1080);
             this.Name = "Main";
@@ -614,13 +1058,21 @@ namespace DemoApp
             this.tableLayoutPanel.ResumeLayout(false);
             this.sideBar.ResumeLayout(false);
             this.sideBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).EndInit();
             this.tblPnl_UserInfo.ResumeLayout(false);
-            this.tblPnl_UserInfo.PerformLayout();
             this.flowPnl_Navigation.ResumeLayout(false);
+            this.tblPnl_Logo.ResumeLayout(false);
+            this.tblPnl_Logo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tab_Dashboard.ResumeLayout(false);
             this.rPnl_Dashboard.ResumeLayout(false);
+            this.tblPnl_Dashboard.ResumeLayout(false);
+            this.rPnl_D1_Open.ResumeLayout(false);
+            this.rPnl_D3_Unresolved.ResumeLayout(false);
+            this.rPnl_D2_Past.ResumeLayout(false);
+            this.rPnl_D4_Resolved.ResumeLayout(false);
+            this.pnl_DashBoard_Title.ResumeLayout(false);
+            this.pnl_DashBoard_Title.PerformLayout();
             this.header_Dashboard.ResumeLayout(false);
             this.header_Dashboard.PerformLayout();
             this.tab_TicketManagement.ResumeLayout(false);
@@ -651,7 +1103,6 @@ namespace DemoApp
         private System.Windows.Forms.TabPage tab_Dashboard;
         private System.Windows.Forms.TabPage tab_CreateTicket;
         private Custom_Controls.RoundedPanel rPnl_Dashboard;
-        private System.Windows.Forms.PictureBox pic_Logo;
         private System.Windows.Forms.TableLayoutPanel tblPnl_UserInfo;
         private System.Windows.Forms.Label lbl_Welcome;
         private System.Windows.Forms.Label lbl_Username;
@@ -680,6 +1131,30 @@ namespace DemoApp
         private System.Windows.Forms.Label lbl_HeaderUserManagement;
         private System.Windows.Forms.Panel header_CreateUser;
         private System.Windows.Forms.Label lbl_HeaderCreateUser;
+        private Custom_Controls.RoundedPanel rPnl_D1_Open;
+        private Custom_Controls.RoundedPanel rPnl_D2_Past;
+        private Custom_Controls.RoundedPanel rPnl_D3_Unresolved;
+        private Custom_Controls.RoundedPanel rPnl_D4_Resolved;
+        private System.Windows.Forms.Label lbl_Resolved_Title;
+        private System.Windows.Forms.Label lbl_Resolved_Desc;
+        private System.Windows.Forms.Label lbl_Unresolved_Title;
+        private System.Windows.Forms.Label lbl_Unresolved_Desc;
+        private System.Windows.Forms.Label lbl_PastDeadline_Title;
+        private System.Windows.Forms.Label lbl_PastDeadline_Desc;
+        private System.Windows.Forms.Label lbl_OpenIncidents_Title;
+        private System.Windows.Forms.Label lbl_OpenIncidents_Desc;
+        private Custom_Controls.FasterTableLayoutPanel tblPnl_Dashboard;
+        private Custom_Controls.CircularProgressBar circleBar_Open;
+        private Custom_Controls.CircularProgressBar circleBar_Unresolved;
+        private Custom_Controls.CircularProgressBar circleBar_PastDeadline;
+        private Custom_Controls.CircularProgressBar circleBar_Resolved;
+        private System.Windows.Forms.Panel pnl_DashBoard_Title;
+        private System.Windows.Forms.Label lbl_CurrentIncidents;
+        private Custom_Controls.RoundedButton btn_ShowAllIncidents;
+        private Custom_Controls.FasterTableLayoutPanel tblPnl_Logo;
+        private System.Windows.Forms.PictureBox pic_Logo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

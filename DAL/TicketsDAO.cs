@@ -37,6 +37,39 @@ namespace DAL
             return ticket;
         }
 
+        public long GetTotalTicketCount()
+        {
+            try
+            {
+                // Update collection in case of change?? Return count of document
+                Tickets = GetAllTickets();
+                return Tickets.CountDocuments(new BsonDocument());
+            }
+            catch // Throw exception, handle the exception in the service layer
+            {
+                throw;
+            }
+        }
+
+        public long GetTicketCountByType(string status)
+        {
+            try
+            {
+                // Filter
+                var filter = Builders<BsonDocument>.Filter.Eq("Status", status);
+
+                // Update collection in case of change??
+                Tickets = GetAllTickets();
+
+                // Get count of documents of type in collection
+                var tickets = Tickets.Find(filter);
+                return tickets.CountDocuments();
+            }
+            catch // Throw exception, handle the exception in the service layer
+            {
+                throw;
+            }
+        }
 
         //Using collection Tickets
         //using the following script for data

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DemoApp.Custom_Controls
@@ -25,6 +21,7 @@ namespace DemoApp.Custom_Controls
             this.Size = new Size(150, 40);
             this.BackColor = standardColor;
             this.ForeColor = Color.White;
+            this.DoubleBuffered = true;
         }
 
         // Methods 

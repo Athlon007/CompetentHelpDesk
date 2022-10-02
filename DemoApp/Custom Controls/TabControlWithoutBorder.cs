@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DemoApp.Custom_Controls
@@ -17,6 +13,8 @@ namespace DemoApp.Custom_Controls
                 // Allow multiple rows of tabs
                 this.Multiline = true;
             }
+
+            this.DoubleBuffered = true;
         }
 
         protected override void WndProc(ref Message m)
