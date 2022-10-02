@@ -87,6 +87,7 @@ namespace Logic
                 default:
                     return "open";
             }
+        }
 
             public Ticket ConvertDocumentToObject(BsonDocument bsonDocument)
             {
@@ -95,14 +96,14 @@ namespace Logic
             }
 
 
-            public List<Ticket> ConvertAllDocumentsToTicketsList(IMongoCollection<BsonDocument> ticketsdb)
-            {
-                TicketsDAO ticketsDAO = new TicketsDAO();
-                List<Ticket> tickets = ticketsDAO.ConvertAllDocumentsToTicketsList(ticketsdb);
+        public List<Ticket> ConvertAllDocumentsToTicketsList(IMongoCollection<BsonDocument> ticketsdb)
+        {
+            TicketsDAO ticketsDAO = new TicketsDAO();
+            List<Ticket> tickets = ticketsDAO.ConvertAllDocumentsToTicketsList(ticketsdb);
 
-                return tickets;
+            return tickets;
 
-            }
         }
+        
     }
 }
