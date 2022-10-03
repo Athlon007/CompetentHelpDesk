@@ -77,6 +77,8 @@ namespace DemoApp
             this.lbl_HeaderTicketManagement = new System.Windows.Forms.Label();
             this.tab_CreateTicket = new System.Windows.Forms.TabPage();
             this.rPnl_CreateTicket = new DemoApp.Custom_Controls.RoundedPanel();
+            this.btnCancelCT = new DemoApp.Custom_Controls.RoundedButton();
+            this.btnSubmitTicketCT = new DemoApp.Custom_Controls.RoundedButton();
             this.txtDescriptionCT = new System.Windows.Forms.TextBox();
             this.cmbDeadlineCT = new System.Windows.Forms.ComboBox();
             this.cmbPriorityCT = new System.Windows.Forms.ComboBox();
@@ -942,6 +944,8 @@ namespace DemoApp
             this.rPnl_CreateTicket.BackColor = System.Drawing.Color.White;
             this.rPnl_CreateTicket.BorderAngle = 90F;
             this.rPnl_CreateTicket.BorderRadius = 40;
+            this.rPnl_CreateTicket.Controls.Add(this.btnCancelCT);
+            this.rPnl_CreateTicket.Controls.Add(this.btnSubmitTicketCT);
             this.rPnl_CreateTicket.Controls.Add(this.txtDescriptionCT);
             this.rPnl_CreateTicket.Controls.Add(this.cmbDeadlineCT);
             this.rPnl_CreateTicket.Controls.Add(this.cmbPriorityCT);
@@ -966,8 +970,39 @@ namespace DemoApp
             this.rPnl_CreateTicket.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateTicket.TabIndex = 2;
             // 
+            // btnCancelCT
+            // 
+            this.btnCancelCT.BackColor = System.Drawing.Color.White;
+            this.btnCancelCT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btnCancelCT.FlatAppearance.BorderSize = 6;
+            this.btnCancelCT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnCancelCT.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelCT.Location = new System.Drawing.Point(372, 427);
+            this.btnCancelCT.Name = "btnCancelCT";
+            this.btnCancelCT.Size = new System.Drawing.Size(150, 40);
+            this.btnCancelCT.TabIndex = 17;
+            this.btnCancelCT.Text = "Cancel";
+            this.btnCancelCT.UseVisualStyleBackColor = false;
+            // 
+            // btnSubmitTicketCT
+            // 
+            this.btnSubmitTicketCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btnSubmitTicketCT.FlatAppearance.BorderSize = 0;
+            this.btnSubmitTicketCT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmitTicketCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnSubmitTicketCT.ForeColor = System.Drawing.Color.White;
+            this.btnSubmitTicketCT.Location = new System.Drawing.Point(193, 427);
+            this.btnSubmitTicketCT.Name = "btnSubmitTicketCT";
+            this.btnSubmitTicketCT.Size = new System.Drawing.Size(150, 40);
+            this.btnSubmitTicketCT.TabIndex = 16;
+            this.btnSubmitTicketCT.Text = "Submit Ticket";
+            this.btnSubmitTicketCT.UseVisualStyleBackColor = false;
+            // 
             // txtDescriptionCT
             // 
+            this.txtDescriptionCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescriptionCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDescriptionCT.Location = new System.Drawing.Point(193, 242);
             this.txtDescriptionCT.Multiline = true;
@@ -977,6 +1012,8 @@ namespace DemoApp
             // 
             // cmbDeadlineCT
             // 
+            this.cmbDeadlineCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbDeadlineCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDeadlineCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDeadlineCT.FormattingEnabled = true;
@@ -987,6 +1024,8 @@ namespace DemoApp
             // 
             // cmbPriorityCT
             // 
+            this.cmbPriorityCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbPriorityCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPriorityCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbPriorityCT.FormattingEnabled = true;
@@ -997,6 +1036,8 @@ namespace DemoApp
             // 
             // cmbUserCT
             // 
+            this.cmbUserCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbUserCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUserCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbUserCT.FormattingEnabled = true;
@@ -1007,6 +1048,8 @@ namespace DemoApp
             // 
             // cmbIncidentTypeCT
             // 
+            this.cmbIncidentTypeCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbIncidentTypeCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIncidentTypeCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbIncidentTypeCT.FormattingEnabled = true;
@@ -1017,6 +1060,8 @@ namespace DemoApp
             // 
             // txtSubjectOfIncidentCT
             // 
+            this.txtSubjectOfIncidentCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubjectOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtSubjectOfIncidentCT.Location = new System.Drawing.Point(193, 79);
             this.txtSubjectOfIncidentCT.Name = "txtSubjectOfIncidentCT";
@@ -1085,6 +1130,8 @@ namespace DemoApp
             // 
             // dtpReportedCT
             // 
+            this.dtpReportedCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.dtpReportedCT.Location = new System.Drawing.Point(193, 45);
             this.dtpReportedCT.Name = "dtpReportedCT";
@@ -1352,6 +1399,8 @@ namespace DemoApp
         private System.Windows.Forms.ComboBox cmbUserCT;
         private System.Windows.Forms.TextBox txtDescriptionCT;
         private System.Windows.Forms.ComboBox cmbDeadlineCT;
+        private Custom_Controls.RoundedButton btnSubmitTicketCT;
+        private Custom_Controls.RoundedButton btnCancelCT;
     }
 }
 
