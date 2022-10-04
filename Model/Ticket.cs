@@ -16,36 +16,52 @@ namespace Model
 {
     public class Ticket
     {
-        //used string data type for deserialization into instances of the class
-        string id;
-        string subject;
-        string userId;
-        string date;
-        string status;
-
         [BsonId]
         [DataMember]
-        public MongoDB.Bson.ObjectId _id { get; set; }
+        public int Id { get; set; }
 
-        [DataMember]
-        public string Id { get { return id; } set { id = value; } }
-        public string Subject { get { return subject; } set { subject = value; } }
-        public string UserId { get { return userId; } set { userId = value; } }
-        public string Date { get { return date; } set { date = value; } }
-        public string Status { get { return status; } set { status = value; } }
+        [BsonElement("subject")]
+        public string Subject { get; set; }
+        [BsonElement("description")]
+        public string Description { get; set; }
+        [BsonElement("reporter")]
+        public Employee Reporter { get; set; }
+        [BsonElement("date")]
+        public DateTime Date { get; set; }
+        [BsonElement("deadline")]
+        public DateTime Deadline { get; set; }
+        [BsonElement("priority")]
+        public TicketPriority Priority { get; set; }
+        [BsonElement("status")]
+        public TicketStatus Status { get; set; }
 
-        public Ticket(){}
+        public Ticket() { }
 
-        public Ticket(string id, string subject, string userId, string date, string status)
+        public Ticket(string subject, string description, Employee reporter, DateTime date, DateTime deadline, TicketPriority priority, TicketStatus status)
         {
-            this.Id = id;
             this.Subject = subject;
-            this.UserId = userId;
+            this.Description = description;
+            this.Reporter = reporter;
             this.Date = date;
+            this.Deadline = deadline;
+            this.Priority = priority;
             this.Status = status;
         }
 
+        public override string ToString()
+        {
+            return $"({Id}) Subject: {Subject}\nDescription: {Description}\nDate: {Date}\nDeadline: {Deadline}\nPrority: {Priority}\nStatus:{Status}\n  Employee:{Reporter}";
+        }
 
-
+        /// <summary>
+        /// Returns the number of days until the ticket's deadline
+        /// </summary>
+        public int DaysUntilDeadline
+        {
+            get
+            {
+                return (Deadline - DateTime.Now).Days;
+            }
+        }
     }
 }

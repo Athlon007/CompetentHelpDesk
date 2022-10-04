@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAL;
 using Model;
 using MongoDB.Bson;
@@ -12,18 +10,16 @@ namespace Logic
 {
     public class TicketsService
     {
-        IMongoCollection<BsonDocument> tickets;
-
         public TicketsDAO ticketsdb;
 
         public TicketsService()
         {
-            //ticketsdb = new TicketsDAO();
+            ticketsdb = new TicketsDAO();
         }
 
-        public IMongoCollection<BsonDocument> GetTickets()
+        public List<Ticket> GetTickets()
         {
-            return ticketsdb.GetAllTickets();
+            return ticketsdb.GetAllTickets().AsQueryable().ToList();
         }
 
         public BsonDocument GetById(string ticketId)
@@ -35,8 +31,6 @@ namespace Logic
         // Dashboard methods
         public long GetTotalTicketCount()
         {
-            return 30; // Dummy data
-
             try
             {
                 // Get total ticket count

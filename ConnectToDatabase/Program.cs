@@ -58,9 +58,7 @@ namespace ConnectToDatabase
 
         void TestEmployeeDatabase() {
 
-            IMongoCollection<BsonDocument> employees = employeesDAO.GetAllEmployees();
-
-            var docs = employees.Find(new BsonDocument()).ToList();
+            List<Employee> employees = employeesDAO.GetAllEmployees();
 
             Console.WriteLine("Printing employees list:");
             docs.ForEach(doc =>
@@ -118,7 +116,7 @@ namespace ConnectToDatabase
 
             Console.WriteLine($"Class: {ticketClassInstance.GetType()}");
             Console.WriteLine($"Ticket id: {ticketClassInstance.Id}");
-            Console.WriteLine($"User id: {ticketClassInstance.UserId}");
+            Console.WriteLine($"User id: {ticketClassInstance.Id}");
             Console.WriteLine();
         }
 

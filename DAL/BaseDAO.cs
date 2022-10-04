@@ -5,6 +5,8 @@ using Model;
 using MongoDB.Bson.Serialization;
 using System;
 using System.Linq;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace DAL
 {
@@ -12,11 +14,36 @@ namespace DAL
     {
         private readonly MongoClient client;
 
-        public MongoClient Client { get { return client; } }    
+        public MongoClient Client { get => client; }
+
+        const string ConfigFile = "config.json"; // Config file name that contains the connection string.
+
+        protected IMongoDatabase Database { get; private set; }
 
         public BaseDAO()
         {
-            client = new MongoClient("connection string");
+            client = new MongoClient(ReadConfig(ConfigFile));
+            database = Client.GetDatabase("GardenGroup");
+        }
+
+        /// <summary>
+        /// Returns the configuration file read from JSON file.
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        private string ReadConfig(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                throw new FileNotFoundException("Config file does not exist.");
+            }
+
+            StreamReader reader = new StreamReader(filename);
+            string content = reader.ReadToEnd();
+            reader.Close();
+
+            dynamic json = JsonConvert.DeserializeObject<dynamic>(content);
+            return json.connectionString;
         }
 
         public List<DatabasesModel> GetDatabases()

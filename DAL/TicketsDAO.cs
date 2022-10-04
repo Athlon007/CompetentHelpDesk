@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -13,19 +10,29 @@ namespace DAL
 {
     public class TicketsDAO: BaseDAO
     {
-        private IMongoDatabase database;
-        private IMongoCollection<BsonDocument> tickets;
-
         public IMongoCollection<BsonDocument> Tickets { get; set; }
 
-        public TicketsDAO()
+        /// <summary>
+        /// Returns all tickets.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Ticket> GetAllTickets()
         {
-            database = Client.GetDatabase("Database name");
-        }
-        public IMongoCollection<BsonDocument> GetAllTickets()
-        {
-            Tickets = database.GetCollection<BsonDocument>("Tickets");
-            return Tickets;
+            var collection = Database.GetCollection<Ticket>("Tickets");
+
+            var lookup = new BsonDocument("$lookup",
+                        new BsonDocument
+                            {
+                                { "from", "Employees" },
+                                { "localField", "reporter" },
+                                { "foreignField", "_id" },
+                                { "as", "reporter" }
+                            });
+            var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporter"));
+
+            var pipeline = new[] { lookup, unwind };
+
+            return collection.Aggregate<Ticket>(pipeline).ToEnumerable();
         }
 
         public BsonDocument GetById(string id)
@@ -42,8 +49,8 @@ namespace DAL
             try
             {
                 // Update collection in case of change?? Return count of document
-                Tickets = GetAllTickets();
-                return Tickets.CountDocuments(new BsonDocument());
+                //return GetAllTickets().CountDocuments(new BsonDocument());
+                return GetAllTickets().Count();
             }
             catch // Throw exception, handle the exception in the service layer
             {
@@ -56,14 +63,12 @@ namespace DAL
             try
             {
                 // Filter
-                var filter = Builders<BsonDocument>.Filter.Eq("Status", status);
-
-                // Update collection in case of change??
-                Tickets = GetAllTickets();
+                var filter = Builders<Ticket>.Filter.Eq("Status", status);
 
                 // Get count of documents of type in collection
-                var tickets = Tickets.Find(filter);
-                return tickets.CountDocuments();
+                //var tickets = GetAllTickets().Find(filter);
+                //return tickets.CountDocuments();
+                return 0;
             }
             catch // Throw exception, handle the exception in the service layer
             {

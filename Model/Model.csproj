@@ -118,8 +118,10 @@
   <ItemGroup>
     <Compile Include="DatabasesModel.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />
+    <Compile Include="TicketPriority.cs" />
     <Compile Include="TicketStatus.cs" />
   </ItemGroup>
   <ItemGroup>

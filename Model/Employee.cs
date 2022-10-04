@@ -3,11 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using MongoDB.Bson;
-using MongoDB.Driver;
-using MongoDB.Bson.Serialization;
 
 
 namespace Model
@@ -16,32 +12,29 @@ namespace Model
     {
         //used string data type for deserialization into instances of the class
 
-        string id;
-        string email;
-        string username;
-        string firstName;
-        string lastName;
-        string passwordHash;
-        string salt;
-
         [BsonId]
         [DataMember]
-        public MongoDB.Bson.ObjectId _id { get; set; }
+        public int Id { get; set; }
 
-        [DataMember]
-        public string Id { get { return id; } set { id=value; } }
-        public string Email{ get { return email; } set { email = value; } }
-        public string Username { get { return username; } set { username = value; } }
-        public string FirstName { get { return firstName; } set { firstName = value; } }
-        public string LastName { get { return lastName; } set { lastName = value; } }
-        public string  PasswordHash { get { return passwordHash; } set { passwordHash = value; } }
-        public string Salt { get { return salt; } set { salt = value; } }
+        [BsonElement("email")]
+        public string Email { get; private set; }
+        [BsonElement("username")]
+        public string Username { get; private set; }
+        [BsonElement("firstname")]
+        public string FirstName { get; private set; }
+        [BsonElement("lastname")]
+        public string LastName { get; private set; }
+        [BsonElement("type")]
+        public EmployeeType Type { get; private set; }
+        [BsonElement("password")]
+        public string PasswordHash { get ; private set; }
+        [BsonElement("salt")]
+        public string Salt { get; private set; }
 
         public Employee() { }
 
-        public Employee(string id, string email, string username, string firstName, string lastName, string passwordHash, string salt)
+        public Employee(int id, string email, string username, string firstName, string lastName, string passwordHash, string salt)
         {
-            this.Id = id;
             this.Email = email;
             this.Username = username;
             this.FirstName = firstName;
@@ -50,6 +43,9 @@ namespace Model
             this.Salt = salt;
         }
 
-      
+        public override string ToString()
+        {
+            return $"({Id}, {Username}, {Email}, {Type}) {FirstName} {LastName}";
+        }
     }
 }
