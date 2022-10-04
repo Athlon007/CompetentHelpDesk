@@ -3,9 +3,7 @@ using MongoDB.Driver;
 using System.Collections.Generic;
 using Model;
 using MongoDB.Bson.Serialization;
-using System;
 using System.Linq;
-using System.IO;
 
 namespace DAL
 {

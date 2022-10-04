@@ -19,9 +19,8 @@ namespace Model
         public string Description { get; set; }
         [BsonElement("reporter")]
         [BsonIgnoreIfNull]
-        public int ReporterId { get; set; }
+        private int reporterId { get; set; }
         [BsonElement("reporterPerson")]
-        [BsonIgnoreIfNull]
         public Employee Reporter { get; set; }
         [BsonElement("date")]
         public DateTime Date { get; set; }

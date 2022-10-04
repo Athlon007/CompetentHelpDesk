@@ -22,6 +22,10 @@ namespace TestDbConnectionNew
         [TestMethod]
         public void TicketsAreNotNull()
         {
+            foreach (Ticket ticket in tickets)
+            {
+                Trace.WriteLine(ticket + "\n");
+            }
             Assert.IsNotNull(tickets);
         }
 

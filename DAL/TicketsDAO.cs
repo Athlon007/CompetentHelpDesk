@@ -12,21 +12,20 @@ namespace DAL
     {
         private const string CollectionName = "Tickets";
 
-        private readonly BsonDocument lookUp = new BsonDocument("$lookup",
-                                                                        new BsonDocument
-                                                                            {
-                                                                                { "from", "Employees" },
-                                                                                { "localField", "reporter" },
-                                                                                { "foreignField", "_id" },
-                                                                                { "as", "reporterPerson" }
-                                                                            });
-
         /// <summary>
         /// Returns all tickets.
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Ticket> GetAllTickets()
         {
+            var lookUp = new BsonDocument("$lookup",
+                                        new BsonDocument
+                                            {
+                                                { "from", "Employees" },
+                                                { "localField", "reporter" },
+                                                { "foreignField", "_id" },
+                                                { "as", "reporterPerson" }
+                                            });
             var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
 
             var pipeline = new[] { lookUp, unwind };
@@ -109,7 +108,19 @@ namespace DAL
         public void InsertTicket(Ticket ticket)
         {
             ticket.Id = (int)GetTotalTicketCount();
-            Database.GetCollection<Ticket>(CollectionName).InsertOne(ticket);
+
+            BsonDocument doc = new BsonDocument();
+            doc.Add(new BsonElement("_id", ticket.Id));
+            doc.Add(new BsonElement("type", (int)ticket.IncidentType));
+            doc.Add(new BsonElement("subject", ticket.Subject));
+            doc.Add(new BsonElement("description", ticket.Description));
+            doc.Add(new BsonElement("reporter", ticket.Reporter.Id));
+            doc.Add(new BsonElement("date", ticket.Date));
+            doc.Add(new BsonElement("deadline", ticket.Deadline));
+            doc.Add(new BsonElement("priority", (int)ticket.Priority));
+            doc.Add(new BsonElement("status", (int)ticket.Status));
+
+            Database.GetCollection<BsonDocument>(CollectionName).InsertOne(doc);
         }
     }
 }
