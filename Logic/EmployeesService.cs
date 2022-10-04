@@ -11,32 +11,36 @@ using DAL;
 
 namespace Logic
 {
-    public class EmployeeService
+    public class EmployeesService
     {
-        IMongoCollection<BsonDocument> employees;
 
+        private EmployeesDAO employeesdb;
 
-        public EmployeesDAO employeedb;
-
-        public EmployeeService()
+        public EmployeesService()
         {
-            employeedb = new EmployeesDAO();
+            employeesdb = new EmployeesDAO();
         }
 
         public IMongoCollection<BsonDocument> GetEmployees()
         {
-            return employeedb.GetAllEmployees();
+            return employeesdb.GetAllEmployees();
         }
 
         public BsonDocument GetById(string employeeId)
         {
-            BsonDocument employee = employeedb.GetById(employeeId);
+            BsonDocument employee = employeesdb.GetById(employeeId);
+            return employee;
+        }
+
+        public BsonDocument GetByUsername(string userName)
+        {
+            BsonDocument employee = employeesdb.GetByUsername(userName);
             return employee;
         }
 
         public Employee ConvertDocumentToObject(BsonDocument bsonDocument) 
         { 
-            return employeedb.ConvertDocumentToObject(bsonDocument);    
+            return employeesdb.ConvertDocumentToObject(bsonDocument);    
         
         }
 

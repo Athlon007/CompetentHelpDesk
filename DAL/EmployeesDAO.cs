@@ -16,11 +16,16 @@ namespace DAL
         private IMongoDatabase database;
         private IMongoCollection<BsonDocument> employees;
 
-        public IMongoCollection<BsonDocument> Employees { get; set; }
+        public IMongoCollection<BsonDocument> Employees
+        {
+            get { return employees; }
+
+            set { employees = value; }
+        }
 
         public EmployeesDAO()
         {
-            database = Client.GetDatabase("Database name");
+            database = Client.GetDatabase("database name");
         }
         public IMongoCollection<BsonDocument> GetAllEmployees()
         {
@@ -37,6 +42,14 @@ namespace DAL
             return employee;
         }
 
+        public BsonDocument GetByUsername(string username)
+        {
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("Username", username);
+            var employee = Employees.Find(filter).FirstOrDefault();
+
+            return employee;
+        }
 
         //Using collection Employees
         //using the following script for data

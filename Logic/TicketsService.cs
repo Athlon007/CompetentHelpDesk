@@ -12,13 +12,12 @@ namespace Logic
 {
     public class TicketsService
     {
-        IMongoCollection<BsonDocument> tickets;
 
-        public TicketsDAO ticketsdb;
+        private TicketsDAO ticketsdb;
 
         public TicketsService()
         {
-            //ticketsdb = new TicketsDAO();
+            ticketsdb = new TicketsDAO();
         }
 
         public IMongoCollection<BsonDocument> GetTickets()

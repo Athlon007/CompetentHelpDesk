@@ -16,11 +16,18 @@ namespace DAL
         private IMongoDatabase database;
         private IMongoCollection<BsonDocument> tickets;
 
-        public IMongoCollection<BsonDocument> Tickets { get; set; }
+
+        public IMongoCollection<BsonDocument> Tickets
+        {
+            get { return tickets; }
+
+            set { tickets = value; }
+        }
+
 
         public TicketsDAO()
         {
-            database = Client.GetDatabase("Database name");
+            database = Client.GetDatabase("database name");
         }
         public IMongoCollection<BsonDocument> GetAllTickets()
         {

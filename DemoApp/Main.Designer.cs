@@ -964,7 +964,7 @@ namespace DemoApp
             this.btnCancelCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnCancelCT.ForeColor = System.Drawing.Color.Black;
             this.btnCancelCT.Location = new System.Drawing.Point(558, 640);
-            this.btnCancelCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelCT.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelCT.Name = "btnCancelCT";
             this.btnCancelCT.Size = new System.Drawing.Size(225, 60);
             this.btnCancelCT.TabIndex = 17;
@@ -979,7 +979,7 @@ namespace DemoApp
             this.btnSubmitTicketCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSubmitTicketCT.ForeColor = System.Drawing.Color.White;
             this.btnSubmitTicketCT.Location = new System.Drawing.Point(290, 640);
-            this.btnSubmitTicketCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSubmitTicketCT.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubmitTicketCT.Name = "btnSubmitTicketCT";
             this.btnSubmitTicketCT.Size = new System.Drawing.Size(225, 60);
             this.btnSubmitTicketCT.TabIndex = 16;
@@ -992,7 +992,7 @@ namespace DemoApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescriptionCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDescriptionCT.Location = new System.Drawing.Point(290, 363);
-            this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescriptionCT.Multiline = true;
             this.txtDescriptionCT.Name = "txtDescriptionCT";
             this.txtDescriptionCT.Size = new System.Drawing.Size(496, 266);
@@ -1006,7 +1006,7 @@ namespace DemoApp
             this.cmbDeadlineCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDeadlineCT.FormattingEnabled = true;
             this.cmbDeadlineCT.Location = new System.Drawing.Point(290, 310);
-            this.cmbDeadlineCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDeadlineCT.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDeadlineCT.Name = "cmbDeadlineCT";
             this.cmbDeadlineCT.Size = new System.Drawing.Size(496, 37);
             this.cmbDeadlineCT.TabIndex = 14;
@@ -1019,7 +1019,7 @@ namespace DemoApp
             this.cmbPriorityCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbPriorityCT.FormattingEnabled = true;
             this.cmbPriorityCT.Location = new System.Drawing.Point(290, 262);
-            this.cmbPriorityCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbPriorityCT.Margin = new System.Windows.Forms.Padding(4);
             this.cmbPriorityCT.Name = "cmbPriorityCT";
             this.cmbPriorityCT.Size = new System.Drawing.Size(496, 37);
             this.cmbPriorityCT.TabIndex = 13;
@@ -1032,7 +1032,7 @@ namespace DemoApp
             this.cmbUserCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbUserCT.FormattingEnabled = true;
             this.cmbUserCT.Location = new System.Drawing.Point(290, 214);
-            this.cmbUserCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbUserCT.Margin = new System.Windows.Forms.Padding(4);
             this.cmbUserCT.Name = "cmbUserCT";
             this.cmbUserCT.Size = new System.Drawing.Size(496, 37);
             this.cmbUserCT.TabIndex = 12;
@@ -1045,7 +1045,7 @@ namespace DemoApp
             this.cmbIncidentTypeCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbIncidentTypeCT.FormattingEnabled = true;
             this.cmbIncidentTypeCT.Location = new System.Drawing.Point(290, 164);
-            this.cmbIncidentTypeCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbIncidentTypeCT.Margin = new System.Windows.Forms.Padding(4);
             this.cmbIncidentTypeCT.Name = "cmbIncidentTypeCT";
             this.cmbIncidentTypeCT.Size = new System.Drawing.Size(496, 37);
             this.cmbIncidentTypeCT.TabIndex = 11;
@@ -1056,7 +1056,7 @@ namespace DemoApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubjectOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtSubjectOfIncidentCT.Location = new System.Drawing.Point(290, 118);
-            this.txtSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubjectOfIncidentCT.Name = "txtSubjectOfIncidentCT";
             this.txtSubjectOfIncidentCT.Size = new System.Drawing.Size(496, 35);
             this.txtSubjectOfIncidentCT.TabIndex = 10;
@@ -1133,7 +1133,7 @@ namespace DemoApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.dtpReportedCT.Location = new System.Drawing.Point(290, 68);
-            this.dtpReportedCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpReportedCT.Margin = new System.Windows.Forms.Padding(4);
             this.dtpReportedCT.Name = "dtpReportedCT";
             this.dtpReportedCT.Size = new System.Drawing.Size(496, 35);
             this.dtpReportedCT.TabIndex = 3;
@@ -1276,7 +1276,7 @@ namespace DemoApp
             this.ClientSize = new System.Drawing.Size(1604, 1024);
             this.Controls.Add(this.tableLayoutPanel);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1616, 1006);
             this.Name = "Main";
             this.Text = "Dashboard";

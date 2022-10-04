@@ -31,9 +31,9 @@
             this.lblHelpDesk = new System.Windows.Forms.Label();
             this.lblLoginInstruction = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtBoxUsername = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtBoxPassword = new System.Windows.Forms.TextBox();
             this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
             this.lblResetPassword = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -71,14 +71,14 @@
             this.lblUsername.TabIndex = 2;
             this.lblUsername.Text = "Username";
             // 
-            // txtUsername
+            // txtBoxUsername
             // 
-            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUsername.Location = new System.Drawing.Point(477, 391);
-            this.txtUsername.MinimumSize = new System.Drawing.Size(288, 37);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(317, 37);
-            this.txtUsername.TabIndex = 3;
+            this.txtBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBoxUsername.Location = new System.Drawing.Point(477, 391);
+            this.txtBoxUsername.MinimumSize = new System.Drawing.Size(288, 37);
+            this.txtBoxUsername.Name = "txtBoxUsername";
+            this.txtBoxUsername.Size = new System.Drawing.Size(317, 26);
+            this.txtBoxUsername.TabIndex = 3;
             // 
             // lblPassword
             // 
@@ -89,14 +89,14 @@
             this.lblPassword.TabIndex = 4;
             this.lblPassword.Text = "Password";
             // 
-            // txtPassword
+            // txtBoxPassword
             // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPassword.Location = new System.Drawing.Point(477, 500);
-            this.txtPassword.MinimumSize = new System.Drawing.Size(288, 37);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(317, 37);
-            this.txtPassword.TabIndex = 5;
+            this.txtBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBoxPassword.Location = new System.Drawing.Point(477, 500);
+            this.txtBoxPassword.MinimumSize = new System.Drawing.Size(288, 37);
+            this.txtBoxPassword.Name = "txtBoxPassword";
+            this.txtBoxPassword.Size = new System.Drawing.Size(317, 26);
+            this.txtBoxPassword.TabIndex = 5;
             // 
             // checkBoxRememberMe
             // 
@@ -139,14 +139,15 @@
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblResetPassword);
             this.Controls.Add(this.checkBoxRememberMe);
-            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtBoxPassword);
             this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.txtBoxUsername);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblLoginInstruction);
             this.Controls.Add(this.lblHelpDesk);
             this.Name = "LoginScreen";
             this.Text = "LoginScreen";
+            this.Load += new System.EventHandler(this.LoginScreen_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,9 +158,9 @@
         private System.Windows.Forms.Label lblHelpDesk;
         private System.Windows.Forms.Label lblLoginInstruction;
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtBoxUsername;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtBoxPassword;
         private System.Windows.Forms.CheckBox checkBoxRememberMe;
         private System.Windows.Forms.Label lblResetPassword;
         private System.Windows.Forms.Button btnLogin;
