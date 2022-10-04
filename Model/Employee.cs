@@ -45,7 +45,7 @@ namespace Model
 
         public override string ToString()
         {
-            return $"({Id}, {Username}, {Email}, {Type}) {FirstName} {LastName}";
+            return $"{FirstName} {LastName} [ {Id} ]";
         }
     }
 }

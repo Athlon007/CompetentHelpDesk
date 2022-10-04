@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MongoDB.Bson;
-using MongoDB.Driver;
-using MongoDB.Bson.Serialization;
 using System.Runtime.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
-
-
-
 
 namespace Model
 {
@@ -20,11 +11,17 @@ namespace Model
         [DataMember]
         public int Id { get; set; }
 
+        [BsonElement("type")]
+        public IncidentTypes IncidentType { get; set; }
         [BsonElement("subject")]
         public string Subject { get; set; }
         [BsonElement("description")]
         public string Description { get; set; }
         [BsonElement("reporter")]
+        [BsonIgnoreIfNull]
+        public int ReporterId { get; set; }
+        [BsonElement("reporterPerson")]
+        [BsonIgnoreIfNull]
         public Employee Reporter { get; set; }
         [BsonElement("date")]
         public DateTime Date { get; set; }
@@ -37,20 +34,15 @@ namespace Model
 
         public Ticket() { }
 
-        public Ticket(string subject, string description, Employee reporter, DateTime date, DateTime deadline, TicketPriority priority, TicketStatus status)
-        {
-            this.Subject = subject;
-            this.Description = description;
-            this.Reporter = reporter;
-            this.Date = date;
-            this.Deadline = deadline;
-            this.Priority = priority;
-            this.Status = status;
-        }
-
         public override string ToString()
         {
-            return $"({Id}) Subject: {Subject}\nDescription: {Description}\nDate: {Date}\nDeadline: {Deadline}\nPrority: {Priority}\nStatus:{Status}\n  Employee:{Reporter}";
+            return $"({Id}, {IncidentType}) Subject: {Subject}\n" +
+                $"Description: {Description}\n" +
+                $"Date: {Date}\n" +
+                $"Deadline: {Deadline}\n" +
+                $"Prority: {Priority}\n" +
+                $"Status:{Status}\n" +
+                $"  Employee:{Reporter}";
         }
 
         /// <summary>

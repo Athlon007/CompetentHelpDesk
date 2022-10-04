@@ -6,19 +6,28 @@ using MongoDB.Bson;
 using Logic;
 using Model;
 using System.Drawing;
+using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 
 namespace DemoApp
 {
     public partial class Main : Form
     { 
-        private Databases databases;
         private TicketsService ticketService;
-        private Employee employee;
+        private EmployeeService employeeService;
 
         // Styling variables
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
         readonly Color lightGreen = ColorTranslator.FromHtml("#479B74");
         readonly Color buttonHighLight = ColorTranslator.FromHtml("#FFF6DE");
+
+        private Dictionary<string, int> deadlineDays = new Dictionary<string, int>()
+        {
+            { "7 days", 7 },
+            { "14 days", 14 },
+            { "28 days" , 28 },
+            { "6 months", 180 }
+        };
 
 
         public Main()
@@ -29,12 +38,36 @@ namespace DemoApp
             //this.employee = employee;
             //databases = new Databases();
             ticketService = new TicketsService();
+            employeeService = new EmployeeService();
 
             // Set tab control panel tabs to invisible
             tabControl.ItemSize = new Size(0, 1);
 
             // Invert standard image icon
             btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
+
+            LoadAddTicketComboBoxes();
+        }
+
+        /// <summary>
+        /// Loads combo boxes data of Add Ticket page.
+        /// </summary>
+        private void LoadAddTicketComboBoxes()
+        {
+            foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
+            {
+                cmbIncidentTypeCT.Items.Add(incidentType.ToString());
+            }
+
+            foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
+            { 
+                cmbPriorityCT.Items.Add(priority.ToString());
+            }
+
+            foreach (KeyValuePair<string, int> kvp in deadlineDays)
+            {
+                cmbDeadlineCT.Items.Add(kvp.Key.ToString());
+            }
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -120,6 +153,8 @@ namespace DemoApp
             {
                 tabControl.SelectedIndex = 2;
             }
+
+            LoadAddTicketPage();
         }
 
         private void Btn_UserManagement_Click(object sender, EventArgs e)
@@ -300,6 +335,99 @@ namespace DemoApp
                     // Load all tickets
                     break;
             }
+        }
+
+        /// <summary>
+        /// Loads ticket submitting page data.
+        /// </summary>
+        private void LoadAddTicketPage()
+        {
+            txtSubjectOfIncidentCT.Text = "";
+            txtDescriptionCT.Text = "";
+            cmbIncidentTypeCT.SelectedIndex = -1;
+            cmbDeadlineCT.SelectedIndex = -1;
+            cmbPriorityCT.SelectedIndex = -1;
+            lblWarningsCT.Text = "";
+
+            cmbUserCT.DataSource = employeeService.GetEmployees();
+            cmbUserCT.SelectedIndex = -1;
+        }
+
+        private void btnSubmitTicketCT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string cantReasons = "";
+                bool canSubmit = CanSubmitTicket(ref cantReasons);
+                lblWarningsCT.Text = cantReasons;
+
+                if (!canSubmit)
+                {
+                    lblWarningsCT.ForeColor = Color.Red; // TODO: Remove that line later.
+                    return;
+                }
+
+                IncidentTypes type = (IncidentTypes)cmbIncidentTypeCT.SelectedIndex;
+                TicketPriority priority = (TicketPriority)cmbPriorityCT.SelectedIndex;
+                int followUpDays = deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
+                ticketService.InsertTicket(dtpReportedCT.Value, txtSubjectOfIncidentCT.Text, type, (Employee)cmbUserCT.SelectedItem, priority, followUpDays, txtDescriptionCT.Text);
+
+                // Clean text boxes.
+                LoadAddTicketPage();
+                // TODO: Replace this with some overlay.
+                lblWarningsCT.Text = "Submitted succeeded!";
+                lblWarningsCT.ForeColor = Color.Green;
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.Instance.WriteError(ex);
+                MessageBox.Show("Something went wrong. An error has been saved into a log file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancelCT_Click(object sender, EventArgs e)
+        {
+            LoadAddTicketPage();
+        }
+
+        private bool CanSubmitTicket(ref string reason)
+        {
+            if (dtpReportedCT.Value > DateTime.Now)
+            {
+                reason += "Incident time cannot be in the future\n";
+            }
+
+            if (string.IsNullOrEmpty(txtSubjectOfIncidentCT.Text))
+            {
+                reason += "Subject is missing\n";
+            }
+
+            if (cmbIncidentTypeCT.SelectedIndex == -1)
+            {
+                reason += "Type of incident is not provided\n";
+            }
+
+            if (cmbUserCT.SelectedIndex == -1)
+            {
+                reason += "Reporting user not provided\n";
+            }
+
+            if (cmbPriorityCT.SelectedIndex == -1)
+            {
+                reason += "Priority not provided\n";
+            }
+
+            if (cmbDeadlineCT.SelectedIndex == -1)
+            {
+                reason += "Deadline not provided\n";
+            }
+
+            if (string.IsNullOrEmpty(txtDescriptionCT.Text))
+            {
+                reason += "Description not provided\n";
+            }
+
+            return reason.Length == 0;
         }
     }
 }

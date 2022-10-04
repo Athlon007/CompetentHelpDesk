@@ -37,8 +37,26 @@ namespace TestDbConnectionNew
             DateTime deadline = new DateTime(2022, 10, 14, 12, 00, 00);
             int expectedLength = (deadline - DateTime.Now).Days;
             Trace.WriteLine("Expected days: " + expectedLength);
-            Ticket t = new Ticket("Example", "Example", new Employee(), new DateTime(), deadline, TicketPriority.Medium, TicketStatus.Open);
+            Ticket t = new Ticket()
+            {
+                IncidentType = IncidentTypes.Software,
+                Subject = "Example", 
+                Description = "Example", 
+                Reporter = new Employee(), 
+                Date = new DateTime(), 
+                Deadline = deadline, 
+                Priority = TicketPriority.Medium, 
+                Status = TicketStatus.Open
+            };
             Assert.AreEqual(expectedLength, t.DaysUntilDeadline);
+        }
+
+        [TestMethod]
+        public void GetTickedByID()
+        {
+            Ticket t = service.GetById(0);
+            Trace.WriteLine($"Ticket 0 details: " + t);
+            Assert.IsNotNull(t);
         }
     }
 }

@@ -10,7 +10,16 @@ namespace DAL
 {
     public class TicketsDAO: BaseDAO
     {
-        public IMongoCollection<BsonDocument> Tickets { get; set; }
+        private const string CollectionName = "Tickets";
+
+        private readonly BsonDocument lookUp = new BsonDocument("$lookup",
+                                                                        new BsonDocument
+                                                                            {
+                                                                                { "from", "Employees" },
+                                                                                { "localField", "reporter" },
+                                                                                { "foreignField", "_id" },
+                                                                                { "as", "reporterPerson" }
+                                                                            });
 
         /// <summary>
         /// Returns all tickets.
@@ -18,28 +27,18 @@ namespace DAL
         /// <returns></returns>
         public IEnumerable<Ticket> GetAllTickets()
         {
-            var collection = Database.GetCollection<Ticket>("Tickets");
+            var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
 
-            var lookup = new BsonDocument("$lookup",
-                        new BsonDocument
-                            {
-                                { "from", "Employees" },
-                                { "localField", "reporter" },
-                                { "foreignField", "_id" },
-                                { "as", "reporter" }
-                            });
-            var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporter"));
+            var pipeline = new[] { lookUp, unwind };
 
-            var pipeline = new[] { lookup, unwind };
-
-            return collection.Aggregate<Ticket>(pipeline).ToEnumerable();
+            return Database.GetCollection<Ticket>(CollectionName).Aggregate<Ticket>(pipeline).ToEnumerable();
         }
 
-        public BsonDocument GetById(string id)
+        public Ticket GetById(int id)
         {
-            var builder = Builders<BsonDocument>.Filter;
-            var filter = builder.Eq("Id", id);
-            var ticket = Tickets.Find(filter).FirstOrDefault();
+            var builder = Builders<Ticket>.Filter;
+            var filter = builder.Eq("_id", id);
+            var ticket = Database.GetCollection<Ticket>(CollectionName).Find(filter).FirstOrDefault();
 
             return ticket;
         }
@@ -107,5 +106,10 @@ namespace DAL
 
         }
 
+        public void InsertTicket(Ticket ticket)
+        {
+            ticket.Id = (int)GetTotalTicketCount();
+            Database.GetCollection<Ticket>(CollectionName).InsertOne(ticket);
+        }
     }
 }

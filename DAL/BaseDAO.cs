@@ -23,7 +23,7 @@ namespace DAL
         public BaseDAO()
         {
             client = new MongoClient(ReadConfig(ConfigFile));
-            database = Client.GetDatabase("GardenGroup");
+            Database = Client.GetDatabase("GardenGroup");
         }
 
         /// <summary>
