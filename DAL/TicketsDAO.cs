@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -13,26 +10,34 @@ namespace DAL
 {
     public class TicketsDAO: BaseDAO
     {
-        private IMongoDatabase database;
-        private IMongoCollection<BsonDocument> tickets;
+        private const string CollectionName = "Tickets";
 
-        public IMongoCollection<BsonDocument> Tickets { get; set; }
-
-        public TicketsDAO()
+        /// <summary>
+        /// Returns all tickets.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Ticket> GetAllTickets()
         {
-            database = Client.GetDatabase("Database name");
+            var lookUp = new BsonDocument("$lookup",
+                                        new BsonDocument
+                                            {
+                                                { "from", "Employees" },
+                                                { "localField", "reporter" },
+                                                { "foreignField", "_id" },
+                                                { "as", "reporterPerson" }
+                                            });
+            var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
+
+            var pipeline = new[] { lookUp, unwind };
+
+            return Database.GetCollection<Ticket>(CollectionName).Aggregate<Ticket>(pipeline).ToEnumerable();
         }
-        public IMongoCollection<BsonDocument> GetAllTickets()
-        {
-            Tickets = database.GetCollection<BsonDocument>("Tickets");
-            return Tickets;
-        }
 
-        public BsonDocument GetById(string id)
+        public Ticket GetById(int id)
         {
-            var builder = Builders<BsonDocument>.Filter;
-            var filter = builder.Eq("Id", id);
-            var ticket = Tickets.Find(filter).FirstOrDefault();
+            var builder = Builders<Ticket>.Filter;
+            var filter = builder.Eq("_id", id);
+            var ticket = Database.GetCollection<Ticket>(CollectionName).Find(filter).FirstOrDefault();
 
             return ticket;
         }
@@ -42,8 +47,8 @@ namespace DAL
             try
             {
                 // Update collection in case of change?? Return count of document
-                Tickets = GetAllTickets();
-                return Tickets.CountDocuments(new BsonDocument());
+                //return GetAllTickets().CountDocuments(new BsonDocument());
+                return GetAllTickets().Count();
             }
             catch // Throw exception, handle the exception in the service layer
             {
@@ -56,14 +61,12 @@ namespace DAL
             try
             {
                 // Filter
-                var filter = Builders<BsonDocument>.Filter.Eq("Status", status);
-
-                // Update collection in case of change??
-                Tickets = GetAllTickets();
+                var filter = Builders<Ticket>.Filter.Eq("Status", status);
 
                 // Get count of documents of type in collection
-                var tickets = Tickets.Find(filter);
-                return tickets.CountDocuments();
+                //var tickets = GetAllTickets().Find(filter);
+                //return tickets.CountDocuments();
+                return 0;
             }
             catch // Throw exception, handle the exception in the service layer
             {
@@ -102,5 +105,22 @@ namespace DAL
 
         }
 
+        public void InsertTicket(Ticket ticket)
+        {
+            ticket.Id = (int)GetTotalTicketCount();
+
+            BsonDocument doc = new BsonDocument();
+            doc.Add(new BsonElement("_id", ticket.Id));
+            doc.Add(new BsonElement("type", (int)ticket.IncidentType));
+            doc.Add(new BsonElement("subject", ticket.Subject));
+            doc.Add(new BsonElement("description", ticket.Description));
+            doc.Add(new BsonElement("reporter", ticket.Reporter.Id));
+            doc.Add(new BsonElement("date", ticket.Date));
+            doc.Add(new BsonElement("deadline", ticket.Deadline));
+            doc.Add(new BsonElement("priority", (int)ticket.Priority));
+            doc.Add(new BsonElement("status", (int)ticket.Status));
+
+            Database.GetCollection<BsonDocument>(CollectionName).InsertOne(doc);
+        }
     }
 }

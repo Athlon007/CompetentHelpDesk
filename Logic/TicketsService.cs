@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAL;
 using Model;
 using MongoDB.Bson;
@@ -12,31 +10,26 @@ namespace Logic
 {
     public class TicketsService
     {
-        IMongoCollection<BsonDocument> tickets;
-
         public TicketsDAO ticketsdb;
 
         public TicketsService()
         {
-            //ticketsdb = new TicketsDAO();
+            ticketsdb = new TicketsDAO();
         }
 
-        public IMongoCollection<BsonDocument> GetTickets()
+        public List<Ticket> GetTickets()
         {
-            return ticketsdb.GetAllTickets();
+            return ticketsdb.GetAllTickets().AsQueryable().ToList();
         }
 
-        public BsonDocument GetById(string ticketId)
+        public Ticket GetById(int ticketId)
         {
-            BsonDocument ticket = ticketsdb.GetById(ticketId);
-            return ticket;
+            return ticketsdb.GetById(ticketId);
         }
 
         // Dashboard methods
         public long GetTotalTicketCount()
         {
-            return 30; // Dummy data
-
             try
             {
                 // Get total ticket count
@@ -54,6 +47,7 @@ namespace Logic
 
         public long GetTicketCountByType(TicketStatus status)
         {
+            // TODO: Implement this function
             return 19; // Dummy data...
 
             // Get filter by type
@@ -75,6 +69,7 @@ namespace Logic
 
         private string GetTicketCountByTypeFilter(TicketStatus status)
         {
+            // TODO: Rewrite it (?)
             // Get filter word with appropiate enum
             switch (status)
             {
@@ -89,21 +84,18 @@ namespace Logic
             }
         }
 
-            public Ticket ConvertDocumentToObject(BsonDocument bsonDocument)
-            {
-                return ticketsdb.ConvertDocumentToObject(bsonDocument);
-
-            }
-
-
-        public List<Ticket> ConvertAllDocumentsToTicketsList(IMongoCollection<BsonDocument> ticketsdb)
+        public void InsertTicket(DateTime date, string subject, IncidentTypes type, Employee reporter, TicketPriority priority, int followUpDays, string description)
         {
-            TicketsDAO ticketsDAO = new TicketsDAO();
-            List<Ticket> tickets = ticketsDAO.ConvertAllDocumentsToTicketsList(ticketsdb);
-
-            return tickets;
-
+            Ticket t = new Ticket();
+            t.Date = date;
+            t.Status = TicketStatus.Open;
+            t.Subject = subject;
+            t.IncidentType = type;
+            t.Reporter = reporter;
+            t.Priority = priority;
+            t.Deadline = date.AddDays(followUpDays);
+            t.Description = description;
+            ticketsdb.InsertTicket(t);
         }
-        
     }
 }

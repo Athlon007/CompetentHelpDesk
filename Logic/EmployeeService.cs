@@ -13,24 +13,21 @@ namespace Logic
 {
     public class EmployeeService
     {
-        IMongoCollection<BsonDocument> employees;
-
-
-        public EmployeesDAO employeedb;
+        private EmployeesDAO employeedb;
 
         public EmployeeService()
         {
             employeedb = new EmployeesDAO();
         }
 
-        public IMongoCollection<BsonDocument> GetEmployees()
+        public List<Employee> GetEmployees()
         {
-            return employeedb.GetAllEmployees();
+            return employeedb.GetAllEmployees().AsQueryable().ToList();
         }
 
-        public BsonDocument GetById(string employeeId)
+        public Employee GetById(int employeeId)
         {
-            BsonDocument employee = employeedb.GetById(employeeId);
+            Employee employee = employeedb.GetById(employeeId);
             return employee;
         }
 
@@ -39,16 +36,5 @@ namespace Logic
             return employeedb.ConvertDocumentToObject(bsonDocument);    
         
         }
-
-
-        public List<Employee> ConvertAllDocumentsToEmployeesList(IMongoCollection<BsonDocument> employeedb)
-        {
-            EmployeesDAO employeesDAO = new EmployeesDAO();
-            List<Employee> employees = employeesDAO.ConvertAllDocumentsToEmployeesList(employeedb);
-
-            return employees;
-
-        }
-
     }
 }

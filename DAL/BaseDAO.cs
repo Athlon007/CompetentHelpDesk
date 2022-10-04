@@ -3,7 +3,6 @@ using MongoDB.Driver;
 using System.Collections.Generic;
 using Model;
 using MongoDB.Bson.Serialization;
-using System;
 using System.Linq;
 
 namespace DAL
@@ -11,13 +10,23 @@ namespace DAL
     public class BaseDAO
     {
         private readonly MongoClient client;
+        public MongoClient Client { get => client; }     
+        protected IMongoDatabase Database { get; private set; }
 
-        public MongoClient Client { get { return client; } }    
+        private ConfigFile config;
 
         public BaseDAO()
         {
-            client = new MongoClient("connection string");
+            config = new ConfigFile();
+            client = new MongoClient(config.ConnectionString);
+            Database = client.GetDatabase(config.DatabaseName);
         }
+
+        public BaseDAO(string configString, string databaseName)
+        {
+            client = new MongoClient(configString);
+            Database = client.GetDatabase(databaseName);
+        }       
 
         public List<DatabasesModel> GetDatabases()
         {
