@@ -1162,13 +1162,12 @@ namespace DemoApp
             // 
             this.dtpReportedCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpReportedCT.CustomFormat = "dd/MM/yyyy hh:mm:ss";
+            this.dtpReportedCT.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dtpReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.dtpReportedCT.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpReportedCT.Location = new System.Drawing.Point(387, 91);
             this.dtpReportedCT.Margin = new System.Windows.Forms.Padding(5);
             this.dtpReportedCT.Name = "dtpReportedCT";
-            this.dtpReportedCT.ShowUpDown = true;
             this.dtpReportedCT.Size = new System.Drawing.Size(655, 44);
             this.dtpReportedCT.TabIndex = 3;
             // 

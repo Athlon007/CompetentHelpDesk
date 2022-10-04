@@ -349,6 +349,8 @@ namespace DemoApp
             cmbPriorityCT.SelectedIndex = -1;
             lblWarningsCT.Text = "";
 
+            dtpReportedCT.Value = DateTime.Now;
+
             cmbUserCT.DataSource = employeeService.GetEmployees();
             cmbUserCT.SelectedIndex = -1;
         }
