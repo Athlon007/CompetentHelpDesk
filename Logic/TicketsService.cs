@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using DAL;
 using Model;
 using MongoDB.Bson;
@@ -205,18 +206,8 @@ namespace Logic
         /// <param name="ticket">Ticket to update.</param>
         public StatusStruct UpdateTicket(Ticket ticket, string subject, string description, IncidentTypes type, TicketPriority priority, TicketStatus status, Employee employee)
         {
-            string issues = "";
-            if (string.IsNullOrEmpty(subject))
-            {
-                issues += "Subject is empty\n";
-            }
-            if (string.IsNullOrEmpty(description))
-            {
-                issues += "Description is empty\n";
-            }
-
             // Subject or description empty? Return status as 1.
-            if (issues.Length > 0)
+            if (!IsTicketEditValid(out string issues, subject, description))
             {
                 return new StatusStruct(1, issues);
             }
@@ -334,6 +325,21 @@ namespace Logic
             }
 
             return reason.Length == 0;
+        }
+
+        private bool IsTicketEditValid(out string issues, string subject, string description)
+        {
+            issues = "";
+            if (string.IsNullOrEmpty(subject))
+            {
+                issues += "Subject is empty\n";
+            }
+            if (string.IsNullOrEmpty(description))
+            {
+                issues += "Description is empty\n";
+            }
+
+            return issues.Length == 0;
         }
     }
 }

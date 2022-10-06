@@ -4,16 +4,21 @@ using Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization;
+using System.Collections;
 
 
 namespace DAL
 {
     public class EmployeesDAO :BaseDAO
     {
-        public IEnumerable<Employee> GetAllEmployees()
+        public IAsyncCursor<BsonDocument> Get(BsonDocument[] pipeline)
         {
-            var employees = Database.GetCollection<Employee>("Employees");
-            return employees.AsQueryable().ToEnumerable();
+            return Database.GetCollection<Ticket>("Employees").Aggregate<BsonDocument>(pipeline);
+        }
+
+        public IAsyncCursor<BsonDocument> Get()
+        {
+            return Get(new BsonDocument[] { });
         }
 
         public Employee GetById(int id)

@@ -4,6 +4,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace TestDbConnectionNew
 {
@@ -61,6 +62,47 @@ namespace TestDbConnectionNew
             var response = service.GetById(0, out Ticket t);
             Trace.WriteLine($"Ticket 0 details: " + t);
             Assert.AreEqual(0, response.Code);
+        }
+
+        [TestMethod]
+        public void TestInsertValidationTrue()
+        {
+            PrivateObject obj = new PrivateObject(service);
+            var retVal = obj.Invoke("IsTicketSubmissionValid", "", DateTime.Now, "Subject", IncidentTypes.Service, new Employee(), TicketPriority.Low, 7, "Description");
+            Assert.AreEqual(true, retVal);
+        }
+
+        [TestMethod]
+        public void TestInsertValidationFalse()
+        {
+            PrivateObject obj = new PrivateObject(service);
+            var retVal = obj.Invoke("IsTicketSubmissionValid", "", DateTime.Now, "", IncidentTypes.Service, new Employee(), TicketPriority.Low, 7, "Description");
+            Assert.AreEqual(false, retVal);
+        }
+
+        [TestMethod]
+        public void HighestId()
+        {
+            PrivateObject obj = new PrivateObject(service);
+            var retVal = obj.Invoke("GetHighestId");
+            Trace.WriteLine($"Highest ID is: {retVal}");
+            Assert.AreNotEqual(0, retVal);
+        }
+
+        [TestMethod]
+        public void TestEditValidationTrue()
+        {
+            PrivateObject obj = new PrivateObject(service);
+            var retVal = obj.Invoke("IsTicketEditValid", "", "Subject", "Description");
+            Assert.AreEqual(true, retVal);
+        }
+
+        [TestMethod]
+        public void TestEditValidationFalse()
+        {
+            PrivateObject obj = new PrivateObject(service);
+            var retVal = obj.Invoke("IsTicketEditValid", "", "", "Description");
+            Assert.AreEqual(false, retVal);
         }
     }
 }
