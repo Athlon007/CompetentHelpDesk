@@ -37,6 +37,8 @@ namespace DemoApp
             None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
         }
 
+        private TicketLoadStatus currentTicketLoadStatus;
+
 
         public Main()
         {
@@ -404,6 +406,8 @@ namespace DemoApp
                     break;
             }
 
+            currentTicketLoadStatus = loadStatus;
+
             // Display tickets 
             DisplayTickets(tickets);
         }
@@ -622,7 +626,7 @@ namespace DemoApp
 
             ticketService.UpdateTicket(detailedTicket);
 
-            LoadTickets(TicketLoadStatus.All);
+            LoadTickets(currentTicketLoadStatus);
             CleanTicketDetails();
         }
 
@@ -637,7 +641,7 @@ namespace DemoApp
             {
                 ticketService.DeleteTicket(detailedTicket);
 
-                LoadTickets(TicketLoadStatus.All);
+                LoadTickets(currentTicketLoadStatus);
                 CleanTicketDetails();
             }
         }
