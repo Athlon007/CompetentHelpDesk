@@ -89,6 +89,7 @@ namespace DemoApp
             this.col_Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnDetailsUpdate = new DemoApp.Custom_Controls.RoundedButton();
+            this.btnDetailsEscalate = new DemoApp.Custom_Controls.RoundedButton();
             this.cmbDetailsStatus = new System.Windows.Forms.ComboBox();
             this.lblDetailsStatus = new System.Windows.Forms.Label();
             this.btnDetailsDelete = new DemoApp.Custom_Controls.RoundedButton();
@@ -133,7 +134,7 @@ namespace DemoApp
             this.rPnl_CreateUser = new DemoApp.Custom_Controls.RoundedPanel();
             this.header_CreateUser = new System.Windows.Forms.Panel();
             this.lbl_HeaderCreateUser = new System.Windows.Forms.Label();
-            this.btnDetailsEscalate = new DemoApp.Custom_Controls.RoundedButton();
+            this.lblDetailsWarning = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.sideBar.SuspendLayout();
             this.tblPnl_UserInfo.SuspendLayout();
@@ -973,6 +974,7 @@ namespace DemoApp
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.lblDetailsWarning);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetailsUpdate);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetailsEscalate);
             this.splitContainer1.Panel2.Controls.Add(this.cmbDetailsStatus);
@@ -1165,6 +1167,23 @@ namespace DemoApp
             this.btnDetailsUpdate.UseVisualStyleBackColor = false;
             this.btnDetailsUpdate.Click += new System.EventHandler(this.btnDetailsUpdate_Click);
             // 
+            // btnDetailsEscalate
+            // 
+            this.btnDetailsEscalate.BackColor = System.Drawing.Color.White;
+            this.btnDetailsEscalate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnDetailsEscalate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btnDetailsEscalate.FlatAppearance.BorderSize = 6;
+            this.btnDetailsEscalate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetailsEscalate.ForeColor = System.Drawing.Color.Black;
+            this.btnDetailsEscalate.Location = new System.Drawing.Point(0, 1086);
+            this.btnDetailsEscalate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDetailsEscalate.Name = "btnDetailsEscalate";
+            this.btnDetailsEscalate.Size = new System.Drawing.Size(581, 53);
+            this.btnDetailsEscalate.TabIndex = 26;
+            this.btnDetailsEscalate.Text = "Escalate";
+            this.btnDetailsEscalate.UseVisualStyleBackColor = false;
+            this.btnDetailsEscalate.Click += new System.EventHandler(this.btnDetailsEscalate_Click);
+            // 
             // cmbDetailsStatus
             // 
             this.cmbDetailsStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1215,7 +1234,7 @@ namespace DemoApp
             this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(5);
             this.txtDetailsDescription.Multiline = true;
             this.txtDetailsDescription.Name = "txtDetailsDescription";
-            this.txtDetailsDescription.Size = new System.Drawing.Size(565, 421);
+            this.txtDetailsDescription.Size = new System.Drawing.Size(565, 380);
             this.txtDetailsDescription.TabIndex = 21;
             // 
             // lblDetailsDescription
@@ -1725,22 +1744,19 @@ namespace DemoApp
             this.lbl_HeaderCreateUser.Text = "Create User";
             this.lbl_HeaderCreateUser.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // btnDetailsEscalate
+            // lblDetailsWarning
             // 
-            this.btnDetailsEscalate.BackColor = System.Drawing.Color.White;
-            this.btnDetailsEscalate.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnDetailsEscalate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
-            this.btnDetailsEscalate.FlatAppearance.BorderSize = 6;
-            this.btnDetailsEscalate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDetailsEscalate.ForeColor = System.Drawing.Color.Black;
-            this.btnDetailsEscalate.Location = new System.Drawing.Point(0, 1086);
-            this.btnDetailsEscalate.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDetailsEscalate.Name = "btnDetailsEscalate";
-            this.btnDetailsEscalate.Size = new System.Drawing.Size(581, 53);
-            this.btnDetailsEscalate.TabIndex = 26;
-            this.btnDetailsEscalate.Text = "Escalate";
-            this.btnDetailsEscalate.UseVisualStyleBackColor = false;
-            this.btnDetailsEscalate.Click += new System.EventHandler(this.btnDetailsEscalate_Click);
+            this.lblDetailsWarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDetailsWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.lblDetailsWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblDetailsWarning.Location = new System.Drawing.Point(7, 951);
+            this.lblDetailsWarning.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblDetailsWarning.Name = "lblDetailsWarning";
+            this.lblDetailsWarning.Size = new System.Drawing.Size(569, 78);
+            this.lblDetailsWarning.TabIndex = 27;
+            this.lblDetailsWarning.Text = "Errors";
+            this.lblDetailsWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Main
             // 
@@ -1911,6 +1927,7 @@ namespace DemoApp
         private System.Windows.Forms.TextBox txtDetailsDescription;
         private System.Windows.Forms.Label lblDetailsDescription;
         private Custom_Controls.RoundedButton btnDetailsEscalate;
+        private System.Windows.Forms.Label lblDetailsWarning;
     }
 }
 

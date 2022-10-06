@@ -1,8 +1,6 @@
 ﻿using Model;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using System.Linq;
 
 namespace DAL
 {
@@ -11,7 +9,7 @@ namespace DAL
         private const string CollectionName = "Tickets";
 
         /// <summary>
-        /// Returns all tickets.
+        /// Returns all BsonDocuments.
         /// </summary>
         /// <returns></returns>
         public IAsyncCursor<BsonDocument> Get(BsonDocument[] pipeline)

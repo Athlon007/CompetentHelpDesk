@@ -202,6 +202,8 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = false;
             btnDetailsUpdate.Enabled = false;
+
+            lblDetailsWarning.Text = "";
         }
 
         private void Btn_CreateTicket_Click(object sender, EventArgs e)
@@ -401,7 +403,7 @@ namespace DemoApp
                     tickets = ticketService.GetTicketsByStatus(TicketStatus.Resolved);
                     break;
                 default:
-                    tickets = ticketService.GetTickets();
+                    ticketService.GetTickets(out tickets);
                     // Load all tickets
                     break;
             }
@@ -452,79 +454,33 @@ namespace DemoApp
 
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
-            try
+            int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
+            var submitted = ticketService.InsertTicket(dtpReportedCT.Value, 
+                txtSubjectOfIncidentCT.Text,
+                (IncidentTypes)cmbIncidentTypeCT.SelectedIndex, 
+                (Employee)cmbUserCT.SelectedItem,
+                (TicketPriority)cmbPriorityCT.SelectedIndex,
+                followUpDays, 
+                txtDescriptionCT.Text);
+
+            // Clean text boxes.
+            LoadAddTicketPage();
+            // TODO: Replace this with some overlay.
+            if (submitted.Code == 0)
             {
-                string cantReasons = "";
-                bool canSubmit = CanSubmitTicket(ref cantReasons);
-                lblWarningsCT.Text = cantReasons;
-
-                if (!canSubmit)
-                {
-                    lblWarningsCT.ForeColor = Color.Red; // TODO: Remove that line later.
-                    return;
-                }
-
-                IncidentTypes type = (IncidentTypes)cmbIncidentTypeCT.SelectedIndex;
-                TicketPriority priority = (TicketPriority)cmbPriorityCT.SelectedIndex;
-                int followUpDays = deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-                ticketService.InsertTicket(dtpReportedCT.Value, txtSubjectOfIncidentCT.Text, type, (Employee)cmbUserCT.SelectedItem, priority, followUpDays, txtDescriptionCT.Text);
-
-                // Clean text boxes.
-                LoadAddTicketPage();
-                // TODO: Replace this with some overlay.
-                lblWarningsCT.Text = "Submitted succeeded!";
+                lblWarningsCT.Text = "Submission succeeded!";
                 lblWarningsCT.ForeColor = Color.Green;
             }
-            catch (Exception ex)
+            else if (submitted.Code == 1)
             {
-                ErrorHandler.Instance.WriteError(ex);
-                MessageBox.Show("Something went wrong. An error has been saved into a log file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblWarningsCT.Text = "Unable to submit a ticket:\n" + submitted.Message;
+                lblWarningsCT.ForeColor = Color.Red;
             }
         }
 
         private void btnCancelCT_Click(object sender, EventArgs e)
         {
             LoadAddTicketPage();
-        }
-
-        private bool CanSubmitTicket(ref string reason)
-        {
-            if (dtpReportedCT.Value > DateTime.Now)
-            {
-                reason += "Incident time cannot be in the future\n";
-            }
-
-            if (string.IsNullOrEmpty(txtSubjectOfIncidentCT.Text))
-            {
-                reason += "Subject is missing\n";
-            }
-
-            if (cmbIncidentTypeCT.SelectedIndex == -1)
-            {
-                reason += "Type of incident is not provided\n";
-            }
-
-            if (cmbUserCT.SelectedIndex == -1)
-            {
-                reason += "Reporting user not provided\n";
-            }
-
-            if (cmbPriorityCT.SelectedIndex == -1)
-            {
-                reason += "Priority not provided\n";
-            }
-
-            if (cmbDeadlineCT.SelectedIndex == -1)
-            {
-                reason += "Deadline not provided\n";
-            }
-
-            if (string.IsNullOrEmpty(txtDescriptionCT.Text))
-            {
-                reason += "Description not provided\n";
-            }
-
-            return reason.Length == 0;
         }
 
         private void Btn_Display_Tickets_All_Click(object sender, EventArgs e)
@@ -617,7 +573,7 @@ namespace DemoApp
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
         {
-            ticketService.UpdateTicket(detailedTicket,
+            var status = ticketService.UpdateTicket(detailedTicket,
                                       txtDetailsSubject.Text,
                                       txtDetailsDescription.Text,
                                       (IncidentTypes)cmbDetailsIncidentType.SelectedIndex,
@@ -625,8 +581,16 @@ namespace DemoApp
                                       (TicketStatus)cmbDetailsStatus.SelectedIndex,
                                       (Employee)cmbDetailsReporter.SelectedItem);
 
-            LoadTickets(currentTicketLoadStatus);
-            CleanTicketDetails();
+            if (status.Code == 1)
+            {
+                lblDetailsWarning.Text = status.Message;
+            }
+            else
+            {
+                LoadTickets(currentTicketLoadStatus);
+                CleanTicketDetails();
+                lblDetailsWarning.Text = "";
+            }
         }
 
         private void btnDetailsDelete_Click(object sender, EventArgs e)
@@ -638,10 +602,18 @@ namespace DemoApp
 
             if (result == DialogResult.Yes)
             {
-                ticketService.DeleteTicket(detailedTicket);
+                var response = ticketService.DeleteTicket(detailedTicket);
 
-                LoadTickets(currentTicketLoadStatus);
-                CleanTicketDetails();
+                if (response.Code == 1)
+                {
+                    lblDetailsWarning.Text = response.Message;
+                }
+                else
+                {
+                    LoadTickets(currentTicketLoadStatus);
+                    CleanTicketDetails();
+                    lblDetailsWarning.Text = "";
+                }
             }
         }
 

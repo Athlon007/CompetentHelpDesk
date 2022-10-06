@@ -25,10 +25,8 @@ namespace TestDbConnectionNew
         void Start()
         {
             //TestDbConnection();
-            TestEmployeeDatabase();
-            TestTicketDatabase();
-
-            Console.WriteLine("HighestID: " + ticketsDAO.GetHighestId());
+            //TestEmployeeDatabase();
+            //TestTicketDatabase();
         }
 
         void TestDbConnection()
@@ -68,7 +66,7 @@ namespace TestDbConnectionNew
         void TestTicketDatabase()
         {
 
-            var tickets = ticketsDAO.GetTickets();
+            ticketsDAO.GetTickets(out List<Ticket> tickets);
 
             Console.WriteLine("Printing tickets list:");
             foreach (Ticket ticket in tickets)
