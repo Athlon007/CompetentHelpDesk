@@ -62,5 +62,12 @@ namespace TestDbConnectionNew
             Trace.WriteLine($"Ticket 0 details: " + t);
             Assert.IsNotNull(t);
         }
+
+        [TestMethod]
+        public void GenerateNewTicketId()
+        {
+            int id = service.GenerateNewTicketId();
+            Assert.AreEqual(2, id);
+        }
     }
 }

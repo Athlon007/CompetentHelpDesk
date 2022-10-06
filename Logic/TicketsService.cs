@@ -108,5 +108,10 @@ namespace Logic
             t.Description = description;
             ticketsdb.InsertTicket(t);
         }
+
+        public int GenerateNewTicketId()
+        {
+            return ticketsdb.GenerateNewTicketId();
+        }
     }
 }

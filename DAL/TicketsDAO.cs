@@ -45,6 +45,10 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Returns ticket by its ID.
+        /// </summary>
+        /// <param name="id">ID to lookup</param>
         public Ticket GetById(int id)
         {
             var builder = Builders<Ticket>.Filter;
@@ -113,9 +117,13 @@ namespace DAL
 
         }
 
+        /// <summary>
+        /// Inserts a new3 ticket into the database.
+        /// </summary>
+        /// <param name="ticket">New ticket object to insert (ID will be generated in this void).</param>
         public void InsertTicket(Ticket ticket)
         {
-            ticket.Id = (int)GetTotalTicketCount();
+            ticket.Id = GenerateNewTicketId();
 
             BsonDocument doc = new BsonDocument();
             doc.Add(new BsonElement("_id", ticket.Id));
@@ -129,6 +137,24 @@ namespace DAL
             doc.Add(new BsonElement("status", (int)ticket.Status));
 
             Database.GetCollection<BsonDocument>(CollectionName).InsertOne(doc);
+        }
+
+        /// <summary>
+        /// Generates new ticket ID, based on the highest ticket ID value + 1.
+        /// </summary>
+        public int GenerateNewTicketId()
+        {
+            var project = new BsonDocument("$project",
+                          new BsonDocument("_id", 1));
+            var sort = new BsonDocument("$sort",
+                       new BsonDocument("_id", -1));
+            var limit = new BsonDocument("$limit", 1);
+
+            var pipeline = new[] {project, sort, limit};
+
+            var output = Database.GetCollection<BsonDocument>(CollectionName).Aggregate<BsonDocument>(pipeline).ToEnumerable();         
+
+            return (int)output.First().GetValue(0) + 1;
         }
     }
 }

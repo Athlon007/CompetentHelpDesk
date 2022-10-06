@@ -27,6 +27,9 @@ namespace TestDbConnectionNew
             //TestDbConnection();
             TestEmployeeDatabase();
             TestTicketDatabase();
+
+            int id = ticketsDAO.GenerateNewTicketId();
+            Console.WriteLine("\n\nNext ticket ID:" + id);
         }
 
         void TestDbConnection()
