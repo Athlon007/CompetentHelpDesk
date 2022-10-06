@@ -15,7 +15,7 @@ namespace DAL
         /// <param name="pipeline">Pipeline to use.</param>
         public IAsyncCursor<BsonDocument> Get(BsonDocument[] pipeline)
         {
-            return Database.GetCollection<Ticket>(CollectionName).Aggregate<BsonDocument>(pipeline);
+            return Database.GetCollection<BsonDocument>(CollectionName).Aggregate<BsonDocument>(pipeline);
         }
 
         /// <summary>
