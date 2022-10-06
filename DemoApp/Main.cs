@@ -628,7 +628,18 @@ namespace DemoApp
 
         private void btnDetailsDelete_Click(object sender, EventArgs e)
         {
-            
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete ticket:\n\n" +
+                                                  $"ID: {detailedTicket.Id}\n" +
+                                                  $"Subject: {detailedTicket.Subject}\n\n" +
+                                                  $"This operation is irreversible!", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                ticketService.DeleteTicket(detailedTicket);
+
+                LoadTickets(TicketLoadStatus.All);
+                CleanTicketDetails();
+            }
         }
     }
 }

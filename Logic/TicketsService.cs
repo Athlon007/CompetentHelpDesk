@@ -127,5 +127,14 @@ namespace Logic
         {
             ticketsdb.UpdateTicket(ticket);
         }
+
+        /// <summary>
+        /// Remove the provided ticket from the database.
+        /// </summary>
+        /// <param name="ticket">Ticket to be removed</param>
+        public void DeleteTicket(Ticket ticket)
+        {
+            ticketsdb.RemoveTicket(ticket);
+        }
     }
 }

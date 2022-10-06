@@ -165,20 +165,24 @@ namespace DAL
             // Setup filter.
             var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
 
-            BsonDocument doc = new BsonDocument
-            {
-                new BsonElement("_id", ticket.Id),
-                new BsonElement("type", (int)ticket.IncidentType),
-                new BsonElement("subject", ticket.Subject),
-                new BsonElement("description", ticket.Description),
-                new BsonElement("reporter", ticket.Reporter.Id),
-                new BsonElement("date", ticket.Date),
-                new BsonElement("deadline", ticket.Deadline),
-                new BsonElement("priority", (int)ticket.Priority),
-                new BsonElement("status", (int)ticket.Status)
-            };
+            var update = Builders<BsonDocument>.Update.Set("type", (int)ticket.IncidentType)
+                                                    .Set("subject", ticket.Subject)
+                                                    .Set("description", ticket.Description)
+                                                    .Set("reporter", ticket.Reporter.Id)
+                                                    .Set("priority", (int)ticket.Priority)
+                                                    .Set("status", (int)ticket.Status);
 
-            Database.GetCollection<BsonDocument>(CollectionName).UpdateOne(filter, doc);
+            Database.GetCollection<BsonDocument>(CollectionName).UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Removes provided ticket from the database.
+        /// </summary>
+        /// <param name="ticket">Ticket to remove.</param>
+        public void RemoveTicket(Ticket ticket)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
+            Database.GetCollection<BsonDocument>(CollectionName).DeleteOne(filter);
         }
     }
 }

@@ -119,7 +119,6 @@
     <Compile Include="Databases.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TicketsDAO.cs" />
     <Compile Include="TicketsService.cs" />
   </ItemGroup>
   <ItemGroup>
