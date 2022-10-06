@@ -27,6 +27,8 @@ namespace TestDbConnectionNew
             //TestDbConnection();
             TestEmployeeDatabase();
             TestTicketDatabase();
+
+            Console.WriteLine("HighestID: " + ticketsDAO.GetHighestId());
         }
 
         void TestDbConnection()

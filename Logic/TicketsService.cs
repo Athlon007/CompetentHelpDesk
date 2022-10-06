@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using DAL;
 using Model;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
 namespace Logic
@@ -16,6 +16,17 @@ namespace Logic
         public TicketsService()
         {
             ticketsdb = new TicketsDAO();
+        }
+
+        private List<Ticket> ConvertToTicketList(IAsyncCursor<BsonDocument> cursor)
+        {
+            List<Ticket> ticketList = new List<Ticket>();
+            foreach (var entry in cursor.ToEnumerable())
+            {
+                Ticket ticket = BsonSerializer.Deserialize<Ticket>(entry);
+                ticketList.Add(ticket);
+            }
+            return ticketList;
         }
 
         public List<Ticket> GetTickets()
@@ -32,7 +43,8 @@ namespace Logic
 
             var pipeline = new[] { lookUp, unwind };
 
-            return ticketsdb.All(pipeline).AsQueryable().ToList();
+            var bsonOutput = ticketsdb.Get(pipeline);
+            return ConvertToTicketList(bsonOutput);
         }
 
         public List<Ticket> GetTicketsByStatus(TicketStatus status)
@@ -55,7 +67,7 @@ namespace Logic
                 var pipeline = new[] { lookUp, unwind, match };
 
                 // Return tickets by status
-                return ticketsdb.GetTicketsByStatus(pipeline).AsQueryable().ToList();
+                return ConvertToTicketList(ticketsdb.Get(pipeline));
             }
             catch (FormatException ex) // Dummy code... Adjust properly later
             {
@@ -69,7 +81,24 @@ namespace Logic
 
         public Ticket GetById(int ticketId)
         {
-            return ticketsdb.GetById(ticketId);
+            var lookUp = new BsonDocument("$lookup",
+                                        new BsonDocument
+                                        {
+                                            { "from", "Employees" },
+                                            { "localField", "reporter" },
+                                            { "foreignField", "_id" },
+                                            { "as", "reporterPerson" }
+                                        });
+            var match = new BsonDocument("$match", new BsonDocument("_id", ticketId));
+            var pipeline = new[] { lookUp, match };
+            var tickets = ticketsdb.Get(pipeline).ToList();
+
+            if (tickets.Count == 0)
+            {
+                return null;
+            }
+
+            return new Ticket();
         }
 
         // Dashboard methods
@@ -96,7 +125,7 @@ namespace Logic
             {
                 // Create a filter and return the count by ticket status
                 var filter = new BsonDocument("status", (int)status);
-                return ticketsdb.GetTicketCountByStatus(filter, status);
+                return ticketsdb.GetTicketCountByStatus(filter);
             }
             catch (FormatException ex) // Dummy code... Adjust properly later
             {
@@ -120,19 +149,8 @@ namespace Logic
         /// <param name="description"></param>
         public void InsertTicket(DateTime date, string subject, IncidentTypes type, Employee reporter, TicketPriority priority, int followUpDays, string description)
         {
-            Ticket t = new Ticket();
-            t.Id = ticketsdb.GetHighestId() + 1;
-            t.Date = date;
-            t.Status = TicketStatus.Open;
-            t.Subject = subject;
-            t.IncidentType = type;
-            t.Reporter = reporter;
-            t.Priority = priority;
-            t.Deadline = date.AddDays(followUpDays);
-            t.Description = description;
-
             BsonDocument doc = new BsonDocument();
-            doc.Add(new BsonElement("_id", ticketsdb.GetHighestId() + 1));
+            doc.Add(new BsonElement("_id", GetHighestId() + 1));
             doc.Add(new BsonElement("type", (int)type));
             doc.Add(new BsonElement("subject", subject));
             doc.Add(new BsonElement("description", description));
@@ -177,6 +195,25 @@ namespace Logic
         {
             var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
             ticketsdb.Remove(filter);
+        }
+
+        public int GetHighestId()
+        {
+            var project = new BsonDocument("$project",
+                          new BsonDocument("_id", 1));
+            var sort = new BsonDocument("$sort",
+                       new BsonDocument("_id", -1));
+            var limit = new BsonDocument("$limit", 1);
+
+            var pipeline = new[] { project, sort, limit };
+
+            var output = ticketsdb.Get(pipeline).ToList();
+            if (output.Count > 0)
+            {
+                return (int)output.First().GetValue(0);
+            }
+
+            return 0;
         }
     }
 }
