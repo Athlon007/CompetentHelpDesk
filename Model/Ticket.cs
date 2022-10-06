@@ -64,5 +64,10 @@ namespace Model
 
             return base.Equals(obj);
         }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode() + Subject.GetHashCode() + Description.GetHashCode();
+        }
     }
 }

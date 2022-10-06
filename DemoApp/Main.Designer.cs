@@ -1114,6 +1114,7 @@ namespace DemoApp
             this.listView_TicketManagement.HideSelection = false;
             this.listView_TicketManagement.Location = new System.Drawing.Point(8, 185);
             this.listView_TicketManagement.Margin = new System.Windows.Forms.Padding(4);
+            this.listView_TicketManagement.MultiSelect = false;
             this.listView_TicketManagement.Name = "listView_TicketManagement";
             this.listView_TicketManagement.Size = new System.Drawing.Size(1029, 1003);
             this.listView_TicketManagement.TabIndex = 13;
@@ -1160,6 +1161,7 @@ namespace DemoApp
             this.btnDetailsUpdate.TabIndex = 22;
             this.btnDetailsUpdate.Text = "Update";
             this.btnDetailsUpdate.UseVisualStyleBackColor = false;
+            this.btnDetailsUpdate.Click += new System.EventHandler(this.btnDetailsUpdate_Click);
             // 
             // cmbDetailsStatus
             // 
@@ -1200,6 +1202,7 @@ namespace DemoApp
             this.btnDetailsDelete.TabIndex = 23;
             this.btnDetailsDelete.Text = "Delete";
             this.btnDetailsDelete.UseVisualStyleBackColor = false;
+            this.btnDetailsDelete.Click += new System.EventHandler(this.btnDetailsDelete_Click);
             // 
             // txtDetailsDescription
             // 

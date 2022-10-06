@@ -610,5 +610,25 @@ namespace DemoApp
             btnDetailsDelete.Enabled = true;
             btnDetailsUpdate.Enabled = true;
         }
+
+        private void btnDetailsUpdate_Click(object sender, EventArgs e)
+        {
+            detailedTicket.Subject = txtDetailsSubject.Text;
+            detailedTicket.Description = txtDetailsDescription.Text;
+            detailedTicket.IncidentType = (IncidentTypes)cmbDetailsIncidentType.SelectedIndex;
+            detailedTicket.Priority = (TicketPriority)cmbDetailsPriority.SelectedIndex;
+            detailedTicket.Status = (TicketStatus)cmbDetailsStatus.SelectedIndex;
+            detailedTicket.Reporter = (Employee)cmbDetailsReporter.SelectedItem;
+
+            ticketService.UpdateTicket(detailedTicket);
+
+            LoadTickets(TicketLoadStatus.All);
+            CleanTicketDetails();
+        }
+
+        private void btnDetailsDelete_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

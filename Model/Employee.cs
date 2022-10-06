@@ -57,5 +57,10 @@ namespace Model
 
             return base.Equals(obj);
         }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode() + FirstName.GetHashCode() + LastName.GetHashCode() + Email.GetHashCode();
+        }
     }
 }

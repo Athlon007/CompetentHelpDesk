@@ -95,6 +95,16 @@ namespace Logic
             }
         }
 
+        /// <summary>
+        /// Inserts a new ticket into the database.
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="subject"></param>
+        /// <param name="type"></param>
+        /// <param name="reporter"></param>
+        /// <param name="priority"></param>
+        /// <param name="followUpDays"></param>
+        /// <param name="description"></param>
         public void InsertTicket(DateTime date, string subject, IncidentTypes type, Employee reporter, TicketPriority priority, int followUpDays, string description)
         {
             Ticket t = new Ticket();
@@ -107,6 +117,15 @@ namespace Logic
             t.Deadline = date.AddDays(followUpDays);
             t.Description = description;
             ticketsdb.InsertTicket(t);
+        }
+
+        /// <summary>
+        /// Updates the provided ticket.
+        /// </summary>
+        /// <param name="ticket">Ticket to update.</param>
+        public void UpdateTicket(Ticket ticket)
+        {
+            ticketsdb.UpdateTicket(ticket);
         }
     }
 }
