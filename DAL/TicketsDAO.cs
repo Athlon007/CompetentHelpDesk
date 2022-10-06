@@ -142,7 +142,7 @@ namespace DAL
         /// <summary>
         /// Generates new ticket ID, based on the highest ticket ID value + 1.
         /// </summary>
-        public int GenerateNewTicketId()
+        private int GenerateNewTicketId()
         {
             var project = new BsonDocument("$project",
                           new BsonDocument("_id", 1));
