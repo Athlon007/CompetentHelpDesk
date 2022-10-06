@@ -12,7 +12,7 @@ using System.ComponentModel.Design.Serialization;
 namespace DemoApp
 {
     public partial class Main : Form
-    { 
+    {
         private TicketsService ticketService;
         private EmployeeService employeeService;
 
@@ -20,6 +20,7 @@ namespace DemoApp
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
         readonly Color lightGreen = ColorTranslator.FromHtml("#479B74");
         readonly Color buttonHighLight = ColorTranslator.FromHtml("#FFF6DE");
+        readonly Color buttonLightHightLight = ColorTranslator.FromHtml("#59C190");
 
         private Dictionary<string, int> deadlineDays = new Dictionary<string, int>()
         {
@@ -28,6 +29,11 @@ namespace DemoApp
             { "28 days" , 28 },
             { "6 months", 180 }
         };
+
+        private enum TicketLoadStatus
+        {
+            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
+        }
 
 
         public Main()
@@ -60,7 +66,7 @@ namespace DemoApp
             }
 
             foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
-            { 
+            {
                 cmbPriorityCT.Items.Add(priority.ToString());
             }
 
@@ -142,7 +148,7 @@ namespace DemoApp
                 tabControl.SelectedIndex = 1;
 
                 // Load all tickets
-                LoadTickets("");
+                LoadTickets(TicketLoadStatus.All);
             }
         }
 
@@ -186,13 +192,13 @@ namespace DemoApp
         private void TabControl_IndexChanged(object sender, EventArgs e)
         {
             // Set active button
-            SetButtonStyling(tabControl.SelectedIndex);
+            SetDashboardButtonStyling(tabControl.SelectedIndex);
         }
 
 
 
         // Styling
-        private void SetButtonStyling(int buttonIndex)
+        private void SetDashboardButtonStyling(int buttonIndex)
         {
             int index = 0;
 
@@ -278,7 +284,8 @@ namespace DemoApp
             tabControl.SelectedIndex = 1;
 
             // Load all tickets
-            LoadTickets("");
+            LoadTickets(TicketLoadStatus.All);
+            SetTicketManagementButtonStyling(0);
         }
 
         private void RPnl_D1_Open_Click(object sender, EventArgs e)
@@ -286,7 +293,8 @@ namespace DemoApp
             tabControl.SelectedIndex = 1;
 
             // Load all open incidents
-            LoadTickets("open");
+            LoadTickets(TicketLoadStatus.Open);
+            SetTicketManagementButtonStyling(1);
         }
 
         private void RPnl_D2_Past_Click(object sender, EventArgs e)
@@ -294,7 +302,8 @@ namespace DemoApp
             tabControl.SelectedIndex = 1;
 
             // Load all past deadline incidents
-            LoadTickets("pastdeadline");
+            LoadTickets(TicketLoadStatus.PastDeadline);
+            SetTicketManagementButtonStyling(2);
         }
 
         private void RPnl_D3_Unresolved_Click(object sender, EventArgs e)
@@ -302,7 +311,8 @@ namespace DemoApp
             tabControl.SelectedIndex = 1;
 
             // Load all unresolved incidents
-            LoadTickets("unresolved");
+            LoadTickets(TicketLoadStatus.Unresolved);
+            SetTicketManagementButtonStyling(3);
         }
 
         private void RPnl_D4_Resolved_Click(object sender, EventArgs e)
@@ -310,30 +320,59 @@ namespace DemoApp
             tabControl.SelectedIndex = 1;
 
             // Load all resolved incidents
-            LoadTickets("resolved");
+            LoadTickets(TicketLoadStatus.Resolved);
+            SetTicketManagementButtonStyling(4);
         }
 
         // Methods
-        private void LoadTickets(string type)
+        private void LoadTickets(TicketLoadStatus loadStatus)
         {
+            List<Ticket> tickets;
+
             // Load type of tickets
-            switch (type.ToLower())
+            switch (loadStatus)
             {
-                case "open":
+                case TicketLoadStatus.Open:
                     // Load open tickets
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Open);
                     break;
-                case "pastdeadline":
+                case TicketLoadStatus.PastDeadline:
                     // Load tickets past deadline
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.PastDeadline);
                     break;
-                case "unresolved":
+                case TicketLoadStatus.Unresolved:
                     // Load unresolved tickets
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Unresolved);
                     break;
-                case "resolved":
+                case TicketLoadStatus.Resolved:
                     // Load resolved tickets
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Resolved);
                     break;
                 default:
+                    tickets = ticketService.GetTickets();
                     // Load all tickets
                     break;
+            }
+
+            // Display tickets 
+            DisplayTickets(tickets);
+        }
+
+        private void DisplayTickets(List<Ticket> tickets)
+        {
+            // Clear before filling list
+            listView_TicketManagement.Items.Clear();
+            foreach (Ticket ticket in tickets)
+            {
+                // Create listview item and fill details 
+                ListViewItem item = new ListViewItem(ticket.Id.ToString(), 0);
+                item.SubItems.Add(ticket.Subject);
+                item.SubItems.Add(ticket.Reporter.FirstName);
+                item.SubItems.Add(ticket.Date.ToString());
+                item.SubItems.Add(ticket.Status.ToString());
+
+                // Add item to listview
+                listView_TicketManagement.Items.Add(item);
             }
         }
 
@@ -430,6 +469,59 @@ namespace DemoApp
             }
 
             return reason.Length == 0;
+        }
+
+        private void Btn_Display_Tickets_All_Click(object sender, EventArgs e)
+        {
+            LoadTickets(TicketLoadStatus.All);
+            SetTicketManagementButtonStyling(0);
+        }
+
+        private void Btn_Display_Tickets_Open_Click(object sender, EventArgs e)
+        {
+            LoadTickets(TicketLoadStatus.Open);
+            SetTicketManagementButtonStyling(1);
+        }
+
+        private void Btn_Display_Tickets_PastDeadline_Click(object sender, EventArgs e)
+        {
+            LoadTickets(TicketLoadStatus.PastDeadline);
+            SetTicketManagementButtonStyling(2);
+        }
+
+        private void Btn_Display_Tickets_Unresolved_Click(object sender, EventArgs e)
+        {
+            LoadTickets(TicketLoadStatus.Unresolved);
+            SetTicketManagementButtonStyling(3);
+        }
+
+        private void btn_Display_Tickets_Resolved_Click(object sender, EventArgs e)
+        {
+            LoadTickets(TicketLoadStatus.Resolved);
+            SetTicketManagementButtonStyling(4);
+        }
+
+        private void SetTicketManagementButtonStyling(int buttonIndex)
+        {
+            int index = 0;
+
+            foreach (Button button in flowPnl_TicketManagement_SearchButtons.Controls.OfType<Button>()) 
+            {
+                if (index != buttonIndex) // Reset color to default
+                {
+                    button.ForeColor = Color.White;
+                    button.BackColor = themeGreen;
+                    button.FlatAppearance.MouseOverBackColor = lightGreen;
+                }
+                else // Set color to active
+                {
+                    button.ForeColor = Color.White;
+                    button.BackColor = buttonLightHightLight;
+                    button.FlatAppearance.MouseOverBackColor = buttonLightHightLight;
+                }
+
+                index++;
+            }
         }
     }
 }

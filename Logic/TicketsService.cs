@@ -22,6 +22,38 @@ namespace Logic
             return ticketsdb.GetAllTickets().AsQueryable().ToList();
         }
 
+        public List<Ticket> GetTicketsByStatus(TicketStatus status)
+        {
+            try
+            {
+                // Create stages for the pipeline
+                var lookUp = new BsonDocument("$lookup",
+                    new BsonDocument
+                    {
+                    { "from", "Employees" },
+                    { "localField", "reporter" },
+                    { "foreignField", "_id" },
+                    { "as", "reporterPerson" }
+                    });
+                var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
+                var match = new BsonDocument("$match", new BsonDocument("status", (int)status));
+
+                // Create pipeline
+                var pipeline = new[] { lookUp, unwind, match };
+
+                // Return tickets by status
+                return ticketsdb.GetTicketsByStatus(pipeline).AsQueryable().ToList();
+            }
+            catch (FormatException ex) // Dummy code... Adjust properly later
+            {
+                throw new FormatException("An error occured handling the format out of the database", ex);
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new ArgumentNullException("Null exception", ex);
+            }
+        }
+
         public Ticket GetById(int ticketId)
         {
             return ticketsdb.GetById(ticketId);
@@ -47,15 +79,11 @@ namespace Logic
 
         public long GetTicketCountByType(TicketStatus status)
         {
-            // TODO: Implement this function
-            return 19; // Dummy data...
-
-            // Get filter by type
-            string filter = GetTicketCountByTypeFilter(status);
-
             try
             {
-                return ticketsdb.GetTicketCountByType(filter);
+                // Create a filter and return the count by ticket status
+                var filter = new BsonDocument("status", (int)status);
+                return ticketsdb.GetTicketCountByStatus(filter, status);
             }
             catch (FormatException ex) // Dummy code... Adjust properly later
             {
@@ -64,23 +92,6 @@ namespace Logic
             catch (NullReferenceException ex)
             {
                 throw new ArgumentNullException("Null exception", ex);
-            }
-        }
-
-        private string GetTicketCountByTypeFilter(TicketStatus status)
-        {
-            // TODO: Rewrite it (?)
-            // Get filter word with appropiate enum
-            switch (status)
-            {
-                case TicketStatus.PastDeadline:
-                    return "pastdeadline";
-                case TicketStatus.Unresolved:
-                    return "unresolved";
-                case TicketStatus.Resolved:
-                    return "resolved";
-                default:
-                    return "open";
             }
         }
 

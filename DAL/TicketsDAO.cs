@@ -33,6 +33,18 @@ namespace DAL
             return Database.GetCollection<Ticket>(CollectionName).Aggregate<Ticket>(pipeline).ToEnumerable();
         }
 
+        public IEnumerable<Ticket> GetTicketsByStatus(BsonDocument[] pipeline)
+        {
+            try
+            {
+                return Database.GetCollection<Ticket>(CollectionName).Aggregate<Ticket>(pipeline).ToEnumerable();
+            }
+            catch // Throw exception, handle the exception in the service layer
+            {
+                throw;
+            }
+        }
+
         public Ticket GetById(int id)
         {
             var builder = Builders<Ticket>.Filter;
@@ -42,13 +54,14 @@ namespace DAL
             return ticket;
         }
 
+
+
         public long GetTotalTicketCount()
         {
             try
             {
-                // Update collection in case of change?? Return count of document
-                //return GetAllTickets().CountDocuments(new BsonDocument());
-                return GetAllTickets().Count();
+                // Return count of documents in collection
+                return Database.GetCollection<Ticket>(CollectionName).CountDocuments(new BsonDocument());
             }
             catch // Throw exception, handle the exception in the service layer
             {
@@ -56,17 +69,12 @@ namespace DAL
             }
         }
 
-        public long GetTicketCountByType(string status)
+        public long GetTicketCountByStatus(BsonDocument filter, TicketStatus status)
         {
             try
             {
-                // Filter
-                var filter = Builders<Ticket>.Filter.Eq("Status", status);
-
-                // Get count of documents of type in collection
-                //var tickets = GetAllTickets().Find(filter);
-                //return tickets.CountDocuments();
-                return 0;
+                // Return count of documents in collection by ticket status
+                return Database.GetCollection<Ticket>(CollectionName).Find(filter).CountDocuments();
             }
             catch // Throw exception, handle the exception in the service layer
             {
