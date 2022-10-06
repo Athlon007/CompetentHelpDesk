@@ -86,11 +86,12 @@ namespace DemoApp.Custom_Controls
 
             // Display amount
             StringFormat sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Center };
+            Rectangle offsetRectangle = new Rectangle(ClientRectangle.X, ClientRectangle.Y + 30, ClientRectangle.Width, ClientRectangle.Height);
 
             if (valueSize >= 0 && valueMax >= 0) // If actual values were given...
             {
                 graphics.DrawString($"{ValueSize / ValueMax * 100:0.0}%", Font, new SolidBrush(fontColor), ClientRectangle, sf);
-                graphics.DrawString($"{ValueSize} / {ValueMax}", new Font(Font.FontFamily, 13, Font.Style), new SolidBrush(fontSecondaryColor), ClientRectangle.Width - 125, ClientRectangle.Height - 85, sf);
+                graphics.DrawString($"{ValueSize} / {ValueMax}", new Font(Font.FontFamily, 13, Font.Style), new SolidBrush(fontSecondaryColor), offsetRectangle, sf);
             }
             else
             {

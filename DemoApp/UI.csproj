@@ -123,6 +123,9 @@
     <Compile Include="Custom Controls\CircularProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Custom Controls\fasterPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Custom Controls\FasterTableLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
