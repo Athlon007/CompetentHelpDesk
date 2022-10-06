@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using DAL;
 using Model;
 using MongoDB.Bson;
@@ -19,7 +20,19 @@ namespace Logic
 
         public List<Ticket> GetTickets()
         {
-            return ticketsdb.GetAllTickets().AsQueryable().ToList();
+            var lookUp = new BsonDocument("$lookup",
+                            new BsonDocument
+                                {
+                                    { "from", "Employees" },
+                                    { "localField", "reporter" },
+                                    { "foreignField", "_id" },
+                                    { "as", "reporterPerson" }
+                                });
+            var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
+
+            var pipeline = new[] { lookUp, unwind };
+
+            return ticketsdb.All(pipeline).AsQueryable().ToList();
         }
 
         public List<Ticket> GetTicketsByStatus(TicketStatus status)
@@ -108,6 +121,7 @@ namespace Logic
         public void InsertTicket(DateTime date, string subject, IncidentTypes type, Employee reporter, TicketPriority priority, int followUpDays, string description)
         {
             Ticket t = new Ticket();
+            t.Id = ticketsdb.GetHighestId() + 1;
             t.Date = date;
             t.Status = TicketStatus.Open;
             t.Subject = subject;
@@ -116,16 +130,43 @@ namespace Logic
             t.Priority = priority;
             t.Deadline = date.AddDays(followUpDays);
             t.Description = description;
-            ticketsdb.InsertTicket(t);
+
+            BsonDocument doc = new BsonDocument();
+            doc.Add(new BsonElement("_id", ticketsdb.GetHighestId() + 1));
+            doc.Add(new BsonElement("type", (int)type));
+            doc.Add(new BsonElement("subject", subject));
+            doc.Add(new BsonElement("description", description));
+            doc.Add(new BsonElement("reporter", reporter.Id));
+            doc.Add(new BsonElement("date", date));
+            doc.Add(new BsonElement("deadline", date.AddDays(followUpDays)));
+            doc.Add(new BsonElement("priority", priority));
+            doc.Add(new BsonElement("status", TicketStatus.Open));
+
+            ticketsdb.Insert(doc);
         }
 
         /// <summary>
         /// Updates the provided ticket.
         /// </summary>
         /// <param name="ticket">Ticket to update.</param>
-        public void UpdateTicket(Ticket ticket)
+        public void UpdateTicket(Ticket ticket, string subject, string description, IncidentTypes type, TicketPriority priority, TicketStatus status, Employee employee)
         {
-            ticketsdb.UpdateTicket(ticket);
+            ticket.Subject = subject;
+            ticket.Description = description;
+            ticket.IncidentType = type;
+            ticket.Priority = priority;
+            ticket.Status = status;
+            ticket.Reporter = employee;
+
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
+            var update = Builders<BsonDocument>.Update.Set("type", (int)ticket.IncidentType)
+                                                    .Set("subject", ticket.Subject)
+                                                    .Set("description", ticket.Description)
+                                                    .Set("reporter", ticket.Reporter.Id)
+                                                    .Set("priority", (int)ticket.Priority)
+                                                    .Set("status", (int)ticket.Status);
+
+            ticketsdb.Update(filter, update);
         }
 
         /// <summary>
@@ -134,7 +175,8 @@ namespace Logic
         /// <param name="ticket">Ticket to be removed</param>
         public void DeleteTicket(Ticket ticket)
         {
-            ticketsdb.RemoveTicket(ticket);
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
+            ticketsdb.Remove(filter);
         }
     }
 }

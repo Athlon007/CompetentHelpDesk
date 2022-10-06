@@ -617,14 +617,13 @@ namespace DemoApp
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
         {
-            detailedTicket.Subject = txtDetailsSubject.Text;
-            detailedTicket.Description = txtDetailsDescription.Text;
-            detailedTicket.IncidentType = (IncidentTypes)cmbDetailsIncidentType.SelectedIndex;
-            detailedTicket.Priority = (TicketPriority)cmbDetailsPriority.SelectedIndex;
-            detailedTicket.Status = (TicketStatus)cmbDetailsStatus.SelectedIndex;
-            detailedTicket.Reporter = (Employee)cmbDetailsReporter.SelectedItem;
-
-            ticketService.UpdateTicket(detailedTicket);
+            ticketService.UpdateTicket(detailedTicket,
+                                      txtDetailsSubject.Text,
+                                      txtDetailsDescription.Text,
+                                      (IncidentTypes)cmbDetailsIncidentType.SelectedIndex,
+                                      (TicketPriority)cmbDetailsPriority.SelectedIndex,
+                                      (TicketStatus)cmbDetailsStatus.SelectedIndex,
+                                      (Employee)cmbDetailsReporter.SelectedItem);
 
             LoadTickets(currentTicketLoadStatus);
             CleanTicketDetails();
@@ -643,6 +642,17 @@ namespace DemoApp
 
                 LoadTickets(currentTicketLoadStatus);
                 CleanTicketDetails();
+            }
+        }
+
+        private void btnDetailsEscalate_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show($"This will escalete the ticket to Specialist department\n\n" +
+                                                 $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show("not implemented yet :)");
             }
         }
     }

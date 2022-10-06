@@ -15,20 +15,8 @@ namespace DAL
         /// Returns all tickets.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Ticket> GetAllTickets()
+        public IEnumerable<Ticket> All(BsonDocument[] pipeline)
         {
-            var lookUp = new BsonDocument("$lookup",
-                                        new BsonDocument
-                                            {
-                                                { "from", "Employees" },
-                                                { "localField", "reporter" },
-                                                { "foreignField", "_id" },
-                                                { "as", "reporterPerson" }
-                                            });
-            var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
-
-            var pipeline = new[] { lookUp, unwind };
-
             return Database.GetCollection<Ticket>(CollectionName).Aggregate<Ticket>(pipeline).ToEnumerable();
         }
 
@@ -119,21 +107,9 @@ namespace DAL
         /// <summary>
         /// Inserts a new ticket into the database.
         /// </summary>
-        /// <param name="ticket">New ticket object to insert (ID will be generated in this void).</param>
-        public void InsertTicket(Ticket ticket)
+        public void Insert(BsonDocument doc)
         {
-            ticket.Id = GenerateNewTicketId();
-
-            BsonDocument doc = new BsonDocument();
-            doc.Add(new BsonElement("_id", ticket.Id));
-            doc.Add(new BsonElement("type", (int)ticket.IncidentType));
-            doc.Add(new BsonElement("subject", ticket.Subject));
-            doc.Add(new BsonElement("description", ticket.Description));
-            doc.Add(new BsonElement("reporter", ticket.Reporter.Id));
-            doc.Add(new BsonElement("date", ticket.Date));
-            doc.Add(new BsonElement("deadline", ticket.Deadline));
-            doc.Add(new BsonElement("priority", (int)ticket.Priority));
-            doc.Add(new BsonElement("status", (int)ticket.Status));
+           
 
             Database.GetCollection<BsonDocument>(CollectionName).InsertOne(doc);
         }
@@ -141,7 +117,7 @@ namespace DAL
         /// <summary>
         /// Generates new ticket ID, based on the highest ticket ID value + 1.
         /// </summary>
-        private int GenerateNewTicketId()
+        public int GetHighestId()
         {
             var project = new BsonDocument("$project",
                           new BsonDocument("_id", 1));
@@ -153,35 +129,24 @@ namespace DAL
 
             var output = Database.GetCollection<BsonDocument>(CollectionName).Aggregate<BsonDocument>(pipeline).ToEnumerable();         
 
-            return (int)output.First().GetValue(0) + 1;
+            return (int)output.First().GetValue(0);
         }
 
         /// <summary>
         /// Updates currently existing ticket in the database.
         /// </summary>
         /// <param name="ticket"></param>
-        public void UpdateTicket(Ticket ticket)
+        public void Update(FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> update)        
         {
-            // Setup filter.
-            var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
-
-            var update = Builders<BsonDocument>.Update.Set("type", (int)ticket.IncidentType)
-                                                    .Set("subject", ticket.Subject)
-                                                    .Set("description", ticket.Description)
-                                                    .Set("reporter", ticket.Reporter.Id)
-                                                    .Set("priority", (int)ticket.Priority)
-                                                    .Set("status", (int)ticket.Status);
-
             Database.GetCollection<BsonDocument>(CollectionName).UpdateOne(filter, update);
         }
 
         /// <summary>
-        /// Removes provided ticket from the database.
+        /// Removes a document
         /// </summary>
-        /// <param name="ticket">Ticket to remove.</param>
-        public void RemoveTicket(Ticket ticket)
+        public void Remove(FilterDefinition<BsonDocument> filter)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
+            //var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
             Database.GetCollection<BsonDocument>(CollectionName).DeleteOne(filter);
         }
     }

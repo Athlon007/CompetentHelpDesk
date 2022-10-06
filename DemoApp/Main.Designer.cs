@@ -133,6 +133,7 @@ namespace DemoApp
             this.rPnl_CreateUser = new DemoApp.Custom_Controls.RoundedPanel();
             this.header_CreateUser = new System.Windows.Forms.Panel();
             this.lbl_HeaderCreateUser = new System.Windows.Forms.Label();
+            this.btnDetailsEscalate = new DemoApp.Custom_Controls.RoundedButton();
             this.tableLayoutPanel.SuspendLayout();
             this.sideBar.SuspendLayout();
             this.tblPnl_UserInfo.SuspendLayout();
@@ -973,6 +974,7 @@ namespace DemoApp
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnDetailsUpdate);
+            this.splitContainer1.Panel2.Controls.Add(this.btnDetailsEscalate);
             this.splitContainer1.Panel2.Controls.Add(this.cmbDetailsStatus);
             this.splitContainer1.Panel2.Controls.Add(this.lblDetailsStatus);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetailsDelete);
@@ -1154,7 +1156,7 @@ namespace DemoApp
             this.btnDetailsUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnDetailsUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetailsUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnDetailsUpdate.Location = new System.Drawing.Point(0, 1086);
+            this.btnDetailsUpdate.Location = new System.Drawing.Point(0, 1033);
             this.btnDetailsUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnDetailsUpdate.Name = "btnDetailsUpdate";
             this.btnDetailsUpdate.Size = new System.Drawing.Size(581, 53);
@@ -1723,6 +1725,23 @@ namespace DemoApp
             this.lbl_HeaderCreateUser.Text = "Create User";
             this.lbl_HeaderCreateUser.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // btnDetailsEscalate
+            // 
+            this.btnDetailsEscalate.BackColor = System.Drawing.Color.White;
+            this.btnDetailsEscalate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnDetailsEscalate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btnDetailsEscalate.FlatAppearance.BorderSize = 6;
+            this.btnDetailsEscalate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetailsEscalate.ForeColor = System.Drawing.Color.Black;
+            this.btnDetailsEscalate.Location = new System.Drawing.Point(0, 1086);
+            this.btnDetailsEscalate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDetailsEscalate.Name = "btnDetailsEscalate";
+            this.btnDetailsEscalate.Size = new System.Drawing.Size(581, 53);
+            this.btnDetailsEscalate.TabIndex = 26;
+            this.btnDetailsEscalate.Text = "Escalate";
+            this.btnDetailsEscalate.UseVisualStyleBackColor = false;
+            this.btnDetailsEscalate.Click += new System.EventHandler(this.btnDetailsEscalate_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -1891,6 +1910,7 @@ namespace DemoApp
         private Custom_Controls.RoundedButton btnDetailsDelete;
         private System.Windows.Forms.TextBox txtDetailsDescription;
         private System.Windows.Forms.Label lblDetailsDescription;
+        private Custom_Controls.RoundedButton btnDetailsEscalate;
     }
 }
 
