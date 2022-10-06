@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Model
+﻿namespace Model
 {
     public enum EmployeeType
     {
         Regular = 0,
-        ServiceDesk = 1
+        ServiceDesk = 1,
+        Specialist = 2 // For escalating the tickets.
     }
 }

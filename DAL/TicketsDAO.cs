@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using System.Collections.Generic;
+using Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -11,10 +12,19 @@ namespace DAL
         /// <summary>
         /// Returns all BsonDocuments.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="pipeline">Pipeline to use.</param>
         public IAsyncCursor<BsonDocument> Get(BsonDocument[] pipeline)
         {
             return Database.GetCollection<Ticket>(CollectionName).Aggregate<BsonDocument>(pipeline);
+        }
+
+        /// <summary>
+        /// Returns all BsonDocuments.
+        /// </summary>
+        /// <param name="pipeline">Pipeline to use.</param>
+        public IAsyncCursor<BsonDocument> Get(List<BsonDocument> pipeline) 
+        {
+            return Get(pipeline.ToArray());
         }
 
         public long GetTotalTicketCount()

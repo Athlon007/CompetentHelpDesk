@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using Logic;
 using Model;
 using System.Drawing;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
 
 namespace DemoApp
 {
@@ -22,9 +19,11 @@ namespace DemoApp
         readonly Color buttonHighLight = ColorTranslator.FromHtml("#FFF6DE");
         readonly Color buttonLightHightLight = ColorTranslator.FromHtml("#59C190");
 
-        private Ticket detailedTicket; // Ticket that currently is shown in details.
+        // Ticket that currently is shown in details.
+        private Ticket detailedTicket;
 
-        private Dictionary<string, int> deadlineDays = new Dictionary<string, int>()
+        // Dictionary of all possible days for the deadline.
+        private readonly Dictionary<string, int> deadlineDays = new Dictionary<string, int>()
         {
             { "7 days", 7 },
             { "14 days", 14 },
@@ -32,13 +31,11 @@ namespace DemoApp
             { "6 months", 180 }
         };
 
+        private TicketLoadStatus currentTicketLoadStatus;
         private enum TicketLoadStatus
         {
             None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
         }
-
-        private TicketLoadStatus currentTicketLoadStatus;
-
 
         public Main()
         {
@@ -147,8 +144,6 @@ namespace DemoApp
                 circleBar_Resolved.ValueSize = resolvedTickets;
             }
         }
-
-
 
         // Navigation buttons
         private void Btn_Dashboard_Click(object sender, EventArgs e)

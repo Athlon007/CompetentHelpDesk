@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http.Headers;
 using DAL;
 using Model;
 using MongoDB.Bson;
@@ -20,21 +18,28 @@ namespace Logic
             ticketsdb = new TicketsDAO();
         }
 
+        /// <summary>
+        /// Returns a premade pipeline.
+        /// </summary>
+        /// <returns></returns>
         private List<BsonDocument> GetTicketPipeline()
         {
             var lookUp = new BsonDocument("$lookup",
                 new BsonDocument
                     {
-                                    { "from", "Employees" },
-                                    { "localField", "reporter" },
-                                    { "foreignField", "_id" },
-                                    { "as", "reporterPerson" }
+                        { "from", "Employees" },
+                        { "localField", "reporter" },
+                        { "foreignField", "_id" },
+                        { "as", "reporterPerson" }
                     });
             var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
 
             return new List<BsonDocument>(){ lookUp, unwind };
         }
 
+        /// <summary>
+        /// Converts BsonDocuments enumerable to list of tickets.
+        /// </summary>
         private List<Ticket> ConvertToTicketList(IAsyncCursor<BsonDocument> cursor)
         {
             List<Ticket> ticketList = new List<Ticket>();
@@ -46,11 +51,16 @@ namespace Logic
             return ticketList;
         }
 
+        /// <summary>
+        /// Returns the list of all tickets in the system.
+        /// </summary>
+        /// <param name="output">List object to which the output will be returned.</param>
+        /// <returns>A status code and status message.</returns>
         public StatusStruct GetTickets(out List<Ticket> output)
         {
             try
             {
-                var bsonOutput = ticketsdb.Get(GetTicketPipeline().ToArray());
+                var bsonOutput = ticketsdb.Get(GetTicketPipeline());
                 output = ConvertToTicketList(bsonOutput);
                 return new StatusStruct(0);
             }
@@ -71,7 +81,7 @@ namespace Logic
                 pipeline.Add(new BsonDocument("$match", new BsonDocument("status", (int)status)));
 
                 // Return tickets by status
-                return ConvertToTicketList(ticketsdb.Get(pipeline.ToArray()));
+                return ConvertToTicketList(ticketsdb.Get(pipeline));
             }
             catch (FormatException ex) // Dummy code... Adjust properly later
             {
@@ -93,7 +103,7 @@ namespace Logic
             {
                 var pipeline = GetTicketPipeline();
                 pipeline.Add(new BsonDocument("$match", new BsonDocument("_id", ticketId)));
-                var tickets = ConvertToTicketList(ticketsdb.Get(pipeline.ToArray()));
+                var tickets = ConvertToTicketList(ticketsdb.Get(pipeline));
 
                 if (tickets.Count > 0)
                 {

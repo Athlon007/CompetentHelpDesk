@@ -36,12 +36,12 @@ namespace DemoApp
             this.lbl_Username = new System.Windows.Forms.Label();
             this.lbl_Role = new System.Windows.Forms.Label();
             this.flowPnl_Navigation = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbl_LogOut = new System.Windows.Forms.Label();
             this.btn_Dashboard = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_TicketManagement = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_CreateTicket = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_UserManagement = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_CreateUser = new DemoApp.Custom_Controls.RoundedButton();
-            this.lbl_LogOut = new System.Windows.Forms.Label();
             this.tblPnl_Logo = new DemoApp.Custom_Controls.FasterTableLayoutPanel();
             this.pic_Logo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -88,6 +88,7 @@ namespace DemoApp
             this.col_User = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblDetailsWarning = new System.Windows.Forms.Label();
             this.btnDetailsUpdate = new DemoApp.Custom_Controls.RoundedButton();
             this.btnDetailsEscalate = new DemoApp.Custom_Controls.RoundedButton();
             this.cmbDetailsStatus = new System.Windows.Forms.ComboBox();
@@ -134,7 +135,6 @@ namespace DemoApp
             this.rPnl_CreateUser = new DemoApp.Custom_Controls.RoundedPanel();
             this.header_CreateUser = new System.Windows.Forms.Panel();
             this.lbl_HeaderCreateUser = new System.Windows.Forms.Label();
-            this.lblDetailsWarning = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.sideBar.SuspendLayout();
             this.tblPnl_UserInfo.SuspendLayout();
@@ -286,6 +286,23 @@ namespace DemoApp
             this.flowPnl_Navigation.TabIndex = 2;
             this.flowPnl_Navigation.WrapContents = false;
             // 
+            // lbl_LogOut
+            // 
+            this.lbl_LogOut.AutoSize = true;
+            this.lbl_LogOut.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_LogOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_LogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lbl_LogOut.ForeColor = System.Drawing.Color.White;
+            this.lbl_LogOut.Location = new System.Drawing.Point(4, 1277);
+            this.lbl_LogOut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LogOut.Name = "lbl_LogOut";
+            this.lbl_LogOut.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.lbl_LogOut.Size = new System.Drawing.Size(455, 80);
+            this.lbl_LogOut.TabIndex = 3;
+            this.lbl_LogOut.Text = "Log out";
+            this.lbl_LogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_LogOut.Click += new System.EventHandler(this.LogOut_Click);
+            // 
             // btn_Dashboard
             // 
             this.btn_Dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(222)))));
@@ -405,23 +422,6 @@ namespace DemoApp
             this.btn_CreateUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_CreateUser.UseVisualStyleBackColor = false;
             this.btn_CreateUser.Click += new System.EventHandler(this.Btn_CreateUser_Click);
-            // 
-            // lbl_LogOut
-            // 
-            this.lbl_LogOut.AutoSize = true;
-            this.lbl_LogOut.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_LogOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_LogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lbl_LogOut.ForeColor = System.Drawing.Color.White;
-            this.lbl_LogOut.Location = new System.Drawing.Point(4, 1277);
-            this.lbl_LogOut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_LogOut.Name = "lbl_LogOut";
-            this.lbl_LogOut.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.lbl_LogOut.Size = new System.Drawing.Size(455, 80);
-            this.lbl_LogOut.TabIndex = 3;
-            this.lbl_LogOut.Text = "Log out";
-            this.lbl_LogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbl_LogOut.Click += new System.EventHandler(this.LogOut_Click);
             // 
             // tblPnl_Logo
             // 
@@ -1150,6 +1150,20 @@ namespace DemoApp
             this.col_Status.Text = "Status";
             this.col_Status.Width = 180;
             // 
+            // lblDetailsWarning
+            // 
+            this.lblDetailsWarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDetailsWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.lblDetailsWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblDetailsWarning.Location = new System.Drawing.Point(7, 951);
+            this.lblDetailsWarning.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblDetailsWarning.Name = "lblDetailsWarning";
+            this.lblDetailsWarning.Size = new System.Drawing.Size(569, 78);
+            this.lblDetailsWarning.TabIndex = 27;
+            this.lblDetailsWarning.Text = "Errors";
+            this.lblDetailsWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnDetailsUpdate
             // 
             this.btnDetailsUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
@@ -1743,20 +1757,6 @@ namespace DemoApp
             this.lbl_HeaderCreateUser.TabIndex = 0;
             this.lbl_HeaderCreateUser.Text = "Create User";
             this.lbl_HeaderCreateUser.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // lblDetailsWarning
-            // 
-            this.lblDetailsWarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDetailsWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.lblDetailsWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblDetailsWarning.Location = new System.Drawing.Point(7, 951);
-            this.lblDetailsWarning.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblDetailsWarning.Name = "lblDetailsWarning";
-            this.lblDetailsWarning.Size = new System.Drawing.Size(569, 78);
-            this.lblDetailsWarning.TabIndex = 27;
-            this.lblDetailsWarning.Text = "Errors";
-            this.lblDetailsWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Main
             // 

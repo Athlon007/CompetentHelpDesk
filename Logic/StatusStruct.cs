@@ -2,7 +2,7 @@
 {
     public struct StatusStruct
     {
-        public int Code;
+        public int Code; // 0 = OK. 1 == Exception.
         public string Message;
 
         public StatusStruct(int code)
