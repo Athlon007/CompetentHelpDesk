@@ -16,7 +16,7 @@ namespace TestDbConnectionNew
         public TestTickets()
         {
             service = new TicketsService();
-            tickets = service.GetTickets();
+            service.GetTickets(out tickets);
         }
 
         [TestMethod]
@@ -58,9 +58,9 @@ namespace TestDbConnectionNew
         [TestMethod]
         public void GetTickedByID()
         {
-            Ticket t = service.GetById(0);
+            var response = service.GetById(0, out Ticket t);
             Trace.WriteLine($"Ticket 0 details: " + t);
-            Assert.IsNotNull(t);
+            Assert.AreEqual(0, response.Code);
         }
     }
 }

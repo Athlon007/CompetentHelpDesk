@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using Logic;
 using Model;
 using System.Drawing;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
 
 namespace DemoApp
 {
@@ -22,7 +19,11 @@ namespace DemoApp
         readonly Color buttonHighLight = ColorTranslator.FromHtml("#FFF6DE");
         readonly Color buttonLightHightLight = ColorTranslator.FromHtml("#59C190");
 
-        private Dictionary<string, int> deadlineDays = new Dictionary<string, int>()
+        // Ticket that currently is shown in details.
+        private Ticket detailedTicket;
+
+        // Dictionary of all possible days for the deadline.
+        private readonly Dictionary<string, int> deadlineDays = new Dictionary<string, int>()
         {
             { "7 days", 7 },
             { "14 days", 14 },
@@ -30,11 +31,11 @@ namespace DemoApp
             { "6 months", 180 }
         };
 
+        private TicketLoadStatus currentTicketLoadStatus;
         private enum TicketLoadStatus
         {
             None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
         }
-
 
         public Main()
         {
@@ -52,13 +53,14 @@ namespace DemoApp
             // Invert standard image icon
             btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
 
-            LoadAddTicketComboBoxes();
+            InitAddTicketComboBoxes();
+            InitTicketDetailsView();
         }
 
         /// <summary>
         /// Loads combo boxes data of Add Ticket page.
         /// </summary>
-        private void LoadAddTicketComboBoxes()
+        private void InitAddTicketComboBoxes()
         {
             foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
             {
@@ -73,6 +75,24 @@ namespace DemoApp
             foreach (KeyValuePair<string, int> kvp in deadlineDays)
             {
                 cmbDeadlineCT.Items.Add(kvp.Key.ToString());
+            }
+        }
+
+        private void InitTicketDetailsView() 
+        {
+            foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
+            {
+                cmbDetailsIncidentType.Items.Add(incidentType.ToString());
+            }
+
+            foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
+            {
+                cmbDetailsPriority.Items.Add(priority.ToString());
+            }
+
+            foreach (TicketStatus status in Enum.GetValues(typeof(TicketStatus)))
+            {
+                cmbDetailsStatus.Items.Add(status);
             }
         }
 
@@ -125,8 +145,6 @@ namespace DemoApp
             }
         }
 
-
-
         // Navigation buttons
         private void Btn_Dashboard_Click(object sender, EventArgs e)
         {
@@ -149,7 +167,38 @@ namespace DemoApp
 
                 // Load all tickets
                 LoadTickets(TicketLoadStatus.All);
+                CleanTicketDetails();
             }
+        }
+
+        private void CleanTicketDetails()
+        {
+            // First clean selection of ticket.
+            listView_TicketManagement.SelectedIndices.Clear();
+
+            // Load employees to the employees list (as it might've been changed)
+            cmbDetailsReporter.DataSource = employeeService.GetEmployees();
+
+            // Then clean fields.
+            txtDetailsSubject.Text = "";
+            txtDetailsDescription.Text = "";
+            cmbDetailsIncidentType.SelectedIndex = -1;
+            cmbDetailsPriority.SelectedIndex = -1;
+            cmbDetailsReporter.SelectedIndex = -1;
+            cmbDetailsStatus.SelectedIndex = -1;
+
+            // And disable input boxes (as we can't use them just yet).
+            txtDetailsSubject.Enabled = false;
+            txtDetailsDescription.Enabled = false;
+            cmbDetailsIncidentType.Enabled = false;
+            cmbDetailsPriority.Enabled = false;
+            cmbDetailsReporter.Enabled = false;
+            cmbDetailsStatus.Enabled = false;
+
+            btnDetailsDelete.Enabled = false;
+            btnDetailsUpdate.Enabled = false;
+
+            lblDetailsWarning.Text = "";
         }
 
         private void Btn_CreateTicket_Click(object sender, EventArgs e)
@@ -349,10 +398,12 @@ namespace DemoApp
                     tickets = ticketService.GetTicketsByStatus(TicketStatus.Resolved);
                     break;
                 default:
-                    tickets = ticketService.GetTickets();
+                    ticketService.GetTickets(out tickets);
                     // Load all tickets
                     break;
             }
+
+            currentTicketLoadStatus = loadStatus;
 
             // Display tickets 
             DisplayTickets(tickets);
@@ -371,9 +422,27 @@ namespace DemoApp
                 item.SubItems.Add(ticket.Date.ToString());
                 item.SubItems.Add(ticket.Status.ToString());
 
+                item.Tag = ticket;
+
                 // Add item to listview
                 listView_TicketManagement.Items.Add(item);
             }
+
+            // Resize columns
+            listView_TicketManagement.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent);
+            listView_TicketManagement.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
+            listView_TicketManagement.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.ColumnContent);
+
+            int widthOfAllColumns = 0;
+            for (int i = 0; i < listView_TicketManagement.Columns.Count; ++i)
+            {
+                if (i > 0)
+                {
+                    listView_TicketManagement.Columns[i].Width += 20;
+                }
+                widthOfAllColumns += listView_TicketManagement.Columns[i].Width;
+            }
+            listView_TicketManagement.Columns[1].Width += listView_TicketManagement.Width - widthOfAllColumns - 4;
         }
 
         /// <summary>
@@ -396,79 +465,33 @@ namespace DemoApp
 
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
-            try
+            int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
+            var submitted = ticketService.InsertTicket(dtpReportedCT.Value, 
+                txtSubjectOfIncidentCT.Text,
+                (IncidentTypes)cmbIncidentTypeCT.SelectedIndex, 
+                (Employee)cmbUserCT.SelectedItem,
+                (TicketPriority)cmbPriorityCT.SelectedIndex,
+                followUpDays, 
+                txtDescriptionCT.Text);
+
+            // Clean text boxes.
+            LoadAddTicketPage();
+            // TODO: Replace this with some overlay.
+            if (submitted.Code == 0)
             {
-                string cantReasons = "";
-                bool canSubmit = CanSubmitTicket(ref cantReasons);
-                lblWarningsCT.Text = cantReasons;
-
-                if (!canSubmit)
-                {
-                    lblWarningsCT.ForeColor = Color.Red; // TODO: Remove that line later.
-                    return;
-                }
-
-                IncidentTypes type = (IncidentTypes)cmbIncidentTypeCT.SelectedIndex;
-                TicketPriority priority = (TicketPriority)cmbPriorityCT.SelectedIndex;
-                int followUpDays = deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-                ticketService.InsertTicket(dtpReportedCT.Value, txtSubjectOfIncidentCT.Text, type, (Employee)cmbUserCT.SelectedItem, priority, followUpDays, txtDescriptionCT.Text);
-
-                // Clean text boxes.
-                LoadAddTicketPage();
-                // TODO: Replace this with some overlay.
-                lblWarningsCT.Text = "Submitted succeeded!";
+                lblWarningsCT.Text = "Submission succeeded!";
                 lblWarningsCT.ForeColor = Color.Green;
             }
-            catch (Exception ex)
+            else if (submitted.Code == 1)
             {
-                ErrorHandler.Instance.WriteError(ex);
-                MessageBox.Show("Something went wrong. An error has been saved into a log file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblWarningsCT.Text = "Unable to submit a ticket:\n" + submitted.Message;
+                lblWarningsCT.ForeColor = Color.Red;
             }
         }
 
         private void btnCancelCT_Click(object sender, EventArgs e)
         {
             LoadAddTicketPage();
-        }
-
-        private bool CanSubmitTicket(ref string reason)
-        {
-            if (dtpReportedCT.Value > DateTime.Now)
-            {
-                reason += "Incident time cannot be in the future\n";
-            }
-
-            if (string.IsNullOrEmpty(txtSubjectOfIncidentCT.Text))
-            {
-                reason += "Subject is missing\n";
-            }
-
-            if (cmbIncidentTypeCT.SelectedIndex == -1)
-            {
-                reason += "Type of incident is not provided\n";
-            }
-
-            if (cmbUserCT.SelectedIndex == -1)
-            {
-                reason += "Reporting user not provided\n";
-            }
-
-            if (cmbPriorityCT.SelectedIndex == -1)
-            {
-                reason += "Priority not provided\n";
-            }
-
-            if (cmbDeadlineCT.SelectedIndex == -1)
-            {
-                reason += "Deadline not provided\n";
-            }
-
-            if (string.IsNullOrEmpty(txtDescriptionCT.Text))
-            {
-                reason += "Description not provided\n";
-            }
-
-            return reason.Length == 0;
         }
 
         private void Btn_Display_Tickets_All_Click(object sender, EventArgs e)
@@ -521,6 +544,98 @@ namespace DemoApp
                 }
 
                 index++;
+            }
+        }
+
+        private void listView_TicketManagement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView_TicketManagement.SelectedItems.Count == 0)
+            {
+                CleanTicketDetails();
+            }
+            else
+            {
+                Ticket ticket = (Ticket)listView_TicketManagement.SelectedItems[0].Tag;
+                LoadSelectedTicketDetails(ticket);
+            }
+        }
+
+        private void LoadSelectedTicketDetails(Ticket ticket)
+        {
+            detailedTicket = ticket;
+
+            txtDetailsSubject.Text = detailedTicket.Subject;
+            txtDetailsDescription.Text = detailedTicket.Description;
+            cmbDetailsIncidentType.SelectedIndex = (int)detailedTicket.IncidentType;
+            cmbDetailsPriority.SelectedIndex = (int)detailedTicket.Priority;
+            cmbDetailsStatus.SelectedIndex = (int)detailedTicket.Status;
+            cmbDetailsReporter.SelectedItem = detailedTicket.Reporter;
+
+            txtDetailsSubject.Enabled = true;
+            txtDetailsDescription.Enabled = true;
+            cmbDetailsIncidentType.Enabled = true;
+            cmbDetailsPriority.Enabled = true;
+            cmbDetailsStatus.Enabled = true;
+            cmbDetailsReporter.Enabled = true;
+
+            btnDetailsDelete.Enabled = true;
+            btnDetailsUpdate.Enabled = true;
+        }
+
+        private void btnDetailsUpdate_Click(object sender, EventArgs e)
+        {
+            var status = ticketService.UpdateTicket(detailedTicket,
+                                      txtDetailsSubject.Text,
+                                      txtDetailsDescription.Text,
+                                      (IncidentTypes)cmbDetailsIncidentType.SelectedIndex,
+                                      (TicketPriority)cmbDetailsPriority.SelectedIndex,
+                                      (TicketStatus)cmbDetailsStatus.SelectedIndex,
+                                      (Employee)cmbDetailsReporter.SelectedItem);
+
+            if (status.Code == 1)
+            {
+                lblDetailsWarning.Text = status.Message;
+            }
+            else
+            {
+                LoadTickets(currentTicketLoadStatus);
+                CleanTicketDetails();
+                lblDetailsWarning.Text = "";
+            }
+        }
+
+        private void btnDetailsDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete ticket:\n\n" +
+                                                  $"ID: {detailedTicket.Id}\n" +
+                                                  $"Subject: {detailedTicket.Subject}\n\n" +
+                                                  $"This operation is irreversible!", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                var response = ticketService.DeleteTicket(detailedTicket);
+
+                if (response.Code == 1)
+                {
+                    lblDetailsWarning.Text = response.Message;
+                }
+                else
+                {
+                    LoadTickets(currentTicketLoadStatus);
+                    CleanTicketDetails();
+                    lblDetailsWarning.Text = "";
+                }
+            }
+        }
+
+        private void btnDetailsEscalate_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show($"This will escalete the ticket to Specialist department\n\n" +
+                                                 $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show("not implemented yet :)");
             }
         }
     }
