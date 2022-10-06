@@ -427,6 +427,22 @@ namespace DemoApp
                 // Add item to listview
                 listView_TicketManagement.Items.Add(item);
             }
+
+            // Resize columns
+            listView_TicketManagement.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent);
+            listView_TicketManagement.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
+            listView_TicketManagement.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.ColumnContent);
+
+            int widthOfAllColumns = 0;
+            for (int i = 0; i < listView_TicketManagement.Columns.Count; ++i)
+            {
+                if (i > 0)
+                {
+                    listView_TicketManagement.Columns[i].Width += 20;
+                }
+                widthOfAllColumns += listView_TicketManagement.Columns[i].Width;
+            }
+            listView_TicketManagement.Columns[1].Width += listView_TicketManagement.Width - widthOfAllColumns - 4;
         }
 
         /// <summary>
