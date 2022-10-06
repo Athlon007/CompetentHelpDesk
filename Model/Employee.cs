@@ -47,5 +47,15 @@ namespace Model
         {
             return $"{FirstName} {LastName} [ {Id} ]";
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Employee)
+            {
+                return ((Employee)obj).Id == this.Id;
+            }
+
+            return base.Equals(obj);
+        }
     }
 }

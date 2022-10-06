@@ -5,7 +5,6 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization;
 
-
 namespace DAL
 {
     public class TicketsDAO: BaseDAO

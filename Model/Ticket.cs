@@ -54,5 +54,15 @@ namespace Model
                 return (Deadline - DateTime.Now).Days;
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Ticket)
+            {
+                return (obj as Ticket).Id == this.Id;
+            }
+
+            return base.Equals(obj);
+        }
     }
 }

@@ -22,6 +22,8 @@ namespace DemoApp
         readonly Color buttonHighLight = ColorTranslator.FromHtml("#FFF6DE");
         readonly Color buttonLightHightLight = ColorTranslator.FromHtml("#59C190");
 
+        private Ticket detailedTicket; // Ticket that currently is shown in details.
+
         private Dictionary<string, int> deadlineDays = new Dictionary<string, int>()
         {
             { "7 days", 7 },
@@ -52,13 +54,14 @@ namespace DemoApp
             // Invert standard image icon
             btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
 
-            LoadAddTicketComboBoxes();
+            InitAddTicketComboBoxes();
+            InitTicketDetailsView();
         }
 
         /// <summary>
         /// Loads combo boxes data of Add Ticket page.
         /// </summary>
-        private void LoadAddTicketComboBoxes()
+        private void InitAddTicketComboBoxes()
         {
             foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
             {
@@ -73,6 +76,24 @@ namespace DemoApp
             foreach (KeyValuePair<string, int> kvp in deadlineDays)
             {
                 cmbDeadlineCT.Items.Add(kvp.Key.ToString());
+            }
+        }
+
+        private void InitTicketDetailsView() 
+        {
+            foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
+            {
+                cmbDetailsIncidentType.Items.Add(incidentType.ToString());
+            }
+
+            foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
+            {
+                cmbDetailsPriority.Items.Add(priority.ToString());
+            }
+
+            foreach (TicketStatus status in Enum.GetValues(typeof(TicketStatus)))
+            {
+                cmbDetailsStatus.Items.Add(status);
             }
         }
 
@@ -149,7 +170,36 @@ namespace DemoApp
 
                 // Load all tickets
                 LoadTickets(TicketLoadStatus.All);
+                CleanTicketDetails();
             }
+        }
+
+        private void CleanTicketDetails()
+        {
+            // First clean selection of ticket.
+            listView_TicketManagement.SelectedIndices.Clear();
+
+            // Load employees to the employees list (as it might've been changed)
+            cmbDetailsReporter.DataSource = employeeService.GetEmployees();
+
+            // Then clean fields.
+            txtDetailsSubject.Text = "";
+            txtDetailsDescription.Text = "";
+            cmbDetailsIncidentType.SelectedIndex = -1;
+            cmbDetailsPriority.SelectedIndex = -1;
+            cmbDetailsReporter.SelectedIndex = -1;
+            cmbDetailsStatus.SelectedIndex = -1;
+
+            // And disable input boxes (as we can't use them just yet).
+            txtDetailsSubject.Enabled = false;
+            txtDetailsDescription.Enabled = false;
+            cmbDetailsIncidentType.Enabled = false;
+            cmbDetailsPriority.Enabled = false;
+            cmbDetailsReporter.Enabled = false;
+            cmbDetailsStatus.Enabled = false;
+
+            btnDetailsDelete.Enabled = false;
+            btnDetailsUpdate.Enabled = false;
         }
 
         private void Btn_CreateTicket_Click(object sender, EventArgs e)
@@ -371,6 +421,8 @@ namespace DemoApp
                 item.SubItems.Add(ticket.Date.ToString());
                 item.SubItems.Add(ticket.Status.ToString());
 
+                item.Tag = ticket;
+
                 // Add item to listview
                 listView_TicketManagement.Items.Add(item);
             }
@@ -522,6 +574,41 @@ namespace DemoApp
 
                 index++;
             }
+        }
+
+        private void listView_TicketManagement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView_TicketManagement.SelectedItems.Count == 0)
+            {
+                CleanTicketDetails();
+            }
+            else
+            {
+                Ticket ticket = (Ticket)listView_TicketManagement.SelectedItems[0].Tag;
+                LoadSelectedTicketDetails(ticket);
+            }
+        }
+
+        private void LoadSelectedTicketDetails(Ticket ticket)
+        {
+            detailedTicket = ticket;
+
+            txtDetailsSubject.Text = detailedTicket.Subject;
+            txtDetailsDescription.Text = detailedTicket.Description;
+            cmbDetailsIncidentType.SelectedIndex = (int)detailedTicket.IncidentType;
+            cmbDetailsPriority.SelectedIndex = (int)detailedTicket.Priority;
+            cmbDetailsStatus.SelectedIndex = (int)detailedTicket.Status;
+            cmbDetailsReporter.SelectedItem = detailedTicket.Reporter;
+
+            txtDetailsSubject.Enabled = true;
+            txtDetailsDescription.Enabled = true;
+            cmbDetailsIncidentType.Enabled = true;
+            cmbDetailsPriority.Enabled = true;
+            cmbDetailsStatus.Enabled = true;
+            cmbDetailsReporter.Enabled = true;
+
+            btnDetailsDelete.Enabled = true;
+            btnDetailsUpdate.Enabled = true;
         }
     }
 }
