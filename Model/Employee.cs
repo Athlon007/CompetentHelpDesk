@@ -1,10 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using MongoDB.Bson;
-
 
 namespace Model
 {
@@ -46,6 +42,21 @@ namespace Model
         public override string ToString()
         {
             return $"{FirstName} {LastName} [ {Id} ]";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Employee)
+            {
+                return ((Employee)obj).Id == this.Id;
+            }
+
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode() + FirstName.GetHashCode() + LastName.GetHashCode() + Email.GetHashCode();
         }
     }
 }

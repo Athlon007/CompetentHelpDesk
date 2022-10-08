@@ -20,9 +20,20 @@ namespace Logic
             employeedb = new EmployeesDAO();
         }
 
+        private List<Employee> ConvertToEmployeeList(IAsyncCursor<BsonDocument> cursor)
+        {
+            List<Employee> list = new List<Employee>();
+            foreach (var entry in cursor.ToEnumerable())
+            {
+                Employee employee = BsonSerializer.Deserialize<Employee>(entry);
+                list.Add(employee);
+            }
+            return list;
+        }
+
         public List<Employee> GetEmployees()
         {
-            return employeedb.GetAllEmployees().AsQueryable().ToList();
+            return ConvertToEmployeeList(employeedb.Get());
         }
 
         public Employee GetById(int employeeId)

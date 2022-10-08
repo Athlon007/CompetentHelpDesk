@@ -14,16 +14,15 @@ namespace TestDbConnectionNew
     public class TestEmployee
     {
         private EmployeeService service = new EmployeeService();
-        private List<Employee> employees;
-
-        public TestEmployee()
-        {
-            employees = service.GetEmployees();
-        }
 
         [TestMethod]
         public void EmployeesAreNotNull()
         {
+            List<Employee> employees = service.GetEmployees();
+            foreach (Employee employee in employees)
+            {
+                Trace.WriteLine(employee);
+            }
             Assert.IsNotNull(employees);
         }
 
