@@ -12,6 +12,7 @@ namespace DemoApp
     {
         private TicketsService ticketService;
         private EmployeeService employeeService;
+        private List<Ticket> allTickets;
 
         // Styling variables
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
@@ -78,7 +79,7 @@ namespace DemoApp
             }
         }
 
-        private void InitTicketDetailsView() 
+        private void InitTicketDetailsView()
         {
             foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
             {
@@ -405,7 +406,8 @@ namespace DemoApp
 
             currentTicketLoadStatus = loadStatus;
 
-            // Display tickets 
+            // Display tickets
+            allTickets = tickets;
             DisplayTickets(tickets);
         }
 
@@ -415,7 +417,7 @@ namespace DemoApp
             listView_TicketManagement.Items.Clear();
             foreach (Ticket ticket in tickets)
             {
-                // Create listview item and fill details 
+                // Create listview item and fill details
                 ListViewItem item = new ListViewItem(ticket.Id.ToString(), 0);
                 item.SubItems.Add(ticket.Subject);
                 item.SubItems.Add(ticket.Reporter.FirstName);
@@ -466,12 +468,12 @@ namespace DemoApp
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
             int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-            var submitted = ticketService.InsertTicket(dtpReportedCT.Value, 
+            var submitted = ticketService.InsertTicket(dtpReportedCT.Value,
                 txtSubjectOfIncidentCT.Text,
-                (IncidentTypes)cmbIncidentTypeCT.SelectedIndex, 
+                (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
                 (Employee)cmbUserCT.SelectedItem,
                 (TicketPriority)cmbPriorityCT.SelectedIndex,
-                followUpDays, 
+                followUpDays,
                 txtDescriptionCT.Text);
 
             // Clean text boxes.
@@ -528,7 +530,7 @@ namespace DemoApp
         {
             int index = 0;
 
-            foreach (Button button in flowPnl_TicketManagement_SearchButtons.Controls.OfType<Button>()) 
+            foreach (Button button in flowPnl_TicketManagement_SearchButtons.Controls.OfType<Button>())
             {
                 if (index != buttonIndex) // Reset color to default
                 {
@@ -545,6 +547,23 @@ namespace DemoApp
 
                 index++;
             }
+        }
+
+        private void txtBox_SearchBar_TextChanged(object sender, EventArgs e)
+        {
+            var query = txtBox_SearchBar.Text.ToLower();
+            var tickets = allTickets;
+            if (!String.IsNullOrEmpty(query))
+            {
+                tickets=tickets.Where( x => x.Status.ToString().ToLower().Contains(query)
+                                    || x.Description.ToLower().Contains(query)
+                                    || x.Reporter.FirstName.ToLower().Contains(query)
+                                    || x.Subject.ToLower().Contains(query)
+                                    || x.Date.ToString().Contains(query)
+                                    )
+               .OrderByDescending(x => x.Date).ToList<Ticket>();
+            }
+            DisplayTickets(tickets);
         }
 
         private void listView_TicketManagement_SelectedIndexChanged(object sender, EventArgs e)
