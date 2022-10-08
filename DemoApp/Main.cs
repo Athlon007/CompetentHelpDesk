@@ -15,6 +15,7 @@ namespace DemoApp
     {
         private TicketsService ticketService;
         private EmployeeService employeeService;
+        private List<Ticket> allTickets;
 
         // Styling variables
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
@@ -355,6 +356,7 @@ namespace DemoApp
             }
 
             // Display tickets 
+            allTickets = tickets;
             DisplayTickets(tickets);
         }
 
@@ -522,6 +524,26 @@ namespace DemoApp
 
                 index++;
             }
+        }
+
+     
+
+
+        private void txtBox_SearchBar_TextChanged(object sender, EventArgs e)
+        {
+            var query = txtBox_SearchBar.Text.ToLower();
+            var tickets = allTickets;
+            if (!String.IsNullOrEmpty(query))
+            {
+                tickets=tickets.Where( x => x.Status.ToString().ToLower().Contains(query) 
+                                    || x.Description.ToLower().Contains(query)
+                                    || x.Reporter.FirstName.ToLower().Contains(query)
+                                    || x.Subject.ToLower().Contains(query)
+                                    || x.Date.ToString().Contains(query)
+                                    )
+               .OrderByDescending(x => x.Date).ToList<Ticket>();
+            }
+            DisplayTickets(tickets);
         }
     }
 }

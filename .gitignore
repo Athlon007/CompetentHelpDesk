@@ -350,3 +350,5 @@ MigrationBackup/
 */Library
 
 .DS_Store
+
+.idea
