@@ -5,6 +5,7 @@ using Logic;
 using Model;
 using System.Drawing;
 using System.Collections.Generic;
+using DemoApp.Common;
 
 namespace DemoApp
 {
@@ -656,6 +657,22 @@ namespace DemoApp
             {
                 MessageBox.Show("not implemented yet :)");
             }
+        }
+
+        private void Main_ResizeBegin(object sender, EventArgs e)
+        {
+            rPnl_TicketManagement.SuspendLayout();
+            rPnl_TicketManagement.SuspendDrawing();
+            pnl_TicketManagement.SuspendLayout();
+        }
+
+        private void Main_ResizeEnd(object sender, EventArgs e)
+        {
+            rPnl_TicketManagement.ResumeLayout();
+            pnl_TicketManagement.ResumeLayout();
+            rPnl_TicketManagement.Invalidate(true);
+
+            rPnl_TicketManagement.ResumeDrawing();
         }
     }
 }

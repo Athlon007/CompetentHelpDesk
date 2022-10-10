@@ -169,6 +169,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Extensions.cs" />
     <Compile Include="Custom Controls\CircularProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
