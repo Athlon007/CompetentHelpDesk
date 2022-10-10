@@ -24,6 +24,14 @@ namespace DemoApp
         // Ticket that currently is shown in details.
         private Ticket detailedTicket;
 
+        // Stores where was the splitter set before resizing started.
+        private double splitPercentage;
+
+        // For capturing maximizing and restoring window.
+        const int WM_SYSCOMMAND = 0x0112;
+        const int SC_MAXIMIZE = 0xF030;
+        const int SC_RESTORE = 0xF120;
+
         // Dictionary of all possible days for the deadline.
         private readonly Dictionary<string, int> deadlineDays = new Dictionary<string, int>()
         {
@@ -557,7 +565,7 @@ namespace DemoApp
             var tickets = allTickets;
             if (!String.IsNullOrEmpty(query))
             {
-                tickets=tickets.Where( x => x.Status.ToString().ToLower().Contains(query)
+                tickets = tickets.Where(x => x.Status.ToString().ToLower().Contains(query)
                                     || x.Description.ToLower().Contains(query)
                                     || x.Reporter.FirstName.ToLower().Contains(query)
                                     || x.Subject.ToLower().Contains(query)
@@ -662,19 +670,54 @@ namespace DemoApp
 
         private void Main_ResizeBegin(object sender, EventArgs e)
         {
-            rPnl_TicketManagement.SuspendLayout();
-            pnl_TicketManagement.SuspendLayout();
-
-            rPnl_TicketManagement.SuspendDrawing();
+            PreResize();
         }
 
         private void Main_ResizeEnd(object sender, EventArgs e)
         {
-            rPnl_TicketManagement.ResumeLayout();
-            pnl_TicketManagement.ResumeLayout();
-            rPnl_TicketManagement.Invalidate(true);
+            PostResize();
+        }
 
+        protected override void WndProc(ref Message m)
+        {
+            // Overrides the default behaviour of Maximize/Minimize buttons.
+            if (m.Msg == WM_SYSCOMMAND)
+            {
+                if ((int)m.WParam == SC_MAXIMIZE || (int)m.WParam == SC_RESTORE) 
+                {
+                    // Main_ResizeBegin doesn't seem to be called when Maximize/Restore button is clicked.
+                    // So we do that before resize behaviour is called.
+                    PreResize();
+                    base.WndProc(ref m);
+                    // And now postresize.
+                    PostResize();
+                    return;
+                }
+            }
+            base.WndProc(ref m);
+        }
+
+        /// <summary>
+        /// Called before resize happens. Saves the position of splitter in split container inside of Ticket Management.
+        /// Then it pauses the drawing rPnl_TicketManagement, to prevent slow resizing.
+        /// </summary>
+        private void PreResize()
+        {
+            // TODO: Keep the sizes of Ticket Management headers?
+            splitPercentage = splitContainer1.SplitterDistance / (double)splitContainer1.Width;
+            rPnl_TicketManagement.SuspendLayout();
+            rPnl_TicketManagement.SuspendDrawing();
+            rPnl_TicketManagement.Invalidate(true);
+        }
+
+        /// <summary>
+        /// Resumes rPnl_TicketManagement to operating state, and recalculates the position of splitter in Ticket Management.
+        /// </summary>
+        private void PostResize()
+        {
+            rPnl_TicketManagement.ResumeLayout();
             rPnl_TicketManagement.ResumeDrawing();
+            splitContainer1.SplitterDistance = (int)(splitContainer1.Width * splitPercentage);
         }
     }
 }
