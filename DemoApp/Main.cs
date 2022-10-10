@@ -477,11 +477,12 @@ namespace DemoApp
                 followUpDays,
                 txtDescriptionCT.Text);
 
-            // Clean text boxes.
-            LoadAddTicketPage();
             // TODO: Replace this with some overlay.
             if (submitted.Code == 0)
             {
+                // Clean text boxes.
+                LoadAddTicketPage();
+
                 lblWarningsCT.Text = "Submission succeeded!";
                 lblWarningsCT.ForeColor = Color.Green;
             }
@@ -662,8 +663,9 @@ namespace DemoApp
         private void Main_ResizeBegin(object sender, EventArgs e)
         {
             rPnl_TicketManagement.SuspendLayout();
-            rPnl_TicketManagement.SuspendDrawing();
             pnl_TicketManagement.SuspendLayout();
+
+            rPnl_TicketManagement.SuspendDrawing();
         }
 
         private void Main_ResizeEnd(object sender, EventArgs e)
