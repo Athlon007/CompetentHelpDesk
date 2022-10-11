@@ -5,6 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Model
 {
+    [BsonIgnoreExtraElements]
     public class Ticket
     {
         [BsonId]
@@ -17,9 +18,6 @@ namespace Model
         public string Subject { get; set; }
         [BsonElement("description")]
         public string Description { get; set; }
-        [BsonElement("reporter")]
-        [BsonIgnoreIfNull]
-        private int reporterId { get; set; }
         [BsonElement("reporterPerson")]
         public Employee Reporter { get; set; }
         [BsonElement("date")]
