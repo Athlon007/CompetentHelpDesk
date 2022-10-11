@@ -11,7 +11,7 @@ namespace Logic
 {
     public class TicketsService
     {
-        public TicketsDAO ticketsdb;
+        protected TicketsDAO ticketsdb;
 
         public TicketsService()
         {
