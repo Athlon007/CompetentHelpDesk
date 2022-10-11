@@ -1157,16 +1157,15 @@ namespace DemoApp
             // 
             // lblDetailsWarning
             // 
-            this.lblDetailsWarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDetailsWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.lblDetailsWarning.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblDetailsWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.lblDetailsWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblDetailsWarning.Location = new System.Drawing.Point(7, 951);
+            this.lblDetailsWarning.Location = new System.Drawing.Point(0, 874);
             this.lblDetailsWarning.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDetailsWarning.Name = "lblDetailsWarning";
-            this.lblDetailsWarning.Size = new System.Drawing.Size(561, 78);
+            this.lblDetailsWarning.Size = new System.Drawing.Size(573, 78);
             this.lblDetailsWarning.TabIndex = 27;
-            this.lblDetailsWarning.Text = "Errors";
+            this.lblDetailsWarning.Text = "Line1\r\nLine2\r\n";
             this.lblDetailsWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnDetailsUpdate
@@ -1176,11 +1175,12 @@ namespace DemoApp
             this.btnDetailsUpdate.FlatAppearance.BorderSize = 0;
             this.btnDetailsUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnDetailsUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetailsUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnDetailsUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnDetailsUpdate.Location = new System.Drawing.Point(0, 1033);
+            this.btnDetailsUpdate.Location = new System.Drawing.Point(0, 952);
             this.btnDetailsUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnDetailsUpdate.Name = "btnDetailsUpdate";
-            this.btnDetailsUpdate.Size = new System.Drawing.Size(573, 53);
+            this.btnDetailsUpdate.Size = new System.Drawing.Size(573, 80);
             this.btnDetailsUpdate.TabIndex = 22;
             this.btnDetailsUpdate.Text = "Update";
             this.btnDetailsUpdate.UseVisualStyleBackColor = false;
@@ -1193,11 +1193,12 @@ namespace DemoApp
             this.btnDetailsEscalate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnDetailsEscalate.FlatAppearance.BorderSize = 6;
             this.btnDetailsEscalate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetailsEscalate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnDetailsEscalate.ForeColor = System.Drawing.Color.Black;
-            this.btnDetailsEscalate.Location = new System.Drawing.Point(0, 1086);
+            this.btnDetailsEscalate.Location = new System.Drawing.Point(0, 1032);
             this.btnDetailsEscalate.Margin = new System.Windows.Forms.Padding(4);
             this.btnDetailsEscalate.Name = "btnDetailsEscalate";
-            this.btnDetailsEscalate.Size = new System.Drawing.Size(573, 53);
+            this.btnDetailsEscalate.Size = new System.Drawing.Size(573, 80);
             this.btnDetailsEscalate.TabIndex = 26;
             this.btnDetailsEscalate.Text = "Escalate";
             this.btnDetailsEscalate.UseVisualStyleBackColor = false;
@@ -1213,7 +1214,7 @@ namespace DemoApp
             this.cmbDetailsStatus.Location = new System.Drawing.Point(11, 462);
             this.cmbDetailsStatus.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsStatus.Name = "cmbDetailsStatus";
-            this.cmbDetailsStatus.Size = new System.Drawing.Size(557, 45);
+            this.cmbDetailsStatus.Size = new System.Drawing.Size(549, 45);
             this.cmbDetailsStatus.TabIndex = 25;
             // 
             // lblDetailsStatus
@@ -1234,11 +1235,12 @@ namespace DemoApp
             this.btnDetailsDelete.FlatAppearance.BorderSize = 0;
             this.btnDetailsDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnDetailsDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetailsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnDetailsDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDetailsDelete.Location = new System.Drawing.Point(0, 1139);
+            this.btnDetailsDelete.Location = new System.Drawing.Point(0, 1112);
             this.btnDetailsDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDetailsDelete.Name = "btnDetailsDelete";
-            this.btnDetailsDelete.Size = new System.Drawing.Size(573, 53);
+            this.btnDetailsDelete.Size = new System.Drawing.Size(573, 80);
             this.btnDetailsDelete.TabIndex = 23;
             this.btnDetailsDelete.Text = "Delete";
             this.btnDetailsDelete.UseVisualStyleBackColor = false;
@@ -1246,14 +1248,15 @@ namespace DemoApp
             // 
             // txtDetailsDescription
             // 
-            this.txtDetailsDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDetailsDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDetailsDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDetailsDescription.Location = new System.Drawing.Point(11, 566);
             this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(5);
             this.txtDetailsDescription.Multiline = true;
             this.txtDetailsDescription.Name = "txtDetailsDescription";
-            this.txtDetailsDescription.Size = new System.Drawing.Size(557, 380);
+            this.txtDetailsDescription.Size = new System.Drawing.Size(549, 303);
             this.txtDetailsDescription.TabIndex = 21;
             // 
             // lblDetailsDescription
@@ -1277,7 +1280,7 @@ namespace DemoApp
             this.cmbDetailsPriority.Location = new System.Drawing.Point(11, 358);
             this.cmbDetailsPriority.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsPriority.Name = "cmbDetailsPriority";
-            this.cmbDetailsPriority.Size = new System.Drawing.Size(557, 45);
+            this.cmbDetailsPriority.Size = new System.Drawing.Size(549, 45);
             this.cmbDetailsPriority.TabIndex = 19;
             // 
             // lblDetailsPriority
@@ -1301,7 +1304,7 @@ namespace DemoApp
             this.cmbDetailsReporter.Location = new System.Drawing.Point(12, 254);
             this.cmbDetailsReporter.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsReporter.Name = "cmbDetailsReporter";
-            this.cmbDetailsReporter.Size = new System.Drawing.Size(561, 45);
+            this.cmbDetailsReporter.Size = new System.Drawing.Size(553, 45);
             this.cmbDetailsReporter.TabIndex = 17;
             // 
             // lblDetailsUser
@@ -1325,7 +1328,7 @@ namespace DemoApp
             this.cmbDetailsIncidentType.Location = new System.Drawing.Point(11, 150);
             this.cmbDetailsIncidentType.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsIncidentType.Name = "cmbDetailsIncidentType";
-            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(557, 45);
+            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(549, 45);
             this.cmbDetailsIncidentType.TabIndex = 15;
             // 
             // lblDetailsIncidentType
@@ -1347,7 +1350,7 @@ namespace DemoApp
             this.txtDetailsSubject.Location = new System.Drawing.Point(12, 47);
             this.txtDetailsSubject.Margin = new System.Windows.Forms.Padding(5);
             this.txtDetailsSubject.Name = "txtDetailsSubject";
-            this.txtDetailsSubject.Size = new System.Drawing.Size(556, 44);
+            this.txtDetailsSubject.Size = new System.Drawing.Size(548, 44);
             this.txtDetailsSubject.TabIndex = 12;
             // 
             // lblTicketDetailsSubjectOfIncident
