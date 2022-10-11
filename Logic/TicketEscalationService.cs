@@ -5,17 +5,21 @@ using System;
 
 namespace Logic
 {
-    class TicketEscalation : TicketsService
+    public class TicketEscalationService : TicketsService
     {
         // Konrad Figura
 
         /// <summary>
         /// Escalates the ticket to higher level.
         /// </summary>
-        /// <param name="ticket"></param>
-        /// <returns></returns>
+        /// <param name="ticket">Ticket to escalate.</param>
         public StatusStruct EscalateTicket(Ticket ticket)
         {
+            if (!IsTicketEscalatable(ticket))
+            {
+                return new StatusStruct(1, "Cannot escalate ticket further.");
+            }
+
             try
             {
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);

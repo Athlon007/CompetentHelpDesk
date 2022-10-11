@@ -13,6 +13,7 @@ namespace DemoApp
     {
         private TicketsService ticketService;
         private EmployeeService employeeService;
+        private TicketEscalationService ticketEscalationService;
         private List<Ticket> allTickets;
 
         private Employee employee;
@@ -63,6 +64,7 @@ namespace DemoApp
             //databases = new Databases();
             ticketService = new TicketsService();
             employeeService = new EmployeeService();
+            ticketEscalationService = new TicketEscalationService();
 
             // Set tab control panel tabs to invisible
             tabControl.ItemSize = new Size(0, 1);
@@ -616,6 +618,7 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = true;
             btnDetailsUpdate.Enabled = true;
+            btnDetailsEscalate.Enabled = ticketEscalationService.IsTicketEscalatable(ticket);
         }
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
@@ -666,12 +669,24 @@ namespace DemoApp
 
         private void btnDetailsEscalate_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show($"This will escalete the ticket to Specialist department\n\n" +
+            Ticket ticket = listView_TicketManagement.SelectedItems[0].Tag as Ticket;
+            DialogResult result = MessageBox.Show($"This will escalete the ticket {ticket.Id} to {(EmployeeType)ticket.EscalationLevel + 2} department\n" +
                                                  $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
-            {
-                MessageBox.Show("not implemented yet :)");
+            {                
+                var reply = ticketEscalationService.EscalateTicket(ticket);
+
+                if (reply.Code == 1)
+                {
+                    lblDetailsWarning.Text = reply.Message;
+                }
+                else
+                {
+                    LoadTickets(currentTicketLoadStatus);
+                    CleanTicketDetails();
+                    lblDetailsWarning.Text = "";
+                }
             }
         }
 

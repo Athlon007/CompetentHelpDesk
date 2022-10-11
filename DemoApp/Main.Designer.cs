@@ -29,6 +29,7 @@ namespace DemoApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.sideBar = new System.Windows.Forms.TableLayoutPanel();
             this.tblPnl_UserInfo = new System.Windows.Forms.TableLayoutPanel();
@@ -296,7 +297,7 @@ namespace DemoApp
             this.btn_Dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btn_Dashboard.ForeColor = System.Drawing.Color.Black;
-            this.btn_Dashboard.Image = global::DemoApp.Properties.Resources.icon_Home_Normal;
+            this.btn_Dashboard.Image = ((System.Drawing.Image)(resources.GetObject("btn_Dashboard.Image")));
             this.btn_Dashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Dashboard.Location = new System.Drawing.Point(13, 4);
             this.btn_Dashboard.Margin = new System.Windows.Forms.Padding(13, 4, 0, 4);
@@ -320,7 +321,7 @@ namespace DemoApp
             this.btn_TicketManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_TicketManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btn_TicketManagement.ForeColor = System.Drawing.Color.White;
-            this.btn_TicketManagement.Image = global::DemoApp.Properties.Resources.icon_Ticket_Management_Normal;
+            this.btn_TicketManagement.Image = ((System.Drawing.Image)(resources.GetObject("btn_TicketManagement.Image")));
             this.btn_TicketManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_TicketManagement.Location = new System.Drawing.Point(13, 92);
             this.btn_TicketManagement.Margin = new System.Windows.Forms.Padding(13, 4, 0, 4);
@@ -344,7 +345,7 @@ namespace DemoApp
             this.btn_CreateTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btn_CreateTicket.ForeColor = System.Drawing.Color.White;
-            this.btn_CreateTicket.Image = global::DemoApp.Properties.Resources.icon_Ticket_Create_Normal;
+            this.btn_CreateTicket.Image = ((System.Drawing.Image)(resources.GetObject("btn_CreateTicket.Image")));
             this.btn_CreateTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_CreateTicket.Location = new System.Drawing.Point(13, 180);
             this.btn_CreateTicket.Margin = new System.Windows.Forms.Padding(13, 4, 0, 4);
@@ -368,7 +369,7 @@ namespace DemoApp
             this.btn_UserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_UserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btn_UserManagement.ForeColor = System.Drawing.Color.White;
-            this.btn_UserManagement.Image = global::DemoApp.Properties.Resources.icon_User_Management_Normal;
+            this.btn_UserManagement.Image = ((System.Drawing.Image)(resources.GetObject("btn_UserManagement.Image")));
             this.btn_UserManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_UserManagement.Location = new System.Drawing.Point(13, 268);
             this.btn_UserManagement.Margin = new System.Windows.Forms.Padding(13, 4, 0, 4);
@@ -392,7 +393,7 @@ namespace DemoApp
             this.btn_CreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CreateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btn_CreateUser.ForeColor = System.Drawing.Color.White;
-            this.btn_CreateUser.Image = global::DemoApp.Properties.Resources.icon_User_Create_Normal;
+            this.btn_CreateUser.Image = ((System.Drawing.Image)(resources.GetObject("btn_CreateUser.Image")));
             this.btn_CreateUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_CreateUser.Location = new System.Drawing.Point(13, 356);
             this.btn_CreateUser.Margin = new System.Windows.Forms.Padding(13, 4, 0, 4);
@@ -444,7 +445,7 @@ namespace DemoApp
             // pic_Logo
             // 
             this.pic_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pic_Logo.Image = global::DemoApp.Properties.Resources.Logo;
+            this.pic_Logo.Image = ((System.Drawing.Image)(resources.GetObject("pic_Logo.Image")));
             this.pic_Logo.Location = new System.Drawing.Point(8, 111);
             this.pic_Logo.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.pic_Logo.Name = "pic_Logo";
@@ -1163,7 +1164,7 @@ namespace DemoApp
             this.lblDetailsWarning.Location = new System.Drawing.Point(7, 951);
             this.lblDetailsWarning.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDetailsWarning.Name = "lblDetailsWarning";
-            this.lblDetailsWarning.Size = new System.Drawing.Size(521, 78);
+            this.lblDetailsWarning.Size = new System.Drawing.Size(513, 78);
             this.lblDetailsWarning.TabIndex = 27;
             this.lblDetailsWarning.Text = "Errors";
             this.lblDetailsWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1212,7 +1213,7 @@ namespace DemoApp
             this.cmbDetailsStatus.Location = new System.Drawing.Point(11, 462);
             this.cmbDetailsStatus.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsStatus.Name = "cmbDetailsStatus";
-            this.cmbDetailsStatus.Size = new System.Drawing.Size(517, 45);
+            this.cmbDetailsStatus.Size = new System.Drawing.Size(509, 45);
             this.cmbDetailsStatus.TabIndex = 25;
             // 
             // lblDetailsStatus
@@ -1252,7 +1253,7 @@ namespace DemoApp
             this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(5);
             this.txtDetailsDescription.Multiline = true;
             this.txtDetailsDescription.Name = "txtDetailsDescription";
-            this.txtDetailsDescription.Size = new System.Drawing.Size(517, 380);
+            this.txtDetailsDescription.Size = new System.Drawing.Size(509, 380);
             this.txtDetailsDescription.TabIndex = 21;
             // 
             // lblDetailsDescription
@@ -1276,7 +1277,7 @@ namespace DemoApp
             this.cmbDetailsPriority.Location = new System.Drawing.Point(11, 358);
             this.cmbDetailsPriority.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsPriority.Name = "cmbDetailsPriority";
-            this.cmbDetailsPriority.Size = new System.Drawing.Size(517, 45);
+            this.cmbDetailsPriority.Size = new System.Drawing.Size(509, 45);
             this.cmbDetailsPriority.TabIndex = 19;
             // 
             // lblDetailsPriority
@@ -1300,7 +1301,7 @@ namespace DemoApp
             this.cmbDetailsReporter.Location = new System.Drawing.Point(12, 254);
             this.cmbDetailsReporter.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsReporter.Name = "cmbDetailsReporter";
-            this.cmbDetailsReporter.Size = new System.Drawing.Size(517, 45);
+            this.cmbDetailsReporter.Size = new System.Drawing.Size(509, 45);
             this.cmbDetailsReporter.TabIndex = 17;
             // 
             // lblDetailsUser
@@ -1324,7 +1325,7 @@ namespace DemoApp
             this.cmbDetailsIncidentType.Location = new System.Drawing.Point(11, 150);
             this.cmbDetailsIncidentType.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsIncidentType.Name = "cmbDetailsIncidentType";
-            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(517, 45);
+            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(509, 45);
             this.cmbDetailsIncidentType.TabIndex = 15;
             // 
             // lblDetailsIncidentType
@@ -1346,7 +1347,7 @@ namespace DemoApp
             this.txtDetailsSubject.Location = new System.Drawing.Point(12, 47);
             this.txtDetailsSubject.Margin = new System.Windows.Forms.Padding(5);
             this.txtDetailsSubject.Name = "txtDetailsSubject";
-            this.txtDetailsSubject.Size = new System.Drawing.Size(517, 44);
+            this.txtDetailsSubject.Size = new System.Drawing.Size(509, 44);
             this.txtDetailsSubject.TabIndex = 12;
             // 
             // lblTicketDetailsSubjectOfIncident
