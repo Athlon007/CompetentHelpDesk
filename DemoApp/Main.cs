@@ -15,6 +15,8 @@ namespace DemoApp
         private EmployeeService employeeService;
         private List<Ticket> allTickets;
 
+        private Employee employee;
+
         // Styling variables
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
         readonly Color lightGreen = ColorTranslator.FromHtml("#479B74");
@@ -47,9 +49,14 @@ namespace DemoApp
             None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
         }
 
+        //public Main(Employee employee)
         public Main()
         {
             InitializeComponent();
+            //this.employee = employee;
+            // REPLACE THIS WITH PARSED EMPLOYEE!!!!!!!
+            employee = new Employee();
+            employee.Type = EmployeeType.ServiceDesk;
 
             //!! Probably should have an Employee parameter to display user data and for future references
             //this.employee = employee;
@@ -393,22 +400,22 @@ namespace DemoApp
             {
                 case TicketLoadStatus.Open:
                     // Load open tickets
-                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Open);
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Open, employee);
                     break;
                 case TicketLoadStatus.PastDeadline:
                     // Load tickets past deadline
-                    tickets = ticketService.GetTicketsByStatus(TicketStatus.PastDeadline);
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.PastDeadline, employee);
                     break;
                 case TicketLoadStatus.Unresolved:
                     // Load unresolved tickets
-                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Unresolved);
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Unresolved, employee);
                     break;
                 case TicketLoadStatus.Resolved:
                     // Load resolved tickets
-                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Resolved);
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Resolved, employee);
                     break;
                 default:
-                    ticketService.GetTickets(out tickets);
+                    ticketService.GetTickets(out tickets, employee);
                     // Load all tickets
                     break;
             }

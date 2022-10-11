@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
 using DAL;
 using Model;
 using MongoDB.Bson;
@@ -23,7 +22,7 @@ namespace Logic
         /// Returns a premade pipeline.
         /// </summary>
         /// <returns></returns>
-        private List<BsonDocument> GetTicketPipeline()
+        private List<BsonDocument> GetTicketPipeline(Employee employee)
         {
             var lookUp = new BsonDocument("$lookup",
                 new BsonDocument
@@ -34,8 +33,28 @@ namespace Logic
                         { "as", "reporterPerson" }
                     });
             var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
+            BsonDocument matchForEmployeeLevel = null;
+            if (employee.Type == EmployeeType.ServiceDesk)
+            {
+                matchForEmployeeLevel = new BsonDocument("$match",
+                                        new BsonDocument("$or",
+                                        new BsonArray
+                                                {
+                                                    new BsonDocument("escalationLevel", BsonNull.Value),
+                                                    new BsonDocument("escalationLevel", 0)
+                                                }));
+            }
+            else if (employee.Type > EmployeeType.ServiceDesk)
+            {
+                matchForEmployeeLevel = new BsonDocument("$match", new BsonDocument("escalationLevel", (int)employee.Type - 1));
+            }
 
-            return new List<BsonDocument>(){ lookUp, unwind };
+            if (matchForEmployeeLevel == null)
+            {
+                return new List<BsonDocument>() { lookUp, unwind };
+            }
+
+            return new List<BsonDocument>(){ lookUp, unwind, matchForEmployeeLevel };
         }
 
         /// <summary>
@@ -57,11 +76,11 @@ namespace Logic
         /// </summary>
         /// <param name="output">List object to which the output will be returned.</param>
         /// <returns>A status code and status message.</returns>
-        public StatusStruct GetTickets(out List<Ticket> output)
+        public StatusStruct GetTickets(out List<Ticket> output, Employee employee)
         {
             try
             {
-                var bsonOutput = ticketsdb.Get(GetTicketPipeline());
+                var bsonOutput = ticketsdb.Get(GetTicketPipeline(employee));
                 output = ConvertToTicketList(bsonOutput);
                 return new StatusStruct(0);
             }
@@ -73,12 +92,12 @@ namespace Logic
             }
         }
 
-        public List<Ticket> GetTicketsByStatus(TicketStatus status)
+        public List<Ticket> GetTicketsByStatus(TicketStatus status, Employee employee)
         {
             try
             {
                 // Create stages for the pipeline
-                var pipeline = GetTicketPipeline();
+                var pipeline = GetTicketPipeline(employee);
                 pipeline.Add(new BsonDocument("$match", new BsonDocument("status", (int)status)));
 
                 // Return tickets by status
@@ -98,11 +117,11 @@ namespace Logic
         /// Returns the ticket by its ID.
         /// </summary>
         /// <param name="ticketId">Ticket ID to look for.</param>
-        public StatusStruct GetById(int ticketId, out Ticket output)
+        public StatusStruct GetById(int ticketId, out Ticket output, Employee employee)
         {
             try
             {
-                var pipeline = GetTicketPipeline();
+                var pipeline = GetTicketPipeline(employee);
                 pipeline.Add(new BsonDocument("$match", new BsonDocument("_id", ticketId)));
                 var tickets = ConvertToTicketList(ticketsdb.Get(pipeline));
 
@@ -189,6 +208,7 @@ namespace Logic
                 doc.Add(new BsonElement("deadline", date.AddDays(followUpDays)));
                 doc.Add(new BsonElement("priority", priority));
                 doc.Add(new BsonElement("status", TicketStatus.Open));
+                doc.Add(new BsonElement("escalationLevel", 0));
 
                 ticketsdb.Insert(doc);
                 return new StatusStruct(0, "");

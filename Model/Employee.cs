@@ -21,7 +21,7 @@ namespace Model
         [BsonElement("lastname")]
         public string LastName { get; private set; }
         [BsonElement("type")]
-        public EmployeeType Type { get; private set; }
+        public EmployeeType Type { get; set; }
         [BsonElement("password")]
         public string PasswordHash { get ; private set; }
         [BsonElement("salt")]

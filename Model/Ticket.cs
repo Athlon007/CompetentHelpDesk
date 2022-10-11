@@ -30,8 +30,9 @@ namespace Model
         public TicketPriority Priority { get; set; }
         [BsonElement("status")]
         public TicketStatus Status { get; set; }
-
-        public Ticket() { }
+        [BsonElement("esclataionLevel")]
+        [BsonIgnoreIfNull]
+        public int EscalationLevel { get; set; }
 
         public override string ToString()
         {
@@ -41,6 +42,7 @@ namespace Model
                 $"Deadline: {Deadline}\n" +
                 $"Prority: {Priority}\n" +
                 $"Status:{Status}\n" +
+                $"Escalation Level: {EscalationLevel}" +
                 $"  Employee:{Reporter}";
         }
 
