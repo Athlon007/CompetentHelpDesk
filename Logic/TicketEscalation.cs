@@ -1,17 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Model;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
 
 namespace Logic
 {
-    class TicketEscalation
+    class TicketEscalation : TicketsService
     {
         // Konrad Figura
-        public StatusStruct EscalateTicket()
+
+        /// <summary>
+        /// Escalates the ticket to higher level.
+        /// </summary>
+        /// <param name="ticket"></param>
+        /// <returns></returns>
+        public StatusStruct EscalateTicket(Ticket ticket)
         {
-            return new StatusStruct();
+            try
+            {
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
+                var update = Builders<BsonDocument>.Update.Set("escalationLevel", (int)ticket.EscalationLevel + 1);
+                ticketsdb.Update(filter, update);
+                return new StatusStruct(0);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.Instance.WriteError(ex);
+                return new StatusStruct(1, "Unable to escalate the ticket. Try again later.");
+            }
+        }
+
+        /// <summary>
+        /// Checks if ticket can be escalated.
+        /// </summary>
+        /// <param name="ticket">Ticket to chekc if can be escalated.</param>
+        public bool IsTicketEscalatable(Ticket ticket)
+        {
+            return ticket.EscalationLevel < Enum.GetValues(typeof(EmployeeType)).Length - 2;
         }
     }
 }

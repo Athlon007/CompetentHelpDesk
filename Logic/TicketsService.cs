@@ -21,7 +21,6 @@ namespace Logic
         /// <summary>
         /// Returns a premade pipeline.
         /// </summary>
-        /// <returns></returns>
         private List<BsonDocument> GetTicketPipeline(Employee employee)
         {
             var lookUp = new BsonDocument("$lookup",
@@ -38,12 +37,12 @@ namespace Logic
             {
                 // Service desk employees can see tickets that have escalation level 0, or not have it at all.
                 matchForEmployeeLevel = new BsonDocument("$match",
-                                        new BsonDocument("$or",
-                                        new BsonArray
-                                                {
-                                                    new BsonDocument("escalationLevel", BsonNull.Value),
-                                                    new BsonDocument("escalationLevel", 0)
-                                                }));
+                                            new BsonDocument("$or",
+                                            new BsonArray
+                                            {
+                                                new BsonDocument("escalationLevel", BsonNull.Value),
+                                                new BsonDocument("escalationLevel", 0)
+                                            }));
             }
             else if (employee.Type > EmployeeType.ServiceDesk)
             {
@@ -288,7 +287,7 @@ namespace Logic
         /// <summary>
         /// Returns the highest ticket ID in the database.
         /// </summary>
-        private int GetHighestId()
+        protected int GetHighestId()
         {
             try
             {
