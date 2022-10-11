@@ -13,7 +13,10 @@ namespace DemoApp
     {
         private TicketsService ticketService;
         private EmployeeService employeeService;
+        private TicketEscalationService ticketEscalationService;
         private List<Ticket> allTickets;
+
+        private Employee employee;
 
         // Styling variables
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
@@ -47,15 +50,21 @@ namespace DemoApp
             None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
         }
 
+        //public Main(Employee employee)
         public Main()
         {
             InitializeComponent();
+            //this.employee = employee;
+            // REPLACE THIS WITH PARSED EMPLOYEE!!!!!!!
+            employee = new Employee();
+            employee.Type = EmployeeType.ServiceDesk;
 
             //!! Probably should have an Employee parameter to display user data and for future references
             //this.employee = employee;
             //databases = new Databases();
             ticketService = new TicketsService();
             employeeService = new EmployeeService();
+            ticketEscalationService = new TicketEscalationService();
 
             // Set tab control panel tabs to invisible
             tabControl.ItemSize = new Size(0, 1);
@@ -207,6 +216,7 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = false;
             btnDetailsUpdate.Enabled = false;
+            btnDetailsEscalate.Enabled = false;
 
             lblDetailsWarning.Text = "";
         }
@@ -393,22 +403,22 @@ namespace DemoApp
             {
                 case TicketLoadStatus.Open:
                     // Load open tickets
-                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Open);
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Open, employee);
                     break;
                 case TicketLoadStatus.PastDeadline:
                     // Load tickets past deadline
-                    tickets = ticketService.GetTicketsByStatus(TicketStatus.PastDeadline);
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.PastDeadline, employee);
                     break;
                 case TicketLoadStatus.Unresolved:
                     // Load unresolved tickets
-                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Unresolved);
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Unresolved, employee);
                     break;
                 case TicketLoadStatus.Resolved:
                     // Load resolved tickets
-                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Resolved);
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Resolved, employee);
                     break;
                 default:
-                    ticketService.GetTickets(out tickets);
+                    ticketService.GetTickets(out tickets, employee);
                     // Load all tickets
                     break;
             }
@@ -609,6 +619,7 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = true;
             btnDetailsUpdate.Enabled = true;
+            btnDetailsEscalate.Enabled = ticketEscalationService.IsTicketEscalatable(ticket);
         }
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
@@ -644,27 +655,44 @@ namespace DemoApp
             {
                 var response = ticketService.DeleteTicket(detailedTicket);
 
-                if (response.Code == 1)
-                {
-                    lblDetailsWarning.Text = response.Message;
-                }
-                else
+                if (response.Code == 0)
                 {
                     LoadTickets(currentTicketLoadStatus);
                     CleanTicketDetails();
                     lblDetailsWarning.Text = "";
+                }
+                else
+                {
+                    lblDetailsWarning.Text = response.Message;
                 }
             }
         }
 
         private void btnDetailsEscalate_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show($"This will escalete the ticket to Specialist department\n\n" +
+            if (listView_TicketManagement.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            Ticket ticket = listView_TicketManagement.SelectedItems[0].Tag as Ticket;
+            DialogResult result = MessageBox.Show($"This will escalete the ticket {ticket.Id} to {(EmployeeType)ticket.EscalationLevel + 2} department.\n" +
                                                  $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
-            {
-                MessageBox.Show("not implemented yet :)");
+            {                
+                var reply = ticketEscalationService.EscalateTicket(ticket);
+
+                if (reply.Code == 0)
+                {
+                    LoadTickets(currentTicketLoadStatus);
+                    CleanTicketDetails();
+                    lblDetailsWarning.Text = "";
+                }
+                else
+                {
+                    lblDetailsWarning.Text = reply.Message;
+                }
             }
         }
 
