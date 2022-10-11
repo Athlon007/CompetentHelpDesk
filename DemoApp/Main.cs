@@ -216,6 +216,7 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = false;
             btnDetailsUpdate.Enabled = false;
+            btnDetailsEscalate.Enabled = false;
 
             lblDetailsWarning.Text = "";
         }
@@ -669,8 +670,13 @@ namespace DemoApp
 
         private void btnDetailsEscalate_Click(object sender, EventArgs e)
         {
+            if (listView_TicketManagement.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
             Ticket ticket = listView_TicketManagement.SelectedItems[0].Tag as Ticket;
-            DialogResult result = MessageBox.Show($"This will escalete the ticket {ticket.Id} to {(EmployeeType)ticket.EscalationLevel + 2} department\n" +
+            DialogResult result = MessageBox.Show($"This will escalete the ticket {ticket.Id} to {(EmployeeType)ticket.EscalationLevel + 2} department.\n" +
                                                  $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)

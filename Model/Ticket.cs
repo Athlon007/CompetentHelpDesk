@@ -28,7 +28,7 @@ namespace Model
         public TicketPriority Priority { get; set; }
         [BsonElement("status")]
         public TicketStatus Status { get; set; }
-        [BsonElement("esclataionLevel")]
+        [BsonElement("escalationLevel")]
         [BsonIgnoreIfNull]
         public int EscalationLevel { get; set; }
 
