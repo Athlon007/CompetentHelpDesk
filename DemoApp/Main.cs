@@ -655,15 +655,15 @@ namespace DemoApp
             {
                 var response = ticketService.DeleteTicket(detailedTicket);
 
-                if (response.Code == 1)
-                {
-                    lblDetailsWarning.Text = response.Message;
-                }
-                else
+                if (response.Code == 0)
                 {
                     LoadTickets(currentTicketLoadStatus);
                     CleanTicketDetails();
                     lblDetailsWarning.Text = "";
+                }
+                else
+                {
+                    lblDetailsWarning.Text = response.Message;
                 }
             }
         }
@@ -683,15 +683,15 @@ namespace DemoApp
             {                
                 var reply = ticketEscalationService.EscalateTicket(ticket);
 
-                if (reply.Code == 1)
-                {
-                    lblDetailsWarning.Text = reply.Message;
-                }
-                else
+                if (reply.Code == 0)
                 {
                     LoadTickets(currentTicketLoadStatus);
                     CleanTicketDetails();
                     lblDetailsWarning.Text = "";
+                }
+                else
+                {
+                    lblDetailsWarning.Text = reply.Message;
                 }
             }
         }
