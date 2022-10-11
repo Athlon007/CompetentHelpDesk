@@ -36,6 +36,7 @@ namespace Logic
             BsonDocument matchForEmployeeLevel = null;
             if (employee.Type == EmployeeType.ServiceDesk)
             {
+                // Service desk employees can see tickets that have escalation level 0, or not have it at all.
                 matchForEmployeeLevel = new BsonDocument("$match",
                                         new BsonDocument("$or",
                                         new BsonArray
@@ -46,7 +47,13 @@ namespace Logic
             }
             else if (employee.Type > EmployeeType.ServiceDesk)
             {
+                //The higher-level employees can see the tickets with escalation level corresponding to their type minus 1.
                 matchForEmployeeLevel = new BsonDocument("$match", new BsonDocument("escalationLevel", (int)employee.Type - 1));
+            }
+            else
+            {
+                // Everyone else can see tickets that belong to them.
+                matchForEmployeeLevel = new BsonDocument("$mtch", new BsonDocument("reporter", (int)employee.Id));
             }
 
             if (matchForEmployeeLevel == null)
