@@ -52,12 +52,7 @@ namespace Logic
             else
             {
                 // Everyone else can see tickets that belong to them.
-                matchForEmployeeLevel = new BsonDocument("$mtch", new BsonDocument("reporter", (int)employee.Id));
-            }
-
-            if (matchForEmployeeLevel == null)
-            {
-                return new List<BsonDocument>() { lookUp, unwind };
+                matchForEmployeeLevel = new BsonDocument("$match", new BsonDocument("reporter", employee.Id));
             }
 
             return new List<BsonDocument>(){ lookUp, unwind, matchForEmployeeLevel };

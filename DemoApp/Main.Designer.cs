@@ -1214,7 +1214,7 @@ namespace DemoApp
             this.cmbDetailsStatus.Location = new System.Drawing.Point(11, 462);
             this.cmbDetailsStatus.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsStatus.Name = "cmbDetailsStatus";
-            this.cmbDetailsStatus.Size = new System.Drawing.Size(549, 45);
+            this.cmbDetailsStatus.Size = new System.Drawing.Size(533, 45);
             this.cmbDetailsStatus.TabIndex = 25;
             // 
             // lblDetailsStatus
@@ -1256,7 +1256,7 @@ namespace DemoApp
             this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(5);
             this.txtDetailsDescription.Multiline = true;
             this.txtDetailsDescription.Name = "txtDetailsDescription";
-            this.txtDetailsDescription.Size = new System.Drawing.Size(549, 303);
+            this.txtDetailsDescription.Size = new System.Drawing.Size(533, 303);
             this.txtDetailsDescription.TabIndex = 21;
             // 
             // lblDetailsDescription
@@ -1280,7 +1280,7 @@ namespace DemoApp
             this.cmbDetailsPriority.Location = new System.Drawing.Point(11, 358);
             this.cmbDetailsPriority.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsPriority.Name = "cmbDetailsPriority";
-            this.cmbDetailsPriority.Size = new System.Drawing.Size(549, 45);
+            this.cmbDetailsPriority.Size = new System.Drawing.Size(533, 45);
             this.cmbDetailsPriority.TabIndex = 19;
             // 
             // lblDetailsPriority
@@ -1304,7 +1304,7 @@ namespace DemoApp
             this.cmbDetailsReporter.Location = new System.Drawing.Point(12, 254);
             this.cmbDetailsReporter.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsReporter.Name = "cmbDetailsReporter";
-            this.cmbDetailsReporter.Size = new System.Drawing.Size(553, 45);
+            this.cmbDetailsReporter.Size = new System.Drawing.Size(537, 45);
             this.cmbDetailsReporter.TabIndex = 17;
             // 
             // lblDetailsUser
@@ -1328,7 +1328,7 @@ namespace DemoApp
             this.cmbDetailsIncidentType.Location = new System.Drawing.Point(11, 150);
             this.cmbDetailsIncidentType.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDetailsIncidentType.Name = "cmbDetailsIncidentType";
-            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(549, 45);
+            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(533, 45);
             this.cmbDetailsIncidentType.TabIndex = 15;
             // 
             // lblDetailsIncidentType
@@ -1350,7 +1350,7 @@ namespace DemoApp
             this.txtDetailsSubject.Location = new System.Drawing.Point(12, 47);
             this.txtDetailsSubject.Margin = new System.Windows.Forms.Padding(5);
             this.txtDetailsSubject.Name = "txtDetailsSubject";
-            this.txtDetailsSubject.Size = new System.Drawing.Size(548, 44);
+            this.txtDetailsSubject.Size = new System.Drawing.Size(532, 44);
             this.txtDetailsSubject.TabIndex = 12;
             // 
             // lblTicketDetailsSubjectOfIncident

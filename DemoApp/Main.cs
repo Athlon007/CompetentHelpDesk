@@ -495,7 +495,6 @@ namespace DemoApp
                 followUpDays,
                 txtDescriptionCT.Text);
 
-            // TODO: Replace this with some overlay.
             if (submitted.Code == 0)
             {
                 // Clean text boxes.
@@ -709,18 +708,15 @@ namespace DemoApp
         protected override void WndProc(ref Message m)
         {
             // Overrides the default behaviour of Maximize/Minimize buttons.
-            if (m.Msg == WM_SYSCOMMAND)
+            if (m.Msg == WM_SYSCOMMAND && ((int)m.WParam == SC_MAXIMIZE || (int)m.WParam == SC_RESTORE))
             {
-                if ((int)m.WParam == SC_MAXIMIZE || (int)m.WParam == SC_RESTORE) 
-                {
-                    // Main_ResizeBegin doesn't seem to be called when Maximize/Restore button is clicked.
-                    // So we do that before resize behaviour is called.
-                    PreResize();
-                    base.WndProc(ref m);
-                    // And now postresize.
-                    PostResize();
-                    return;
-                }
+                // Main_ResizeBegin doesn't seem to be called when Maximize/Restore button is clicked.
+                // So we do that before resize behaviour is called.
+                PreResize();
+                base.WndProc(ref m);
+                // And now postresize.
+                PostResize();
+                return;
             }
             base.WndProc(ref m);
         }
@@ -731,7 +727,6 @@ namespace DemoApp
         /// </summary>
         private void PreResize()
         {
-            // TODO: Keep the sizes of Ticket Management headers?
             splitPercentage = splitContainer1.SplitterDistance / (double)splitContainer1.Width;
             rPnl_TicketManagement.SuspendLayout();
             rPnl_TicketManagement.SuspendDrawing();

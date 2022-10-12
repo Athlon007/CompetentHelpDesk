@@ -57,12 +57,12 @@ namespace Model
 
         public override bool Equals(object obj)
         {
-            if (obj is Ticket)
+            if (obj is Ticket ticket)
             {
-                return (obj as Ticket).Id == this.Id;
+                return ticket.Id == this.Id;
             }
 
-            return base.Equals(obj);
+            return false;
         }
 
         public override int GetHashCode()

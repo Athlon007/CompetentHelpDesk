@@ -46,12 +46,12 @@ namespace Model
 
         public override bool Equals(object obj)
         {
-            if (obj is Employee)
+            if (obj is Employee employee)
             {
-                return ((Employee)obj).Id == this.Id;
+                return employee.Id == this.Id;
             }
 
-            return base.Equals(obj);
+            return false;
         }
 
         public override int GetHashCode()
