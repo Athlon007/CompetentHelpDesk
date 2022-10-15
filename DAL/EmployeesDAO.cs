@@ -51,9 +51,21 @@ namespace DAL
             return employee;
         }
 
+        public Employee GetByUsername(string username)
+        {
+            var builder = Builders<Employee>.Filter;
+            var filter = builder.Eq("username", username);
+            var employee = Database.GetCollection<Employee>("Employees").Find(filter).FirstOrDefault();
+
+            return employee;
+        }
+
+<<<<<<< Updated upstream
         //Using collection Employees
         //using the following script for data
         // db.Employees.insertOne({'Id': '1', 'Email': 'someone@outlook.com', 'Username': 'Employee1', 'FirstName': 'First name', 'LastName': 'Last name', 'PasswordHash': 'PasswordHash', 'Salt':'Salt'})
+=======
+>>>>>>> Stashed changes
 
         //deserialize document to use instance of class in the UI
         public Employee ConvertDocumentToObject(BsonDocument bsonDocument)
@@ -83,5 +95,9 @@ namespace DAL
         
         }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 }

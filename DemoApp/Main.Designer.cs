@@ -148,7 +148,11 @@ namespace DemoApp
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+<<<<<<< Updated upstream
             this.tableLayoutPanel.Size = new System.Drawing.Size(1604, 1024);
+=======
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1443, 788);
+>>>>>>> Stashed changes
             this.tableLayoutPanel.TabIndex = 1;
             // 
             // sideBar
@@ -171,7 +175,11 @@ namespace DemoApp
             this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+<<<<<<< Updated upstream
             this.sideBar.Size = new System.Drawing.Size(347, 1018);
+=======
+            this.sideBar.Size = new System.Drawing.Size(347, 782);
+>>>>>>> Stashed changes
             this.sideBar.TabIndex = 1;
             // 
             // tblPnl_UserInfo
@@ -242,7 +250,11 @@ namespace DemoApp
             this.flowPnl_Navigation.Location = new System.Drawing.Point(0, 350);
             this.flowPnl_Navigation.Margin = new System.Windows.Forms.Padding(0, 50, 0, 0);
             this.flowPnl_Navigation.Name = "flowPnl_Navigation";
+<<<<<<< Updated upstream
             this.flowPnl_Navigation.Size = new System.Drawing.Size(347, 608);
+=======
+            this.flowPnl_Navigation.Size = new System.Drawing.Size(347, 372);
+>>>>>>> Stashed changes
             this.flowPnl_Navigation.TabIndex = 2;
             this.flowPnl_Navigation.WrapContents = false;
             // 
@@ -373,7 +385,11 @@ namespace DemoApp
             this.lbl_LogOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_LogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lbl_LogOut.ForeColor = System.Drawing.Color.White;
+<<<<<<< Updated upstream
             this.lbl_LogOut.Location = new System.Drawing.Point(3, 958);
+=======
+            this.lbl_LogOut.Location = new System.Drawing.Point(3, 722);
+>>>>>>> Stashed changes
             this.lbl_LogOut.Name = "lbl_LogOut";
             this.lbl_LogOut.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.lbl_LogOut.Size = new System.Drawing.Size(341, 60);
@@ -402,7 +418,11 @@ namespace DemoApp
             // pic_Logo
             // 
             this.pic_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< Updated upstream
             this.pic_Logo.Image = global::DemoApp.Properties.Resources.Logo;
+=======
+            this.pic_Logo.Image = ((System.Drawing.Image)(resources.GetObject("pic_Logo.Image")));
+>>>>>>> Stashed changes
             this.pic_Logo.Location = new System.Drawing.Point(6, 83);
             this.pic_Logo.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.pic_Logo.Name = "pic_Logo";
@@ -452,7 +472,11 @@ namespace DemoApp
             this.tabControl.Name = "tabControl";
             this.tabControl.Padding = new System.Drawing.Point(0, 0);
             this.tabControl.SelectedIndex = 0;
+<<<<<<< Updated upstream
             this.tabControl.Size = new System.Drawing.Size(1239, 994);
+=======
+            this.tabControl.Size = new System.Drawing.Size(1078, 758);
+>>>>>>> Stashed changes
             this.tabControl.TabIndex = 2;
             this.tabControl.TabStop = false;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_IndexChanged);
@@ -465,7 +489,11 @@ namespace DemoApp
             this.tab_Dashboard.Location = new System.Drawing.Point(4, 29);
             this.tab_Dashboard.Margin = new System.Windows.Forms.Padding(0);
             this.tab_Dashboard.Name = "tab_Dashboard";
+<<<<<<< Updated upstream
             this.tab_Dashboard.Size = new System.Drawing.Size(1231, 961);
+=======
+            this.tab_Dashboard.Size = new System.Drawing.Size(1070, 725);
+>>>>>>> Stashed changes
             this.tab_Dashboard.TabIndex = 0;
             this.tab_Dashboard.Text = "Dashboard";
             // 
@@ -482,7 +510,11 @@ namespace DemoApp
             this.rPnl_Dashboard.Location = new System.Drawing.Point(0, 0);
             this.rPnl_Dashboard.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_Dashboard.Name = "rPnl_Dashboard";
+<<<<<<< Updated upstream
             this.rPnl_Dashboard.Size = new System.Drawing.Size(1231, 961);
+=======
+            this.rPnl_Dashboard.Size = new System.Drawing.Size(1070, 725);
+>>>>>>> Stashed changes
             this.rPnl_Dashboard.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_Dashboard.TabIndex = 0;
             // 
@@ -810,7 +842,11 @@ namespace DemoApp
             this.pnl_DashBoard_Title.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_DashBoard_Title.Location = new System.Drawing.Point(0, 60);
             this.pnl_DashBoard_Title.Name = "pnl_DashBoard_Title";
+<<<<<<< Updated upstream
             this.pnl_DashBoard_Title.Size = new System.Drawing.Size(1231, 60);
+=======
+            this.pnl_DashBoard_Title.Size = new System.Drawing.Size(1070, 60);
+>>>>>>> Stashed changes
             this.pnl_DashBoard_Title.TabIndex = 3;
             // 
             // btn_ShowAllIncidents
@@ -849,7 +885,11 @@ namespace DemoApp
             this.header_Dashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.header_Dashboard.Location = new System.Drawing.Point(0, 0);
             this.header_Dashboard.Name = "header_Dashboard";
+<<<<<<< Updated upstream
             this.header_Dashboard.Size = new System.Drawing.Size(1231, 60);
+=======
+            this.header_Dashboard.Size = new System.Drawing.Size(1070, 60);
+>>>>>>> Stashed changes
             this.header_Dashboard.TabIndex = 0;
             // 
             // lbl_HeaderDashboard
@@ -871,6 +911,10 @@ namespace DemoApp
             this.tab_TicketManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.tab_TicketManagement.Controls.Add(this.rPnl_TicketManagement);
             this.tab_TicketManagement.Location = new System.Drawing.Point(4, 29);
+<<<<<<< Updated upstream
+=======
+            this.tab_TicketManagement.Margin = new System.Windows.Forms.Padding(0);
+>>>>>>> Stashed changes
             this.tab_TicketManagement.Name = "tab_TicketManagement";
             this.tab_TicketManagement.Size = new System.Drawing.Size(1231, 961);
             this.tab_TicketManagement.TabIndex = 2;
@@ -891,6 +935,419 @@ namespace DemoApp
             this.rPnl_TicketManagement.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_TicketManagement.TabIndex = 1;
             // 
+<<<<<<< Updated upstream
+=======
+            // pnl_TicketManagement
+            // 
+            this.pnl_TicketManagement.BackColor = System.Drawing.Color.White;
+            this.pnl_TicketManagement.BorderAngle = 90F;
+            this.pnl_TicketManagement.BorderRadius = 40;
+            this.pnl_TicketManagement.Controls.Add(this.splitContainer1);
+            this.pnl_TicketManagement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_TicketManagement.ForeColor = System.Drawing.Color.Black;
+            this.pnl_TicketManagement.Location = new System.Drawing.Point(0, 60);
+            this.pnl_TicketManagement.Name = "pnl_TicketManagement";
+            this.pnl_TicketManagement.Size = new System.Drawing.Size(1231, 901);
+            this.pnl_TicketManagement.SurfaceColor = System.Drawing.Color.Empty;
+            this.pnl_TicketManagement.TabIndex = 7;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.flowPnl_TicketManagement_SearchButtons);
+            this.splitContainer1.Panel1.Controls.Add(this.txtBox_SearchBar);
+            this.splitContainer1.Panel1.Controls.Add(this.listView_TicketManagement);
+            this.splitContainer1.Panel1MinSize = 1049;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.lblDetailsWarning);
+            this.splitContainer1.Panel2.Controls.Add(this.btnDetailsUpdate);
+            this.splitContainer1.Panel2.Controls.Add(this.btnDetailsEscalate);
+            this.splitContainer1.Panel2.Controls.Add(this.cmbDetailsStatus);
+            this.splitContainer1.Panel2.Controls.Add(this.lblDetailsStatus);
+            this.splitContainer1.Panel2.Controls.Add(this.btnDetailsDelete);
+            this.splitContainer1.Panel2.Controls.Add(this.txtDetailsDescription);
+            this.splitContainer1.Panel2.Controls.Add(this.lblDetailsDescription);
+            this.splitContainer1.Panel2.Controls.Add(this.cmbDetailsPriority);
+            this.splitContainer1.Panel2.Controls.Add(this.lblDetailsPriority);
+            this.splitContainer1.Panel2.Controls.Add(this.cmbDetailsReporter);
+            this.splitContainer1.Panel2.Controls.Add(this.lblDetailsUser);
+            this.splitContainer1.Panel2.Controls.Add(this.cmbDetailsIncidentType);
+            this.splitContainer1.Panel2.Controls.Add(this.lblDetailsIncidentType);
+            this.splitContainer1.Panel2.Controls.Add(this.txtDetailsSubject);
+            this.splitContainer1.Panel2.Controls.Add(this.lblTicketDetailsSubjectOfIncident);
+            this.splitContainer1.Panel2MinSize = 300;
+            this.splitContainer1.Size = new System.Drawing.Size(1231, 901);
+            this.splitContainer1.SplitterDistance = 1049;
+            this.splitContainer1.SplitterWidth = 9;
+            this.splitContainer1.TabIndex = 15;
+            // 
+            // flowPnl_TicketManagement_SearchButtons
+            // 
+            this.flowPnl_TicketManagement_SearchButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowPnl_TicketManagement_SearchButtons.Controls.Add(this.btn_Display_Tickets_All);
+            this.flowPnl_TicketManagement_SearchButtons.Controls.Add(this.btn_Display_Tickets_Open);
+            this.flowPnl_TicketManagement_SearchButtons.Controls.Add(this.btn_Display_Tickets_PastDeadline);
+            this.flowPnl_TicketManagement_SearchButtons.Controls.Add(this.btn_Display_Tickets_Unresolved);
+            this.flowPnl_TicketManagement_SearchButtons.Controls.Add(this.btn_Display_Tickets_Resolved);
+            this.flowPnl_TicketManagement_SearchButtons.Location = new System.Drawing.Point(2, 4);
+            this.flowPnl_TicketManagement_SearchButtons.Margin = new System.Windows.Forms.Padding(0);
+            this.flowPnl_TicketManagement_SearchButtons.Name = "flowPnl_TicketManagement_SearchButtons";
+            this.flowPnl_TicketManagement_SearchButtons.Size = new System.Drawing.Size(776, 67);
+            this.flowPnl_TicketManagement_SearchButtons.TabIndex = 14;
+            // 
+            // btn_Display_Tickets_All
+            // 
+            this.btn_Display_Tickets_All.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btn_Display_Tickets_All.FlatAppearance.BorderSize = 0;
+            this.btn_Display_Tickets_All.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btn_Display_Tickets_All.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Display_Tickets_All.ForeColor = System.Drawing.Color.White;
+            this.btn_Display_Tickets_All.Location = new System.Drawing.Point(3, 3);
+            this.btn_Display_Tickets_All.Name = "btn_Display_Tickets_All";
+            this.btn_Display_Tickets_All.Size = new System.Drawing.Size(144, 40);
+            this.btn_Display_Tickets_All.TabIndex = 12;
+            this.btn_Display_Tickets_All.Text = "All";
+            this.btn_Display_Tickets_All.UseVisualStyleBackColor = false;
+            this.btn_Display_Tickets_All.Click += new System.EventHandler(this.Btn_Display_Tickets_All_Click);
+            // 
+            // btn_Display_Tickets_Open
+            // 
+            this.btn_Display_Tickets_Open.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btn_Display_Tickets_Open.FlatAppearance.BorderSize = 0;
+            this.btn_Display_Tickets_Open.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btn_Display_Tickets_Open.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Display_Tickets_Open.ForeColor = System.Drawing.Color.White;
+            this.btn_Display_Tickets_Open.Location = new System.Drawing.Point(153, 3);
+            this.btn_Display_Tickets_Open.Name = "btn_Display_Tickets_Open";
+            this.btn_Display_Tickets_Open.Size = new System.Drawing.Size(150, 40);
+            this.btn_Display_Tickets_Open.TabIndex = 10;
+            this.btn_Display_Tickets_Open.Text = "Open";
+            this.btn_Display_Tickets_Open.UseVisualStyleBackColor = false;
+            this.btn_Display_Tickets_Open.Click += new System.EventHandler(this.Btn_Display_Tickets_Open_Click);
+            // 
+            // btn_Display_Tickets_PastDeadline
+            // 
+            this.btn_Display_Tickets_PastDeadline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btn_Display_Tickets_PastDeadline.FlatAppearance.BorderSize = 0;
+            this.btn_Display_Tickets_PastDeadline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btn_Display_Tickets_PastDeadline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Display_Tickets_PastDeadline.ForeColor = System.Drawing.Color.White;
+            this.btn_Display_Tickets_PastDeadline.Location = new System.Drawing.Point(309, 3);
+            this.btn_Display_Tickets_PastDeadline.Name = "btn_Display_Tickets_PastDeadline";
+            this.btn_Display_Tickets_PastDeadline.Size = new System.Drawing.Size(150, 40);
+            this.btn_Display_Tickets_PastDeadline.TabIndex = 9;
+            this.btn_Display_Tickets_PastDeadline.Text = "Past Deadline";
+            this.btn_Display_Tickets_PastDeadline.UseVisualStyleBackColor = false;
+            this.btn_Display_Tickets_PastDeadline.Click += new System.EventHandler(this.Btn_Display_Tickets_PastDeadline_Click);
+            // 
+            // btn_Display_Tickets_Unresolved
+            // 
+            this.btn_Display_Tickets_Unresolved.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btn_Display_Tickets_Unresolved.FlatAppearance.BorderSize = 0;
+            this.btn_Display_Tickets_Unresolved.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btn_Display_Tickets_Unresolved.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Display_Tickets_Unresolved.ForeColor = System.Drawing.Color.White;
+            this.btn_Display_Tickets_Unresolved.Location = new System.Drawing.Point(465, 3);
+            this.btn_Display_Tickets_Unresolved.Name = "btn_Display_Tickets_Unresolved";
+            this.btn_Display_Tickets_Unresolved.Size = new System.Drawing.Size(150, 40);
+            this.btn_Display_Tickets_Unresolved.TabIndex = 8;
+            this.btn_Display_Tickets_Unresolved.Text = "Unresolved";
+            this.btn_Display_Tickets_Unresolved.UseVisualStyleBackColor = false;
+            this.btn_Display_Tickets_Unresolved.Click += new System.EventHandler(this.Btn_Display_Tickets_Unresolved_Click);
+            // 
+            // btn_Display_Tickets_Resolved
+            // 
+            this.btn_Display_Tickets_Resolved.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btn_Display_Tickets_Resolved.FlatAppearance.BorderSize = 0;
+            this.btn_Display_Tickets_Resolved.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btn_Display_Tickets_Resolved.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Display_Tickets_Resolved.ForeColor = System.Drawing.Color.White;
+            this.btn_Display_Tickets_Resolved.Location = new System.Drawing.Point(621, 3);
+            this.btn_Display_Tickets_Resolved.Name = "btn_Display_Tickets_Resolved";
+            this.btn_Display_Tickets_Resolved.Size = new System.Drawing.Size(150, 40);
+            this.btn_Display_Tickets_Resolved.TabIndex = 7;
+            this.btn_Display_Tickets_Resolved.Text = "Resolved";
+            this.btn_Display_Tickets_Resolved.UseVisualStyleBackColor = false;
+            this.btn_Display_Tickets_Resolved.Click += new System.EventHandler(this.btn_Display_Tickets_Resolved_Click);
+            // 
+            // txtBox_SearchBar
+            // 
+            this.txtBox_SearchBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBox_SearchBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBox_SearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtBox_SearchBar.Location = new System.Drawing.Point(6, 74);
+            this.txtBox_SearchBar.Name = "txtBox_SearchBar";
+            this.txtBox_SearchBar.Size = new System.Drawing.Size(773, 35);
+            this.txtBox_SearchBar.TabIndex = 11;
+            this.txtBox_SearchBar.Text = "Search...";
+            this.txtBox_SearchBar.TextChanged += new System.EventHandler(this.txtBox_SearchBar_TextChanged);
+            // 
+            // listView_TicketManagement
+            // 
+            this.listView_TicketManagement.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView_TicketManagement.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.col_Id,
+            this.col_Subject,
+            this.col_User,
+            this.col_Date,
+            this.col_Status});
+            this.listView_TicketManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.listView_TicketManagement.FullRowSelect = true;
+            this.listView_TicketManagement.HideSelection = false;
+            this.listView_TicketManagement.Location = new System.Drawing.Point(6, 139);
+            this.listView_TicketManagement.MultiSelect = false;
+            this.listView_TicketManagement.Name = "listView_TicketManagement";
+            this.listView_TicketManagement.Size = new System.Drawing.Size(773, 753);
+            this.listView_TicketManagement.TabIndex = 13;
+            this.listView_TicketManagement.UseCompatibleStateImageBehavior = false;
+            this.listView_TicketManagement.View = System.Windows.Forms.View.Details;
+            this.listView_TicketManagement.SelectedIndexChanged += new System.EventHandler(this.listView_TicketManagement_SelectedIndexChanged);
+            // 
+            // col_Id
+            // 
+            this.col_Id.Text = "Id";
+            // 
+            // col_Subject
+            // 
+            this.col_Subject.Text = "Subject";
+            this.col_Subject.Width = 200;
+            // 
+            // col_User
+            // 
+            this.col_User.Text = "User";
+            this.col_User.Width = 120;
+            // 
+            // col_Date
+            // 
+            this.col_Date.Text = "Date";
+            this.col_Date.Width = 180;
+            // 
+            // col_Status
+            // 
+            this.col_Status.Text = "Status";
+            this.col_Status.Width = 180;
+            // 
+            // lblDetailsWarning
+            // 
+            this.lblDetailsWarning.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblDetailsWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblDetailsWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblDetailsWarning.Location = new System.Drawing.Point(0, 656);
+            this.lblDetailsWarning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDetailsWarning.Name = "lblDetailsWarning";
+            this.lblDetailsWarning.Size = new System.Drawing.Size(430, 58);
+            this.lblDetailsWarning.TabIndex = 27;
+            this.lblDetailsWarning.Text = "Line1\r\nLine2\r\n";
+            this.lblDetailsWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnDetailsUpdate
+            // 
+            this.btnDetailsUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btnDetailsUpdate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnDetailsUpdate.FlatAppearance.BorderSize = 0;
+            this.btnDetailsUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btnDetailsUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetailsUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnDetailsUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnDetailsUpdate.Location = new System.Drawing.Point(0, 714);
+            this.btnDetailsUpdate.Name = "btnDetailsUpdate";
+            this.btnDetailsUpdate.Size = new System.Drawing.Size(430, 60);
+            this.btnDetailsUpdate.TabIndex = 22;
+            this.btnDetailsUpdate.Text = "Update";
+            this.btnDetailsUpdate.UseVisualStyleBackColor = false;
+            this.btnDetailsUpdate.Click += new System.EventHandler(this.btnDetailsUpdate_Click);
+            // 
+            // btnDetailsEscalate
+            // 
+            this.btnDetailsEscalate.BackColor = System.Drawing.Color.White;
+            this.btnDetailsEscalate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnDetailsEscalate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btnDetailsEscalate.FlatAppearance.BorderSize = 6;
+            this.btnDetailsEscalate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetailsEscalate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnDetailsEscalate.ForeColor = System.Drawing.Color.Black;
+            this.btnDetailsEscalate.Location = new System.Drawing.Point(0, 774);
+            this.btnDetailsEscalate.Name = "btnDetailsEscalate";
+            this.btnDetailsEscalate.Size = new System.Drawing.Size(430, 60);
+            this.btnDetailsEscalate.TabIndex = 26;
+            this.btnDetailsEscalate.Text = "Escalate";
+            this.btnDetailsEscalate.UseVisualStyleBackColor = false;
+            this.btnDetailsEscalate.Click += new System.EventHandler(this.btnDetailsEscalate_Click);
+            // 
+            // cmbDetailsStatus
+            // 
+            this.cmbDetailsStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbDetailsStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDetailsStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbDetailsStatus.FormattingEnabled = true;
+            this.cmbDetailsStatus.Location = new System.Drawing.Point(8, 346);
+            this.cmbDetailsStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDetailsStatus.Name = "cmbDetailsStatus";
+            this.cmbDetailsStatus.Size = new System.Drawing.Size(395, 37);
+            this.cmbDetailsStatus.TabIndex = 25;
+            // 
+            // lblDetailsStatus
+            // 
+            this.lblDetailsStatus.AutoSize = true;
+            this.lblDetailsStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDetailsStatus.Location = new System.Drawing.Point(4, 315);
+            this.lblDetailsStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDetailsStatus.Name = "lblDetailsStatus";
+            this.lblDetailsStatus.Size = new System.Drawing.Size(79, 29);
+            this.lblDetailsStatus.TabIndex = 24;
+            this.lblDetailsStatus.Text = "Status";
+            // 
+            // btnDetailsDelete
+            // 
+            this.btnDetailsDelete.BackColor = System.Drawing.Color.Brown;
+            this.btnDetailsDelete.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnDetailsDelete.FlatAppearance.BorderSize = 0;
+            this.btnDetailsDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnDetailsDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetailsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnDetailsDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDetailsDelete.Location = new System.Drawing.Point(0, 834);
+            this.btnDetailsDelete.Name = "btnDetailsDelete";
+            this.btnDetailsDelete.Size = new System.Drawing.Size(430, 60);
+            this.btnDetailsDelete.TabIndex = 23;
+            this.btnDetailsDelete.Text = "Delete";
+            this.btnDetailsDelete.UseVisualStyleBackColor = false;
+            this.btnDetailsDelete.Click += new System.EventHandler(this.btnDetailsDelete_Click);
+            // 
+            // txtDetailsDescription
+            // 
+            this.txtDetailsDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDetailsDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtDetailsDescription.Location = new System.Drawing.Point(8, 424);
+            this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDetailsDescription.Multiline = true;
+            this.txtDetailsDescription.Name = "txtDetailsDescription";
+            this.txtDetailsDescription.Size = new System.Drawing.Size(395, 228);
+            this.txtDetailsDescription.TabIndex = 21;
+            // 
+            // lblDetailsDescription
+            // 
+            this.lblDetailsDescription.AutoSize = true;
+            this.lblDetailsDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDetailsDescription.Location = new System.Drawing.Point(3, 393);
+            this.lblDetailsDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDetailsDescription.Name = "lblDetailsDescription";
+            this.lblDetailsDescription.Size = new System.Drawing.Size(135, 29);
+            this.lblDetailsDescription.TabIndex = 20;
+            this.lblDetailsDescription.Text = "Description";
+            // 
+            // cmbDetailsPriority
+            // 
+            this.cmbDetailsPriority.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbDetailsPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDetailsPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbDetailsPriority.FormattingEnabled = true;
+            this.cmbDetailsPriority.Location = new System.Drawing.Point(8, 268);
+            this.cmbDetailsPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDetailsPriority.Name = "cmbDetailsPriority";
+            this.cmbDetailsPriority.Size = new System.Drawing.Size(395, 37);
+            this.cmbDetailsPriority.TabIndex = 19;
+            // 
+            // lblDetailsPriority
+            // 
+            this.lblDetailsPriority.AutoSize = true;
+            this.lblDetailsPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDetailsPriority.Location = new System.Drawing.Point(4, 237);
+            this.lblDetailsPriority.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDetailsPriority.Name = "lblDetailsPriority";
+            this.lblDetailsPriority.Size = new System.Drawing.Size(88, 29);
+            this.lblDetailsPriority.TabIndex = 18;
+            this.lblDetailsPriority.Text = "Priority";
+            // 
+            // cmbDetailsReporter
+            // 
+            this.cmbDetailsReporter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbDetailsReporter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDetailsReporter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbDetailsReporter.FormattingEnabled = true;
+            this.cmbDetailsReporter.Location = new System.Drawing.Point(9, 190);
+            this.cmbDetailsReporter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDetailsReporter.Name = "cmbDetailsReporter";
+            this.cmbDetailsReporter.Size = new System.Drawing.Size(398, 37);
+            this.cmbDetailsReporter.TabIndex = 17;
+            // 
+            // lblDetailsUser
+            // 
+            this.lblDetailsUser.AutoSize = true;
+            this.lblDetailsUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDetailsUser.Location = new System.Drawing.Point(3, 159);
+            this.lblDetailsUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDetailsUser.Name = "lblDetailsUser";
+            this.lblDetailsUser.Size = new System.Drawing.Size(198, 29);
+            this.lblDetailsUser.TabIndex = 16;
+            this.lblDetailsUser.Text = "Reported by user";
+            // 
+            // cmbDetailsIncidentType
+            // 
+            this.cmbDetailsIncidentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbDetailsIncidentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDetailsIncidentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbDetailsIncidentType.FormattingEnabled = true;
+            this.cmbDetailsIncidentType.Location = new System.Drawing.Point(8, 112);
+            this.cmbDetailsIncidentType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDetailsIncidentType.Name = "cmbDetailsIncidentType";
+            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(395, 37);
+            this.cmbDetailsIncidentType.TabIndex = 15;
+            // 
+            // lblDetailsIncidentType
+            // 
+            this.lblDetailsIncidentType.AutoSize = true;
+            this.lblDetailsIncidentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDetailsIncidentType.Location = new System.Drawing.Point(4, 81);
+            this.lblDetailsIncidentType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDetailsIncidentType.Name = "lblDetailsIncidentType";
+            this.lblDetailsIncidentType.Size = new System.Drawing.Size(184, 29);
+            this.lblDetailsIncidentType.TabIndex = 13;
+            this.lblDetailsIncidentType.Text = "Type of incident";
+            // 
+            // txtDetailsSubject
+            // 
+            this.txtDetailsSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDetailsSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtDetailsSubject.Location = new System.Drawing.Point(9, 35);
+            this.txtDetailsSubject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDetailsSubject.Name = "txtDetailsSubject";
+            this.txtDetailsSubject.Size = new System.Drawing.Size(394, 35);
+            this.txtDetailsSubject.TabIndex = 12;
+            // 
+            // lblTicketDetailsSubjectOfIncident
+            // 
+            this.lblTicketDetailsSubjectOfIncident.AutoSize = true;
+            this.lblTicketDetailsSubjectOfIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblTicketDetailsSubjectOfIncident.Location = new System.Drawing.Point(4, 4);
+            this.lblTicketDetailsSubjectOfIncident.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTicketDetailsSubjectOfIncident.Name = "lblTicketDetailsSubjectOfIncident";
+            this.lblTicketDetailsSubjectOfIncident.Size = new System.Drawing.Size(210, 29);
+            this.lblTicketDetailsSubjectOfIncident.TabIndex = 11;
+            this.lblTicketDetailsSubjectOfIncident.Text = "Subject of incident";
+            // 
+>>>>>>> Stashed changes
             // header_TicketManagement
             // 
             this.header_TicketManagement.Controls.Add(this.lbl_HeaderTicketManagement);
@@ -955,6 +1412,21 @@ namespace DemoApp
             this.rPnl_CreateTicket.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateTicket.TabIndex = 2;
             // 
+<<<<<<< Updated upstream
+=======
+            // lblWarningsCT
+            // 
+            this.lblWarningsCT.AutoSize = true;
+            this.lblWarningsCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.lblWarningsCT.ForeColor = System.Drawing.Color.Red;
+            this.lblWarningsCT.Location = new System.Drawing.Point(285, 712);
+            this.lblWarningsCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWarningsCT.Name = "lblWarningsCT";
+            this.lblWarningsCT.Size = new System.Drawing.Size(148, 60);
+            this.lblWarningsCT.TabIndex = 18;
+            this.lblWarningsCT.Text = "wow, such errors.\r\nmany mistakes.\r\nvery issues.";
+            // 
+>>>>>>> Stashed changes
             // btnCancelCT
             // 
             this.btnCancelCT.BackColor = System.Drawing.Color.White;
@@ -964,7 +1436,11 @@ namespace DemoApp
             this.btnCancelCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnCancelCT.ForeColor = System.Drawing.Color.Black;
             this.btnCancelCT.Location = new System.Drawing.Point(558, 640);
+<<<<<<< Updated upstream
             this.btnCancelCT.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.btnCancelCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.btnCancelCT.Name = "btnCancelCT";
             this.btnCancelCT.Size = new System.Drawing.Size(225, 60);
             this.btnCancelCT.TabIndex = 17;
@@ -979,7 +1455,11 @@ namespace DemoApp
             this.btnSubmitTicketCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSubmitTicketCT.ForeColor = System.Drawing.Color.White;
             this.btnSubmitTicketCT.Location = new System.Drawing.Point(290, 640);
+<<<<<<< Updated upstream
             this.btnSubmitTicketCT.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.btnSubmitTicketCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.btnSubmitTicketCT.Name = "btnSubmitTicketCT";
             this.btnSubmitTicketCT.Size = new System.Drawing.Size(225, 60);
             this.btnSubmitTicketCT.TabIndex = 16;
@@ -992,7 +1472,11 @@ namespace DemoApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescriptionCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDescriptionCT.Location = new System.Drawing.Point(290, 363);
+<<<<<<< Updated upstream
             this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.txtDescriptionCT.Multiline = true;
             this.txtDescriptionCT.Name = "txtDescriptionCT";
             this.txtDescriptionCT.Size = new System.Drawing.Size(496, 266);
@@ -1006,7 +1490,11 @@ namespace DemoApp
             this.cmbDeadlineCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDeadlineCT.FormattingEnabled = true;
             this.cmbDeadlineCT.Location = new System.Drawing.Point(290, 310);
+<<<<<<< Updated upstream
             this.cmbDeadlineCT.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.cmbDeadlineCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.cmbDeadlineCT.Name = "cmbDeadlineCT";
             this.cmbDeadlineCT.Size = new System.Drawing.Size(496, 37);
             this.cmbDeadlineCT.TabIndex = 14;
@@ -1019,7 +1507,11 @@ namespace DemoApp
             this.cmbPriorityCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbPriorityCT.FormattingEnabled = true;
             this.cmbPriorityCT.Location = new System.Drawing.Point(290, 262);
+<<<<<<< Updated upstream
             this.cmbPriorityCT.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.cmbPriorityCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.cmbPriorityCT.Name = "cmbPriorityCT";
             this.cmbPriorityCT.Size = new System.Drawing.Size(496, 37);
             this.cmbPriorityCT.TabIndex = 13;
@@ -1032,7 +1524,11 @@ namespace DemoApp
             this.cmbUserCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbUserCT.FormattingEnabled = true;
             this.cmbUserCT.Location = new System.Drawing.Point(290, 214);
+<<<<<<< Updated upstream
             this.cmbUserCT.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.cmbUserCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.cmbUserCT.Name = "cmbUserCT";
             this.cmbUserCT.Size = new System.Drawing.Size(496, 37);
             this.cmbUserCT.TabIndex = 12;
@@ -1045,7 +1541,11 @@ namespace DemoApp
             this.cmbIncidentTypeCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbIncidentTypeCT.FormattingEnabled = true;
             this.cmbIncidentTypeCT.Location = new System.Drawing.Point(290, 164);
+<<<<<<< Updated upstream
             this.cmbIncidentTypeCT.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.cmbIncidentTypeCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.cmbIncidentTypeCT.Name = "cmbIncidentTypeCT";
             this.cmbIncidentTypeCT.Size = new System.Drawing.Size(496, 37);
             this.cmbIncidentTypeCT.TabIndex = 11;
@@ -1056,7 +1556,11 @@ namespace DemoApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubjectOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtSubjectOfIncidentCT.Location = new System.Drawing.Point(290, 118);
+<<<<<<< Updated upstream
             this.txtSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.txtSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.txtSubjectOfIncidentCT.Name = "txtSubjectOfIncidentCT";
             this.txtSubjectOfIncidentCT.Size = new System.Drawing.Size(496, 35);
             this.txtSubjectOfIncidentCT.TabIndex = 10;
@@ -1132,8 +1636,14 @@ namespace DemoApp
             this.dtpReportedCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+<<<<<<< Updated upstream
             this.dtpReportedCT.Location = new System.Drawing.Point(290, 68);
             this.dtpReportedCT.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.dtpReportedCT.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpReportedCT.Location = new System.Drawing.Point(290, 68);
+            this.dtpReportedCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.dtpReportedCT.Name = "dtpReportedCT";
             this.dtpReportedCT.Size = new System.Drawing.Size(496, 35);
             this.dtpReportedCT.TabIndex = 3;
@@ -1273,11 +1783,19 @@ namespace DemoApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+<<<<<<< Updated upstream
             this.ClientSize = new System.Drawing.Size(1604, 1024);
             this.Controls.Add(this.tableLayoutPanel);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1616, 1006);
+=======
+            this.ClientSize = new System.Drawing.Size(1443, 788);
+            this.Controls.Add(this.tableLayoutPanel);
+            this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1444, 768);
+>>>>>>> Stashed changes
             this.Name = "Main";
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Form_Load);
