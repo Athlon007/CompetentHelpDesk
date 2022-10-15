@@ -42,6 +42,12 @@ namespace Logic
             return employee;
         }
 
+        public Employee GetByUsername(string username)
+        {
+            Employee employee = employeedb.GetByUsername(username);
+            return employee;
+        }
+
         public Employee ConvertDocumentToObject(BsonDocument bsonDocument) 
         { 
             return employeedb.ConvertDocumentToObject(bsonDocument);    

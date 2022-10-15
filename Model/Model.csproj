@@ -163,7 +163,9 @@
     <Compile Include="DatabasesModel.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeType.cs" />
+    <Compile Include="HashedPasswordWithSalt.cs" />
     <Compile Include="IncidentTypes.cs" />
+    <Compile Include="PasswordWithSaltHasher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketPriority.cs" />

@@ -30,6 +30,16 @@ namespace DAL
             return employee;
         }
 
+        public Employee GetByUsername(string username)
+        {
+            var builder = Builders<Employee>.Filter;
+            var filter = builder.Eq("username", username);
+            var employee = Database.GetCollection<Employee>("Employees").Find(filter).FirstOrDefault();
+
+            return employee;
+        }
+
+
         //deserialize document to use instance of class in the UI
         public Employee ConvertDocumentToObject(BsonDocument bsonDocument)
         {
@@ -53,5 +63,7 @@ namespace DAL
             return employees;
        
         }
+
+
     }
 }
