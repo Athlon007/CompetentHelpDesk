@@ -36,7 +36,6 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblResetPassword = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.lblPasswordChecker = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -89,7 +88,7 @@
             this.txtUsername.MaximumSize = new System.Drawing.Size(317, 31);
             this.txtUsername.MinimumSize = new System.Drawing.Size(317, 36);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(317, 36);
+            this.txtUsername.Size = new System.Drawing.Size(317, 26);
             this.txtUsername.TabIndex = 3;
             // 
             // lblPassword
@@ -128,15 +127,6 @@
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // lblPasswordChecker
-            // 
-            this.lblPasswordChecker.AutoSize = true;
-            this.lblPasswordChecker.Location = new System.Drawing.Point(2, 709);
-            this.lblPasswordChecker.MinimumSize = new System.Drawing.Size(1000, 30);
-            this.lblPasswordChecker.Name = "lblPasswordChecker";
-            this.lblPasswordChecker.Size = new System.Drawing.Size(1000, 30);
-            this.lblPasswordChecker.TabIndex = 9;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -171,7 +161,7 @@
             this.txtPassword.MaximumSize = new System.Drawing.Size(317, 31);
             this.txtPassword.MinimumSize = new System.Drawing.Size(317, 36);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(317, 36);
+            this.txtPassword.Size = new System.Drawing.Size(317, 26);
             this.txtPassword.TabIndex = 9;
             // 
             // LoginScreen
@@ -180,7 +170,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1258, 744);
-            this.Controls.Add(this.lblPasswordChecker);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Name = "LoginScreen";
@@ -190,7 +179,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -203,7 +191,6 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblResetPassword;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Label lblPasswordChecker;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtPassword;
