@@ -102,7 +102,7 @@ namespace DemoApp
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LogInUser();
-        }
+        } 
 
         private void LoginScreen_Load(object sender, EventArgs e)
         {
