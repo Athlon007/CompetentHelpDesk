@@ -18,6 +18,7 @@ namespace Model
             passwordWithSaltBytes.AddRange(saltBytes);
             byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
             return new HashedPasswordWithSalt(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes));
+
         }
     }
 }
