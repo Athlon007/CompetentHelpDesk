@@ -45,9 +45,9 @@ namespace DemoApp
         private readonly Dictionary<string, int> deadlineDays = new Dictionary<string, int>()
         {
             { "7 days", interval1},
-            { "14 days", 14 },
-            { "28 days" , 28 },
-            { "6 months", 180 }
+            { "14 days", interval2 },
+            { "28 days" , interval3 },
+            { "6 months", interval4 }
         };
 
         private TicketLoadStatus currentTicketLoadStatus;
