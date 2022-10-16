@@ -536,8 +536,8 @@ namespace DemoApp
         {
             //setting the attributes that are different based on employee type
             int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-
-           TicketPriority priority = cmbPriorityCT.SelectedIndex == -1 ? 0 : (TicketPriority)cmbPriorityCT.SelectedIndex;
+            TicketPriority priority = cmbPriorityCT.SelectedIndex == -1 ? 0 : (TicketPriority)cmbPriorityCT.SelectedIndex;
+            
             var submitted = ticketService.InsertTicket(dtpReportedCT.Value,
                 txtSubjectOfIncidentCT.Text,
                 (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
