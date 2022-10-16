@@ -56,14 +56,14 @@ namespace DemoApp
             InitializeComponent();
             this.employee = employee;
 
-            DisplayDashboardForEmployee(employee);  
-
             lbl_Username.Text = employee.FirstName + " " + employee.LastName;
             lbl_Role.Text = employee.Type.ToString().Prettify();
 
             ticketService = new TicketsService();
             employeeService = new EmployeeService();
             ticketEscalationService = new TicketEscalationService();
+
+            DisplayDashboardForEmployee(employee);
 
             // Set tab control panel tabs to invisible
             tabControl.ItemSize = new Size(0, 1);
@@ -233,18 +233,31 @@ namespace DemoApp
 
         public void DisplayDashboardForEmployee(Employee employee)
         {
-            if (employee.Type == EmployeeType.Regular)
+            switch (employee.Type)
             {
-                splitContainer1.Panel2.Hide();
-                hideControlsForViewingTickets();
-                btn_CreateUser.Hide();
-
-            }
-            else if (employee.Type == EmployeeType.Specialist)
-            {
-                hideControlsForViewingTickets();
-                btn_CreateUser.Hide();
-                btn_UserManagement.Hide();
+                case EmployeeType.Regular:
+                    splitContainer1.Panel2.Hide();
+                    hideControlsForViewingTickets();
+                    btn_CreateUser.Hide();
+                    btn_UserManagement.Hide();
+                    btn_CreateTicket.Text = "Report Incident";
+                    btn_TicketManagement.Text = "Show My Tickets";
+                    lbl_HeaderCreateTicket.Text = "Report Incident";
+                    btn_Dashboard.Hide();
+                    tabControl.SelectedTab = tab_TicketManagement;
+                    LoadTickets(TicketLoadStatus.All);
+                    lblReportedByUserCT.Hide();
+                    cmbUserCT.Hide();
+                    btnSubmitTicketCT.Text = "Submit Incident";
+                    dtpReportedCT.Hide();
+                    lblDateTimeReportedCT.Hide();
+                    splitContainer1.SplitterDistance = splitContainer1.Width;
+                    break;
+                case EmployeeType.Specialist:
+                    hideControlsForViewingTickets();
+                    btn_CreateUser.Hide();
+                    btn_UserManagement.Hide();
+                    break;
             }
         }
 
@@ -252,11 +265,10 @@ namespace DemoApp
 
         public void DisplayTicketFormForEmployee(Employee employee)
         {
-
             if (employee.Type == EmployeeType.Regular)
             {
                 lblPriorityCT.Hide();
-                lblDeadlineCT.Text = "Please provide a short description specifing when the issue occured.";
+                lblDeadlineCT.Text = "Please provide a brief description stating when the problem occurred.";
                 cmbPriorityCT.Hide();
                 cmbDeadlineCT.Hide();
             }
@@ -538,11 +550,12 @@ namespace DemoApp
             //setting the attributes that are different based on employee type
             int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
             TicketPriority priority = cmbPriorityCT.SelectedIndex == -1 ? 0 : (TicketPriority)cmbPriorityCT.SelectedIndex;
+            Employee submittedBy = employee.Type == EmployeeType.Regular ? employee : (Employee)cmbUserCT.SelectedItem;
             
             var submitted = ticketService.InsertTicket(dtpReportedCT.Value,
                 txtSubjectOfIncidentCT.Text,
                 (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
-                (Employee)cmbUserCT.SelectedItem,
+                submittedBy,
                 priority,
                 followUpDays,
                 txtDescriptionCT.Text);
