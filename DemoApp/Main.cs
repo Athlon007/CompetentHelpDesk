@@ -56,6 +56,9 @@ namespace DemoApp
             InitializeComponent();
             this.employee = employee;
 
+            lbl_Username.Text = employee.FirstName + " " + employee.LastName;
+            lbl_Role.Text = employee.Type.ToString();
+
             ticketService = new TicketsService();
             employeeService = new EmployeeService();
             ticketEscalationService = new TicketEscalationService();
