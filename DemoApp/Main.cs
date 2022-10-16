@@ -80,12 +80,12 @@ namespace DemoApp
         {
             foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
             {
-                cmbIncidentTypeCT.Items.Add(incidentType.ToString());
+                cmbIncidentTypeCT.Items.Add(incidentType.ToString().Prettify());
             }
 
             foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
             {
-                cmbPriorityCT.Items.Add(priority.ToString());
+                cmbPriorityCT.Items.Add(priority.ToString().Prettify());
             }
 
             foreach (KeyValuePair<string, int> kvp in deadlineDays)
@@ -98,17 +98,17 @@ namespace DemoApp
         {
             foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
             {
-                cmbDetailsIncidentType.Items.Add(incidentType.ToString());
+                cmbDetailsIncidentType.Items.Add(incidentType.ToString().Prettify());
             }
 
             foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
             {
-                cmbDetailsPriority.Items.Add(priority.ToString());
+                cmbDetailsPriority.Items.Add(priority.ToString().Prettify());
             }
 
             foreach (TicketStatus status in Enum.GetValues(typeof(TicketStatus)))
             {
-                cmbDetailsStatus.Items.Add(status);
+                cmbDetailsStatus.Items.Add(status.ToString().Prettify());
             }
         }
 
