@@ -268,7 +268,7 @@ namespace DemoApp
             if (employee.Type == EmployeeType.Regular)
             {
                 lblPriorityCT.Hide();
-                lblDeadlineCT.Text = "Please provide a brief description stating when the problem occurred.";
+                lblDeadlineCT.Text = "Please provide a brief description stating what the problem is.";
                 cmbPriorityCT.Hide();
                 cmbDeadlineCT.Hide();
             }
