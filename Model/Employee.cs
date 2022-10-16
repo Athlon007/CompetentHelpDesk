@@ -27,6 +27,8 @@ namespace Model
         [BsonElement("salt")]
         public string Salt { get; private set; }
 
+        public string EmployeeName { get { return FirstName +" " +  LastName; } }
+
         public Employee() { }
 
         public Employee(int id, string email, string username, string firstName, string lastName, string passwordHash, string salt)

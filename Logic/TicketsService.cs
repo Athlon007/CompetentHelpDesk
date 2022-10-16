@@ -207,7 +207,7 @@ namespace Logic
                 doc.Add(new BsonElement("reporter", reporter.Id));
                 doc.Add(new BsonElement("date", date));
                 doc.Add(new BsonElement("deadline", date.AddDays(followUpDays)));
-                doc.Add(new BsonElement("priority", priority));
+                doc.Add(new BsonElement("priority", (int)priority));
                 doc.Add(new BsonElement("status", TicketStatus.Open));
                 doc.Add(new BsonElement("escalationLevel", 0));
 
@@ -219,6 +219,8 @@ namespace Logic
                 ErrorHandler.Instance.WriteError(ex);
                 return new StatusStruct(1, "Couldn't send data to the server. Try again later.");
             }
+
+       
         }
 
         /// <summary>
@@ -247,7 +249,7 @@ namespace Logic
                                                         .Set("subject", ticket.Subject)
                                                         .Set("description", ticket.Description)
                                                         .Set("reporter", ticket.Reporter.Id)
-                                                        .Set("priority", (int)ticket.Priority)
+                                                        .Set("priority", ticket.Priority)
                                                         .Set("status", (int)ticket.Status);
 
                 ticketsdb.Update(filter, update);

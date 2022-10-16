@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabasesModel.cs" />
+    <Compile Include="DeadlineDays.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeType.cs" />
     <Compile Include="HashedPasswordWithSalt.cs" />

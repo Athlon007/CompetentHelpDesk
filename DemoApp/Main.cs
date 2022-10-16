@@ -36,9 +36,15 @@ namespace DemoApp
         const int SC_RESTORE = 0xF120;
 
         // Dictionary of all possible days for the deadline.
+
+        static int interval1 = (int)DeadlineDays.Interval1;
+        static int interval2 = (int)DeadlineDays.Interval2;
+        static int interval3 = (int)DeadlineDays.Interval3;
+        static int interval4 = (int)DeadlineDays.Interval4;
+
         private readonly Dictionary<string, int> deadlineDays = new Dictionary<string, int>()
         {
-            { "7 days", 7 },
+            { "7 days", interval1},
             { "14 days", 14 },
             { "28 days" , 28 },
             { "6 months", 180 }
@@ -218,6 +224,19 @@ namespace DemoApp
             lblDetailsWarning.Text = "";
         }
 
+
+        private void DisplayTicketFormForEmployee(Employee employee)
+        {
+
+            if (employee.Type == EmployeeType.Regular)
+            {
+                lblPriorityCT.Hide();
+                lblDeadlineCT.Text = "Please provide a short description specifing when the issue occured.";
+                cmbPriorityCT.Hide();
+                cmbDeadlineCT.Hide();
+            }
+        }
+
         private void Btn_CreateTicket_Click(object sender, EventArgs e)
         {
             // Set current if not already selected
@@ -226,7 +245,11 @@ namespace DemoApp
                 tabControl.SelectedIndex = 2;
             }
 
+            Employee employee = employeeService.GetEmployeeByName(lbl_Username.Text);
+
             LoadAddTicketPage();
+            DisplayTicketFormForEmployee(employee);
+         
         }
 
         private void Btn_UserManagement_Click(object sender, EventArgs e)
@@ -481,16 +504,47 @@ namespace DemoApp
             cmbUserCT.SelectedIndex = -1;
         }
 
-        private void btnSubmitTicketCT_Click(object sender, EventArgs e)
+
+        public StatusStruct submitTicketBasedOnEmployeeType() 
         {
-            int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-            var submitted = ticketService.InsertTicket(dtpReportedCT.Value,
+
+            Employee employee = employeeService.GetEmployeeByName(lbl_Username.Text);
+
+            var submitted = new StatusStruct();
+            if (employee.Type == EmployeeType.Regular) {
+
+                submitted = ticketService.InsertTicket(dtpReportedCT.Value,
+                txtSubjectOfIncidentCT.Text,
+                (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
+                (Employee)cmbUserCT.SelectedItem,
+                TicketPriority.ToBeDetermined,
+                (int)DeadlineDays.ToBeDetermined,
+                txtDescriptionCT.Text);
+
+            }
+
+            else {
+
+                int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
+                submitted = ticketService.InsertTicket(dtpReportedCT.Value,
                 txtSubjectOfIncidentCT.Text,
                 (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
                 (Employee)cmbUserCT.SelectedItem,
                 (TicketPriority)cmbPriorityCT.SelectedIndex,
                 followUpDays,
                 txtDescriptionCT.Text);
+
+            }
+
+            return submitted;
+
+
+
+        }
+        private void btnSubmitTicketCT_Click(object sender, EventArgs e)
+        {
+
+            var submitted = submitTicketBasedOnEmployeeType();
 
             if (submitted.Code == 0)
             {
@@ -728,6 +782,8 @@ namespace DemoApp
             rPnl_TicketManagement.SuspendLayout();
             rPnl_TicketManagement.SuspendDrawing();
             rPnl_TicketManagement.Invalidate(true);
+
+            
         }
 
         /// <summary>
@@ -739,5 +795,7 @@ namespace DemoApp
             rPnl_TicketManagement.ResumeDrawing();
             splitContainer1.SplitterDistance = (int)(splitContainer1.Width * splitPercentage);
         }
+
+        
     }
 }

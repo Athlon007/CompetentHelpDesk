@@ -39,6 +39,8 @@ namespace DAL
             return employee;
         }
 
+    
+
 
         //deserialize document to use instance of class in the UI
         public Employee ConvertDocumentToObject(BsonDocument bsonDocument)
@@ -47,22 +49,7 @@ namespace DAL
             return instance;
         }
 
-        public List<Employee> ConvertAllDocumentsToEmployeesList(IMongoCollection<BsonDocument> employeedb) 
-        {
-            int dbdocuments = RetrieveDocumentsCount(employeedb);
-            List<Employee> employees = new List<Employee>();
-     
-            for (int i= 1; i < dbdocuments+1;i++) 
-            {
-                var builder = Builders<BsonDocument>.Filter;
-                var filter = builder.Gte("Id", i.ToString());
-                var document = employeedb.Find(filter).FirstOrDefault();
-                Employee employee = ConvertDocumentToObject((BsonDocument)document);
-                employees.Add(employee);
-            }
-            return employees;
        
-        }
 
 
     }

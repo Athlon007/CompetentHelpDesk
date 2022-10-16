@@ -53,5 +53,22 @@ namespace Logic
             return employeedb.ConvertDocumentToObject(bsonDocument);    
         
         }
+
+        public Employee GetEmployeeByName(String name) 
+        {
+            List<Employee> employees = GetEmployees();
+            Employee employee = new Employee();
+            for (int i = 0; i < employees.Count; i++) 
+            {
+
+                if (employees[i].EmployeeName == name)
+                {
+                    employee = employees[i];
+                }
+            }
+
+            return employee;
+        
+        }
     }
 }
