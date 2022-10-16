@@ -57,7 +57,7 @@ namespace DemoApp
             this.employee = employee;
 
             lbl_Username.Text = employee.FirstName + " " + employee.LastName;
-            lbl_Role.Text = employee.Type.ToString();
+            lbl_Role.Text = employee.Type.ToString().Prettify();
 
             ticketService = new TicketsService();
             employeeService = new EmployeeService();
