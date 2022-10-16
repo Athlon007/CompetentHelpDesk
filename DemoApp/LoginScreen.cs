@@ -86,7 +86,7 @@ namespace DemoApp
                     Employee employee = employeeService.GetByUsername(txtUsername.Text);
                     employeeId = employee.Id;
 
-                    Main mainUI = new Main();
+                    Main mainUI = new Main(employee);
                     mainUI.Show();
 
                     txtUsername.Text = "";

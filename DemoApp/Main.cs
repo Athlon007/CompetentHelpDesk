@@ -51,17 +51,11 @@ namespace DemoApp
         }
 
         //public Main(Employee employee)
-        public Main()
+        public Main(Employee employee)
         {
             InitializeComponent();
-            //this.employee = employee;
-            // REPLACE THIS WITH PARSED EMPLOYEE!!!!!!!
-            employee = new Employee();
-            employee.Type = EmployeeType.ServiceDesk;
+            this.employee = employee;
 
-            //!! Probably should have an Employee parameter to display user data and for future references
-            //this.employee = employee;
-            //databases = new Databases();
             ticketService = new TicketsService();
             employeeService = new EmployeeService();
             ticketEscalationService = new TicketEscalationService();
