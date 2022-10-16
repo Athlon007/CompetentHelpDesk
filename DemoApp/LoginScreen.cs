@@ -86,7 +86,7 @@ namespace DemoApp
                     Employee employee = employeeService.GetByUsername(txtUsername.Text);
                     employeeId = employee.Id;
 
-                    Main mainUI = new Main();
+                    Main mainUI = new Main(employee);
                     mainUI.Show();
 
                     txtUsername.Text = "";
@@ -102,7 +102,7 @@ namespace DemoApp
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LogInUser();
-        }
+        } 
 
         private void LoginScreen_Load(object sender, EventArgs e)
         {
