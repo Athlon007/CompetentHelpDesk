@@ -245,8 +245,6 @@ namespace DemoApp
                 tabControl.SelectedIndex = 2;
             }
 
-            Employee employee = employeeService.GetEmployeeByName(lbl_Username.Text);
-
             LoadAddTicketPage();
             DisplayTicketFormForEmployee(employee);
          
@@ -508,8 +506,6 @@ namespace DemoApp
         public StatusStruct submitTicketBasedOnEmployeeType() 
         {
 
-            Employee employee = employeeService.GetEmployeeByName(lbl_Username.Text);
-
             var submitted = new StatusStruct();
             if (employee.Type == EmployeeType.Regular) {
 
@@ -523,7 +519,8 @@ namespace DemoApp
 
             }
 
-            else {
+            else if (employee.Type == EmployeeType.ServiceDesk)
+            {
 
                 int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
                 submitted = ticketService.InsertTicket(dtpReportedCT.Value,
