@@ -56,6 +56,8 @@ namespace DemoApp
             InitializeComponent();
             this.employee = employee;
 
+            DisplayDashboardForEmployee(employee);  
+
             lbl_Username.Text = employee.FirstName + " " + employee.LastName;
             lbl_Role.Text = employee.Type.ToString();
 
@@ -218,6 +220,48 @@ namespace DemoApp
             lblDetailsWarning.Text = "";
         }
 
+
+
+        public void hideControlsForViewingTickets()
+        {
+            btn_Display_Tickets_All.Hide();
+            btn_Display_Tickets_Open.Hide();
+            btn_Display_Tickets_PastDeadline.Hide();
+            btn_Display_Tickets_Resolved.Hide();
+            btn_Display_Tickets_Unresolved.Hide();
+        }
+
+        public void DisplayDashboardForEmployee(Employee employee)
+        {
+            if (employee.Type == EmployeeType.Regular)
+            {
+                splitContainer1.Panel2.Hide();
+                hideControlsForViewingTickets();
+                btn_CreateUser.Hide();
+
+            }
+            else if (employee.Type == EmployeeType.Specialist)
+            {
+                hideControlsForViewingTickets();
+                btn_CreateUser.Hide();
+            }
+        }
+
+
+
+        public void DisplayTicketFormForEmployee(Employee employee)
+        {
+
+            if (employee.Type == EmployeeType.Regular)
+            {
+                lblPriorityCT.Hide();
+                lblDeadlineCT.Text = "Please provide a short description specifing when the issue occured.";
+                cmbPriorityCT.Hide();
+                cmbDeadlineCT.Hide();
+            }
+        }
+
+
         private void Btn_CreateTicket_Click(object sender, EventArgs e)
         {
             // Set current if not already selected
@@ -226,7 +270,10 @@ namespace DemoApp
                 tabControl.SelectedIndex = 2;
             }
 
+
             LoadAddTicketPage();
+            DisplayTicketFormForEmployee(employee);
+
         }
 
         private void Btn_UserManagement_Click(object sender, EventArgs e)
@@ -249,7 +296,11 @@ namespace DemoApp
 
         private void LogOut_Click(object sender, EventArgs e)
         {
-            // Log out
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "log out", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
 
@@ -483,12 +534,15 @@ namespace DemoApp
 
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
+            //setting the attributes that are different based on employee type
             int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
+            TicketPriority priority = cmbPriorityCT.SelectedIndex == -1 ? 0 : (TicketPriority)cmbPriorityCT.SelectedIndex;
+            
             var submitted = ticketService.InsertTicket(dtpReportedCT.Value,
                 txtSubjectOfIncidentCT.Text,
                 (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
                 (Employee)cmbUserCT.SelectedItem,
-                (TicketPriority)cmbPriorityCT.SelectedIndex,
+                priority,
                 followUpDays,
                 txtDescriptionCT.Text);
 
