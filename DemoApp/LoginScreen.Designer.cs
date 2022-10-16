@@ -46,7 +46,7 @@
             // lblHelpDesk
             // 
             this.lblHelpDesk.AutoSize = true;
-            this.lblHelpDesk.BackColor = System.Drawing.Color.ForestGreen;
+            this.lblHelpDesk.BackColor = System.Drawing.Color.SeaGreen;
             this.lblHelpDesk.Font = new System.Drawing.Font("Candara", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHelpDesk.ForeColor = System.Drawing.Color.White;
             this.lblHelpDesk.Location = new System.Drawing.Point(209, 128);
@@ -58,7 +58,7 @@
             // lblLoginInstruction
             // 
             this.lblLoginInstruction.AutoSize = true;
-            this.lblLoginInstruction.BackColor = System.Drawing.Color.ForestGreen;
+            this.lblLoginInstruction.BackColor = System.Drawing.Color.SeaGreen;
             this.lblLoginInstruction.Font = new System.Drawing.Font("Candara", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoginInstruction.ForeColor = System.Drawing.Color.White;
             this.lblLoginInstruction.Location = new System.Drawing.Point(589, 113);
@@ -73,7 +73,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.BackColor = System.Drawing.Color.ForestGreen;
+            this.lblUsername.BackColor = System.Drawing.Color.SeaGreen;
             this.lblUsername.ForeColor = System.Drawing.Color.White;
             this.lblUsername.Location = new System.Drawing.Point(732, 241);
             this.lblUsername.Name = "lblUsername";
@@ -94,7 +94,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.BackColor = System.Drawing.Color.ForestGreen;
+            this.lblPassword.BackColor = System.Drawing.Color.SeaGreen;
             this.lblPassword.ForeColor = System.Drawing.Color.White;
             this.lblPassword.Location = new System.Drawing.Point(737, 352);
             this.lblPassword.Name = "lblPassword";
@@ -105,7 +105,7 @@
             // lblResetPassword
             // 
             this.lblResetPassword.AutoSize = true;
-            this.lblResetPassword.BackColor = System.Drawing.Color.ForestGreen;
+            this.lblResetPassword.BackColor = System.Drawing.Color.SeaGreen;
             this.lblResetPassword.ForeColor = System.Drawing.Color.LightCyan;
             this.lblResetPassword.Location = new System.Drawing.Point(735, 450);
             this.lblResetPassword.Name = "lblResetPassword";
@@ -139,7 +139,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel1.BackColor = System.Drawing.Color.SeaGreen;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.lblLoginInstruction);
