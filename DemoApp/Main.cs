@@ -244,6 +244,7 @@ namespace DemoApp
             {
                 hideControlsForViewingTickets();
                 btn_CreateUser.Hide();
+                btn_UserManagement.Hide();
             }
         }
 
