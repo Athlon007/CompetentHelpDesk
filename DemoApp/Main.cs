@@ -251,7 +251,9 @@ namespace DemoApp
                     btnSubmitTicketCT.Text = "Submit Incident";
                     dtpReportedCT.Hide();
                     lblDateTimeReportedCT.Hide();
+                    splitContainer1.Panel2MinSize = 0;
                     splitContainer1.SplitterDistance = splitContainer1.Width;
+                    SetDashboardButtonStyling(1);
                     break;
                 case EmployeeType.Specialist:
                     hideControlsForViewingTickets();
