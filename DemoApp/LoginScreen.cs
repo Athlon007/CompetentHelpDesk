@@ -37,8 +37,6 @@ namespace DemoApp
             PasswordWithSaltHasher hasher = new PasswordWithSaltHasher();
 
             HashedPasswordWithSalt hashedPasswordWithSalt = hasher.HashWithSalt(txtPassword.Text, 64, SHA512.Create(), saltBytes);
-
-            lblPasswordChecker.Text = "password";//hashedPasswordWithSalt.HashedPassword;
             
             if (hashedPasswordWithSalt.HashedPassword == employee.PasswordHash);
             {
