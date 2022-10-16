@@ -28,7 +28,6 @@ namespace DemoApp
 
         public bool CheckPasswordUsingHashedPassword(Employee employee)
         {
-            string password = employee.PasswordHash;
 
             byte[] saltBytes = Convert.FromBase64String(employee.Salt);
 
@@ -37,11 +36,14 @@ namespace DemoApp
             PasswordWithSaltHasher hasher = new PasswordWithSaltHasher();
 
             HashedPasswordWithSalt hashedPasswordWithSalt = hasher.HashWithSalt(txtPassword.Text, 64, SHA512.Create(), saltBytes);
-            
-            if (hashedPasswordWithSalt.HashedPassword == employee.PasswordHash);
+
+
+            if (hashedPasswordWithSalt.HashedPassword == employee.PasswordHash)
             {
                 correctPassword = true;
             }
+        
+          
 
             return correctPassword;
         }
@@ -77,6 +79,7 @@ namespace DemoApp
 
         public void LogInUser()
         {
+            
             try
             {
                 bool correctUsernameAndPassword = CheckUsernameAndPassword();
