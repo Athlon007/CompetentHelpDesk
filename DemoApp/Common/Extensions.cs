@@ -30,5 +30,24 @@ namespace DemoApp.Common
             SendMessage(parent.Handle, WM_SETREDRAW, true, 0);
             parent.Refresh();
         }
+
+        /// <summary>
+        /// For enums, it adds spaces in front of the capital letters, to make them nicer.
+        /// </summary>
+        /// <param name="text">Text to nicefy</param>
+        /// <returns></returns>
+        public static string Prettify(this string text)
+        {
+            string output = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (i > 0 && char.IsUpper(text[i]) && text[i - 1] != ' ')
+                {
+                    output += ' ';
+                }
+                output += text[i];
+            }
+            return output;
+        }
     }
 }
