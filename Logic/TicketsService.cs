@@ -342,39 +342,25 @@ namespace Logic
         private bool IsTicketSubmissionValid(ref string reason, DateTime date, string subject, IncidentTypes type, Employee employee, TicketPriority priority, int deadline, string description)
         {
             if (date > DateTime.Now)
-            {
                 reason += "Incident time cannot be in the future\n";
-            }
 
             if (string.IsNullOrEmpty(subject))
-            {
                 reason += "Subject is missing\n";
-            }
 
             if ((int)type == -1)
-            {
                 reason += "Type of incident is not provided\n";
-            }
 
             if (employee == null)
-            {
                 reason += "Reporting user not provided\n";
-            }
 
             if ((int)priority == -1)
-            {
                 reason += "Priority not provided\n";
-            }
 
             if (deadline == -1)
-            {
                 reason += "Deadline not provided\n";
-            }
 
             if (string.IsNullOrEmpty(description))
-            {
                 reason += "Description not provided\n";
-            }
 
             return reason.Length == 0;
         }
