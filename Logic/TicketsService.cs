@@ -96,6 +96,8 @@ namespace Logic
         /// <summary>
         /// Gets a list of Tickets by status from a specific employee
         /// </summary>
+        /// <param name="status">Ticket status to filter by.</param>
+        /// <param name="employee">Employee to find specific tickets for.</param>
         public List<Ticket> GetTicketsByStatus(TicketStatus status, Employee employee)
         {
             try
@@ -167,6 +169,7 @@ namespace Logic
         /// <summary>
         /// Gets amount of tickets by status that are not escalated.
         /// </summary>
+        /// <param name="status">Ticket status to filter by.</param>
         public long GetTicketCountByType(TicketStatus status)
         {
             try
