@@ -23,7 +23,7 @@ namespace DemoApp.Common
         /// <summary>
         /// Resumes drawing of the control.
         /// </summary>
-        /// <param name="parent">Cotntrol to resume drawing.</param>
+        /// <param name="parent">Control to resume drawing.</param>
         public static void ResumeDrawing(this Control parent)
         {
             SendMessage(parent.Handle, WM_SETREDRAW, true, 0);
