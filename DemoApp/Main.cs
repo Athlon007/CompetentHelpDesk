@@ -233,33 +233,17 @@ namespace DemoApp
 
         public void DisplayDashboardForEmployee(Employee employee)
         {
-            switch (employee.Type)
+            if (employee.Type == EmployeeType.Regular)
             {
-                case EmployeeType.Regular:
-                    splitContainer1.Panel2.Hide();
-                    hideControlsForViewingTickets();
-                    btn_CreateUser.Hide();
-                    btn_UserManagement.Hide();
-                    btn_CreateTicket.Text = "Report Incident";
-                    btn_TicketManagement.Text = "Show My Tickets";
-                    lbl_HeaderCreateTicket.Text = "Report Incident";
-                    btn_Dashboard.Hide();
-                    tabControl.SelectedTab = tab_TicketManagement;
-                    LoadTickets(TicketLoadStatus.All);
-                    lblReportedByUserCT.Hide();
-                    cmbUserCT.Hide();
-                    btnSubmitTicketCT.Text = "Submit Incident";
-                    dtpReportedCT.Hide();
-                    lblDateTimeReportedCT.Hide();
-                    splitContainer1.Panel2MinSize = 0;
-                    splitContainer1.SplitterDistance = splitContainer1.Width;
-                    SetDashboardButtonStyling(1);
-                    break;
-                case EmployeeType.Specialist:
-                    hideControlsForViewingTickets();
-                    btn_CreateUser.Hide();
-                    btn_UserManagement.Hide();
-                    break;
+                splitContainer1.Panel2.Hide();
+                hideControlsForViewingTickets();
+                btn_CreateUser.Hide();
+
+            }
+            else if (employee.Type == EmployeeType.Specialist)
+            {
+                hideControlsForViewingTickets();
+                btn_CreateUser.Hide();
             }
         }
 
@@ -553,7 +537,7 @@ namespace DemoApp
             int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
             TicketPriority priority = cmbPriorityCT.SelectedIndex == -1 ? 0 : (TicketPriority)cmbPriorityCT.SelectedIndex;
             Employee submittedBy = employee.Type == EmployeeType.Regular ? employee : (Employee)cmbUserCT.SelectedItem;
-            
+
             var submitted = ticketService.InsertTicket(dtpReportedCT.Value,
                 txtSubjectOfIncidentCT.Text,
                 (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
@@ -746,7 +730,7 @@ namespace DemoApp
                                                  $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
-            {                
+            {
                 var reply = ticketEscalationService.EscalateTicket(ticket);
 
                 if (reply.Code == 0)
