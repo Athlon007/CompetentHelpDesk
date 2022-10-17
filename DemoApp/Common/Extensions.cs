@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -36,7 +37,7 @@ namespace DemoApp.Common
         /// <param name="text">Text to nicefy</param>
         /// <returns></returns>
         public static string Prettify(this string text)
-        {
+        { 
             string output = "";
             for (int i = 0; i < text.Length; i++)
             {
