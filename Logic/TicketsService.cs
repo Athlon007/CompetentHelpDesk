@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using DAL;
 using Model;
 using MongoDB.Bson;
@@ -343,42 +344,45 @@ namespace Logic
         /// </summary>
         private bool IsTicketSubmissionValid(ref string reason, DateTime date, string subject, IncidentTypes type, Employee employee, TicketPriority priority, int deadline, string description)
         {
+            StringBuilder sb = new StringBuilder();
             if (date > DateTime.Now)
-                reason += "Incident time cannot be in the future\n";
+                sb.AppendLine("Incident time cannot be in the future");
 
             if (string.IsNullOrEmpty(subject))
-                reason += "Subject is missing\n";
+                sb.AppendLine("Subject is missing");
 
             if ((int)type == -1)
-                reason += "Type of incident is not provided\n";
+                sb.AppendLine("Type of incident is not provided");
 
             if (employee == null)
-                reason += "Reporting user not provided\n";
+                sb.AppendLine("Reporting user not provided");
 
             if ((int)priority == -1)
-                reason += "Priority not provided\n";
+                sb.AppendLine("Priority not provided");
 
             if (deadline == -1)
-                reason += "Deadline not provided\n";
+                sb.AppendLine("Deadline not provided");
 
             if (string.IsNullOrEmpty(description))
-                reason += "Description not provided\n";
+                sb.AppendLine("Description not provided");
 
+            reason = sb.ToString();
             return reason.Length == 0;
         }
 
+        /// <summary>
+        /// Returns true, if the ticket update submission is valid.
+        /// </summary>
         private bool IsTicketEditValid(out string issues, string subject, string description)
         {
-            issues = "";
+            StringBuilder sb = new StringBuilder();
             if (string.IsNullOrEmpty(subject))
-            {
-                issues += "Subject is empty\n";
-            }
-            if (string.IsNullOrEmpty(description))
-            {
-                issues += "Description is empty\n";
-            }
+                sb.AppendLine("Subject is empty");
+            
+            if (string.IsNullOrEmpty(description))            
+                sb.AppendLine("Description is empty");
 
+            issues = sb.ToString();
             return issues.Length == 0;
         }
     }

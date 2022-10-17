@@ -13,11 +13,14 @@ namespace TestDbConnectionNew
     {
         private TicketsService service;
         private List<Ticket> tickets;
+        private Employee testEmployee;
 
         public TestTickets()
         {
+            testEmployee = new Employee();
+            testEmployee.Id = 0;
             service = new TicketsService();
-            service.GetTickets(out tickets);
+            service.GetTickets(out tickets, testEmployee);
         }
 
         [TestMethod]
@@ -59,7 +62,7 @@ namespace TestDbConnectionNew
         [TestMethod]
         public void GetTickedByID()
         {
-            var response = service.GetById(0, out Ticket t);
+            var response = service.GetById(0, out Ticket t, testEmployee);
             Trace.WriteLine($"Ticket 0 details: " + t);
             Assert.AreEqual(0, response.Code);
         }
