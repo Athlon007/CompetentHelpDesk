@@ -104,7 +104,15 @@ namespace Logic
             {
                 // Create stages for the pipeline
                 var pipeline = GetTicketPipeline(employee);
-                pipeline.Add(new BsonDocument("$match", new BsonDocument("status", (int)status)));
+                if (status != TicketStatus.PastDeadline) // If the ticket isn't past the deadline date...
+                {
+                    pipeline.Add(new BsonDocument("$match", new BsonDocument("status", (int)status)));
+                }
+                else // Filter by tickets that are past the deadline date & have an open status
+                {
+                    pipeline.Add(new BsonDocument("$match", new BsonDocument("deadline", new BsonDocument("$lte", DateTime.Now))));
+                    pipeline.Add(new BsonDocument("$match", new BsonDocument("status", (int)TicketStatus.Open)));
+                }
 
                 // Return tickets by status
                 return ConvertToTicketList(ticketsdb.Get(pipeline));
@@ -175,10 +183,21 @@ namespace Logic
             try
             {
                 // Create a filter that checks for non-escalated tickets and by status
-                var builder = Builders<Ticket>.Filter;
-                var filter = (builder.Eq("escalationLevel", BsonNull.Value) | 
-                                builder.Eq("escalationLevel", 0)) & 
-                                builder.Eq("status", (int)status);
+                FilterDefinitionBuilder<Ticket> builder = Builders<Ticket>.Filter;
+                FilterDefinition<Ticket> filter; 
+                if (status != TicketStatus.PastDeadline)
+                {
+                    filter = (builder.Eq("escalationLevel", BsonNull.Value) |
+                                    builder.Eq("escalationLevel", 0)) &
+                                    builder.Eq("status", (int)status);
+                }
+                else // Look for open tickets that are past the deadline
+                {
+                    filter = (builder.Eq("escalationLevel", BsonNull.Value) |
+                                builder.Eq("escalationLevel", 0)) &
+                                builder.Eq("status", (int)TicketStatus.Open) &
+                                builder.Lte("deadline", DateTime.Now);
+                }
 
                 // Return the count by ticket status
                 return ticketsdb.GetTicketCountByStatus(filter);
