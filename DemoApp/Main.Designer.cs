@@ -433,7 +433,7 @@ namespace DemoApp
             this.tblPnl_Logo.Controls.Add(this.label2, 0, 0);
             this.tblPnl_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblPnl_Logo.Location = new System.Drawing.Point(4, 4);
-            this.tblPnl_Logo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tblPnl_Logo.Margin = new System.Windows.Forms.Padding(4);
             this.tblPnl_Logo.Name = "tblPnl_Logo";
             this.tblPnl_Logo.RowCount = 3;
             this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
@@ -563,7 +563,7 @@ namespace DemoApp
             this.rPnl_D1_Open.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rPnl_D1_Open.ForeColor = System.Drawing.Color.Black;
             this.rPnl_D1_Open.Location = new System.Drawing.Point(48, 16);
-            this.rPnl_D1_Open.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rPnl_D1_Open.Margin = new System.Windows.Forms.Padding(4);
             this.rPnl_D1_Open.MaximumSize = new System.Drawing.Size(532, 532);
             this.rPnl_D1_Open.MinimumSize = new System.Drawing.Size(532, 532);
             this.rPnl_D1_Open.Name = "rPnl_D1_Open";
@@ -638,7 +638,7 @@ namespace DemoApp
             this.rPnl_D3_Unresolved.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rPnl_D3_Unresolved.ForeColor = System.Drawing.Color.Black;
             this.rPnl_D3_Unresolved.Location = new System.Drawing.Point(48, 580);
-            this.rPnl_D3_Unresolved.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rPnl_D3_Unresolved.Margin = new System.Windows.Forms.Padding(4);
             this.rPnl_D3_Unresolved.MaximumSize = new System.Drawing.Size(532, 532);
             this.rPnl_D3_Unresolved.MinimumSize = new System.Drawing.Size(532, 532);
             this.rPnl_D3_Unresolved.Name = "rPnl_D3_Unresolved";
@@ -713,7 +713,7 @@ namespace DemoApp
             this.rPnl_D2_Past.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rPnl_D2_Past.ForeColor = System.Drawing.Color.Black;
             this.rPnl_D2_Past.Location = new System.Drawing.Point(620, 16);
-            this.rPnl_D2_Past.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rPnl_D2_Past.Margin = new System.Windows.Forms.Padding(4);
             this.rPnl_D2_Past.MaximumSize = new System.Drawing.Size(532, 532);
             this.rPnl_D2_Past.MinimumSize = new System.Drawing.Size(532, 532);
             this.rPnl_D2_Past.Name = "rPnl_D2_Past";
@@ -788,7 +788,7 @@ namespace DemoApp
             this.rPnl_D4_Resolved.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rPnl_D4_Resolved.ForeColor = System.Drawing.Color.Black;
             this.rPnl_D4_Resolved.Location = new System.Drawing.Point(620, 580);
-            this.rPnl_D4_Resolved.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rPnl_D4_Resolved.Margin = new System.Windows.Forms.Padding(4);
             this.rPnl_D4_Resolved.MaximumSize = new System.Drawing.Size(532, 532);
             this.rPnl_D4_Resolved.MinimumSize = new System.Drawing.Size(532, 532);
             this.rPnl_D4_Resolved.Name = "rPnl_D4_Resolved";
@@ -857,7 +857,7 @@ namespace DemoApp
             this.pnl_DashBoard_Title.Controls.Add(this.lbl_CurrentIncidents);
             this.pnl_DashBoard_Title.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_DashBoard_Title.Location = new System.Drawing.Point(0, 80);
-            this.pnl_DashBoard_Title.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnl_DashBoard_Title.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_DashBoard_Title.Name = "pnl_DashBoard_Title";
             this.pnl_DashBoard_Title.Size = new System.Drawing.Size(1636, 80);
             this.pnl_DashBoard_Title.TabIndex = 3;
@@ -871,7 +871,7 @@ namespace DemoApp
             this.btn_ShowAllIncidents.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ShowAllIncidents.ForeColor = System.Drawing.Color.White;
             this.btn_ShowAllIncidents.Location = new System.Drawing.Point(828, 0);
-            this.btn_ShowAllIncidents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_ShowAllIncidents.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ShowAllIncidents.Name = "btn_ShowAllIncidents";
             this.btn_ShowAllIncidents.Size = new System.Drawing.Size(328, 76);
             this.btn_ShowAllIncidents.TabIndex = 1;
@@ -898,7 +898,7 @@ namespace DemoApp
             this.header_Dashboard.Controls.Add(this.lbl_HeaderDashboard);
             this.header_Dashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.header_Dashboard.Location = new System.Drawing.Point(0, 0);
-            this.header_Dashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.header_Dashboard.Margin = new System.Windows.Forms.Padding(4);
             this.header_Dashboard.Name = "header_Dashboard";
             this.header_Dashboard.Size = new System.Drawing.Size(1636, 80);
             this.header_Dashboard.TabIndex = 0;
@@ -953,7 +953,7 @@ namespace DemoApp
             this.pnl_TicketManagement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_TicketManagement.ForeColor = System.Drawing.Color.Black;
             this.pnl_TicketManagement.Location = new System.Drawing.Point(0, 80);
-            this.pnl_TicketManagement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnl_TicketManagement.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_TicketManagement.Name = "pnl_TicketManagement";
             this.pnl_TicketManagement.Size = new System.Drawing.Size(1636, 1193);
             this.pnl_TicketManagement.SurfaceColor = System.Drawing.Color.Empty;
@@ -965,7 +965,7 @@ namespace DemoApp
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -1012,7 +1012,7 @@ namespace DemoApp
             this.listView_TicketManagement.FullRowSelect = true;
             this.listView_TicketManagement.HideSelection = false;
             this.listView_TicketManagement.Location = new System.Drawing.Point(0, 132);
-            this.listView_TicketManagement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView_TicketManagement.Margin = new System.Windows.Forms.Padding(4);
             this.listView_TicketManagement.MultiSelect = false;
             this.listView_TicketManagement.Name = "listView_TicketManagement";
             this.listView_TicketManagement.Size = new System.Drawing.Size(952, 1059);
@@ -1051,7 +1051,7 @@ namespace DemoApp
             this.txtBox_SearchBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBox_SearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtBox_SearchBar.Location = new System.Drawing.Point(0, 88);
-            this.txtBox_SearchBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBox_SearchBar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBox_SearchBar.Name = "txtBox_SearchBar";
             this.txtBox_SearchBar.Size = new System.Drawing.Size(952, 44);
             this.txtBox_SearchBar.TabIndex = 11;
@@ -1081,7 +1081,7 @@ namespace DemoApp
             this.btn_Display_Tickets_All.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Display_Tickets_All.ForeColor = System.Drawing.Color.White;
             this.btn_Display_Tickets_All.Location = new System.Drawing.Point(4, 16);
-            this.btn_Display_Tickets_All.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Display_Tickets_All.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Display_Tickets_All.Name = "btn_Display_Tickets_All";
             this.btn_Display_Tickets_All.Size = new System.Drawing.Size(180, 52);
             this.btn_Display_Tickets_All.TabIndex = 12;
@@ -1097,7 +1097,7 @@ namespace DemoApp
             this.btn_Display_Tickets_Open.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Display_Tickets_Open.ForeColor = System.Drawing.Color.White;
             this.btn_Display_Tickets_Open.Location = new System.Drawing.Point(192, 16);
-            this.btn_Display_Tickets_Open.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Display_Tickets_Open.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Display_Tickets_Open.Name = "btn_Display_Tickets_Open";
             this.btn_Display_Tickets_Open.Size = new System.Drawing.Size(180, 52);
             this.btn_Display_Tickets_Open.TabIndex = 10;
@@ -1113,7 +1113,7 @@ namespace DemoApp
             this.btn_Display_Tickets_PastDeadline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Display_Tickets_PastDeadline.ForeColor = System.Drawing.Color.White;
             this.btn_Display_Tickets_PastDeadline.Location = new System.Drawing.Point(380, 16);
-            this.btn_Display_Tickets_PastDeadline.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Display_Tickets_PastDeadline.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Display_Tickets_PastDeadline.Name = "btn_Display_Tickets_PastDeadline";
             this.btn_Display_Tickets_PastDeadline.Size = new System.Drawing.Size(180, 52);
             this.btn_Display_Tickets_PastDeadline.TabIndex = 9;
@@ -1129,7 +1129,7 @@ namespace DemoApp
             this.btn_Display_Tickets_Unresolved.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Display_Tickets_Unresolved.ForeColor = System.Drawing.Color.White;
             this.btn_Display_Tickets_Unresolved.Location = new System.Drawing.Point(568, 16);
-            this.btn_Display_Tickets_Unresolved.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Display_Tickets_Unresolved.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Display_Tickets_Unresolved.Name = "btn_Display_Tickets_Unresolved";
             this.btn_Display_Tickets_Unresolved.Size = new System.Drawing.Size(180, 52);
             this.btn_Display_Tickets_Unresolved.TabIndex = 8;
@@ -1145,7 +1145,7 @@ namespace DemoApp
             this.btn_Display_Tickets_Resolved.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Display_Tickets_Resolved.ForeColor = System.Drawing.Color.White;
             this.btn_Display_Tickets_Resolved.Location = new System.Drawing.Point(756, 16);
-            this.btn_Display_Tickets_Resolved.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Display_Tickets_Resolved.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Display_Tickets_Resolved.Name = "btn_Display_Tickets_Resolved";
             this.btn_Display_Tickets_Resolved.Size = new System.Drawing.Size(180, 52);
             this.btn_Display_Tickets_Resolved.TabIndex = 7;
@@ -1176,7 +1176,7 @@ namespace DemoApp
             this.btnDetailsUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnDetailsUpdate.ForeColor = System.Drawing.Color.White;
             this.btnDetailsUpdate.Location = new System.Drawing.Point(0, 951);
-            this.btnDetailsUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDetailsUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnDetailsUpdate.Name = "btnDetailsUpdate";
             this.btnDetailsUpdate.Size = new System.Drawing.Size(668, 80);
             this.btnDetailsUpdate.TabIndex = 22;
@@ -1194,7 +1194,7 @@ namespace DemoApp
             this.btnDetailsEscalate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnDetailsEscalate.ForeColor = System.Drawing.Color.Black;
             this.btnDetailsEscalate.Location = new System.Drawing.Point(0, 1031);
-            this.btnDetailsEscalate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDetailsEscalate.Margin = new System.Windows.Forms.Padding(4);
             this.btnDetailsEscalate.Name = "btnDetailsEscalate";
             this.btnDetailsEscalate.Size = new System.Drawing.Size(668, 80);
             this.btnDetailsEscalate.TabIndex = 26;
@@ -1210,9 +1210,9 @@ namespace DemoApp
             this.cmbDetailsStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDetailsStatus.FormattingEnabled = true;
             this.cmbDetailsStatus.Location = new System.Drawing.Point(12, 462);
-            this.cmbDetailsStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDetailsStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDetailsStatus.Name = "cmbDetailsStatus";
-            this.cmbDetailsStatus.Size = new System.Drawing.Size(652, 45);
+            this.cmbDetailsStatus.Size = new System.Drawing.Size(644, 45);
             this.cmbDetailsStatus.TabIndex = 25;
             // 
             // lblDetailsStatus
@@ -1236,7 +1236,7 @@ namespace DemoApp
             this.btnDetailsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnDetailsDelete.ForeColor = System.Drawing.Color.White;
             this.btnDetailsDelete.Location = new System.Drawing.Point(0, 1111);
-            this.btnDetailsDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDetailsDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDetailsDelete.Name = "btnDetailsDelete";
             this.btnDetailsDelete.Size = new System.Drawing.Size(668, 80);
             this.btnDetailsDelete.TabIndex = 23;
@@ -1251,10 +1251,10 @@ namespace DemoApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDetailsDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDetailsDescription.Location = new System.Drawing.Point(12, 566);
-            this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtDetailsDescription.Multiline = true;
             this.txtDetailsDescription.Name = "txtDetailsDescription";
-            this.txtDetailsDescription.Size = new System.Drawing.Size(652, 303);
+            this.txtDetailsDescription.Size = new System.Drawing.Size(644, 303);
             this.txtDetailsDescription.TabIndex = 21;
             // 
             // lblDetailsDescription
@@ -1276,9 +1276,9 @@ namespace DemoApp
             this.cmbDetailsPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDetailsPriority.FormattingEnabled = true;
             this.cmbDetailsPriority.Location = new System.Drawing.Point(12, 358);
-            this.cmbDetailsPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDetailsPriority.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDetailsPriority.Name = "cmbDetailsPriority";
-            this.cmbDetailsPriority.Size = new System.Drawing.Size(652, 45);
+            this.cmbDetailsPriority.Size = new System.Drawing.Size(644, 45);
             this.cmbDetailsPriority.TabIndex = 19;
             // 
             // lblDetailsPriority
@@ -1300,9 +1300,9 @@ namespace DemoApp
             this.cmbDetailsReporter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDetailsReporter.FormattingEnabled = true;
             this.cmbDetailsReporter.Location = new System.Drawing.Point(12, 254);
-            this.cmbDetailsReporter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDetailsReporter.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDetailsReporter.Name = "cmbDetailsReporter";
-            this.cmbDetailsReporter.Size = new System.Drawing.Size(652, 45);
+            this.cmbDetailsReporter.Size = new System.Drawing.Size(644, 45);
             this.cmbDetailsReporter.TabIndex = 17;
             // 
             // lblDetailsUser
@@ -1324,9 +1324,9 @@ namespace DemoApp
             this.cmbDetailsIncidentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDetailsIncidentType.FormattingEnabled = true;
             this.cmbDetailsIncidentType.Location = new System.Drawing.Point(12, 150);
-            this.cmbDetailsIncidentType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDetailsIncidentType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDetailsIncidentType.Name = "cmbDetailsIncidentType";
-            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(652, 45);
+            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(644, 45);
             this.cmbDetailsIncidentType.TabIndex = 15;
             // 
             // lblDetailsIncidentType
@@ -1346,9 +1346,9 @@ namespace DemoApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDetailsSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDetailsSubject.Location = new System.Drawing.Point(12, 48);
-            this.txtDetailsSubject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDetailsSubject.Margin = new System.Windows.Forms.Padding(4);
             this.txtDetailsSubject.Name = "txtDetailsSubject";
-            this.txtDetailsSubject.Size = new System.Drawing.Size(652, 44);
+            this.txtDetailsSubject.Size = new System.Drawing.Size(644, 44);
             this.txtDetailsSubject.TabIndex = 12;
             // 
             // lblTicketDetailsSubjectOfIncident
@@ -1391,10 +1391,10 @@ namespace DemoApp
             // 
             this.tab_CreateTicket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.tab_CreateTicket.Controls.Add(this.rPnl_CreateTicket);
-            this.tab_CreateTicket.Location = new System.Drawing.Point(8, 78);
-            this.tab_CreateTicket.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_CreateTicket.Location = new System.Drawing.Point(8, 43);
+            this.tab_CreateTicket.Margin = new System.Windows.Forms.Padding(4);
             this.tab_CreateTicket.Name = "tab_CreateTicket";
-            this.tab_CreateTicket.Size = new System.Drawing.Size(1636, 1238);
+            this.tab_CreateTicket.Size = new System.Drawing.Size(1636, 1273);
             this.tab_CreateTicket.TabIndex = 1;
             this.tab_CreateTicket.Text = "Create Ticket";
             // 
@@ -1426,7 +1426,7 @@ namespace DemoApp
             this.rPnl_CreateTicket.Location = new System.Drawing.Point(0, 0);
             this.rPnl_CreateTicket.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_CreateTicket.Name = "rPnl_CreateTicket";
-            this.rPnl_CreateTicket.Size = new System.Drawing.Size(1636, 1238);
+            this.rPnl_CreateTicket.Size = new System.Drawing.Size(1636, 1273);
             this.rPnl_CreateTicket.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateTicket.TabIndex = 2;
             // 
@@ -1451,7 +1451,7 @@ namespace DemoApp
             this.btnCancelCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnCancelCT.ForeColor = System.Drawing.Color.Black;
             this.btnCancelCT.Location = new System.Drawing.Point(744, 852);
-            this.btnCancelCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelCT.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelCT.Name = "btnCancelCT";
             this.btnCancelCT.Size = new System.Drawing.Size(300, 80);
             this.btnCancelCT.TabIndex = 17;
@@ -1467,7 +1467,7 @@ namespace DemoApp
             this.btnSubmitTicketCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSubmitTicketCT.ForeColor = System.Drawing.Color.White;
             this.btnSubmitTicketCT.Location = new System.Drawing.Point(388, 852);
-            this.btnSubmitTicketCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSubmitTicketCT.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubmitTicketCT.Name = "btnSubmitTicketCT";
             this.btnSubmitTicketCT.Size = new System.Drawing.Size(300, 80);
             this.btnSubmitTicketCT.TabIndex = 16;
@@ -1481,7 +1481,7 @@ namespace DemoApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescriptionCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDescriptionCT.Location = new System.Drawing.Point(388, 484);
-            this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescriptionCT.Multiline = true;
             this.txtDescriptionCT.Name = "txtDescriptionCT";
             this.txtDescriptionCT.Size = new System.Drawing.Size(656, 352);
@@ -1495,7 +1495,7 @@ namespace DemoApp
             this.cmbDeadlineCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDeadlineCT.FormattingEnabled = true;
             this.cmbDeadlineCT.Location = new System.Drawing.Point(388, 412);
-            this.cmbDeadlineCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDeadlineCT.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDeadlineCT.Name = "cmbDeadlineCT";
             this.cmbDeadlineCT.Size = new System.Drawing.Size(656, 45);
             this.cmbDeadlineCT.TabIndex = 14;
@@ -1508,7 +1508,7 @@ namespace DemoApp
             this.cmbPriorityCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbPriorityCT.FormattingEnabled = true;
             this.cmbPriorityCT.Location = new System.Drawing.Point(388, 348);
-            this.cmbPriorityCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbPriorityCT.Margin = new System.Windows.Forms.Padding(4);
             this.cmbPriorityCT.Name = "cmbPriorityCT";
             this.cmbPriorityCT.Size = new System.Drawing.Size(656, 45);
             this.cmbPriorityCT.TabIndex = 13;
@@ -1521,7 +1521,7 @@ namespace DemoApp
             this.cmbUserCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbUserCT.FormattingEnabled = true;
             this.cmbUserCT.Location = new System.Drawing.Point(388, 284);
-            this.cmbUserCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbUserCT.Margin = new System.Windows.Forms.Padding(4);
             this.cmbUserCT.Name = "cmbUserCT";
             this.cmbUserCT.Size = new System.Drawing.Size(656, 45);
             this.cmbUserCT.TabIndex = 12;
@@ -1534,7 +1534,7 @@ namespace DemoApp
             this.cmbIncidentTypeCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbIncidentTypeCT.FormattingEnabled = true;
             this.cmbIncidentTypeCT.Location = new System.Drawing.Point(388, 220);
-            this.cmbIncidentTypeCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbIncidentTypeCT.Margin = new System.Windows.Forms.Padding(4);
             this.cmbIncidentTypeCT.Name = "cmbIncidentTypeCT";
             this.cmbIncidentTypeCT.Size = new System.Drawing.Size(656, 45);
             this.cmbIncidentTypeCT.TabIndex = 11;
@@ -1545,7 +1545,7 @@ namespace DemoApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubjectOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtSubjectOfIncidentCT.Location = new System.Drawing.Point(388, 156);
-            this.txtSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubjectOfIncidentCT.Name = "txtSubjectOfIncidentCT";
             this.txtSubjectOfIncidentCT.Size = new System.Drawing.Size(656, 44);
             this.txtSubjectOfIncidentCT.TabIndex = 10;
@@ -1624,7 +1624,7 @@ namespace DemoApp
             this.dtpReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.dtpReportedCT.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpReportedCT.Location = new System.Drawing.Point(388, 92);
-            this.dtpReportedCT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpReportedCT.Margin = new System.Windows.Forms.Padding(4);
             this.dtpReportedCT.Name = "dtpReportedCT";
             this.dtpReportedCT.Size = new System.Drawing.Size(656, 44);
             this.dtpReportedCT.TabIndex = 3;
@@ -1645,7 +1645,7 @@ namespace DemoApp
             this.header_CreateTicket.Controls.Add(this.lbl_HeaderCreateTicket);
             this.header_CreateTicket.Dock = System.Windows.Forms.DockStyle.Top;
             this.header_CreateTicket.Location = new System.Drawing.Point(0, 0);
-            this.header_CreateTicket.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.header_CreateTicket.Margin = new System.Windows.Forms.Padding(4);
             this.header_CreateTicket.Name = "header_CreateTicket";
             this.header_CreateTicket.Size = new System.Drawing.Size(1636, 80);
             this.header_CreateTicket.TabIndex = 1;
@@ -1668,10 +1668,10 @@ namespace DemoApp
             // 
             this.tab_UserManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.tab_UserManagement.Controls.Add(this.rPnl_UserManagement);
-            this.tab_UserManagement.Location = new System.Drawing.Point(8, 78);
-            this.tab_UserManagement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_UserManagement.Location = new System.Drawing.Point(8, 43);
+            this.tab_UserManagement.Margin = new System.Windows.Forms.Padding(4);
             this.tab_UserManagement.Name = "tab_UserManagement";
-            this.tab_UserManagement.Size = new System.Drawing.Size(1636, 1238);
+            this.tab_UserManagement.Size = new System.Drawing.Size(1636, 1273);
             this.tab_UserManagement.TabIndex = 3;
             this.tab_UserManagement.Text = "User Management";
             // 
@@ -1686,7 +1686,7 @@ namespace DemoApp
             this.rPnl_UserManagement.Location = new System.Drawing.Point(0, 0);
             this.rPnl_UserManagement.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_UserManagement.Name = "rPnl_UserManagement";
-            this.rPnl_UserManagement.Size = new System.Drawing.Size(1636, 1238);
+            this.rPnl_UserManagement.Size = new System.Drawing.Size(1636, 1273);
             this.rPnl_UserManagement.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_UserManagement.TabIndex = 3;
             // 
@@ -1695,7 +1695,7 @@ namespace DemoApp
             this.header_UserManagement.Controls.Add(this.lbl_HeaderUserManagement);
             this.header_UserManagement.Dock = System.Windows.Forms.DockStyle.Top;
             this.header_UserManagement.Location = new System.Drawing.Point(0, 0);
-            this.header_UserManagement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.header_UserManagement.Margin = new System.Windows.Forms.Padding(4);
             this.header_UserManagement.Name = "header_UserManagement";
             this.header_UserManagement.Size = new System.Drawing.Size(1636, 80);
             this.header_UserManagement.TabIndex = 1;
@@ -1718,10 +1718,10 @@ namespace DemoApp
             // 
             this.tab_CreateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.tab_CreateUser.Controls.Add(this.rPnl_CreateUser);
-            this.tab_CreateUser.Location = new System.Drawing.Point(8, 78);
-            this.tab_CreateUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_CreateUser.Location = new System.Drawing.Point(8, 43);
+            this.tab_CreateUser.Margin = new System.Windows.Forms.Padding(4);
             this.tab_CreateUser.Name = "tab_CreateUser";
-            this.tab_CreateUser.Size = new System.Drawing.Size(1636, 1238);
+            this.tab_CreateUser.Size = new System.Drawing.Size(1636, 1273);
             this.tab_CreateUser.TabIndex = 4;
             this.tab_CreateUser.Text = "Create User";
             // 
@@ -1736,7 +1736,7 @@ namespace DemoApp
             this.rPnl_CreateUser.Location = new System.Drawing.Point(0, 0);
             this.rPnl_CreateUser.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_CreateUser.Name = "rPnl_CreateUser";
-            this.rPnl_CreateUser.Size = new System.Drawing.Size(1636, 1238);
+            this.rPnl_CreateUser.Size = new System.Drawing.Size(1636, 1273);
             this.rPnl_CreateUser.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateUser.TabIndex = 4;
             // 
@@ -1745,7 +1745,7 @@ namespace DemoApp
             this.header_CreateUser.Controls.Add(this.lbl_HeaderCreateUser);
             this.header_CreateUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.header_CreateUser.Location = new System.Drawing.Point(0, 0);
-            this.header_CreateUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.header_CreateUser.Margin = new System.Windows.Forms.Padding(4);
             this.header_CreateUser.Name = "header_CreateUser";
             this.header_CreateUser.Size = new System.Drawing.Size(1636, 80);
             this.header_CreateUser.TabIndex = 1;
@@ -1772,7 +1772,7 @@ namespace DemoApp
             this.ClientSize = new System.Drawing.Size(2140, 1364);
             this.Controls.Add(this.tableLayoutPanel);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(2134, 1279);
             this.Name = "Main";
             this.Text = "Dashboard";

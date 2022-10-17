@@ -73,6 +73,17 @@ namespace DemoApp
 
             InitAddTicketComboBoxes();
             InitTicketDetailsView();
+
+            // A small workaround for splitter in Table Management to be correctly positioned.
+            if (this.employee.Type == EmployeeType.Regular)
+            {
+                splitContainer1.Panel2MinSize = 0;
+                splitContainer1.SplitterDistance = splitContainer1.Width;
+            }
+            else
+            {
+                splitContainer1.SplitterDistance = btn_Display_Tickets_Resolved.Right + 10;
+            }
         }
 
         /// <summary>
@@ -116,14 +127,11 @@ namespace DemoApp
 
         private void Form_Load(object sender, EventArgs e)
         {
-            //var dbList = databases.Get_All_Databases();
-
-            //foreach (var db in dbList)
-            //{
-            //    listBox1.Items.Add(db.name);
-            //}
-
-            // Load dashboard data
+            // Just a small performance optimization...
+            if (this.employee.Type == EmployeeType.Regular)
+            {
+                return;
+            }
             LoadDashboardData();
         }
 
@@ -553,8 +561,6 @@ namespace DemoApp
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
             //setting the attributes that are different based on employee type
-
-            bool isRegularEmployee = employee.Type == EmployeeType.Regular;
 
             int followUpDays;
             TicketPriority priority;
