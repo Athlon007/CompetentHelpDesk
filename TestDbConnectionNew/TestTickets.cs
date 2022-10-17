@@ -35,6 +35,7 @@ namespace TestDbConnectionNew
         [TestMethod]
         public void TicketHasAssignedEmployee()
         {
+            Trace.WriteLine("Ticket 0 reporter: " + tickets[0].Reporter);
             Assert.IsNotNull(tickets[0].Reporter);
         }
 
@@ -43,7 +44,6 @@ namespace TestDbConnectionNew
         {
             DateTime deadline = new DateTime(2022, 10, 14, 12, 00, 00);
             int expectedLength = (deadline - DateTime.Now).Days;
-            Trace.WriteLine("Expected days: " + expectedLength);
             Ticket t = new Ticket()
             {
                 IncidentType = IncidentTypes.Software,
@@ -55,6 +55,8 @@ namespace TestDbConnectionNew
                 Priority = TicketPriority.Medium, 
                 Status = TicketStatus.Open
             };
+            Trace.WriteLine("Expected days: " + expectedLength);
+            Trace.WriteLine("Actual days: " + t.DaysUntilDeadline);
             Assert.AreEqual(expectedLength, t.DaysUntilDeadline);
         }
 
