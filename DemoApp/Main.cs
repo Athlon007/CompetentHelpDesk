@@ -56,14 +56,14 @@ namespace DemoApp
             InitializeComponent();
             this.employee = employee;
 
-            DisplayDashboardForEmployee(employee);  
-
             lbl_Username.Text = employee.FirstName + " " + employee.LastName;
             lbl_Role.Text = employee.Type.ToString().Prettify();
 
             ticketService = new TicketsService();
             employeeService = new EmployeeService();
             ticketEscalationService = new TicketEscalationService();
+
+            DisplayDashboardForEmployee(employee);
 
             // Set tab control panel tabs to invisible
             tabControl.ItemSize = new Size(0, 1);
@@ -251,11 +251,10 @@ namespace DemoApp
 
         public void DisplayTicketFormForEmployee(Employee employee)
         {
-
             if (employee.Type == EmployeeType.Regular)
             {
                 lblPriorityCT.Hide();
-                lblDeadlineCT.Text = "Please provide a short description specifing when the issue occured.";
+                lblDeadlineCT.Text = "Please provide a brief description stating what the problem is.";
                 cmbPriorityCT.Hide();
                 cmbDeadlineCT.Hide();
             }
@@ -537,11 +536,12 @@ namespace DemoApp
             //setting the attributes that are different based on employee type
             int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
             TicketPriority priority = cmbPriorityCT.SelectedIndex == -1 ? 0 : (TicketPriority)cmbPriorityCT.SelectedIndex;
-            
+            Employee submittedBy = employee.Type == EmployeeType.Regular ? employee : (Employee)cmbUserCT.SelectedItem;
+
             var submitted = ticketService.InsertTicket(dtpReportedCT.Value,
                 txtSubjectOfIncidentCT.Text,
                 (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
-                (Employee)cmbUserCT.SelectedItem,
+                submittedBy,
                 priority,
                 followUpDays,
                 txtDescriptionCT.Text);
@@ -730,7 +730,7 @@ namespace DemoApp
                                                  $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
-            {                
+            {
                 var reply = ticketEscalationService.EscalateTicket(ticket);
 
                 if (reply.Code == 0)
