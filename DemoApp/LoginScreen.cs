@@ -24,6 +24,8 @@ namespace DemoApp
         public LoginScreen()
         {
             InitializeComponent();
+            pnlPasswordReset.Hide();
+
         }
 
         public bool CheckPasswordUsingHashedPassword(Employee employee)
@@ -112,5 +114,48 @@ namespace DemoApp
 
         }
 
+        private void lblResetPassword_Click(object sender, EventArgs e)
+        {
+            pnlPasswordReset.Show();
+
+        }
+
+        public void SendResetLink()
+        {
+
+            string confirmationMessage = "";
+            Employee employee = employeeService.GetByUsername(txtUsernameResetPasswordPnl.Text);
+
+            if (txtUsernameResetPasswordPnl.Text.Length == 0 || txtEmail.Text.Length == 0)
+            {
+                confirmationMessage = "Password reset failed. Please fill in the username and email.";
+                throw new Exception(confirmationMessage);
+            }
+
+
+            if (employee == null)
+            {
+                confirmationMessage = "This user does not exist. Please check your username and try again.";
+                throw new Exception(confirmationMessage);
+            }
+
+            else
+            {
+                confirmationMessage = "A password reset link was sent to your email address.";
+                lblLinkSent.Text = confirmationMessage;
+
+            }
+
+        }
+
+        private void btnSendResetLink_Click(object sender, EventArgs e)
+        {
+            try { SendResetLink(); }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+
+        }
     }
 }

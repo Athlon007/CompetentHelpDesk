@@ -231,19 +231,30 @@ namespace DemoApp
             btn_Display_Tickets_Unresolved.Hide();
         }
 
+
         public void DisplayDashboardForEmployee(Employee employee)
         {
             if (employee.Type == EmployeeType.Regular)
             {
                 splitContainer1.Panel2.Hide();
                 hideControlsForViewingTickets();
+                btn_Dashboard.Hide();
+                btn_TicketManagement.Text = "Show my tickets";
+                btn_CreateTicket.Text = "Report incident";
+                btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
-
+                tabControl.SelectedIndex = 1;
+                LoadTickets(TicketLoadStatus.Open);
+                CleanTicketDetails();
+                SetDashboardButtonStyling(1);
             }
+
             else if (employee.Type == EmployeeType.Specialist)
             {
                 hideControlsForViewingTickets();
+                btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
+
             }
         }
 
@@ -251,14 +262,22 @@ namespace DemoApp
 
         public void DisplayTicketFormForEmployee(Employee employee)
         {
+
             if (employee.Type == EmployeeType.Regular)
             {
+                lbl_HeaderCreateTicket.Text = "Report incident";
+                lblDateTimeReportedCT.Hide();
                 lblPriorityCT.Hide();
-                lblDeadlineCT.Text = "Please provide a brief description stating what the problem is.";
+                lblReportedByUserCT.Hide();
+                lblDeadlineCT.Text = "Please provide a short description also specifing when the problem occured.";
+                dtpReportedCT.Hide();
+                cmbUserCT.Hide();
                 cmbPriorityCT.Hide();
                 cmbDeadlineCT.Hide();
+                btnSubmitTicketCT.Text = "Submit incident";
             }
         }
+
 
 
         private void Btn_CreateTicket_Click(object sender, EventArgs e)
@@ -534,14 +553,33 @@ namespace DemoApp
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
             //setting the attributes that are different based on employee type
-            int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-            TicketPriority priority = cmbPriorityCT.SelectedIndex == -1 ? 0 : (TicketPriority)cmbPriorityCT.SelectedIndex;
-            Employee submittedBy = employee.Type == EmployeeType.Regular ? employee : (Employee)cmbUserCT.SelectedItem;
 
-            var submitted = ticketService.InsertTicket(dtpReportedCT.Value,
+            bool isRegularEmployee = employee.Type == EmployeeType.Regular;
+
+            int followUpDays;
+            TicketPriority priority;
+            DateTime dateTimeReported;
+            Employee reportingUser;
+
+            if (employee.Type == EmployeeType.Regular)
+            {
+                followUpDays = 0;
+                priority = 0;
+                dateTimeReported = DateTime.Now;
+                reportingUser = employee;
+            }
+            else
+            {
+                followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? -1 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
+                priority = (TicketPriority)cmbPriorityCT.SelectedIndex;
+                dateTimeReported = dtpReportedCT.Value;
+                reportingUser = (Employee)cmbUserCT.SelectedItem;
+            }
+
+            var submitted = ticketService.InsertTicket(dateTimeReported,
                 txtSubjectOfIncidentCT.Text,
                 (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
-                submittedBy,
+                reportingUser,
                 priority,
                 followUpDays,
                 txtDescriptionCT.Text);
