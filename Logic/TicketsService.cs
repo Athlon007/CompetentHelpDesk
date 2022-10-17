@@ -93,24 +93,34 @@ namespace Logic
             }
         }
 
+        /// <summary>
+        /// Gets a list of Tickets by status from a specific employee
+        /// </summary>
+        /// <param name="status">Ticket status to filter by.</param>
+        /// <param name="employee">Employee to find specific tickets for.</param>
         public List<Ticket> GetTicketsByStatus(TicketStatus status, Employee employee)
         {
             try
             {
                 // Create stages for the pipeline
                 var pipeline = GetTicketPipeline(employee);
-                pipeline.Add(new BsonDocument("$match", new BsonDocument("status", (int)status)));
+                if (status != TicketStatus.PastDeadline) // If the ticket isn't past the deadline date...
+                {
+                    pipeline.Add(new BsonDocument("$match", new BsonDocument("status", (int)status)));
+                }
+                else // Filter by tickets that are past the deadline date & have an open status
+                {
+                    pipeline.Add(new BsonDocument("$match", new BsonDocument("deadline", new BsonDocument("$lte", DateTime.Now))));
+                    pipeline.Add(new BsonDocument("$match", new BsonDocument("status", (int)TicketStatus.Open)));
+                }
 
                 // Return tickets by status
                 return ConvertToTicketList(ticketsdb.Get(pipeline));
             }
-            catch (FormatException ex) // Dummy code... Adjust properly later
+            catch (Exception ex)
             {
-                throw new FormatException("An error occured handling the format out of the database", ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ArgumentNullException("Null exception", ex);
+                ErrorHandler.Instance.WriteError(ex);
+                return new List<Ticket>();
             }
         }
 
@@ -142,39 +152,60 @@ namespace Logic
             }
         }
 
-        // Dashboard methods
+        /// <summary>
+        /// Gets amount of total tickets that are not escalated.
+        /// </summary>
         public long GetTotalTicketCount()
         {
             try
             {
+                // Create a filter that checks for non-escalated tickets
+                var builder = Builders<Ticket>.Filter;
+                var filter = builder.Eq("escalationLevel", BsonNull.Value) | 
+                                builder.Eq("escalationLevel", 0);
+
                 // Get total ticket count
-                return ticketsdb.GetTotalTicketCount();
+                return ticketsdb.GetTotalTicketCount(filter);
             }
-            catch (FormatException ex) // Dummy code... Adjust properly later
+            catch (Exception ex)
             {
-                throw new FormatException("An error occured handling the format out of the database", ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ArgumentNullException("Null exception", ex);
+                ErrorHandler.Instance.WriteError(ex);
+                return -1;
             }
         }
 
+        /// <summary>
+        /// Gets amount of tickets by status that are not escalated.
+        /// </summary>
+        /// <param name="status">Ticket status to filter by.</param>
         public long GetTicketCountByType(TicketStatus status)
         {
             try
             {
-                // Create a filter and return the count by ticket status
-                var filter = new BsonDocument("status", (int)status);
+                // Create a filter that checks for non-escalated tickets and by status
+                FilterDefinitionBuilder<Ticket> builder = Builders<Ticket>.Filter;
+                FilterDefinition<Ticket> filter; 
+                if (status != TicketStatus.PastDeadline)
+                {
+                    filter = (builder.Eq("escalationLevel", BsonNull.Value) |
+                                    builder.Eq("escalationLevel", 0)) &
+                                    builder.Eq("status", (int)status);
+                }
+                else // Look for open tickets that are past the deadline
+                {
+                    filter = (builder.Eq("escalationLevel", BsonNull.Value) |
+                                builder.Eq("escalationLevel", 0)) &
+                                builder.Eq("status", (int)TicketStatus.Open) &
+                                builder.Lte("deadline", DateTime.Now);
+                }
+
+                // Return the count by ticket status
                 return ticketsdb.GetTicketCountByStatus(filter);
             }
-            catch (FormatException ex) // Dummy code... Adjust properly later
+            catch (Exception ex)
             {
-                throw new FormatException("An error occured handling the format out of the database", ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ArgumentNullException("Null exception", ex);
+                ErrorHandler.Instance.WriteError(ex);
+                return -1;
             }
         }
 
