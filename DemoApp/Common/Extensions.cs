@@ -58,6 +58,11 @@ namespace DemoApp.Common
         /// <returns>Inverted version of the same image.</returns>
         public static Image InvertImage(this Image image)
         {
+            if (image == null)
+            {
+                return null;
+            }
+
             for (int x = 0; x < image.Width - 1; x++)
             {
                 for (int y = 0; y < image.Height - 1; y++)
