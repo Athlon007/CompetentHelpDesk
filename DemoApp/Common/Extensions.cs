@@ -6,7 +6,6 @@ namespace DemoApp.Common
 {
     internal static class Extensions
     {
-
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, Int32 wMsg, bool wParam, Int32 lParam);
 
