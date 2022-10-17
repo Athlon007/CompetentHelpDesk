@@ -6,7 +6,6 @@ namespace DemoApp.Common
 {
     internal static class Extensions
     {
-
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, Int32 wMsg, bool wParam, Int32 lParam);
 
@@ -24,7 +23,7 @@ namespace DemoApp.Common
         /// <summary>
         /// Resumes drawing of the control.
         /// </summary>
-        /// <param name="parent">Cotntrol to resume drawing.</param>
+        /// <param name="parent">Control to resume drawing.</param>
         public static void ResumeDrawing(this Control parent)
         {
             SendMessage(parent.Handle, WM_SETREDRAW, true, 0);
@@ -37,7 +36,7 @@ namespace DemoApp.Common
         /// <param name="text">Text to nicefy</param>
         /// <returns></returns>
         public static string Prettify(this string text)
-        {
+        { 
             string output = "";
             for (int i = 0; i < text.Length; i++)
             {

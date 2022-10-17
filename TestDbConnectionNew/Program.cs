@@ -65,8 +65,9 @@ namespace TestDbConnectionNew
 
         void TestTicketDatabase()
         {
-
-            ticketsDAO.GetTickets(out List<Ticket> tickets);
+            var employee = new Employee();
+            employee.Id = 0;
+            ticketsDAO.GetTickets(out List<Ticket> tickets, employee);
 
             Console.WriteLine("Printing tickets list:");
             foreach (Ticket ticket in tickets)

@@ -4,7 +4,6 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Security.Claims;
 
 namespace TestDbConnectionNew
 {
@@ -13,11 +12,14 @@ namespace TestDbConnectionNew
     {
         private TicketsService service;
         private List<Ticket> tickets;
+        private Employee testEmployee;
 
         public TestTickets()
         {
+            testEmployee = new Employee();
+            testEmployee.Id = 0;
             service = new TicketsService();
-            service.GetTickets(out tickets);
+            service.GetTickets(out tickets, testEmployee);
         }
 
         [TestMethod]
@@ -33,6 +35,7 @@ namespace TestDbConnectionNew
         [TestMethod]
         public void TicketHasAssignedEmployee()
         {
+            Trace.WriteLine("Ticket 0 reporter: " + tickets[0].Reporter);
             Assert.IsNotNull(tickets[0].Reporter);
         }
 
@@ -41,7 +44,6 @@ namespace TestDbConnectionNew
         {
             DateTime deadline = new DateTime(2022, 10, 14, 12, 00, 00);
             int expectedLength = (deadline - DateTime.Now).Days;
-            Trace.WriteLine("Expected days: " + expectedLength);
             Ticket t = new Ticket()
             {
                 IncidentType = IncidentTypes.Software,
@@ -53,13 +55,15 @@ namespace TestDbConnectionNew
                 Priority = TicketPriority.Medium, 
                 Status = TicketStatus.Open
             };
+            Trace.WriteLine("Expected days: " + expectedLength);
+            Trace.WriteLine("Actual days: " + t.DaysUntilDeadline);
             Assert.AreEqual(expectedLength, t.DaysUntilDeadline);
         }
 
         [TestMethod]
         public void GetTickedByID()
         {
-            var response = service.GetById(0, out Ticket t);
+            var response = service.GetById(0, out Ticket t, testEmployee);
             Trace.WriteLine($"Ticket 0 details: " + t);
             Assert.AreEqual(0, response.Code);
         }
@@ -76,7 +80,9 @@ namespace TestDbConnectionNew
         public void TestInsertValidationFalse()
         {
             PrivateObject obj = new PrivateObject(service);
-            var retVal = obj.Invoke("IsTicketSubmissionValid", "", DateTime.Now, "", IncidentTypes.Service, new Employee(), TicketPriority.Low, 7, "Description");
+            object[] args = new object[] { "", DateTime.Now, "", IncidentTypes.Service, new Employee(), TicketPriority.Low, 7, "Description" };
+            var retVal = obj.Invoke("IsTicketSubmissionValid", args);
+            Trace.WriteLine("Response: " + args[0]);
             Assert.AreEqual(false, retVal);
         }
 
@@ -90,18 +96,22 @@ namespace TestDbConnectionNew
         }
 
         [TestMethod]
-        public void TestEditValidationTrue()
+        public void TestTicketUpdateTrue()
         {
             PrivateObject obj = new PrivateObject(service);
-            var retVal = obj.Invoke("IsTicketEditValid", "", "Subject", "Description");
+            object[] args = new object[] { null, "Subject", "Description", TicketPriority.Low };
+            var retVal = obj.Invoke("IsTicketEditValid", args);
+            Trace.WriteLine($"Responce: " + args[0]);
             Assert.AreEqual(true, retVal);
         }
 
         [TestMethod]
-        public void TestEditValidationFalse()
+        public void TestTicketUpdateFalse()
         {
             PrivateObject obj = new PrivateObject(service);
-            var retVal = obj.Invoke("IsTicketEditValid", "", "", "Description");
+            object[] args = new object[] { null, "", "", TicketPriority.ToBeDetermined };
+            var retVal = obj.Invoke("IsTicketEditValid", args);
+            Trace.WriteLine($"Responce: " + args[0]);
             Assert.AreEqual(false, retVal);
         }
     }

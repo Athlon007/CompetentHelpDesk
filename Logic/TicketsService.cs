@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using DAL;
 using Model;
 using MongoDB.Bson;
@@ -32,7 +33,7 @@ namespace Logic
                         { "as", "reporterPerson" }
                     });
             var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
-            BsonDocument matchForEmployeeLevel = null;
+            BsonDocument matchForEmployeeLevel;
             if (employee.Type == EmployeeType.ServiceDesk)
             {
                 // Service desk employees can see tickets that have escalation level 0, or not have it at all.
@@ -215,11 +216,11 @@ namespace Logic
         /// <param name="date">Date of ticket submission.</param>
         /// <param name="subject">Subject of the ticket.</param>
         /// <param name="type">Incident Type</param>
-        /// <param name="reporter"></param>
-        /// <param name="priority"></param>
-        /// <param name="followUpDays"></param>
-        /// <param name="description"></param>
-        /// <returns>Returns if sent successfully, and/or issues with the submission..</returns>
+        /// <param name="reporter">Person who reports the incident.</param>
+        /// <param name="priority">Priority of the incident.</param>
+        /// <param name="followUpDays">How many days until the ticket's deadline?</param>
+        /// <param name="description">Brief description of the issue.</param>
+        /// <returns>Returns if sent successfully, and/or issues with the submission.</returns>
         public StatusStruct InsertTicket(DateTime date, string subject, IncidentTypes type, Employee reporter, TicketPriority priority, int followUpDays, string description)
         {
             string issues = "";
@@ -230,17 +231,19 @@ namespace Logic
 
             try
             {
-                BsonDocument doc = new BsonDocument();
-                doc.Add(new BsonElement("_id", GetHighestId() + 1));
-                doc.Add(new BsonElement("type", (int)type));
-                doc.Add(new BsonElement("subject", subject));
-                doc.Add(new BsonElement("description", description));
-                doc.Add(new BsonElement("reporter", reporter.Id));
-                doc.Add(new BsonElement("date", date));
-                doc.Add(new BsonElement("deadline", date.AddDays(followUpDays)));
-                doc.Add(new BsonElement("priority", priority));
-                doc.Add(new BsonElement("status", TicketStatus.Open));
-                doc.Add(new BsonElement("escalationLevel", 0));
+                BsonDocument doc = new BsonDocument
+                {
+                    new BsonElement("_id", GetHighestId() + 1),
+                    new BsonElement("type", (int)type),
+                    new BsonElement("subject", subject),
+                    new BsonElement("description", description),
+                    new BsonElement("reporter", reporter.Id),
+                    new BsonElement("date", date),
+                    new BsonElement("deadline", date.AddDays(followUpDays)),
+                    new BsonElement("priority", priority),
+                    new BsonElement("status", TicketStatus.Open),
+                    new BsonElement("escalationLevel", 0)
+                };
 
                 ticketsdb.Insert(doc);
                 return new StatusStruct(0, "");
@@ -259,7 +262,7 @@ namespace Logic
         public StatusStruct UpdateTicket(Ticket ticket, string subject, string description, IncidentTypes type, TicketPriority priority, TicketStatus status, Employee employee)
         {
             // Subject or description empty? Return status as 1.
-            if (!IsTicketEditValid(out string issues, subject, description))
+            if (!IsTicketEditValid(out string issues, subject, description, priority))
             {
                 return new StatusStruct(1, issues);
             }
@@ -341,56 +344,48 @@ namespace Logic
         /// </summary>
         private bool IsTicketSubmissionValid(ref string reason, DateTime date, string subject, IncidentTypes type, Employee employee, TicketPriority priority, int deadline, string description)
         {
+            StringBuilder sb = new StringBuilder();
             if (date > DateTime.Now)
-            {
-                reason += "Incident time cannot be in the future\n";
-            }
+                sb.AppendLine("Incident time cannot be in the future");
 
             if (string.IsNullOrEmpty(subject))
-            {
-                reason += "Subject is missing\n";
-            }
+                sb.AppendLine("Subject is missing");
 
             if ((int)type == -1)
-            {
-                reason += "Type of incident is not provided\n";
-            }
+                sb.AppendLine("Type of incident is not provided");
 
             if (employee == null)
-            {
-                reason += "Reporting user not provided\n";
-            }
+                sb.AppendLine("Reporting user not provided");
 
             if ((int)priority == -1)
-            {
-                reason += "Priority not provided\n";
-            }
+                sb.AppendLine("Priority not provided");
 
             if (deadline == -1)
-            {
-                reason += "Deadline not provided\n";
-            }
+                sb.AppendLine("Deadline not provided");
 
             if (string.IsNullOrEmpty(description))
-            {
-                reason += "Description not provided\n";
-            }
+                sb.AppendLine("Description not provided");
 
+            reason = sb.ToString();
             return reason.Length == 0;
         }
 
-        private bool IsTicketEditValid(out string issues, string subject, string description)
+        /// <summary>
+        /// Returns true, if the ticket update submission is valid.
+        /// </summary>
+        private bool IsTicketEditValid(out string issues, string subject, string description, TicketPriority priority)
         {
-            issues = "";
+            StringBuilder sb = new StringBuilder();
             if (string.IsNullOrEmpty(subject))
-            {
-                issues += "Subject is empty\n";
-            }
-            if (string.IsNullOrEmpty(description))
-            {
-                issues += "Description is empty\n";
-            }
+                sb.AppendLine("Subject is empty");
+            
+            if (string.IsNullOrEmpty(description))            
+                sb.AppendLine("Description is empty");
 
+            if (priority == TicketPriority.ToBeDetermined)
+                sb.AppendLine("Ticket priority must be defined");
+
+            issues = sb.ToString();
             return issues.Length == 0;
         }
     }
