@@ -73,6 +73,17 @@ namespace DemoApp
 
             InitAddTicketComboBoxes();
             InitTicketDetailsView();
+
+            // A small workaround for splitter in Table Management to be correctly positioned.
+            if (this.employee.Type == EmployeeType.Regular)
+            {
+                splitContainer1.Panel1MinSize = 0;
+                splitContainer1.SplitterDistance = splitContainer1.Width;
+            }
+            else
+            {
+                splitContainer1.SplitterDistance = btn_Display_Tickets_Resolved.Right + 10;
+            }
         }
 
         /// <summary>
