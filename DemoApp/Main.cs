@@ -562,8 +562,6 @@ namespace DemoApp
         {
             //setting the attributes that are different based on employee type
 
-            bool isRegularEmployee = employee.Type == EmployeeType.Regular;
-
             int followUpDays;
             TicketPriority priority;
             DateTime dateTimeReported;
