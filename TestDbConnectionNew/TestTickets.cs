@@ -4,7 +4,6 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Security.Claims;
 
 namespace TestDbConnectionNew
 {
@@ -79,7 +78,9 @@ namespace TestDbConnectionNew
         public void TestInsertValidationFalse()
         {
             PrivateObject obj = new PrivateObject(service);
-            var retVal = obj.Invoke("IsTicketSubmissionValid", "", DateTime.Now, "", IncidentTypes.Service, new Employee(), TicketPriority.Low, 7, "Description");
+            object[] args = new object[] { "", DateTime.Now, "", IncidentTypes.Service, new Employee(), TicketPriority.Low, 7, "Description" };
+            var retVal = obj.Invoke("IsTicketSubmissionValid", args);
+            Trace.WriteLine("Response: " + args[0]);
             Assert.AreEqual(false, retVal);
         }
 
@@ -93,18 +94,22 @@ namespace TestDbConnectionNew
         }
 
         [TestMethod]
-        public void TestEditValidationTrue()
+        public void TestTicketUpdateTrue()
         {
             PrivateObject obj = new PrivateObject(service);
-            var retVal = obj.Invoke("IsTicketEditValid", "", "Subject", "Description");
+            object[] args = new object[] { null, "Subject", "Description", TicketPriority.Low };
+            var retVal = obj.Invoke("IsTicketEditValid", args);
+            Trace.WriteLine($"Responce: " + args[0]);
             Assert.AreEqual(true, retVal);
         }
 
         [TestMethod]
-        public void TestEditValidationFalse()
+        public void TestTicketUpdateFalse()
         {
             PrivateObject obj = new PrivateObject(service);
-            var retVal = obj.Invoke("IsTicketEditValid", "", "", "Description");
+            object[] args = new object[] { null, "", "", TicketPriority.ToBeDetermined };
+            var retVal = obj.Invoke("IsTicketEditValid", args);
+            Trace.WriteLine($"Responce: " + args[0]);
             Assert.AreEqual(false, retVal);
         }
     }

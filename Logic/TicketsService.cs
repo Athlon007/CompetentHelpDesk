@@ -262,7 +262,7 @@ namespace Logic
         public StatusStruct UpdateTicket(Ticket ticket, string subject, string description, IncidentTypes type, TicketPriority priority, TicketStatus status, Employee employee)
         {
             // Subject or description empty? Return status as 1.
-            if (!IsTicketEditValid(out string issues, subject, description))
+            if (!IsTicketEditValid(out string issues, subject, description, priority))
             {
                 return new StatusStruct(1, issues);
             }
@@ -373,7 +373,7 @@ namespace Logic
         /// <summary>
         /// Returns true, if the ticket update submission is valid.
         /// </summary>
-        private bool IsTicketEditValid(out string issues, string subject, string description)
+        private bool IsTicketEditValid(out string issues, string subject, string description, TicketPriority priority)
         {
             StringBuilder sb = new StringBuilder();
             if (string.IsNullOrEmpty(subject))
@@ -381,6 +381,9 @@ namespace Logic
             
             if (string.IsNullOrEmpty(description))            
                 sb.AppendLine("Description is empty");
+
+            if (priority == TicketPriority.ToBeDetermined)
+                sb.AppendLine("Ticket priority must be defined");
 
             issues = sb.ToString();
             return issues.Length == 0;
