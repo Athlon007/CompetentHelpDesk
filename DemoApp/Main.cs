@@ -127,14 +127,11 @@ namespace DemoApp
 
         private void Form_Load(object sender, EventArgs e)
         {
-            //var dbList = databases.Get_All_Databases();
-
-            //foreach (var db in dbList)
-            //{
-            //    listBox1.Items.Add(db.name);
-            //}
-
-            // Load dashboard data
+            // Just a small performance optimization...
+            if (this.employee.Type == EmployeeType.Regular)
+            {
+                return;
+            }
             LoadDashboardData();
         }
 
