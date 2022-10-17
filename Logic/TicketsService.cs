@@ -32,7 +32,7 @@ namespace Logic
                         { "as", "reporterPerson" }
                     });
             var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
-            BsonDocument matchForEmployeeLevel = null;
+            BsonDocument matchForEmployeeLevel;
             if (employee.Type == EmployeeType.ServiceDesk)
             {
                 // Service desk employees can see tickets that have escalation level 0, or not have it at all.
@@ -215,11 +215,11 @@ namespace Logic
         /// <param name="date">Date of ticket submission.</param>
         /// <param name="subject">Subject of the ticket.</param>
         /// <param name="type">Incident Type</param>
-        /// <param name="reporter"></param>
-        /// <param name="priority"></param>
-        /// <param name="followUpDays"></param>
-        /// <param name="description"></param>
-        /// <returns>Returns if sent successfully, and/or issues with the submission..</returns>
+        /// <param name="reporter">Person who reports the incident.</param>
+        /// <param name="priority">Priority of the incident.</param>
+        /// <param name="followUpDays">How many days until the ticket's deadline?</param>
+        /// <param name="description">Brief description of the issue.</param>
+        /// <returns>Returns if sent successfully, and/or issues with the submission.</returns>
         public StatusStruct InsertTicket(DateTime date, string subject, IncidentTypes type, Employee reporter, TicketPriority priority, int followUpDays, string description)
         {
             string issues = "";
@@ -230,17 +230,19 @@ namespace Logic
 
             try
             {
-                BsonDocument doc = new BsonDocument();
-                doc.Add(new BsonElement("_id", GetHighestId() + 1));
-                doc.Add(new BsonElement("type", (int)type));
-                doc.Add(new BsonElement("subject", subject));
-                doc.Add(new BsonElement("description", description));
-                doc.Add(new BsonElement("reporter", reporter.Id));
-                doc.Add(new BsonElement("date", date));
-                doc.Add(new BsonElement("deadline", date.AddDays(followUpDays)));
-                doc.Add(new BsonElement("priority", priority));
-                doc.Add(new BsonElement("status", TicketStatus.Open));
-                doc.Add(new BsonElement("escalationLevel", 0));
+                BsonDocument doc = new BsonDocument
+                {
+                    new BsonElement("_id", GetHighestId() + 1),
+                    new BsonElement("type", (int)type),
+                    new BsonElement("subject", subject),
+                    new BsonElement("description", description),
+                    new BsonElement("reporter", reporter.Id),
+                    new BsonElement("date", date),
+                    new BsonElement("deadline", date.AddDays(followUpDays)),
+                    new BsonElement("priority", priority),
+                    new BsonElement("status", TicketStatus.Open),
+                    new BsonElement("escalationLevel", 0)
+                };
 
                 ticketsdb.Insert(doc);
                 return new StatusStruct(0, "");
