@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Text;
+using System.Drawing;
 
 namespace DemoApp.Common
 {
@@ -36,17 +38,40 @@ namespace DemoApp.Common
         /// <param name="text">Text to nicefy</param>
         /// <returns></returns>
         public static string Prettify(this string text)
-        { 
-            string output = "";
+        {
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < text.Length; i++)
             {
                 if (i > 0 && char.IsUpper(text[i]) && text[i - 1] != ' ')
                 {
-                    output += ' ';
+                    sb.Append(' ');
                 }
-                output += text[i];
+                sb.Append(text[i]);
             }
-            return output;
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Inverts the image.
+        /// </summary>
+        /// <param name="image">Input image.</param>
+        /// <returns>Inverted version of the same image.</returns>
+        public static Image InvertImage(this Image image)
+        {
+            for (int x = 0; x < image.Width - 1; x++)
+            {
+                for (int y = 0; y < image.Height - 1; y++)
+                {
+                    Color inv = ((Bitmap)image).GetPixel(x, y);
+                    if (inv.A > 0)
+                    {
+                        inv = Color.FromArgb(inv.A, (255 - inv.R), (255 - inv.G), (255 - inv.B));
+                    }
+                    ((Bitmap)image).SetPixel(x, y, inv);
+                }
+            }
+
+            return image;
         }
     }
 }

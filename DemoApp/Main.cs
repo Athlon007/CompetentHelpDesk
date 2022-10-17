@@ -11,12 +11,12 @@ namespace DemoApp
 {
     public partial class Main : Form
     {
-        private TicketsService ticketService;
-        private EmployeeService employeeService;
-        private TicketEscalationService ticketEscalationService;
+        private readonly TicketsService ticketService;
+        private readonly EmployeeService employeeService;
+        private readonly TicketEscalationService ticketEscalationService;
         private List<Ticket> allTickets;
 
-        private Employee employee;
+        private readonly Employee employee;
 
         // Styling variables
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
@@ -69,7 +69,7 @@ namespace DemoApp
             tabControl.ItemSize = new Size(0, 1);
 
             // Invert standard image icon
-            btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
+            btn_Dashboard.Image = btn_Dashboard.Image.InvertImage();
 
             InitAddTicketComboBoxes();
             InitTicketDetailsView();
@@ -380,44 +380,21 @@ namespace DemoApp
             switch (buttonIndex)
             {
                 case 0:
-                    btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
+                    btn_Dashboard.Image = btn_Dashboard.Image.InvertImage();
                     break;
                 case 1:
-                    btn_TicketManagement.Image = InvertImage(btn_TicketManagement.Image);
+                    btn_TicketManagement.Image = btn_TicketManagement.Image.InvertImage();
                     break;
                 case 2:
-                    btn_CreateTicket.Image = InvertImage(btn_CreateTicket.Image);
+                    btn_CreateTicket.Image = btn_CreateTicket.Image.InvertImage();
                     break;
                 case 3:
-                    btn_UserManagement.Image = InvertImage(btn_UserManagement.Image);
+                    btn_UserManagement.Image = btn_UserManagement.Image.InvertImage();
                     break;
                 case 4:
-                    btn_CreateUser.Image = InvertImage(btn_CreateUser.Image);
+                    btn_CreateUser.Image = btn_CreateUser.Image.InvertImage();
                     break;
             }
-        }
-
-        /// <summary>
-        /// Inverts the image.
-        /// </summary>
-        /// <param name="image">Input image.</param>
-        /// <returns>Inverted version of the same image.</returns>
-        private Image InvertImage(Image image)
-        {
-            for (int x = 0; x < image.Width - 1; x++)
-            {
-                for (int y = 0; y < image.Height - 1; y++)
-                {
-                    Color inv = ((Bitmap)image).GetPixel(x, y);
-                    if (inv.A > 0)
-                    {
-                        inv = Color.FromArgb(inv.A, (255 - inv.R), (255 - inv.G), (255 - inv.B));
-                    }
-                    ((Bitmap)image).SetPixel(x, y, inv);
-                }
-            }
-
-            return image;
         }
 
         // Dashboard buttons
