@@ -93,6 +93,9 @@ namespace Logic
             }
         }
 
+        /// <summary>
+        /// Gets a list of Tickets by status from a specific employee
+        /// </summary>
         public List<Ticket> GetTicketsByStatus(TicketStatus status, Employee employee)
         {
             try
@@ -104,13 +107,10 @@ namespace Logic
                 // Return tickets by status
                 return ConvertToTicketList(ticketsdb.Get(pipeline));
             }
-            catch (FormatException ex) // Dummy code... Adjust properly later
+            catch (Exception ex)
             {
-                throw new FormatException("An error occured handling the format out of the database", ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ArgumentNullException("Null exception", ex);
+                ErrorHandler.Instance.WriteError(ex);
+                return new List<Ticket>();
             }
         }
 
@@ -142,39 +142,48 @@ namespace Logic
             }
         }
 
-        // Dashboard methods
+        /// <summary>
+        /// Gets amount of total tickets that are not escalated.
+        /// </summary>
         public long GetTotalTicketCount()
         {
             try
             {
+                // Create a filter that checks for non-escalated tickets
+                var builder = Builders<Ticket>.Filter;
+                var filter = builder.Eq("escalationLevel", BsonNull.Value) | 
+                                builder.Eq("escalationLevel", 0);
+
                 // Get total ticket count
-                return ticketsdb.GetTotalTicketCount();
+                return ticketsdb.GetTotalTicketCount(filter);
             }
-            catch (FormatException ex) // Dummy code... Adjust properly later
+            catch (Exception ex)
             {
-                throw new FormatException("An error occured handling the format out of the database", ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ArgumentNullException("Null exception", ex);
+                ErrorHandler.Instance.WriteError(ex);
+                return -1;
             }
         }
 
+        /// <summary>
+        /// Gets amount of tickets by status that are not escalated.
+        /// </summary>
         public long GetTicketCountByType(TicketStatus status)
         {
             try
             {
-                // Create a filter and return the count by ticket status
-                var filter = new BsonDocument("status", (int)status);
+                // Create a filter that checks for non-escalated tickets and by status
+                var builder = Builders<Ticket>.Filter;
+                var filter = (builder.Eq("escalationLevel", BsonNull.Value) | 
+                                builder.Eq("escalationLevel", 0)) & 
+                                builder.Eq("status", (int)status);
+
+                // Return the count by ticket status
                 return ticketsdb.GetTicketCountByStatus(filter);
             }
-            catch (FormatException ex) // Dummy code... Adjust properly later
+            catch (Exception ex)
             {
-                throw new FormatException("An error occured handling the format out of the database", ex);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new ArgumentNullException("Null exception", ex);
+                ErrorHandler.Instance.WriteError(ex);
+                return -1;
             }
         }
 

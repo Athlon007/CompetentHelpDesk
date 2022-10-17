@@ -27,12 +27,15 @@ namespace DAL
             return Get(pipeline.ToArray());
         }
 
-        public long GetTotalTicketCount()
+        /// <summary>
+        /// Returns amount of total tickets that are not escalated.
+        /// </summary>
+        public long GetTotalTicketCount(FilterDefinition<Ticket> filter)
         {
             try
             {
-                // Return count of documents in collection
-                return Database.GetCollection<Ticket>(CollectionName).CountDocuments(new BsonDocument());
+                // Return count of documents in collection (Non escalated)
+                return Database.GetCollection<Ticket>(CollectionName).Find(filter).CountDocuments();
             }
             catch // Throw exception, handle the exception in the service layer
             {
@@ -40,11 +43,14 @@ namespace DAL
             }
         }
 
-        public long GetTicketCountByStatus(BsonDocument filter)
+        /// <summary>
+        /// Returns amount of tickets by status that are not escalated.
+        /// </summary>
+        public long GetTicketCountByStatus(FilterDefinition<Ticket> filter)
         {
             try
             {
-                // Return count of documents in collection by ticket status
+                // Return count of documents in collection by ticket status (Non escalated)
                 return Database.GetCollection<Ticket>(CollectionName).Find(filter).CountDocuments();
             }
             catch // Throw exception, handle the exception in the service layer
