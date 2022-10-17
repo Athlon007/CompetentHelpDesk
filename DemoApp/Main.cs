@@ -815,6 +815,7 @@ namespace DemoApp
             rPnl_TicketManagement.ResumeLayout();
             rPnl_TicketManagement.ResumeDrawing();
             splitContainer1.SplitterDistance = (int)(splitContainer1.Width * splitPercentage);
+            UpdateTicketManagementColumnWidths();
         }
     }
 }
