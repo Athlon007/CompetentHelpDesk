@@ -500,6 +500,14 @@ namespace DemoApp
                 listView_TicketManagement.Items.Add(item);
             }
 
+            UpdateTicketManagementColumnWidths();
+        }
+
+        /// <summary>
+        /// Resizes the columns in ticket management to fit the entire list view width.
+        /// </summary>
+        private void UpdateTicketManagementColumnWidths()
+        {
             // Resize columns
             listView_TicketManagement.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent);
             listView_TicketManagement.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -538,7 +546,6 @@ namespace DemoApp
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
             //setting the attributes that are different based on employee type
-
             int followUpDays;
             TicketPriority priority;
             DateTime dateTimeReported;
@@ -559,15 +566,10 @@ namespace DemoApp
                 reportingUser = (Employee)cmbUserCT.SelectedItem;
             }
 
-            var submitted = ticketService.InsertTicket(dateTimeReported,
-                txtSubjectOfIncidentCT.Text,
-                (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
-                reportingUser,
-                priority,
-                followUpDays,
-                txtDescriptionCT.Text);
+            StatusStruct status = ticketService.InsertTicket(dateTimeReported, txtSubjectOfIncidentCT.Text, (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
+                                                             reportingUser, priority, followUpDays, txtDescriptionCT.Text);
 
-            if (submitted.Code == 0)
+            if (status.Code == 0)
             {
                 // Clean text boxes.
                 LoadAddTicketPage();
@@ -575,9 +577,9 @@ namespace DemoApp
                 lblWarningsCT.Text = "Submission succeeded!";
                 lblWarningsCT.ForeColor = Color.Green;
             }
-            else if (submitted.Code == 1)
+            else
             {
-                lblWarningsCT.Text = "Unable to submit a ticket:\n" + submitted.Message;
+                lblWarningsCT.Text = "Unable to submit a ticket:\n" + status.Message;
                 lblWarningsCT.ForeColor = Color.Red;
             }
         }
@@ -695,7 +697,7 @@ namespace DemoApp
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
         {
-            var status = ticketService.UpdateTicket(detailedTicket,
+            StatusStruct status = ticketService.UpdateTicket(detailedTicket,
                                       txtDetailsSubject.Text,
                                       txtDetailsDescription.Text,
                                       (IncidentTypes)cmbDetailsIncidentType.SelectedIndex,
@@ -724,9 +726,9 @@ namespace DemoApp
 
             if (result == DialogResult.Yes)
             {
-                var response = ticketService.DeleteTicket(detailedTicket);
+                StatusStruct status = ticketService.DeleteTicket(detailedTicket);
 
-                if (response.Code == 0)
+                if (status.Code == 0)
                 {
                     LoadTickets(currentTicketLoadStatus);
                     CleanTicketDetails();
@@ -734,7 +736,7 @@ namespace DemoApp
                 }
                 else
                 {
-                    lblDetailsWarning.Text = response.Message;
+                    lblDetailsWarning.Text = status.Message;
                 }
             }
         }
@@ -752,9 +754,9 @@ namespace DemoApp
 
             if (result == DialogResult.Yes)
             {
-                var reply = ticketEscalationService.EscalateTicket(ticket);
+                StatusStruct status = ticketEscalationService.EscalateTicket(ticket);
 
-                if (reply.Code == 0)
+                if (status.Code == 0)
                 {
                     LoadTickets(currentTicketLoadStatus);
                     CleanTicketDetails();
@@ -762,7 +764,7 @@ namespace DemoApp
                 }
                 else
                 {
-                    lblDetailsWarning.Text = reply.Message;
+                    lblDetailsWarning.Text = status.Message;
                 }
             }
         }
