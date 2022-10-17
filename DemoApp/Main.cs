@@ -705,15 +705,15 @@ namespace DemoApp
                                       (TicketStatus)cmbDetailsStatus.SelectedIndex,
                                       (Employee)cmbDetailsReporter.SelectedItem);
 
-            if (status.Code == 1)
-            {
-                lblDetailsWarning.Text = status.Message;
-            }
-            else
+            if (status.Code == 0)
             {
                 LoadTickets(currentTicketLoadStatus);
                 CleanTicketDetails();
                 lblDetailsWarning.Text = "";
+            }
+            else
+            {
+                lblDetailsWarning.Text = status.Message;
             }
         }
 
