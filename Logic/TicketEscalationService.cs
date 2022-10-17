@@ -23,7 +23,7 @@ namespace Logic
             try
             {
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
-                var update = Builders<BsonDocument>.Update.Set("escalationLevel", (int)ticket.EscalationLevel + 1);
+                var update = Builders<BsonDocument>.Update.Set("escalationLevel", ticket.EscalationLevel + 1);
                 ticketsdb.Update(filter, update);
                 return new StatusStruct(0);
             }

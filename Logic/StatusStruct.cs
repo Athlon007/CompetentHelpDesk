@@ -2,8 +2,8 @@
 {
     public struct StatusStruct
     {
-        public int Code; // 0 = OK. 1 == Exception.
-        public string Message;
+        public int Code { get; private set; } // 0 = OK. 1 == Exception.
+        public string Message { get; private set; }
 
         public StatusStruct(int code)
         {
@@ -13,7 +13,8 @@
 
         public StatusStruct(int code, string message)
         {
-            this.Code = code; this.Message = message;
+            this.Code = code; 
+            this.Message = message;
         }
     }
 }

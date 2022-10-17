@@ -11,12 +11,12 @@ namespace DemoApp
 {
     public partial class Main : Form
     {
-        private TicketsService ticketService;
-        private EmployeeService employeeService;
-        private TicketEscalationService ticketEscalationService;
+        private readonly TicketsService ticketService;
+        private readonly EmployeeService employeeService;
+        private readonly TicketEscalationService ticketEscalationService;
         private List<Ticket> allTickets;
 
-        private Employee employee;
+        private readonly Employee employee;
 
         // Styling variables
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
@@ -69,7 +69,7 @@ namespace DemoApp
             tabControl.ItemSize = new Size(0, 1);
 
             // Invert standard image icon
-            btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
+            btn_Dashboard.Image = btn_Dashboard.Image.InvertImage();
 
             InitAddTicketComboBoxes();
             InitTicketDetailsView();
@@ -380,44 +380,21 @@ namespace DemoApp
             switch (buttonIndex)
             {
                 case 0:
-                    btn_Dashboard.Image = InvertImage(btn_Dashboard.Image);
+                    btn_Dashboard.Image = btn_Dashboard.Image.InvertImage();
                     break;
                 case 1:
-                    btn_TicketManagement.Image = InvertImage(btn_TicketManagement.Image);
+                    btn_TicketManagement.Image = btn_TicketManagement.Image.InvertImage();
                     break;
                 case 2:
-                    btn_CreateTicket.Image = InvertImage(btn_CreateTicket.Image);
+                    btn_CreateTicket.Image = btn_CreateTicket.Image.InvertImage();
                     break;
                 case 3:
-                    btn_UserManagement.Image = InvertImage(btn_UserManagement.Image);
+                    btn_UserManagement.Image = btn_UserManagement.Image.InvertImage();
                     break;
                 case 4:
-                    btn_CreateUser.Image = InvertImage(btn_CreateUser.Image);
+                    btn_CreateUser.Image = btn_CreateUser.Image.InvertImage();
                     break;
             }
-        }
-
-        /// <summary>
-        /// Inverts the image.
-        /// </summary>
-        /// <param name="image">Input image.</param>
-        /// <returns>Inverted version of the same image.</returns>
-        private Image InvertImage(Image image)
-        {
-            for (int x = 0; x < image.Width - 1; x++)
-            {
-                for (int y = 0; y < image.Height - 1; y++)
-                {
-                    Color inv = ((Bitmap)image).GetPixel(x, y);
-                    if (inv.A > 0)
-                    {
-                        inv = Color.FromArgb(inv.A, (255 - inv.R), (255 - inv.G), (255 - inv.B));
-                    }
-                    ((Bitmap)image).SetPixel(x, y, inv);
-                }
-            }
-
-            return image;
         }
 
         // Dashboard buttons
@@ -523,6 +500,14 @@ namespace DemoApp
                 listView_TicketManagement.Items.Add(item);
             }
 
+            UpdateTicketManagementColumnWidths();
+        }
+
+        /// <summary>
+        /// Resizes the columns in ticket management to fit the entire list view width.
+        /// </summary>
+        private void UpdateTicketManagementColumnWidths()
+        {
             // Resize columns
             listView_TicketManagement.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent);
             listView_TicketManagement.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -561,7 +546,6 @@ namespace DemoApp
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
             //setting the attributes that are different based on employee type
-
             int followUpDays;
             TicketPriority priority;
             DateTime dateTimeReported;
@@ -582,15 +566,10 @@ namespace DemoApp
                 reportingUser = (Employee)cmbUserCT.SelectedItem;
             }
 
-            var submitted = ticketService.InsertTicket(dateTimeReported,
-                txtSubjectOfIncidentCT.Text,
-                (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
-                reportingUser,
-                priority,
-                followUpDays,
-                txtDescriptionCT.Text);
+            StatusStruct status = ticketService.InsertTicket(dateTimeReported, txtSubjectOfIncidentCT.Text, (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
+                                                             reportingUser, priority, followUpDays, txtDescriptionCT.Text);
 
-            if (submitted.Code == 0)
+            if (status.Code == 0)
             {
                 // Clean text boxes.
                 LoadAddTicketPage();
@@ -598,9 +577,9 @@ namespace DemoApp
                 lblWarningsCT.Text = "Submission succeeded!";
                 lblWarningsCT.ForeColor = Color.Green;
             }
-            else if (submitted.Code == 1)
+            else
             {
-                lblWarningsCT.Text = "Unable to submit a ticket:\n" + submitted.Message;
+                lblWarningsCT.Text = "Unable to submit a ticket:\n" + status.Message;
                 lblWarningsCT.ForeColor = Color.Red;
             }
         }
@@ -718,7 +697,7 @@ namespace DemoApp
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
         {
-            var status = ticketService.UpdateTicket(detailedTicket,
+            StatusStruct status = ticketService.UpdateTicket(detailedTicket,
                                       txtDetailsSubject.Text,
                                       txtDetailsDescription.Text,
                                       (IncidentTypes)cmbDetailsIncidentType.SelectedIndex,
@@ -747,9 +726,9 @@ namespace DemoApp
 
             if (result == DialogResult.Yes)
             {
-                var response = ticketService.DeleteTicket(detailedTicket);
+                StatusStruct status = ticketService.DeleteTicket(detailedTicket);
 
-                if (response.Code == 0)
+                if (status.Code == 0)
                 {
                     LoadTickets(currentTicketLoadStatus);
                     CleanTicketDetails();
@@ -757,7 +736,7 @@ namespace DemoApp
                 }
                 else
                 {
-                    lblDetailsWarning.Text = response.Message;
+                    lblDetailsWarning.Text = status.Message;
                 }
             }
         }
@@ -775,9 +754,9 @@ namespace DemoApp
 
             if (result == DialogResult.Yes)
             {
-                var reply = ticketEscalationService.EscalateTicket(ticket);
+                StatusStruct status = ticketEscalationService.EscalateTicket(ticket);
 
-                if (reply.Code == 0)
+                if (status.Code == 0)
                 {
                     LoadTickets(currentTicketLoadStatus);
                     CleanTicketDetails();
@@ -785,7 +764,7 @@ namespace DemoApp
                 }
                 else
                 {
-                    lblDetailsWarning.Text = reply.Message;
+                    lblDetailsWarning.Text = status.Message;
                 }
             }
         }
