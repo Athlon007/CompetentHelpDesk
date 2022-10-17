@@ -5,13 +5,14 @@ namespace DAL
 {
     internal class ConfigFile
     {
-        private dynamic json;
+        private readonly dynamic json;
         const string ConfigFileName = "config.json"; // Config file name that contains the connection string.
 
         public ConfigFile()
         {
             json = ReadConfig(ConfigFileName);
         }
+
 
         /// <summary>
         /// Returns the configuration file read from JSON file.
