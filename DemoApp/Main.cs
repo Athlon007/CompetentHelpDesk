@@ -243,6 +243,10 @@ namespace DemoApp
                 btn_CreateTicket.Text = "Report incident";
                 btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
+                tabControl.SelectedIndex = 1;
+                LoadTickets(TicketLoadStatus.Open);
+                CleanTicketDetails();
+                SetDashboardButtonStyling(1);
             }
 
             else if (employee.Type == EmployeeType.Specialist)
@@ -552,10 +556,25 @@ namespace DemoApp
 
             bool isRegularEmployee = employee.Type == EmployeeType.Regular;
 
-            int followUpDays = (isRegularEmployee || cmbDeadlineCT.SelectedIndex == -1) ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-            TicketPriority priority = (isRegularEmployee  && cmbPriorityCT.SelectedIndex == -1) ? 0 : (TicketPriority)cmbPriorityCT.SelectedIndex;
-            DateTime dateTimeReported = (isRegularEmployee && dtpReportedCT.Value == null) ? DateTime.Now : dtpReportedCT.Value;
-            Employee reportingUser = (isRegularEmployee && cmbUserCT.SelectedIndex == -1) ? employee : (Employee)cmbUserCT.SelectedItem;
+            int followUpDays;
+            TicketPriority priority;
+            DateTime dateTimeReported;
+            Employee reportingUser;
+
+            if (employee.Type == EmployeeType.Regular)
+            {
+                followUpDays = 0;
+                priority = 0;
+                dateTimeReported = DateTime.Now;
+                reportingUser = employee;
+            }
+            else
+            {
+                followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? -1 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
+                priority = (TicketPriority)cmbPriorityCT.SelectedIndex;
+                dateTimeReported = dtpReportedCT.Value;
+                reportingUser = (Employee)cmbUserCT.SelectedItem;
+            }
 
             var submitted = ticketService.InsertTicket(dateTimeReported,
                 txtSubjectOfIncidentCT.Text,
