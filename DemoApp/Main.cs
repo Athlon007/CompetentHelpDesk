@@ -550,10 +550,12 @@ namespace DemoApp
         {
             //setting the attributes that are different based on employee type
 
-            int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-            TicketPriority priority = cmbPriorityCT.SelectedIndex == -1 ? 0 : (TicketPriority)cmbPriorityCT.SelectedIndex;
-            DateTime dateTimeReported = dtpReportedCT.Value == null ? DateTime.Now : dtpReportedCT.Value;
-            Employee reportingUser = cmbUserCT.SelectedIndex == -1 ? employee : (Employee)cmbUserCT.SelectedItem;
+            bool isRegularEmployee = employee.Type == EmployeeType.Regular;
+
+            int followUpDays = (isRegularEmployee || cmbDeadlineCT.SelectedIndex == -1) ? 0 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
+            TicketPriority priority = (isRegularEmployee  && cmbPriorityCT.SelectedIndex == -1) ? 0 : (TicketPriority)cmbPriorityCT.SelectedIndex;
+            DateTime dateTimeReported = (isRegularEmployee && dtpReportedCT.Value == null) ? DateTime.Now : dtpReportedCT.Value;
+            Employee reportingUser = (isRegularEmployee && cmbUserCT.SelectedIndex == -1) ? employee : (Employee)cmbUserCT.SelectedItem;
 
             var submitted = ticketService.InsertTicket(dateTimeReported,
                 txtSubjectOfIncidentCT.Text,
