@@ -138,7 +138,7 @@ namespace DemoApp
         private void LoadDashboardData()
         {
             // Variables (using long due to it being NoSQL/"Big Data")
-            long ticketSum = -1, openTickets = -1, pastDeadlineTickets = -1, unresolvedTickets = -1, resolvedTickets = -1;
+            int ticketSum = -1, openTickets = -1, pastDeadlineTickets = -1, unresolvedTickets = -1, resolvedTickets = -1;
 
             try
             {
@@ -151,7 +151,7 @@ namespace DemoApp
             }
             catch (Exception ex)
             {
-                // Display error, probably want to use a logger
+                // Display error
                 MessageBox.Show($"{ex}: error message");
             }
             finally

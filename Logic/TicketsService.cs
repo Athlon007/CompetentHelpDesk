@@ -156,7 +156,7 @@ namespace Logic
         /// <summary>
         /// Gets amount of total tickets that are not escalated.
         /// </summary>
-        public long GetTotalTicketCount()
+        public int GetTotalTicketCount()
         {
             try
             {
@@ -166,7 +166,7 @@ namespace Logic
                                 builder.Eq("escalationLevel", 0);
 
                 // Get total ticket count
-                return ticketsdb.GetTotalTicketCount(filter);
+                return (int)ticketsdb.GetTotalTicketCount(filter);
             }
             catch (Exception ex)
             {
@@ -179,7 +179,7 @@ namespace Logic
         /// Gets amount of tickets by status that are not escalated.
         /// </summary>
         /// <param name="status">Ticket status to filter by.</param>
-        public long GetTicketCountByType(TicketStatus status)
+        public int GetTicketCountByType(TicketStatus status)
         {
             try
             {
@@ -201,7 +201,7 @@ namespace Logic
                 }
 
                 // Return the count by ticket status
-                return ticketsdb.GetTicketCountByStatus(filter);
+                return (int)ticketsdb.GetTicketCountByStatus(filter);
             }
             catch (Exception ex)
             {
