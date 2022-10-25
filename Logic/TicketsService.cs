@@ -246,7 +246,7 @@ namespace Logic
                 };
 
                 ticketsdb.Insert(doc);
-                return new StatusStruct(0, "");
+                return new StatusStruct(0);
             }
             catch (Exception ex)
             {
@@ -334,7 +334,10 @@ namespace Logic
                     return (int)output.First().GetValue(0);
                 }
             }
-            catch (Exception ex) { ErrorHandler.Instance.WriteError(ex); }
+            catch (Exception ex) 
+            { 
+                ErrorHandler.Instance.WriteError(ex); 
+            }
 
             return 0;
         }
