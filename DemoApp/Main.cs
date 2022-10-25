@@ -82,7 +82,8 @@ namespace DemoApp
             }
             else
             {
-                splitContainer1.SplitterDistance = btn_Display_Tickets_Resolved.Right + 10;
+                splitContainer1.SplitterDistance = btn_Display_Tickets_All.Width * 5 + 50;
+                splitContainer1.Panel1MinSize = splitContainer1.SplitterDistance;
             }
         }
 
