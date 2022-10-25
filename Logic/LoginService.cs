@@ -19,6 +19,17 @@ namespace Logic
         }
 
 
+        public HashedPasswordWithSalt CreateHashedPasswordWithSalt(string password)
+        {
+            PasswordWithSaltHasher hasher = new PasswordWithSaltHasher();
+            RNG rng = new RNG();
+            byte[] saltBytes = rng.GenerateRandomCryptographicBytes(64);
+            HashedPasswordWithSalt hashedPasswordWithSalt = hasher.HashWithSalt(password, 64, SHA512.Create(), saltBytes);
+            return hashedPasswordWithSalt;
+        }
+
+
+
         public bool CheckPasswordUsingHashedPassword(String password, Employee employee)
         {
 
