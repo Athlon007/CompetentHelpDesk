@@ -124,6 +124,13 @@ namespace DemoApp
             {
                 cmbDetailsStatus.Items.Add(status.ToString().Prettify());
             }
+
+            txtDetailsSubject.Width = splitContainer1.Panel2.Width - txtDetailsSubject.Left * 2;
+            cmbDetailsIncidentType.Width = txtDetailsSubject.Width;
+            cmbDetailsReporter.Width = txtDetailsSubject.Width;
+            cmbDetailsPriority.Width = txtDetailsSubject.Width;
+            cmbDetailsStatus.Width = txtDetailsSubject.Width;
+            txtDetailsDescription.Width = txtDetailsSubject.Width;
         }
 
         private void Form_Load(object sender, EventArgs e)
