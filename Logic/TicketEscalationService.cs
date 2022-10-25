@@ -21,6 +21,11 @@ namespace Logic
                 return new StatusStruct(1, "Cannot escalate ticket further. Highest escalation level has been reached.");
             }
 
+            if (ticket.Priority == TicketPriority.ToBeDetermined)
+            {
+                return new StatusStruct(1, $"Cannot escalate tickets with 'To Be Determined' status. Set the ticket priority first.");
+            }
+
             try
             {
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
