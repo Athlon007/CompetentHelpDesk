@@ -163,6 +163,7 @@
     <Compile Include="Databases.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="ErrorHandler.cs" />
+    <Compile Include="LoginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusStruct.cs" />
     <Compile Include="TicketEscalationService.cs" />
