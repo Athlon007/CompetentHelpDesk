@@ -257,12 +257,17 @@ namespace DemoApp
                 SetDashboardButtonStyling(1);
             }
 
-            else if (employee.Type == EmployeeType.Specialist)
+            else if (employee.Type >= EmployeeType.Specialist)
             {
                 hideControlsForViewingTickets();
                 btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
 
+            }
+
+            if ((int)employee.Type == Enum.GetValues(typeof(EmployeeType)).Length - 1)
+            {
+                btnDetailsEscalate.Hide();
             }
         }
 
@@ -749,8 +754,9 @@ namespace DemoApp
             }
 
             Ticket ticket = listView_TicketManagement.SelectedItems[0].Tag as Ticket;
-            DialogResult result = MessageBox.Show($"This will escalete the ticket {ticket.Id} to {(EmployeeType)ticket.EscalationLevel + 2} department.\n" +
-                                                 $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show($"This will escalete the ticket {ticket.Id} to " +
+                $"{((EmployeeType)ticket.EscalationLevel + 2).ToString().Prettify()} department.\n" +
+                $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {

@@ -1,11 +1,12 @@
 ﻿using Model;
+using DAL;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 
 namespace Logic
 {
-    public class TicketEscalationService : TicketsService
+    public class TicketEscalationService
     {
         // Konrad Figura
 
@@ -17,13 +18,14 @@ namespace Logic
         {
             if (!IsTicketEscalatable(ticket))
             {
-                return new StatusStruct(1, "Cannot escalate ticket further.");
+                return new StatusStruct(1, "Cannot escalate ticket further. Highest escalation level has been reached.");
             }
 
             try
             {
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
                 var update = Builders<BsonDocument>.Update.Set("escalationLevel", ticket.EscalationLevel + 1);
+                TicketsDAO ticketsdb = new TicketsDAO();
                 ticketsdb.Update(filter, update);
                 return new StatusStruct(0);
             }
