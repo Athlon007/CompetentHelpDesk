@@ -4,6 +4,8 @@
     {
         Regular = 0,
         ServiceDesk = 1,
-        Specialist = 2 // For escalating the tickets.
+        // For escalating the tickets.
+        Specialist = 2, 
+        UpperManagement = 3
     }
 }
