@@ -210,7 +210,6 @@
             this.btnSendResetLink.TabIndex = 7;
             this.btnSendResetLink.Text = "Reset";
             this.btnSendResetLink.UseVisualStyleBackColor = false;
-            this.btnSendResetLink.Click += new System.EventHandler(this.btnSendResetLink_Click);
             // 
             // txtEmail
             // 
