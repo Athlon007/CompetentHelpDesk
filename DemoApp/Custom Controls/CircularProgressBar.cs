@@ -86,7 +86,7 @@ namespace DemoApp.Custom_Controls
 
             // Display amount
             StringFormat sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Center };
-            Rectangle offsetRectangle = new Rectangle(ClientRectangle.X, ClientRectangle.Y + 30, ClientRectangle.Width, ClientRectangle.Height);
+            Rectangle offsetRectangle = new Rectangle(ClientRectangle.X, ClientRectangle.Y + ClientRectangle.Height / 6, ClientRectangle.Width, ClientRectangle.Height);
 
             if (valueSize >= 0 && valueMax >= 0) // If actual values were given...
             {
