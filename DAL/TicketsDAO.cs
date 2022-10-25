@@ -76,5 +76,6 @@ namespace DAL
         {            
             Database.GetCollection<BsonDocument>(CollectionName).DeleteOne(filter);
         }
+
     }
 }

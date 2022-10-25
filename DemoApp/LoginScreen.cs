@@ -23,8 +23,6 @@ namespace DemoApp
         public LoginScreen()
         {
             InitializeComponent();
-            pnlPasswordReset.Hide();
-
         }
 
 
@@ -62,10 +60,5 @@ namespace DemoApp
 
         }
 
-        private void lblResetPassword_Click(object sender, EventArgs e)
-        {
-            pnlPasswordReset.Show();
-
-        }
     }
 }
