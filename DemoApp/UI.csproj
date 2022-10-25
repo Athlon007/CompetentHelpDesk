@@ -188,6 +188,9 @@
     <Compile Include="Custom Controls\TabControlWithoutBorder.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Custom Controls\TextBoxWithPrompt.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

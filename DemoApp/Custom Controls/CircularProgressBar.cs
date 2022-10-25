@@ -88,7 +88,7 @@ namespace DemoApp.Custom_Controls
             StringFormat sf = new StringFormat() { LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Center };
             Rectangle offsetRectangle = new Rectangle(ClientRectangle.X, ClientRectangle.Y + ClientRectangle.Height / 6, ClientRectangle.Width, ClientRectangle.Height);
 
-            if (valueSize >= 0 && valueMax >= 0) // If actual values were given...
+            if (valueSize > 0 && valueMax > 0) // If actual values were given...
             {
                 graphics.DrawString($"{ValueSize / ValueMax * 100:0.0}%", Font, new SolidBrush(fontColor), ClientRectangle, sf);
                 graphics.DrawString($"{ValueSize} / {ValueMax}", new Font(Font.FontFamily, 13, Font.Style), new SolidBrush(fontSecondaryColor), offsetRectangle, sf);
