@@ -33,6 +33,15 @@ namespace Logic
                         { "as", "reporterPerson" }
                     });
             var unwind = new BsonDocument("$unwind", new BsonDocument("path", "$reporterPerson"));
+            var lookUpEmployee = new BsonDocument("$lookup",
+                new BsonDocument
+                {
+                    { "from", "Employees" },
+                    { "localField", "employee" },
+                    { "foreignField", "_id" },
+                    { "as", "assignedEmployee" }
+                });
+            var unwindEmployee = new BsonDocument("$unwind", new BsonDocument("path", "$assignedEmployee"));
             BsonDocument matchForEmployeeLevel;
             if (employee.Type == EmployeeType.ServiceDesk)
             {
@@ -56,7 +65,7 @@ namespace Logic
                 matchForEmployeeLevel = new BsonDocument("$match", new BsonDocument("reporter", employee.Id));
             }
 
-            return new List<BsonDocument>(){ lookUp, unwind, matchForEmployeeLevel };
+            return new List<BsonDocument>(){ lookUp, unwind, lookUpEmployee, unwindEmployee, matchForEmployeeLevel };
         }
 
         /// <summary>
