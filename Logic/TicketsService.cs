@@ -401,5 +401,19 @@ namespace Logic
             issues = sb.ToString();
             return issues.Length == 0;
         }
+
+        /// <summary>
+        /// Upgrades the incident into a ticket.
+        /// </summary>
+        /// <param name="ticket">Incident to upgrae into a ticket.</param>
+        /// <param name="textData">Text data of the ticket.</param>
+        /// <param name="dateData">Date data of the ticket.</param>
+        /// <param name="enumsData">Enums data of the ticket.</param>
+        /// <param name="employeeData">Employee data of the ticket.</param>
+        /// <returns>Returns status code 0 if successful. Otherwise other status.</returns>
+        public StatusStruct UpgradeIncidentToTicket(Ticket ticket, TicketTextTransfer textData, TicketDateTransfer dateData, TicketEnumsTransfer enumsData, TicketEmployeeTransfer employeeData)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
