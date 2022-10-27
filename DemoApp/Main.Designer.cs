@@ -89,14 +89,16 @@ namespace DemoApp
             this.btn_Display_Tickets_PastDeadline = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_Display_Tickets_Unresolved = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_Display_Tickets_Resolved = new DemoApp.Custom_Controls.RoundedButton();
+            this.txtDetailsDescription = new System.Windows.Forms.TextBox();
+            this.lblDetailsDescription = new System.Windows.Forms.Label();
+            this.cmbDetailsDeadline = new System.Windows.Forms.ComboBox();
+            this.lblDetailsDeadlineDays = new System.Windows.Forms.Label();
             this.lblDetailsWarning = new System.Windows.Forms.Label();
             this.btnDetailsUpdate = new DemoApp.Custom_Controls.RoundedButton();
             this.btnDetailsEscalate = new DemoApp.Custom_Controls.RoundedButton();
             this.cmbDetailsStatus = new System.Windows.Forms.ComboBox();
             this.lblDetailsStatus = new System.Windows.Forms.Label();
             this.btnDetailsDelete = new DemoApp.Custom_Controls.RoundedButton();
-            this.txtDetailsDescription = new System.Windows.Forms.TextBox();
-            this.lblDetailsDescription = new System.Windows.Forms.Label();
             this.cmbDetailsPriority = new System.Windows.Forms.ComboBox();
             this.lblDetailsPriority = new System.Windows.Forms.Label();
             this.cmbDetailsReporter = new System.Windows.Forms.ComboBox();
@@ -977,14 +979,16 @@ namespace DemoApp
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.txtDetailsDescription);
+            this.splitContainer1.Panel2.Controls.Add(this.lblDetailsDescription);
+            this.splitContainer1.Panel2.Controls.Add(this.cmbDetailsDeadline);
+            this.splitContainer1.Panel2.Controls.Add(this.lblDetailsDeadlineDays);
             this.splitContainer1.Panel2.Controls.Add(this.lblDetailsWarning);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetailsUpdate);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetailsEscalate);
             this.splitContainer1.Panel2.Controls.Add(this.cmbDetailsStatus);
             this.splitContainer1.Panel2.Controls.Add(this.lblDetailsStatus);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetailsDelete);
-            this.splitContainer1.Panel2.Controls.Add(this.txtDetailsDescription);
-            this.splitContainer1.Panel2.Controls.Add(this.lblDetailsDescription);
             this.splitContainer1.Panel2.Controls.Add(this.cmbDetailsPriority);
             this.splitContainer1.Panel2.Controls.Add(this.lblDetailsPriority);
             this.splitContainer1.Panel2.Controls.Add(this.cmbDetailsReporter);
@@ -1153,17 +1157,67 @@ namespace DemoApp
             this.btn_Display_Tickets_Resolved.UseVisualStyleBackColor = false;
             this.btn_Display_Tickets_Resolved.Click += new System.EventHandler(this.btn_Display_Tickets_Resolved_Click);
             // 
+            // txtDetailsDescription
+            // 
+            this.txtDetailsDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDetailsDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtDetailsDescription.Location = new System.Drawing.Point(0, 612);
+            this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDetailsDescription.Multiline = true;
+            this.txtDetailsDescription.Name = "txtDetailsDescription";
+            this.txtDetailsDescription.Size = new System.Drawing.Size(653, 219);
+            this.txtDetailsDescription.TabIndex = 22;
+            // 
+            // lblDetailsDescription
+            // 
+            this.lblDetailsDescription.AutoSize = true;
+            this.lblDetailsDescription.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDetailsDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDetailsDescription.Location = new System.Drawing.Point(0, 563);
+            this.lblDetailsDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDetailsDescription.Name = "lblDetailsDescription";
+            this.lblDetailsDescription.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.lblDetailsDescription.Size = new System.Drawing.Size(177, 49);
+            this.lblDetailsDescription.TabIndex = 20;
+            this.lblDetailsDescription.Text = "Description";
+            // 
+            // cmbDetailsDeadline
+            // 
+            this.cmbDetailsDeadline.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cmbDetailsDeadline.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDetailsDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbDetailsDeadline.FormattingEnabled = true;
+            this.cmbDetailsDeadline.Location = new System.Drawing.Point(0, 518);
+            this.cmbDetailsDeadline.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbDetailsDeadline.Name = "cmbDetailsDeadline";
+            this.cmbDetailsDeadline.Size = new System.Drawing.Size(653, 45);
+            this.cmbDetailsDeadline.TabIndex = 28;
+            // 
+            // lblDetailsDeadlineDays
+            // 
+            this.lblDetailsDeadlineDays.AutoSize = true;
+            this.lblDetailsDeadlineDays.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDetailsDeadlineDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDetailsDeadlineDays.Location = new System.Drawing.Point(0, 469);
+            this.lblDetailsDeadlineDays.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDetailsDeadlineDays.Name = "lblDetailsDeadlineDays";
+            this.lblDetailsDeadlineDays.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.lblDetailsDeadlineDays.Size = new System.Drawing.Size(278, 49);
+            this.lblDetailsDeadlineDays.TabIndex = 29;
+            this.lblDetailsDeadlineDays.Text = "Deadline/follow up";
+            // 
             // lblDetailsWarning
             // 
             this.lblDetailsWarning.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblDetailsWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.lblDetailsWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblDetailsWarning.Location = new System.Drawing.Point(0, 873);
+            this.lblDetailsWarning.Location = new System.Drawing.Point(0, 831);
             this.lblDetailsWarning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDetailsWarning.Name = "lblDetailsWarning";
-            this.lblDetailsWarning.Size = new System.Drawing.Size(653, 78);
+            this.lblDetailsWarning.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.lblDetailsWarning.Size = new System.Drawing.Size(653, 120);
             this.lblDetailsWarning.TabIndex = 27;
-            this.lblDetailsWarning.Text = "Line1\r\nLine2\r\n";
+            this.lblDetailsWarning.Text = "Line1\r\nLine2\r\nLine3";
             this.lblDetailsWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnDetailsUpdate
@@ -1204,25 +1258,26 @@ namespace DemoApp
             // 
             // cmbDetailsStatus
             // 
-            this.cmbDetailsStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbDetailsStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmbDetailsStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDetailsStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDetailsStatus.FormattingEnabled = true;
-            this.cmbDetailsStatus.Location = new System.Drawing.Point(12, 462);
+            this.cmbDetailsStatus.Location = new System.Drawing.Point(0, 424);
             this.cmbDetailsStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDetailsStatus.Name = "cmbDetailsStatus";
-            this.cmbDetailsStatus.Size = new System.Drawing.Size(1107, 45);
+            this.cmbDetailsStatus.Size = new System.Drawing.Size(653, 45);
             this.cmbDetailsStatus.TabIndex = 21;
             // 
             // lblDetailsStatus
             // 
             this.lblDetailsStatus.AutoSize = true;
+            this.lblDetailsStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDetailsStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblDetailsStatus.Location = new System.Drawing.Point(4, 420);
+            this.lblDetailsStatus.Location = new System.Drawing.Point(0, 375);
             this.lblDetailsStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDetailsStatus.Name = "lblDetailsStatus";
-            this.lblDetailsStatus.Size = new System.Drawing.Size(108, 37);
+            this.lblDetailsStatus.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.lblDetailsStatus.Size = new System.Drawing.Size(108, 49);
             this.lblDetailsStatus.TabIndex = 24;
             this.lblDetailsStatus.Text = "Status";
             // 
@@ -1244,121 +1299,101 @@ namespace DemoApp
             this.btnDetailsDelete.UseVisualStyleBackColor = false;
             this.btnDetailsDelete.Click += new System.EventHandler(this.btnDetailsDelete_Click);
             // 
-            // txtDetailsDescription
-            // 
-            this.txtDetailsDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDetailsDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtDetailsDescription.Location = new System.Drawing.Point(12, 566);
-            this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDetailsDescription.Multiline = true;
-            this.txtDetailsDescription.Name = "txtDetailsDescription";
-            this.txtDetailsDescription.Size = new System.Drawing.Size(1107, 303);
-            this.txtDetailsDescription.TabIndex = 22;
-            // 
-            // lblDetailsDescription
-            // 
-            this.lblDetailsDescription.AutoSize = true;
-            this.lblDetailsDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblDetailsDescription.Location = new System.Drawing.Point(4, 524);
-            this.lblDetailsDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDetailsDescription.Name = "lblDetailsDescription";
-            this.lblDetailsDescription.Size = new System.Drawing.Size(177, 37);
-            this.lblDetailsDescription.TabIndex = 20;
-            this.lblDetailsDescription.Text = "Description";
-            // 
             // cmbDetailsPriority
             // 
-            this.cmbDetailsPriority.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbDetailsPriority.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmbDetailsPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDetailsPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDetailsPriority.FormattingEnabled = true;
-            this.cmbDetailsPriority.Location = new System.Drawing.Point(12, 358);
+            this.cmbDetailsPriority.Location = new System.Drawing.Point(0, 330);
             this.cmbDetailsPriority.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDetailsPriority.Name = "cmbDetailsPriority";
-            this.cmbDetailsPriority.Size = new System.Drawing.Size(1107, 45);
+            this.cmbDetailsPriority.Size = new System.Drawing.Size(653, 45);
             this.cmbDetailsPriority.TabIndex = 19;
             // 
             // lblDetailsPriority
             // 
             this.lblDetailsPriority.AutoSize = true;
+            this.lblDetailsPriority.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDetailsPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblDetailsPriority.Location = new System.Drawing.Point(4, 316);
+            this.lblDetailsPriority.Location = new System.Drawing.Point(0, 281);
             this.lblDetailsPriority.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDetailsPriority.Name = "lblDetailsPriority";
-            this.lblDetailsPriority.Size = new System.Drawing.Size(116, 37);
+            this.lblDetailsPriority.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.lblDetailsPriority.Size = new System.Drawing.Size(116, 49);
             this.lblDetailsPriority.TabIndex = 18;
             this.lblDetailsPriority.Text = "Priority";
             // 
             // cmbDetailsReporter
             // 
-            this.cmbDetailsReporter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbDetailsReporter.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmbDetailsReporter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDetailsReporter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDetailsReporter.FormattingEnabled = true;
-            this.cmbDetailsReporter.Location = new System.Drawing.Point(12, 254);
+            this.cmbDetailsReporter.Location = new System.Drawing.Point(0, 236);
             this.cmbDetailsReporter.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDetailsReporter.Name = "cmbDetailsReporter";
-            this.cmbDetailsReporter.Size = new System.Drawing.Size(1107, 45);
+            this.cmbDetailsReporter.Size = new System.Drawing.Size(653, 45);
             this.cmbDetailsReporter.TabIndex = 17;
             // 
             // lblDetailsUser
             // 
             this.lblDetailsUser.AutoSize = true;
+            this.lblDetailsUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDetailsUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblDetailsUser.Location = new System.Drawing.Point(4, 212);
+            this.lblDetailsUser.Location = new System.Drawing.Point(0, 187);
             this.lblDetailsUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDetailsUser.Name = "lblDetailsUser";
-            this.lblDetailsUser.Size = new System.Drawing.Size(260, 37);
+            this.lblDetailsUser.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.lblDetailsUser.Size = new System.Drawing.Size(260, 49);
             this.lblDetailsUser.TabIndex = 16;
             this.lblDetailsUser.Text = "Reported by user";
             // 
             // cmbDetailsIncidentType
             // 
-            this.cmbDetailsIncidentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbDetailsIncidentType.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmbDetailsIncidentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDetailsIncidentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbDetailsIncidentType.FormattingEnabled = true;
-            this.cmbDetailsIncidentType.Location = new System.Drawing.Point(12, 150);
+            this.cmbDetailsIncidentType.Location = new System.Drawing.Point(0, 142);
             this.cmbDetailsIncidentType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDetailsIncidentType.Name = "cmbDetailsIncidentType";
-            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(1107, 45);
+            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(653, 45);
             this.cmbDetailsIncidentType.TabIndex = 15;
             // 
             // lblDetailsIncidentType
             // 
             this.lblDetailsIncidentType.AutoSize = true;
+            this.lblDetailsIncidentType.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDetailsIncidentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblDetailsIncidentType.Location = new System.Drawing.Point(4, 108);
+            this.lblDetailsIncidentType.Location = new System.Drawing.Point(0, 93);
             this.lblDetailsIncidentType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDetailsIncidentType.Name = "lblDetailsIncidentType";
-            this.lblDetailsIncidentType.Size = new System.Drawing.Size(242, 37);
+            this.lblDetailsIncidentType.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.lblDetailsIncidentType.Size = new System.Drawing.Size(242, 49);
             this.lblDetailsIncidentType.TabIndex = 13;
             this.lblDetailsIncidentType.Text = "Type of incident";
             // 
             // txtDetailsSubject
             // 
-            this.txtDetailsSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDetailsSubject.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtDetailsSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtDetailsSubject.Location = new System.Drawing.Point(12, 48);
+            this.txtDetailsSubject.Location = new System.Drawing.Point(0, 49);
             this.txtDetailsSubject.Margin = new System.Windows.Forms.Padding(4);
             this.txtDetailsSubject.Name = "txtDetailsSubject";
-            this.txtDetailsSubject.Size = new System.Drawing.Size(1107, 44);
+            this.txtDetailsSubject.Size = new System.Drawing.Size(653, 44);
             this.txtDetailsSubject.TabIndex = 12;
             // 
             // lblTicketDetailsSubjectOfIncident
             // 
             this.lblTicketDetailsSubjectOfIncident.AutoSize = true;
+            this.lblTicketDetailsSubjectOfIncident.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTicketDetailsSubjectOfIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblTicketDetailsSubjectOfIncident.Location = new System.Drawing.Point(4, 4);
+            this.lblTicketDetailsSubjectOfIncident.Location = new System.Drawing.Point(0, 0);
             this.lblTicketDetailsSubjectOfIncident.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTicketDetailsSubjectOfIncident.Name = "lblTicketDetailsSubjectOfIncident";
-            this.lblTicketDetailsSubjectOfIncident.Size = new System.Drawing.Size(278, 37);
+            this.lblTicketDetailsSubjectOfIncident.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.lblTicketDetailsSubjectOfIncident.Size = new System.Drawing.Size(278, 49);
             this.lblTicketDetailsSubjectOfIncident.TabIndex = 11;
             this.lblTicketDetailsSubjectOfIncident.Text = "Subject of incident";
             // 
@@ -1936,5 +1971,7 @@ namespace DemoApp
         private System.Windows.Forms.Label lblDetailsDescription;
         private Custom_Controls.RoundedButton btnDetailsEscalate;
         private System.Windows.Forms.Label lblDetailsWarning;
+        private System.Windows.Forms.ComboBox cmbDetailsDeadline;
+        private System.Windows.Forms.Label lblDetailsDeadlineDays;
     }
 }

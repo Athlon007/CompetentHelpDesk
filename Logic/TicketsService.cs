@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using DAL;
 using Model;
@@ -41,7 +42,10 @@ namespace Logic
                     { "foreignField", "_id" },
                     { "as", "assignedEmployee" }
                 });
-            var unwindEmployee = new BsonDocument("$unwind", new BsonDocument("path", "$assignedEmployee"));
+            var unwindEmployee = new BsonDocument("$unwind", new BsonDocument { 
+                { "path", "$assignedEmployee" }, 
+                { "preserveNullAndEmptyArrays", true } 
+            });
             BsonDocument matchForEmployeeLevel;
             if (employee.Type == EmployeeType.ServiceDesk)
             {
@@ -222,18 +226,15 @@ namespace Logic
         /// <summary>
         /// Inserts a new ticket into the database.
         /// </summary>
-        /// <param name="date">Date of ticket submission.</param>
-        /// <param name="subject">Subject of the ticket.</param>
-        /// <param name="type">Incident Type</param>
-        /// <param name="reporter">Person who reports the incident.</param>
-        /// <param name="priority">Priority of the incident.</param>
-        /// <param name="followUpDays">How many days until the ticket's deadline?</param>
-        /// <param name="description">Brief description of the issue.</param>
-        /// <returns>Returns if sent successfully, and/or issues with the submission.</returns>
-        public StatusStruct InsertTicket(DateTime date, string subject, IncidentTypes type, Employee reporter, TicketPriority priority, int followUpDays, string description)
+        /// <param name="textData">All text data of the ticket.</param>
+        /// <param name="dateData">All date data of the ticket.</param>
+        /// <param name="enumsData">All enums data.</param>
+        /// <param name="employeeData">All employee data.</param>
+        /// <returns>Returns 0, if sent successfully, and/or issues with the submission.</returns>
+        public StatusStruct InsertTicket(TicketTextTransfer textData, TicketDateTransfer dateData, TicketEnumsTransfer enumsData, TicketEmployeeTransfer employeeData)
         {
             string issues = "";
-            if (!IsTicketSubmissionValid(ref issues, date, subject, type, reporter, priority, followUpDays, description))
+            if (!IsTicketSubmissionValid(ref issues, textData, dateData, enumsData, employeeData))
             {
                 return new StatusStruct(1, issues);
             }
@@ -243,16 +244,20 @@ namespace Logic
                 BsonDocument doc = new BsonDocument
                 {
                     new BsonElement("_id", GetHighestId() + 1),
-                    new BsonElement("type", (int)type),
-                    new BsonElement("subject", subject),
-                    new BsonElement("description", description),
-                    new BsonElement("reporter", reporter.Id),
-                    new BsonElement("date", date),
-                    new BsonElement("deadline", date.AddDays(followUpDays)),
-                    new BsonElement("priority", priority),
-                    new BsonElement("status", TicketStatus.Open),
-                    new BsonElement("escalationLevel", 0)
+                    new BsonElement("type", (int)enumsData.IncidentType),
+                    new BsonElement("subject", textData.Subject),
+                    new BsonElement("description", textData.Description),
+                    new BsonElement("reporter", employeeData.Reporter.Id),
+                    new BsonElement("date", dateData.Date),
+                    new BsonElement("deadline", dateData.Date.AddDays(dateData.DeadlineDays)),
+                    new BsonElement("priority", enumsData.Priority),
+                    new BsonElement("status", enumsData.Status),
+                    new BsonElement("escalationLevel", enumsData.EscalationLevel)
                 };
+                if (employeeData.AssignedEmployee!= null)
+                {
+                    doc.Add(new BsonElement("employee", employeeData.AssignedEmployee.Id));
+                }
 
                 ticketsdb.Insert(doc);
                 return new StatusStruct(0);
@@ -268,30 +273,26 @@ namespace Logic
         /// Updates the provided ticket.
         /// </summary>
         /// <param name="ticket">Ticket to update.</param>
-        public StatusStruct UpdateTicket(Ticket ticket, string subject, string description, IncidentTypes type, TicketPriority priority, TicketStatus status, Employee employee)
+        /// <param name="employeeData">Employee data to update.</param>
+        /// <param name="enumsData">Enumerable data to update.</param>
+        /// <param name="textData">Text data to update.</param>
+        public StatusStruct UpdateTicket(Ticket ticket, TicketTextTransfer textData, TicketEnumsTransfer enumsData, TicketEmployeeTransfer employeeData)
         {
             // Subject or description empty? Return status as 1.
-            if (!IsTicketEditValid(out string issues, subject, description, priority))
+            if (!IsTicketEditValid(out string issues, textData, enumsData))
             {
                 return new StatusStruct(1, issues);
             }
 
             try
             {
-                ticket.Subject = subject;
-                ticket.Description = description;
-                ticket.IncidentType = type;
-                ticket.Priority = priority;
-                ticket.Status = status;
-                ticket.Reporter = employee;
-
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
-                var update = Builders<BsonDocument>.Update.Set("type", (int)ticket.IncidentType)
-                                                        .Set("subject", ticket.Subject)
-                                                        .Set("description", ticket.Description)
-                                                        .Set("reporter", ticket.Reporter.Id)
-                                                        .Set("priority", (int)ticket.Priority)
-                                                        .Set("status", (int)ticket.Status);
+                var update = Builders<BsonDocument>.Update.Set("type", (int)enumsData.IncidentType)
+                                                        .Set("subject", textData.Subject)
+                                                        .Set("description", textData.Description)
+                                                        .Set("reporter", employeeData.Reporter.Id)
+                                                        .Set("priority", (int)enumsData.Priority)
+                                                        .Set("status", (int)enumsData.Status);
 
                 ticketsdb.Update(filter, update);
                 return new StatusStruct(0);
@@ -354,28 +355,28 @@ namespace Logic
         /// <summary>
         /// Checks if ticket submission is valid.
         /// </summary>
-        private bool IsTicketSubmissionValid(ref string reason, DateTime date, string subject, IncidentTypes type, Employee employee, TicketPriority priority, int deadline, string description)
+        private bool IsTicketSubmissionValid(ref string reason, TicketTextTransfer textData, TicketDateTransfer dateData, TicketEnumsTransfer enumsData, TicketEmployeeTransfer employeeData)
         {
             StringBuilder sb = new StringBuilder();
-            if (date > DateTime.Now)
+            if (dateData.Date > DateTime.Now)
                 sb.AppendLine("Incident time cannot be in the future");
 
-            if (string.IsNullOrEmpty(subject))
+            if (string.IsNullOrEmpty(textData.Subject))
                 sb.AppendLine("Subject is missing");
 
-            if ((int)type == -1)
+            if ((int)enumsData.IncidentType == -1)
                 sb.AppendLine("Type of incident is not provided");
 
-            if (employee == null)
+            if (employeeData.Reporter == null)
                 sb.AppendLine("Reporting user not provided");
 
-            if ((int)priority == -1)
+            if ((int)enumsData.Priority == -1)
                 sb.AppendLine("Priority not provided");
 
-            if (deadline == -1)
+            if (dateData.DeadlineDays == -1)
                 sb.AppendLine("Deadline not provided");
 
-            if (string.IsNullOrEmpty(description))
+            if (string.IsNullOrEmpty(textData.Description))
                 sb.AppendLine("Description not provided");
 
             reason = sb.ToString();
@@ -385,16 +386,16 @@ namespace Logic
         /// <summary>
         /// Returns true, if the ticket update submission is valid.
         /// </summary>
-        private bool IsTicketEditValid(out string issues, string subject, string description, TicketPriority priority)
+        private bool IsTicketEditValid(out string issues, TicketTextTransfer textData, TicketEnumsTransfer enumsData)
         {
             StringBuilder sb = new StringBuilder();
-            if (string.IsNullOrEmpty(subject))
+            if (string.IsNullOrEmpty(textData.Subject))
                 sb.AppendLine("Subject is empty");
             
-            if (string.IsNullOrEmpty(description))            
+            if (string.IsNullOrEmpty(textData.Description))            
                 sb.AppendLine("Description is empty");
 
-            if (priority == TicketPriority.ToBeDetermined)
+            if (enumsData.Priority == TicketPriority.ToBeDetermined)
                 sb.AppendLine("Ticket priority must be defined");
 
             issues = sb.ToString();
