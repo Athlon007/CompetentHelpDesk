@@ -260,6 +260,7 @@ namespace DemoApp
                 btn_Dashboard.Hide();
                 btn_TicketManagement.Text = "Show my tickets";
                 btn_CreateTicket.Text = "Report incident";
+                lbl_HeaderTicketManagement.Text = "My Tickets";
                 btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
                 tabControl.SelectedIndex = 1;
@@ -299,6 +300,15 @@ namespace DemoApp
                 cmbPriorityCT.Hide();
                 cmbDeadlineCT.Hide();
                 btnSubmitTicketCT.Text = "Submit incident";
+
+                tblCreateTicket.RowStyles[0].SizeType = SizeType.Absolute;
+                tblCreateTicket.RowStyles[0].Height = 0;
+                tblCreateTicket.RowStyles[3].SizeType = SizeType.Absolute;
+                tblCreateTicket.RowStyles[3].Height = 0;
+                tblCreateTicket.RowStyles[4].SizeType = SizeType.Absolute;
+                tblCreateTicket.RowStyles[4].Height = 0;
+                tblCreateTicket.RowStyles[5].SizeType = SizeType.Absolute;
+                tblCreateTicket.RowStyles[5].Height = 0;
             }
         }
 

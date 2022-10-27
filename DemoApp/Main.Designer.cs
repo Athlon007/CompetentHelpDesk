@@ -111,23 +111,24 @@ namespace DemoApp
             this.lbl_HeaderTicketManagement = new System.Windows.Forms.Label();
             this.tab_CreateTicket = new System.Windows.Forms.TabPage();
             this.rPnl_CreateTicket = new DemoApp.Custom_Controls.RoundedPanel();
+            this.tblCreateTicket = new System.Windows.Forms.TableLayoutPanel();
+            this.lblDateTimeReportedCT = new System.Windows.Forms.Label();
+            this.dtpReportedCT = new System.Windows.Forms.DateTimePicker();
+            this.lblSubjectOfIncidentCT = new System.Windows.Forms.Label();
+            this.txtSubjectOfIncidentCT = new System.Windows.Forms.TextBox();
+            this.txtDescriptionCT = new System.Windows.Forms.TextBox();
+            this.lblTypeOfIncidentCT = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.cmbDeadlineCT = new System.Windows.Forms.ComboBox();
+            this.cmbIncidentTypeCT = new System.Windows.Forms.ComboBox();
+            this.cmbPriorityCT = new System.Windows.Forms.ComboBox();
+            this.lblDeadlineCT = new System.Windows.Forms.Label();
+            this.lblReportedByUserCT = new System.Windows.Forms.Label();
+            this.cmbUserCT = new System.Windows.Forms.ComboBox();
+            this.lblPriorityCT = new System.Windows.Forms.Label();
             this.lblWarningsCT = new System.Windows.Forms.Label();
             this.btnCancelCT = new DemoApp.Custom_Controls.RoundedButton();
             this.btnSubmitTicketCT = new DemoApp.Custom_Controls.RoundedButton();
-            this.txtDescriptionCT = new System.Windows.Forms.TextBox();
-            this.cmbDeadlineCT = new System.Windows.Forms.ComboBox();
-            this.cmbPriorityCT = new System.Windows.Forms.ComboBox();
-            this.cmbUserCT = new System.Windows.Forms.ComboBox();
-            this.cmbIncidentTypeCT = new System.Windows.Forms.ComboBox();
-            this.txtSubjectOfIncidentCT = new System.Windows.Forms.TextBox();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.lblDeadlineCT = new System.Windows.Forms.Label();
-            this.lblPriorityCT = new System.Windows.Forms.Label();
-            this.lblReportedByUserCT = new System.Windows.Forms.Label();
-            this.lblTypeOfIncidentCT = new System.Windows.Forms.Label();
-            this.lblSubjectOfIncidentCT = new System.Windows.Forms.Label();
-            this.dtpReportedCT = new System.Windows.Forms.DateTimePicker();
-            this.lblDateTimeReportedCT = new System.Windows.Forms.Label();
             this.header_CreateTicket = new System.Windows.Forms.Panel();
             this.lbl_HeaderCreateTicket = new System.Windows.Forms.Label();
             this.tab_UserManagement = new System.Windows.Forms.TabPage();
@@ -165,6 +166,7 @@ namespace DemoApp
             this.header_TicketManagement.SuspendLayout();
             this.tab_CreateTicket.SuspendLayout();
             this.rPnl_CreateTicket.SuspendLayout();
+            this.tblCreateTicket.SuspendLayout();
             this.header_CreateTicket.SuspendLayout();
             this.tab_UserManagement.SuspendLayout();
             this.rPnl_UserManagement.SuspendLayout();
@@ -1438,23 +1440,10 @@ namespace DemoApp
             this.rPnl_CreateTicket.BackColor = System.Drawing.Color.White;
             this.rPnl_CreateTicket.BorderAngle = 90F;
             this.rPnl_CreateTicket.BorderRadius = 40;
+            this.rPnl_CreateTicket.Controls.Add(this.tblCreateTicket);
             this.rPnl_CreateTicket.Controls.Add(this.lblWarningsCT);
             this.rPnl_CreateTicket.Controls.Add(this.btnCancelCT);
             this.rPnl_CreateTicket.Controls.Add(this.btnSubmitTicketCT);
-            this.rPnl_CreateTicket.Controls.Add(this.txtDescriptionCT);
-            this.rPnl_CreateTicket.Controls.Add(this.cmbDeadlineCT);
-            this.rPnl_CreateTicket.Controls.Add(this.cmbPriorityCT);
-            this.rPnl_CreateTicket.Controls.Add(this.cmbUserCT);
-            this.rPnl_CreateTicket.Controls.Add(this.cmbIncidentTypeCT);
-            this.rPnl_CreateTicket.Controls.Add(this.txtSubjectOfIncidentCT);
-            this.rPnl_CreateTicket.Controls.Add(this.lblDescription);
-            this.rPnl_CreateTicket.Controls.Add(this.lblDeadlineCT);
-            this.rPnl_CreateTicket.Controls.Add(this.lblPriorityCT);
-            this.rPnl_CreateTicket.Controls.Add(this.lblReportedByUserCT);
-            this.rPnl_CreateTicket.Controls.Add(this.lblTypeOfIncidentCT);
-            this.rPnl_CreateTicket.Controls.Add(this.lblSubjectOfIncidentCT);
-            this.rPnl_CreateTicket.Controls.Add(this.dtpReportedCT);
-            this.rPnl_CreateTicket.Controls.Add(this.lblDateTimeReportedCT);
             this.rPnl_CreateTicket.Controls.Add(this.header_CreateTicket);
             this.rPnl_CreateTicket.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rPnl_CreateTicket.ForeColor = System.Drawing.Color.Black;
@@ -1465,8 +1454,210 @@ namespace DemoApp
             this.rPnl_CreateTicket.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateTicket.TabIndex = 2;
             // 
+            // tblCreateTicket
+            // 
+            this.tblCreateTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tblCreateTicket.ColumnCount = 2;
+            this.tblCreateTicket.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 379F));
+            this.tblCreateTicket.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblCreateTicket.Controls.Add(this.lblDateTimeReportedCT, 0, 0);
+            this.tblCreateTicket.Controls.Add(this.dtpReportedCT, 1, 0);
+            this.tblCreateTicket.Controls.Add(this.lblSubjectOfIncidentCT, 0, 1);
+            this.tblCreateTicket.Controls.Add(this.txtSubjectOfIncidentCT, 1, 1);
+            this.tblCreateTicket.Controls.Add(this.txtDescriptionCT, 1, 6);
+            this.tblCreateTicket.Controls.Add(this.lblTypeOfIncidentCT, 0, 2);
+            this.tblCreateTicket.Controls.Add(this.lblDescription, 0, 6);
+            this.tblCreateTicket.Controls.Add(this.cmbDeadlineCT, 1, 5);
+            this.tblCreateTicket.Controls.Add(this.cmbIncidentTypeCT, 1, 2);
+            this.tblCreateTicket.Controls.Add(this.cmbPriorityCT, 1, 4);
+            this.tblCreateTicket.Controls.Add(this.lblDeadlineCT, 0, 5);
+            this.tblCreateTicket.Controls.Add(this.lblReportedByUserCT, 0, 3);
+            this.tblCreateTicket.Controls.Add(this.cmbUserCT, 1, 3);
+            this.tblCreateTicket.Controls.Add(this.lblPriorityCT, 0, 4);
+            this.tblCreateTicket.Location = new System.Drawing.Point(9, 87);
+            this.tblCreateTicket.Name = "tblCreateTicket";
+            this.tblCreateTicket.RowCount = 7;
+            this.tblCreateTicket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tblCreateTicket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tblCreateTicket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tblCreateTicket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tblCreateTicket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tblCreateTicket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tblCreateTicket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblCreateTicket.Size = new System.Drawing.Size(1035, 758);
+            this.tblCreateTicket.TabIndex = 19;
+            // 
+            // lblDateTimeReportedCT
+            // 
+            this.lblDateTimeReportedCT.AutoSize = true;
+            this.lblDateTimeReportedCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDateTimeReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDateTimeReportedCT.Location = new System.Drawing.Point(4, 0);
+            this.lblDateTimeReportedCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDateTimeReportedCT.Name = "lblDateTimeReportedCT";
+            this.lblDateTimeReportedCT.Size = new System.Drawing.Size(371, 80);
+            this.lblDateTimeReportedCT.TabIndex = 2;
+            this.lblDateTimeReportedCT.Text = "Date/Time reported";
+            // 
+            // dtpReportedCT
+            // 
+            this.dtpReportedCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpReportedCT.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.dtpReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpReportedCT.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpReportedCT.Location = new System.Drawing.Point(383, 4);
+            this.dtpReportedCT.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpReportedCT.Name = "dtpReportedCT";
+            this.dtpReportedCT.Size = new System.Drawing.Size(648, 44);
+            this.dtpReportedCT.TabIndex = 3;
+            // 
+            // lblSubjectOfIncidentCT
+            // 
+            this.lblSubjectOfIncidentCT.AutoSize = true;
+            this.lblSubjectOfIncidentCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSubjectOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblSubjectOfIncidentCT.Location = new System.Drawing.Point(4, 80);
+            this.lblSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSubjectOfIncidentCT.Name = "lblSubjectOfIncidentCT";
+            this.lblSubjectOfIncidentCT.Size = new System.Drawing.Size(371, 80);
+            this.lblSubjectOfIncidentCT.TabIndex = 4;
+            this.lblSubjectOfIncidentCT.Text = "Subject of incident";
+            // 
+            // txtSubjectOfIncidentCT
+            // 
+            this.txtSubjectOfIncidentCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSubjectOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtSubjectOfIncidentCT.Location = new System.Drawing.Point(383, 84);
+            this.txtSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSubjectOfIncidentCT.Name = "txtSubjectOfIncidentCT";
+            this.txtSubjectOfIncidentCT.Size = new System.Drawing.Size(648, 44);
+            this.txtSubjectOfIncidentCT.TabIndex = 10;
+            // 
+            // txtDescriptionCT
+            // 
+            this.txtDescriptionCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDescriptionCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtDescriptionCT.Location = new System.Drawing.Point(383, 484);
+            this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescriptionCT.Multiline = true;
+            this.txtDescriptionCT.Name = "txtDescriptionCT";
+            this.txtDescriptionCT.Size = new System.Drawing.Size(648, 270);
+            this.txtDescriptionCT.TabIndex = 15;
+            // 
+            // lblTypeOfIncidentCT
+            // 
+            this.lblTypeOfIncidentCT.AutoSize = true;
+            this.lblTypeOfIncidentCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTypeOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblTypeOfIncidentCT.Location = new System.Drawing.Point(4, 160);
+            this.lblTypeOfIncidentCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTypeOfIncidentCT.Name = "lblTypeOfIncidentCT";
+            this.lblTypeOfIncidentCT.Size = new System.Drawing.Size(371, 80);
+            this.lblTypeOfIncidentCT.TabIndex = 5;
+            this.lblTypeOfIncidentCT.Text = "Type of indicent";
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDescription.Location = new System.Drawing.Point(4, 480);
+            this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(371, 278);
+            this.lblDescription.TabIndex = 9;
+            this.lblDescription.Text = "Description";
+            // 
+            // cmbDeadlineCT
+            // 
+            this.cmbDeadlineCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbDeadlineCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDeadlineCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbDeadlineCT.FormattingEnabled = true;
+            this.cmbDeadlineCT.Location = new System.Drawing.Point(383, 404);
+            this.cmbDeadlineCT.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbDeadlineCT.Name = "cmbDeadlineCT";
+            this.cmbDeadlineCT.Size = new System.Drawing.Size(648, 45);
+            this.cmbDeadlineCT.TabIndex = 14;
+            // 
+            // cmbIncidentTypeCT
+            // 
+            this.cmbIncidentTypeCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbIncidentTypeCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIncidentTypeCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbIncidentTypeCT.FormattingEnabled = true;
+            this.cmbIncidentTypeCT.Location = new System.Drawing.Point(383, 164);
+            this.cmbIncidentTypeCT.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbIncidentTypeCT.Name = "cmbIncidentTypeCT";
+            this.cmbIncidentTypeCT.Size = new System.Drawing.Size(648, 45);
+            this.cmbIncidentTypeCT.TabIndex = 11;
+            // 
+            // cmbPriorityCT
+            // 
+            this.cmbPriorityCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbPriorityCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPriorityCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbPriorityCT.FormattingEnabled = true;
+            this.cmbPriorityCT.Location = new System.Drawing.Point(383, 324);
+            this.cmbPriorityCT.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbPriorityCT.Name = "cmbPriorityCT";
+            this.cmbPriorityCT.Size = new System.Drawing.Size(648, 45);
+            this.cmbPriorityCT.TabIndex = 13;
+            // 
+            // lblDeadlineCT
+            // 
+            this.lblDeadlineCT.AutoSize = true;
+            this.lblDeadlineCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDeadlineCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDeadlineCT.Location = new System.Drawing.Point(4, 400);
+            this.lblDeadlineCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDeadlineCT.Name = "lblDeadlineCT";
+            this.lblDeadlineCT.Size = new System.Drawing.Size(371, 80);
+            this.lblDeadlineCT.TabIndex = 8;
+            this.lblDeadlineCT.Text = "Deadline/follow up";
+            // 
+            // lblReportedByUserCT
+            // 
+            this.lblReportedByUserCT.AutoSize = true;
+            this.lblReportedByUserCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblReportedByUserCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblReportedByUserCT.Location = new System.Drawing.Point(4, 240);
+            this.lblReportedByUserCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblReportedByUserCT.Name = "lblReportedByUserCT";
+            this.lblReportedByUserCT.Size = new System.Drawing.Size(371, 80);
+            this.lblReportedByUserCT.TabIndex = 6;
+            this.lblReportedByUserCT.Text = "Reported by user";
+            // 
+            // cmbUserCT
+            // 
+            this.cmbUserCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbUserCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUserCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbUserCT.FormattingEnabled = true;
+            this.cmbUserCT.Location = new System.Drawing.Point(383, 244);
+            this.cmbUserCT.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbUserCT.Name = "cmbUserCT";
+            this.cmbUserCT.Size = new System.Drawing.Size(648, 45);
+            this.cmbUserCT.TabIndex = 12;
+            // 
+            // lblPriorityCT
+            // 
+            this.lblPriorityCT.AutoSize = true;
+            this.lblPriorityCT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPriorityCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblPriorityCT.Location = new System.Drawing.Point(4, 320);
+            this.lblPriorityCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPriorityCT.Name = "lblPriorityCT";
+            this.lblPriorityCT.Size = new System.Drawing.Size(371, 80);
+            this.lblPriorityCT.TabIndex = 7;
+            this.lblPriorityCT.Text = "Priority";
+            // 
             // lblWarningsCT
             // 
+            this.lblWarningsCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblWarningsCT.AutoSize = true;
             this.lblWarningsCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.lblWarningsCT.ForeColor = System.Drawing.Color.Red;
@@ -1479,6 +1670,7 @@ namespace DemoApp
             // 
             // btnCancelCT
             // 
+            this.btnCancelCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelCT.BackColor = System.Drawing.Color.White;
             this.btnCancelCT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnCancelCT.FlatAppearance.BorderSize = 6;
@@ -1496,6 +1688,7 @@ namespace DemoApp
             // 
             // btnSubmitTicketCT
             // 
+            this.btnSubmitTicketCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSubmitTicketCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnSubmitTicketCT.FlatAppearance.BorderSize = 0;
             this.btnSubmitTicketCT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1509,171 +1702,6 @@ namespace DemoApp
             this.btnSubmitTicketCT.Text = "Submit Ticket";
             this.btnSubmitTicketCT.UseVisualStyleBackColor = false;
             this.btnSubmitTicketCT.Click += new System.EventHandler(this.btnSubmitTicketCT_Click);
-            // 
-            // txtDescriptionCT
-            // 
-            this.txtDescriptionCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescriptionCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtDescriptionCT.Location = new System.Drawing.Point(388, 484);
-            this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescriptionCT.Multiline = true;
-            this.txtDescriptionCT.Name = "txtDescriptionCT";
-            this.txtDescriptionCT.Size = new System.Drawing.Size(656, 352);
-            this.txtDescriptionCT.TabIndex = 15;
-            // 
-            // cmbDeadlineCT
-            // 
-            this.cmbDeadlineCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbDeadlineCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDeadlineCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmbDeadlineCT.FormattingEnabled = true;
-            this.cmbDeadlineCT.Location = new System.Drawing.Point(388, 412);
-            this.cmbDeadlineCT.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbDeadlineCT.Name = "cmbDeadlineCT";
-            this.cmbDeadlineCT.Size = new System.Drawing.Size(656, 45);
-            this.cmbDeadlineCT.TabIndex = 14;
-            // 
-            // cmbPriorityCT
-            // 
-            this.cmbPriorityCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbPriorityCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPriorityCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmbPriorityCT.FormattingEnabled = true;
-            this.cmbPriorityCT.Location = new System.Drawing.Point(388, 348);
-            this.cmbPriorityCT.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbPriorityCT.Name = "cmbPriorityCT";
-            this.cmbPriorityCT.Size = new System.Drawing.Size(656, 45);
-            this.cmbPriorityCT.TabIndex = 13;
-            // 
-            // cmbUserCT
-            // 
-            this.cmbUserCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbUserCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbUserCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmbUserCT.FormattingEnabled = true;
-            this.cmbUserCT.Location = new System.Drawing.Point(388, 284);
-            this.cmbUserCT.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbUserCT.Name = "cmbUserCT";
-            this.cmbUserCT.Size = new System.Drawing.Size(656, 45);
-            this.cmbUserCT.TabIndex = 12;
-            // 
-            // cmbIncidentTypeCT
-            // 
-            this.cmbIncidentTypeCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbIncidentTypeCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIncidentTypeCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmbIncidentTypeCT.FormattingEnabled = true;
-            this.cmbIncidentTypeCT.Location = new System.Drawing.Point(388, 220);
-            this.cmbIncidentTypeCT.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbIncidentTypeCT.Name = "cmbIncidentTypeCT";
-            this.cmbIncidentTypeCT.Size = new System.Drawing.Size(656, 45);
-            this.cmbIncidentTypeCT.TabIndex = 11;
-            // 
-            // txtSubjectOfIncidentCT
-            // 
-            this.txtSubjectOfIncidentCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubjectOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtSubjectOfIncidentCT.Location = new System.Drawing.Point(388, 156);
-            this.txtSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSubjectOfIncidentCT.Name = "txtSubjectOfIncidentCT";
-            this.txtSubjectOfIncidentCT.Size = new System.Drawing.Size(656, 44);
-            this.txtSubjectOfIncidentCT.TabIndex = 10;
-            // 
-            // lblDescription
-            // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblDescription.Location = new System.Drawing.Point(32, 484);
-            this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(177, 37);
-            this.lblDescription.TabIndex = 9;
-            this.lblDescription.Text = "Description";
-            // 
-            // lblDeadlineCT
-            // 
-            this.lblDeadlineCT.AutoSize = true;
-            this.lblDeadlineCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblDeadlineCT.Location = new System.Drawing.Point(32, 420);
-            this.lblDeadlineCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDeadlineCT.Name = "lblDeadlineCT";
-            this.lblDeadlineCT.Size = new System.Drawing.Size(278, 37);
-            this.lblDeadlineCT.TabIndex = 8;
-            this.lblDeadlineCT.Text = "Deadline/follow up";
-            // 
-            // lblPriorityCT
-            // 
-            this.lblPriorityCT.AutoSize = true;
-            this.lblPriorityCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblPriorityCT.Location = new System.Drawing.Point(32, 356);
-            this.lblPriorityCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPriorityCT.Name = "lblPriorityCT";
-            this.lblPriorityCT.Size = new System.Drawing.Size(116, 37);
-            this.lblPriorityCT.TabIndex = 7;
-            this.lblPriorityCT.Text = "Priority";
-            // 
-            // lblReportedByUserCT
-            // 
-            this.lblReportedByUserCT.AutoSize = true;
-            this.lblReportedByUserCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblReportedByUserCT.Location = new System.Drawing.Point(32, 292);
-            this.lblReportedByUserCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblReportedByUserCT.Name = "lblReportedByUserCT";
-            this.lblReportedByUserCT.Size = new System.Drawing.Size(260, 37);
-            this.lblReportedByUserCT.TabIndex = 6;
-            this.lblReportedByUserCT.Text = "Reported by user";
-            // 
-            // lblTypeOfIncidentCT
-            // 
-            this.lblTypeOfIncidentCT.AutoSize = true;
-            this.lblTypeOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblTypeOfIncidentCT.Location = new System.Drawing.Point(32, 228);
-            this.lblTypeOfIncidentCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTypeOfIncidentCT.Name = "lblTypeOfIncidentCT";
-            this.lblTypeOfIncidentCT.Size = new System.Drawing.Size(242, 37);
-            this.lblTypeOfIncidentCT.TabIndex = 5;
-            this.lblTypeOfIncidentCT.Text = "Type of indicent";
-            // 
-            // lblSubjectOfIncidentCT
-            // 
-            this.lblSubjectOfIncidentCT.AutoSize = true;
-            this.lblSubjectOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblSubjectOfIncidentCT.Location = new System.Drawing.Point(32, 164);
-            this.lblSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSubjectOfIncidentCT.Name = "lblSubjectOfIncidentCT";
-            this.lblSubjectOfIncidentCT.Size = new System.Drawing.Size(278, 37);
-            this.lblSubjectOfIncidentCT.TabIndex = 4;
-            this.lblSubjectOfIncidentCT.Text = "Subject of incident";
-            // 
-            // dtpReportedCT
-            // 
-            this.dtpReportedCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpReportedCT.CustomFormat = "dd/MM/yyyy HH:mm";
-            this.dtpReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dtpReportedCT.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpReportedCT.Location = new System.Drawing.Point(388, 92);
-            this.dtpReportedCT.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpReportedCT.Name = "dtpReportedCT";
-            this.dtpReportedCT.Size = new System.Drawing.Size(656, 44);
-            this.dtpReportedCT.TabIndex = 3;
-            // 
-            // lblDateTimeReportedCT
-            // 
-            this.lblDateTimeReportedCT.AutoSize = true;
-            this.lblDateTimeReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblDateTimeReportedCT.Location = new System.Drawing.Point(32, 100);
-            this.lblDateTimeReportedCT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDateTimeReportedCT.Name = "lblDateTimeReportedCT";
-            this.lblDateTimeReportedCT.Size = new System.Drawing.Size(292, 37);
-            this.lblDateTimeReportedCT.TabIndex = 2;
-            this.lblDateTimeReportedCT.Text = "Date/Time reported";
             // 
             // header_CreateTicket
             // 
@@ -1849,6 +1877,8 @@ namespace DemoApp
             this.tab_CreateTicket.ResumeLayout(false);
             this.rPnl_CreateTicket.ResumeLayout(false);
             this.rPnl_CreateTicket.PerformLayout();
+            this.tblCreateTicket.ResumeLayout(false);
+            this.tblCreateTicket.PerformLayout();
             this.header_CreateTicket.ResumeLayout(false);
             this.header_CreateTicket.PerformLayout();
             this.tab_UserManagement.ResumeLayout(false);
@@ -1973,5 +2003,6 @@ namespace DemoApp
         private System.Windows.Forms.Label lblDetailsWarning;
         private System.Windows.Forms.ComboBox cmbDetailsDeadline;
         private System.Windows.Forms.Label lblDetailsDeadlineDays;
+        private System.Windows.Forms.TableLayoutPanel tblCreateTicket;
     }
 }
