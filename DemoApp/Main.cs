@@ -94,14 +94,14 @@ namespace DemoApp
         {
             foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
             {
-                cmbIncidentTypeCT.Items.Add(incidentType.ToString().Prettify());
+                cmbIncidentTypeCT.Items.Add(incidentType);
             }
 
             foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
             {
                 // We don't want to let the service desk to set TBA, as a priority.
                 if (priority == TicketPriority.ToBeDetermined) continue;
-                cmbPriorityCT.Items.Add(priority.ToString().Prettify());
+                cmbPriorityCT.Items.Add(priority);
             }
 
             foreach (KeyValuePair<string, int> kvp in deadlineDays)
@@ -119,12 +119,18 @@ namespace DemoApp
 
             foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
             {
-                cmbDetailsPriority.Items.Add(priority.ToString().Prettify());
+                cmbDetailsPriority.Items.Add(priority);
             }
+            cmbDetailsPriority.FormattingEnabled = true;
+            cmbDetailsPriority.Format += delegate (object sender, ListControlConvertEventArgs e)
+            {
+                e.Value = e.Value.ToString().Prettify();
+            };
 
             foreach (TicketStatus status in Enum.GetValues(typeof(TicketStatus)))
             {
-                cmbDetailsStatus.Items.Add(status.ToString().Prettify());
+                if (status == TicketStatus.PastDeadline) continue;
+                cmbDetailsStatus.Items.Add(status);
             }
 
             foreach (KeyValuePair<string, int> kvp in deadlineDays)
@@ -587,15 +593,15 @@ namespace DemoApp
             if (employee.Type == EmployeeType.Regular)
             {
                 date = new TicketDateTransfer(DateTime.Now, 0);
-                enums = new TicketEnumsTransfer((IncidentTypes)cmbIncidentTypeCT.SelectedIndex, 0);
+                enums = new TicketEnumsTransfer((IncidentTypes)cmbIncidentTypeCT.SelectedItem, 0);
                 employeeData = new TicketEmployeeTransfer(employee, null);
             }
             else
             {
                 int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? -1 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
                 date = new TicketDateTransfer(dtpReportedCT.Value, followUpDays);
-                int priority = cmbPriorityCT.SelectedIndex == -1 ? -1 : cmbPriorityCT.SelectedIndex + 1;
-                enums = new TicketEnumsTransfer((IncidentTypes)cmbIncidentTypeCT.SelectedIndex, (TicketPriority)priority);
+                int priority = cmbPriorityCT.SelectedIndex == -1 ? -1 : (int)cmbPriorityCT.SelectedItem;
+                enums = new TicketEnumsTransfer((IncidentTypes)cmbIncidentTypeCT.SelectedItem, (TicketPriority)priority);
                 employeeData = new TicketEmployeeTransfer((Employee)cmbUserCT.SelectedItem, null);
             }
 
@@ -712,7 +718,7 @@ namespace DemoApp
             txtDetailsDescription.Text = detailedTicket.Description;
             cmbDetailsIncidentType.SelectedIndex = (int)detailedTicket.IncidentType;
             cmbDetailsPriority.SelectedIndex = (int)detailedTicket.Priority;
-            cmbDetailsStatus.SelectedIndex = (int)detailedTicket.Status;
+            cmbDetailsStatus.SelectedItem = detailedTicket.Status;
             cmbDetailsReporter.SelectedItem = detailedTicket.Reporter;
 
             if (ticket.Priority == TicketPriority.ToBeDetermined)
@@ -742,15 +748,16 @@ namespace DemoApp
         {
             TicketTextTransfer text = new TicketTextTransfer(txtDetailsSubject.Text, txtDetailsDescription.Text);
             TicketEnumsTransfer enums = new TicketEnumsTransfer((IncidentTypes)cmbDetailsIncidentType.SelectedIndex, 
-                                                                (TicketPriority)cmbDetailsPriority.SelectedIndex, 
-                                                                (TicketStatus)cmbDetailsStatus.SelectedIndex);
+                                                                (TicketPriority)cmbDetailsPriority.SelectedItem, 
+                                                                (TicketStatus)cmbDetailsStatus.SelectedItem);
             TicketEmployeeTransfer employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem, null);
 
             StatusStruct status;           
             if (detailedTicket.Priority == TicketPriority.ToBeDetermined)
             {
                 // Ticket is TBA? This is an incident, and must be upgraded to a ticket.
-                TicketDateTransfer date = new TicketDateTransfer(DateTime.Now, deadlineDays[cmbDetailsDeadline.SelectedItem.ToString()]);
+                int days = cmbDetailsDeadline.SelectedIndex == -1 ? -1 : deadlineDays[cmbDetailsDeadline.SelectedItem.ToString()];
+                TicketDateTransfer date = new TicketDateTransfer(DateTime.Now, days);
                 status = ticketService.UpgradeIncidentToTicket(detailedTicket, text, date, enums, employeeTransfer);
             }
             else
