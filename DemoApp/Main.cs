@@ -106,7 +106,7 @@ namespace DemoApp
 
             foreach (KeyValuePair<string, int> kvp in deadlineDays)
             {
-                cmbDeadlineCT.Items.Add(kvp.Key.ToString());
+                cmbDeadlineCT.Items.Add(kvp.Key);
             }
         }
 
@@ -114,7 +114,7 @@ namespace DemoApp
         {
             foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
             {
-                cmbDetailsIncidentType.Items.Add(incidentType.ToString().Prettify());
+                cmbDetailsIncidentType.Items.Add(incidentType);
             }
 
             foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
@@ -135,7 +135,7 @@ namespace DemoApp
 
             foreach (KeyValuePair<string, int> kvp in deadlineDays)
             {
-                cmbDetailsDeadline.Items.Add(kvp.Key.ToString());
+                cmbDetailsDeadline.Items.Add(kvp.Key);
             }
         }
 
@@ -746,7 +746,7 @@ namespace DemoApp
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
         {
             TicketTextTransfer text = new TicketTextTransfer(txtDetailsSubject.Text, txtDetailsDescription.Text);
-            TicketEnumsTransfer enums = new TicketEnumsTransfer((IncidentTypes)cmbDetailsIncidentType.SelectedIndex, 
+            TicketEnumsTransfer enums = new TicketEnumsTransfer((IncidentTypes)cmbDetailsIncidentType.SelectedItem, 
                                                                 (TicketPriority)cmbDetailsPriority.SelectedItem, 
                                                                 (TicketStatus)cmbDetailsStatus.SelectedItem);
             TicketEmployeeTransfer employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem, null);
