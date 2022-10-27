@@ -12,7 +12,7 @@ namespace DemoApp.Custom_Controls
         public string PromptText
         {
             get => promptText;
-            set { promptText = value; this.Invalidate(); Update(); }
+            set { promptText = value; this.Invalidate(); UpdatePrompt(); }
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -33,10 +33,10 @@ namespace DemoApp.Custom_Controls
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
-            Update();
+            UpdatePrompt();
         }
 
-        private void Update()
+        private void UpdatePrompt()
         {
             if (this.IsHandleCreated && promptText != null)
             {
