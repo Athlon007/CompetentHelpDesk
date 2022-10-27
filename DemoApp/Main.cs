@@ -782,7 +782,7 @@ namespace DemoApp
 
             Ticket ticket = listView_TicketManagement.SelectedItems[0].Tag as Ticket;
             DialogResult result = MessageBox.Show($"This will escalete the ticket {ticket.Id} to " +
-                $"{((EmployeeType)ticket.EscalationLevel + 2).ToString().Prettify()} department.\n" +
+                $"{((EmployeeType)ticket.EscalationLevel + 2).Prettify()} department.\n" +
                 $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
