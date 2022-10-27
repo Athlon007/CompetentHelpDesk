@@ -600,8 +600,7 @@ namespace DemoApp
             {
                 int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? -1 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
                 date = new TicketDateTransfer(dtpReportedCT.Value, followUpDays);
-                int priority = cmbPriorityCT.SelectedIndex == -1 ? -1 : (int)cmbPriorityCT.SelectedItem;
-                enums = new TicketEnumsTransfer((IncidentTypes)cmbIncidentTypeCT.SelectedItem, (TicketPriority)priority);
+                enums = new TicketEnumsTransfer((IncidentTypes)(cmbIncidentTypeCT.SelectedItem ?? -1), (TicketPriority)(cmbPriorityCT.SelectedItem ?? -1));
                 employeeData = new TicketEmployeeTransfer((Employee)cmbUserCT.SelectedItem, null);
             }
 
