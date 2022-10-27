@@ -735,7 +735,18 @@ namespace DemoApp
                                                                 (TicketStatus)cmbDetailsStatus.SelectedIndex);
             TicketEmployeeTransfer employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem, null);
 
-            StatusStruct status = ticketService.UpdateTicket(detailedTicket, text, enums, employeeTransfer);
+            StatusStruct status;           
+            if (detailedTicket.Priority == TicketPriority.ToBeDetermined)
+            {
+                // Ticket is TBA? This is an incident, and must be upgraded to a ticket.
+                TicketDateTransfer date = new TicketDateTransfer(DateTime.Now, deadlineDays[cmbDetailsDeadline.SelectedItem.ToString()]);
+                status = ticketService.UpgradeIncidentToTicket(detailedTicket, text, date, enums, employeeTransfer);
+            }
+            else
+            {
+                // Otherwise do the regular update.
+                status = ticketService.UpdateTicket(detailedTicket, text, enums, employeeTransfer);
+            }
 
             if (status.Code == 0)
             {
