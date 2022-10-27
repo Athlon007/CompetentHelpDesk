@@ -1503,9 +1503,8 @@ namespace DemoApp
             // 
             // dtpReportedCT
             // 
-            this.dtpReportedCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpReportedCT.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.dtpReportedCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.dtpReportedCT.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpReportedCT.Location = new System.Drawing.Point(383, 4);
@@ -1688,7 +1687,7 @@ namespace DemoApp
             // 
             // btnSubmitTicketCT
             // 
-            this.btnSubmitTicketCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSubmitTicketCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmitTicketCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnSubmitTicketCT.FlatAppearance.BorderSize = 0;
             this.btnSubmitTicketCT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
