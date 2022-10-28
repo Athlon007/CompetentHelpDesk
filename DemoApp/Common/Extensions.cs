@@ -33,9 +33,9 @@ namespace DemoApp.Common
         }
 
         /// <summary>
-        /// For enums, it adds spaces in front of the capital letters, to make them nicer.
+        /// Adds spaces in front of the capital letters, to make them look nicer.
         /// </summary>
-        /// <param name="text">Text to nicefy</param>
+        /// <param name="text">Text to make prettier.</param>
         /// <returns></returns>
         public static string Prettify(this string text)
         {
@@ -49,6 +49,15 @@ namespace DemoApp.Common
                 sb.Append(text[i]);
             }
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// For enums, it adds spaces in front of the capital letters, to make them look nicer.
+        /// </summary>
+        /// <param name="text">Enum to prettify.</param>
+        public static string Prettify(this Enum enumValue)
+        {
+            return Prettify(enumValue.ToString());
         }
 
         /// <summary>

@@ -47,7 +47,7 @@ namespace DemoApp
         private TicketLoadStatus currentTicketLoadStatus;
         private enum TicketLoadStatus
         {
-            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5, Closed = 6
+            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
         }
 
         //public Main(Employee employee)
@@ -82,7 +82,8 @@ namespace DemoApp
             }
             else
             {
-                splitContainer1.SplitterDistance = btn_Display_Tickets_All.Width * 5 + 50;
+                int buttons = flowPnl_TicketManagement_SearchButtons.Controls.Count;
+                splitContainer1.SplitterDistance = btn_Display_Tickets_All.Width * buttons + 50;
                 splitContainer1.Panel1MinSize = splitContainer1.SplitterDistance;
             }
         }
@@ -92,45 +93,39 @@ namespace DemoApp
         /// </summary>
         private void InitAddTicketComboBoxes()
         {
-            foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
-            {
-                cmbIncidentTypeCT.Items.Add(incidentType.ToString().Prettify());
-            }
+            cmbIncidentTypeCT.DataSource = Enum.GetValues(typeof(IncidentTypes));
 
             foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
             {
-                cmbPriorityCT.Items.Add(priority.ToString().Prettify());
+                // We don't want to let the service desk to set TBA, as a priority.
+                if (priority == TicketPriority.ToBeDetermined) continue;
+                cmbPriorityCT.Items.Add(priority);
             }
 
             foreach (KeyValuePair<string, int> kvp in deadlineDays)
             {
-                cmbDeadlineCT.Items.Add(kvp.Key.ToString());
+                cmbDeadlineCT.Items.Add(kvp.Key);
             }
         }
 
         private void InitTicketDetailsView()
         {
-            foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
-            {
-                cmbDetailsIncidentType.Items.Add(incidentType.ToString().Prettify());
-            }
+            cmbDetailsIncidentType.DataSource = Enum.GetValues(typeof(IncidentTypes));
 
-            foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
-            {
-                cmbDetailsPriority.Items.Add(priority.ToString().Prettify());
-            }
+            cmbDetailsPriority.DataSource = Enum.GetValues(typeof(TicketPriority));
+            cmbDetailsPriority.FormattingEnabled = true;
+            cmbDetailsPriority.Format += (object s, ListControlConvertEventArgs e) => e.Value = e.Value.ToString().Prettify();
 
             foreach (TicketStatus status in Enum.GetValues(typeof(TicketStatus)))
             {
-                cmbDetailsStatus.Items.Add(status.ToString().Prettify());
+                if (status == TicketStatus.PastDeadline) continue;
+                cmbDetailsStatus.Items.Add(status);
             }
 
-            txtDetailsSubject.Width = splitContainer1.Panel2.Width - txtDetailsSubject.Left * 2;
-            cmbDetailsIncidentType.Width = txtDetailsSubject.Width;
-            cmbDetailsReporter.Width = txtDetailsSubject.Width;
-            cmbDetailsPriority.Width = txtDetailsSubject.Width;
-            cmbDetailsStatus.Width = txtDetailsSubject.Width;
-            txtDetailsDescription.Width = txtDetailsSubject.Width;
+            foreach (KeyValuePair<string, int> kvp in deadlineDays)
+            {
+                cmbDetailsDeadline.Items.Add(kvp.Key);
+            }
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -229,12 +224,16 @@ namespace DemoApp
             cmbDetailsReporter.Enabled = false;
             cmbDetailsStatus.Enabled = false;
 
+            lblDetailsDeadlineDays.Hide();
+            cmbDetailsDeadline.Hide();
+
             btnDetailsDelete.Enabled = false;
             btnDetailsUpdate.Enabled = false;
             btnDetailsClose.Enabled = false;
             btnDetailsEscalate.Enabled = false;
 
             lblDetailsWarning.Text = "";
+            btnDetailsUpdate.Text = "Update";
         }
 
 
@@ -258,6 +257,7 @@ namespace DemoApp
                 btn_Dashboard.Hide();
                 btn_TicketManagement.Text = "Show my tickets";
                 btn_CreateTicket.Text = "Report incident";
+                lbl_HeaderTicketManagement.Text = "My Tickets";
                 btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
                 tabControl.SelectedIndex = 1;
@@ -272,11 +272,6 @@ namespace DemoApp
                 btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
 
-            }
-
-            if ((int)employee.Type == Enum.GetValues(typeof(EmployeeType)).Length - 1)
-            {
-                btnDetailsEscalate.Hide();
             }
         }
 
@@ -297,6 +292,15 @@ namespace DemoApp
                 cmbPriorityCT.Hide();
                 cmbDeadlineCT.Hide();
                 btnSubmitTicketCT.Text = "Submit incident";
+
+                tblCreateTicket.RowStyles[0].SizeType = SizeType.Absolute;
+                tblCreateTicket.RowStyles[0].Height = 0;
+                tblCreateTicket.RowStyles[3].SizeType = SizeType.Absolute;
+                tblCreateTicket.RowStyles[3].Height = 0;
+                tblCreateTicket.RowStyles[4].SizeType = SizeType.Absolute;
+                tblCreateTicket.RowStyles[4].Height = 0;
+                tblCreateTicket.RowStyles[5].SizeType = SizeType.Absolute;
+                tblCreateTicket.RowStyles[5].Height = 0;
             }
         }
 
@@ -510,6 +514,13 @@ namespace DemoApp
 
                 item.Tag = ticket;
 
+                if (ticket.Priority == TicketPriority.ToBeDetermined)
+                {
+                    item.ForeColor = Color.Red;
+                    Font bold = new Font(item.Font, FontStyle.Bold);
+                    item.Font = bold;
+                }
+
                 // Add item to listview
                 listView_TicketManagement.Items.Add(item);
             }
@@ -560,28 +571,26 @@ namespace DemoApp
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
             //setting the attributes that are different based on employee type
-            int followUpDays;
-            TicketPriority priority;
-            DateTime dateTimeReported;
-            Employee reportingUser;
+            TicketTextTransfer text = new TicketTextTransfer(txtSubjectOfIncidentCT.Text, txtDescriptionCT.Text);
+            TicketDateTransfer date;
+            TicketEnumsTransfer enums;
+            TicketEmployeeTransfer employeeData;
 
             if (employee.Type == EmployeeType.Regular)
             {
-                followUpDays = 0;
-                priority = 0;
-                dateTimeReported = DateTime.Now;
-                reportingUser = employee;
+                date = new TicketDateTransfer(DateTime.Now, 0);
+                enums = new TicketEnumsTransfer((IncidentTypes)(cmbIncidentTypeCT.SelectedItem ?? -1), 0);
+                employeeData = new TicketEmployeeTransfer(employee, null);
             }
             else
             {
-                followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? -1 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-                priority = (TicketPriority)cmbPriorityCT.SelectedIndex;
-                dateTimeReported = dtpReportedCT.Value;
-                reportingUser = (Employee)cmbUserCT.SelectedItem;
+                int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? -1 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
+                date = new TicketDateTransfer(dtpReportedCT.Value, followUpDays);
+                enums = new TicketEnumsTransfer((IncidentTypes)(cmbIncidentTypeCT.SelectedItem ?? -1), (TicketPriority)(cmbPriorityCT.SelectedItem ?? -1));
+                employeeData = new TicketEmployeeTransfer((Employee)cmbUserCT.SelectedItem, null);
             }
 
-            StatusStruct status = ticketService.InsertTicket(dateTimeReported, txtSubjectOfIncidentCT.Text, (IncidentTypes)cmbIncidentTypeCT.SelectedIndex,
-                                                             reportingUser, priority, followUpDays, txtDescriptionCT.Text);
+            StatusStruct status = ticketService.InsertTicket(text, date, enums, employeeData);
 
             if (status.Code == 0)
             {
@@ -694,8 +703,34 @@ namespace DemoApp
             txtDetailsDescription.Text = detailedTicket.Description;
             cmbDetailsIncidentType.SelectedIndex = (int)detailedTicket.IncidentType;
             cmbDetailsPriority.SelectedIndex = (int)detailedTicket.Priority;
-            cmbDetailsStatus.SelectedIndex = (int)detailedTicket.Status;
+            cmbDetailsStatus.SelectedItem = detailedTicket.Status;
             cmbDetailsReporter.SelectedItem = detailedTicket.Reporter;
+
+            if (ticket.Priority == TicketPriority.ToBeDetermined)
+            {
+                cmbDetailsDeadline.Show();
+                lblDetailsDeadlineDays.Show();
+                btnDetailsUpdate.Text = "Turn into a ticket";
+                btnDetailsEscalate.Enabled = false;
+                btnDetailsClose.Enabled = false;
+            }
+            else
+            {
+                cmbDetailsDeadline.Hide();
+                lblDetailsDeadlineDays.Hide();
+                btnDetailsUpdate.Text = "Update";
+                btnDetailsClose.Enabled = true;
+
+                // Is currently logged employee the highest level? Then he cannot escalate it further.
+                if ((int)employee.Type == Enum.GetValues(typeof(EmployeeType)).Length - 1)
+                {
+                    btnDetailsEscalate.Enabled = false;
+                }
+                else
+                {
+                    btnDetailsEscalate.Enabled = true;
+                }
+            }
 
             txtDetailsSubject.Enabled = true;
             txtDetailsDescription.Enabled = true;
@@ -706,19 +741,29 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = true;
             btnDetailsUpdate.Enabled = true;
-            btnDetailsClose.Enabled = true;
-            btnDetailsEscalate.Enabled = ticketEscalationService.IsTicketEscalatable(ticket);
         }
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
         {
-            StatusStruct status = ticketService.UpdateTicket(detailedTicket,
-                                      txtDetailsSubject.Text,
-                                      txtDetailsDescription.Text,
-                                      (IncidentTypes)cmbDetailsIncidentType.SelectedIndex,
-                                      (TicketPriority)cmbDetailsPriority.SelectedIndex,
-                                      (TicketStatus)cmbDetailsStatus.SelectedIndex,
-                                      (Employee)cmbDetailsReporter.SelectedItem);
+            TicketTextTransfer text = new TicketTextTransfer(txtDetailsSubject.Text, txtDetailsDescription.Text);
+            TicketEnumsTransfer enums = new TicketEnumsTransfer((IncidentTypes)cmbDetailsIncidentType.SelectedItem,
+                                                                (TicketPriority)cmbDetailsPriority.SelectedItem,
+                                                                (TicketStatus)cmbDetailsStatus.SelectedItem);
+            TicketEmployeeTransfer employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem, null);
+
+            StatusStruct status;
+            if (detailedTicket.Priority == TicketPriority.ToBeDetermined)
+            {
+                // Ticket is TBA? This is an incident, and must be upgraded to a ticket.
+                int days = cmbDetailsDeadline.SelectedIndex == -1 ? -1 : deadlineDays[cmbDetailsDeadline.SelectedItem.ToString()];
+                TicketDateTransfer date = new TicketDateTransfer(DateTime.Now, days);
+                status = ticketService.UpgradeIncidentToTicket(detailedTicket, text, date, enums, employeeTransfer);
+            }
+            else
+            {
+                // Otherwise do the regular update.
+                status = ticketService.UpdateTicket(detailedTicket, text, enums, employeeTransfer);
+            }
 
             if (status.Code == 0)
             {
@@ -765,7 +810,7 @@ namespace DemoApp
 
             Ticket ticket = listView_TicketManagement.SelectedItems[0].Tag as Ticket;
             DialogResult result = MessageBox.Show($"This will escalete the ticket {ticket.Id} to " +
-                $"{((EmployeeType)ticket.EscalationLevel + 2).ToString().Prettify()} department.\n" +
+                $"{((EmployeeType)ticket.EscalationLevel + 2).Prettify()} department.\n" +
                 $"Continue?", "Quiestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
@@ -852,7 +897,6 @@ namespace DemoApp
 
         private void btn_Display_Tickets_Closed_Click(object sender, EventArgs e)
         {
-            LoadTickets(TicketLoadStatus.Closed);
             SetTicketManagementButtonStyling(5);
         }
     }
