@@ -42,9 +42,9 @@ namespace Logic
                     { "foreignField", "_id" },
                     { "as", "assignedEmployee" }
                 });
-            var unwindEmployee = new BsonDocument("$unwind", new BsonDocument { 
-                { "path", "$assignedEmployee" }, 
-                { "preserveNullAndEmptyArrays", true } 
+            var unwindEmployee = new BsonDocument("$unwind", new BsonDocument {
+                { "path", "$assignedEmployee" },
+                { "preserveNullAndEmptyArrays", true }
             });
             BsonDocument matchForEmployeeLevel;
             if (employee.Type == EmployeeType.ServiceDesk)
@@ -175,7 +175,7 @@ namespace Logic
             {
                 // Create a filter that checks for non-escalated tickets
                 var builder = Builders<Ticket>.Filter;
-                var filter = builder.Eq("escalationLevel", BsonNull.Value) | 
+                var filter = builder.Eq("escalationLevel", BsonNull.Value) |
                                 builder.Eq("escalationLevel", 0);
 
                 // Get total ticket count
@@ -198,7 +198,7 @@ namespace Logic
             {
                 // Create a filter that checks for non-escalated tickets and by status
                 FilterDefinitionBuilder<Ticket> builder = Builders<Ticket>.Filter;
-                FilterDefinition<Ticket> filter; 
+                FilterDefinition<Ticket> filter;
                 if (status != TicketStatus.PastDeadline)
                 {
                     filter = (builder.Eq("escalationLevel", BsonNull.Value) |
@@ -344,9 +344,9 @@ namespace Logic
                     return (int)output.First().GetValue(0);
                 }
             }
-            catch (Exception ex) 
-            { 
-                ErrorHandler.Instance.WriteError(ex); 
+            catch (Exception ex)
+            {
+                ErrorHandler.Instance.WriteError(ex);
             }
 
             return 0;
@@ -391,8 +391,8 @@ namespace Logic
             StringBuilder sb = new StringBuilder();
             if (string.IsNullOrEmpty(textData.Subject))
                 sb.AppendLine("Subject is empty");
-            
-            if (string.IsNullOrEmpty(textData.Description))            
+
+            if (string.IsNullOrEmpty(textData.Description))
                 sb.AppendLine("Description is empty");
 
             if (enumsData.Priority == TicketPriority.ToBeDetermined)
@@ -414,6 +414,27 @@ namespace Logic
         public StatusStruct UpgradeIncidentToTicket(Ticket ticket, TicketTextTransfer textData, TicketDateTransfer dateData, TicketEnumsTransfer enumsData, TicketEmployeeTransfer employeeData)
         {
             throw new NotImplementedException();
+        }
+
+        /// Close the provided ticket.
+        /// </summary>
+        /// <param name="ticket">Ticket to Close.</param>
+        public StatusStruct CloseTicket(Ticket ticket)
+        {
+            try
+            {
+
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
+                var update = Builders<BsonDocument>.Update.Set("IsClosed", true);
+
+                ticketsdb.Update(filter, update);
+                return new StatusStruct(0);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.Instance.WriteError(ex);
+                return new StatusStruct(1, "Unable to update the ticket. Try again later.");
+            }
         }
     }
 }

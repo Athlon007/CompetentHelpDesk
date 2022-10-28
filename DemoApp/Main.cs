@@ -47,7 +47,7 @@ namespace DemoApp
         private TicketLoadStatus currentTicketLoadStatus;
         private enum TicketLoadStatus
         {
-            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
+            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5, Closed = 6
         }
 
         //public Main(Employee employee)
@@ -110,7 +110,7 @@ namespace DemoApp
         private void InitTicketDetailsView()
         {
             cmbDetailsIncidentType.DataSource = Enum.GetValues(typeof(IncidentTypes));
-            
+
             cmbDetailsPriority.DataSource = Enum.GetValues(typeof(TicketPriority));
             cmbDetailsPriority.FormattingEnabled = true;
             cmbDetailsPriority.Format += (object s, ListControlConvertEventArgs e) => e.Value = e.Value.ToString().Prettify();
@@ -228,6 +228,7 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = false;
             btnDetailsUpdate.Enabled = false;
+            btnDetailsClose.Enabled = false;
             btnDetailsEscalate.Enabled = false;
 
             lblDetailsWarning.Text = "";
@@ -736,17 +737,19 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = true;
             btnDetailsUpdate.Enabled = true;
+            btnDetailsClose.Enabled = true;
+            btnDetailsEscalate.Enabled = ticketEscalationService.IsTicketEscalatable(ticket);
         }
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
         {
             TicketTextTransfer text = new TicketTextTransfer(txtDetailsSubject.Text, txtDetailsDescription.Text);
-            TicketEnumsTransfer enums = new TicketEnumsTransfer((IncidentTypes)cmbDetailsIncidentType.SelectedItem, 
-                                                                (TicketPriority)cmbDetailsPriority.SelectedItem, 
+            TicketEnumsTransfer enums = new TicketEnumsTransfer((IncidentTypes)cmbDetailsIncidentType.SelectedItem,
+                                                                (TicketPriority)cmbDetailsPriority.SelectedItem,
                                                                 (TicketStatus)cmbDetailsStatus.SelectedItem);
             TicketEmployeeTransfer employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem, null);
 
-            StatusStruct status;           
+            StatusStruct status;
             if (detailedTicket.Priority == TicketPriority.ToBeDetermined)
             {
                 // Ticket is TBA? This is an incident, and must be upgraded to a ticket.
@@ -872,6 +875,28 @@ namespace DemoApp
             rPnl_TicketManagement.ResumeDrawing();
             splitContainer1.SplitterDistance = (int)(splitContainer1.Width * splitPercentage);
             UpdateTicketManagementColumnWidths();
+        }
+
+        private void btnDetailsClose_Click(object sender, EventArgs e)
+        {
+            StatusStruct status = ticketService.CloseTicket(detailedTicket);
+
+            if (status.Code == 0)
+            {
+                LoadTickets(currentTicketLoadStatus);
+                CleanTicketDetails();
+                lblDetailsWarning.Text = "";
+            }
+            else
+            {
+                lblDetailsWarning.Text = status.Message;
+            }
+        }
+
+        private void btn_Display_Tickets_Closed_Click(object sender, EventArgs e)
+        {
+            LoadTickets(TicketLoadStatus.Closed);
+            SetTicketManagementButtonStyling(5);
         }
     }
 }
