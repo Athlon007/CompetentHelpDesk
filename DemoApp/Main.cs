@@ -245,6 +245,7 @@ namespace DemoApp
             btn_Display_Tickets_PastDeadline.Hide();
             btn_Display_Tickets_Resolved.Hide();
             btn_Display_Tickets_Unresolved.Hide();
+            flowPnl_TicketManagement_SearchButtons.Hide();
         }
 
 
