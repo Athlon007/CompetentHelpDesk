@@ -395,7 +395,7 @@ namespace Logic
         /// <summary>
         /// Close the provided ticket.
         /// </summary>
-        /// <param name="ticket">Ticket to update.</param>
+        /// <param name="ticket">Ticket to Close.</param>
         public StatusStruct CloseTicket(Ticket ticket)
         {
 
