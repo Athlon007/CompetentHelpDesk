@@ -580,7 +580,7 @@ namespace DemoApp
             if (employee.Type == EmployeeType.Regular)
             {
                 date = new TicketDateTransfer(DateTime.Now, 0);
-                enums = new TicketEnumsTransfer((IncidentTypes)cmbIncidentTypeCT.SelectedItem, 0);
+                enums = new TicketEnumsTransfer((IncidentTypes)(cmbIncidentTypeCT.SelectedItem ?? -1), 0);
                 employeeData = new TicketEmployeeTransfer(employee, null);
             }
             else
