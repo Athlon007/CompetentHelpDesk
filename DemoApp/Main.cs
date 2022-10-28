@@ -16,6 +16,7 @@ namespace DemoApp
         private readonly TicketEscalationService ticketEscalationService;
         private List<Ticket> allTickets;
 
+        /// <summary> Currently logged-in employee.</summary>
         private readonly Employee employee;
 
         // Styling variables
@@ -816,7 +817,7 @@ namespace DemoApp
 
             if (result == DialogResult.Yes)
             {
-                StatusStruct status = ticketEscalationService.EscalateTicket(ticket);
+                StatusStruct status = ticketEscalationService.EscalateTicket(ticket, employee);
 
                 if (status.Code == 0)
                 {
