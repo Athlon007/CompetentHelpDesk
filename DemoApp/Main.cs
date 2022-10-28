@@ -47,7 +47,7 @@ namespace DemoApp
         private TicketLoadStatus currentTicketLoadStatus;
         private enum TicketLoadStatus
         {
-            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
+            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5, Closed = 6
         }
 
         //public Main(Employee employee)
@@ -231,6 +231,7 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = false;
             btnDetailsUpdate.Enabled = false;
+            btnDetailsClose.Enabled = false;
             btnDetailsEscalate.Enabled = false;
 
             lblDetailsWarning.Text = "";
@@ -481,6 +482,10 @@ namespace DemoApp
                     // Load resolved tickets
                     tickets = ticketService.GetTicketsByStatus(TicketStatus.Resolved, employee);
                     break;
+                case TicketLoadStatus.Closed:
+                    // Load resolved tickets
+                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Closed, employee);
+                    break;
                 default:
                     ticketService.GetTickets(out tickets, employee);
                     // Load all tickets
@@ -705,6 +710,7 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = true;
             btnDetailsUpdate.Enabled = true;
+            btnDetailsClose.Enabled = true;
             btnDetailsEscalate.Enabled = ticketEscalationService.IsTicketEscalatable(ticket);
         }
 
@@ -830,6 +836,28 @@ namespace DemoApp
             rPnl_TicketManagement.ResumeDrawing();
             splitContainer1.SplitterDistance = (int)(splitContainer1.Width * splitPercentage);
             UpdateTicketManagementColumnWidths();
+        }
+
+        private void btnDetailsClose_Click(object sender, EventArgs e)
+        {
+            StatusStruct status = ticketService.CloseTicket(detailedTicket);
+
+            if (status.Code == 0)
+            {
+                LoadTickets(currentTicketLoadStatus);
+                CleanTicketDetails();
+                lblDetailsWarning.Text = "";
+            }
+            else
+            {
+                lblDetailsWarning.Text = status.Message;
+            }
+        }
+
+        private void btn_Display_Tickets_Closed_Click(object sender, EventArgs e)
+        {
+            LoadTickets(TicketLoadStatus.Closed);
+            SetTicketManagementButtonStyling(5);
         }
     }
 }
