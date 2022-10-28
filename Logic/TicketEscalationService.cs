@@ -14,9 +14,10 @@ namespace Logic
         /// Escalates the ticket to higher level.
         /// </summary>
         /// <param name="ticket">Ticket to escalate.</param>
-        public StatusStruct EscalateTicket(Ticket ticket)
+        /// <param name="escalatingEmployee">Currently logged-in employee, which is escalating the ticket.</param>
+        public StatusStruct EscalateTicket(Ticket ticket, Employee escalatingEmployee)
         {
-            if (!IsTicketEscalatable(ticket))
+            if (!IsTicketEscalatable(ticket, escalatingEmployee))
             {
                 return new StatusStruct(1, "Cannot escalate ticket further. Highest escalation level has been reached.");
             }
@@ -42,12 +43,14 @@ namespace Logic
         }
 
         /// <summary>
-        /// Checks if ticket can be escalated.
+        /// Checks if ticket can be escalated by the currently logged in employee.
         /// </summary>
         /// <param name="ticket">Ticket to chekc if can be escalated.</param>
-        public bool IsTicketEscalatable(Ticket ticket)
+        /// <param name="loggedInEmployee">Employee, that is currently logged in.</param>
+        public bool IsTicketEscalatable(Ticket ticket, Employee loggedInEmployee)
         {
-            return ticket.EscalationLevel < Enum.GetValues(typeof(EmployeeType)).Length - 2;
+            int employeeLevels = Enum.GetValues(typeof(Employee)).Length;
+            return ticket.EscalationLevel < employeeLevels - 2 && (int)loggedInEmployee.Type < employeeLevels - 2;
         }
     }
 }

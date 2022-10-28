@@ -16,6 +16,7 @@ namespace DemoApp
         private readonly TicketEscalationService ticketEscalationService;
         private List<Ticket> allTickets;
 
+        /// <summary> Currently logged-in employee.</summary>
         private readonly Employee employee;
 
         // Styling variables
@@ -245,6 +246,7 @@ namespace DemoApp
             btn_Display_Tickets_PastDeadline.Hide();
             btn_Display_Tickets_Resolved.Hide();
             btn_Display_Tickets_Unresolved.Hide();
+            flowPnl_TicketManagement_SearchButtons.Hide();
         }
 
 
@@ -815,7 +817,7 @@ namespace DemoApp
 
             if (result == DialogResult.Yes)
             {
-                StatusStruct status = ticketEscalationService.EscalateTicket(ticket);
+                StatusStruct status = ticketEscalationService.EscalateTicket(ticket, employee);
 
                 if (status.Code == 0)
                 {
