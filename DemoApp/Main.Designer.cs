@@ -1250,7 +1250,7 @@ namespace DemoApp
             this.cmbDetailsStatus.Location = new System.Drawing.Point(6, 231);
             this.cmbDetailsStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDetailsStatus.Name = "cmbDetailsStatus";
-            this.cmbDetailsStatus.Size = new System.Drawing.Size(523, 28);
+            this.cmbDetailsStatus.Size = new System.Drawing.Size(521, 28);
             this.cmbDetailsStatus.TabIndex = 21;
             // 
             // lblDetailsStatus
@@ -1292,7 +1292,7 @@ namespace DemoApp
             this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDetailsDescription.Multiline = true;
             this.txtDetailsDescription.Name = "txtDetailsDescription";
-            this.txtDetailsDescription.Size = new System.Drawing.Size(523, 256);
+            this.txtDetailsDescription.Size = new System.Drawing.Size(521, 256);
             this.txtDetailsDescription.TabIndex = 22;
             // 
             // lblDetailsDescription
@@ -1316,7 +1316,7 @@ namespace DemoApp
             this.cmbDetailsPriority.Location = new System.Drawing.Point(6, 179);
             this.cmbDetailsPriority.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDetailsPriority.Name = "cmbDetailsPriority";
-            this.cmbDetailsPriority.Size = new System.Drawing.Size(523, 28);
+            this.cmbDetailsPriority.Size = new System.Drawing.Size(521, 28);
             this.cmbDetailsPriority.TabIndex = 19;
             // 
             // lblDetailsPriority
@@ -1340,7 +1340,7 @@ namespace DemoApp
             this.cmbDetailsReporter.Location = new System.Drawing.Point(6, 127);
             this.cmbDetailsReporter.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDetailsReporter.Name = "cmbDetailsReporter";
-            this.cmbDetailsReporter.Size = new System.Drawing.Size(523, 28);
+            this.cmbDetailsReporter.Size = new System.Drawing.Size(521, 28);
             this.cmbDetailsReporter.TabIndex = 17;
             // 
             // lblDetailsUser
@@ -1364,7 +1364,7 @@ namespace DemoApp
             this.cmbDetailsIncidentType.Location = new System.Drawing.Point(6, 75);
             this.cmbDetailsIncidentType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDetailsIncidentType.Name = "cmbDetailsIncidentType";
-            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(523, 28);
+            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(521, 28);
             this.cmbDetailsIncidentType.TabIndex = 15;
             // 
             // lblDetailsIncidentType
@@ -1386,7 +1386,7 @@ namespace DemoApp
             this.txtDetailsSubject.Location = new System.Drawing.Point(6, 24);
             this.txtDetailsSubject.Margin = new System.Windows.Forms.Padding(2);
             this.txtDetailsSubject.Name = "txtDetailsSubject";
-            this.txtDetailsSubject.Size = new System.Drawing.Size(523, 26);
+            this.txtDetailsSubject.Size = new System.Drawing.Size(521, 26);
             this.txtDetailsSubject.TabIndex = 12;
             // 
             // lblTicketDetailsSubjectOfIncident
@@ -1432,7 +1432,7 @@ namespace DemoApp
             this.tab_CreateTicket.Location = new System.Drawing.Point(4, 22);
             this.tab_CreateTicket.Margin = new System.Windows.Forms.Padding(2);
             this.tab_CreateTicket.Name = "tab_CreateTicket";
-            this.tab_CreateTicket.Size = new System.Drawing.Size(1485, 784);
+            this.tab_CreateTicket.Size = new System.Drawing.Size(1288, 784);
             this.tab_CreateTicket.TabIndex = 1;
             this.tab_CreateTicket.Text = "Create Ticket";
             // 
@@ -1464,7 +1464,7 @@ namespace DemoApp
             this.rPnl_CreateTicket.Location = new System.Drawing.Point(0, 0);
             this.rPnl_CreateTicket.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_CreateTicket.Name = "rPnl_CreateTicket";
-            this.rPnl_CreateTicket.Size = new System.Drawing.Size(1485, 784);
+            this.rPnl_CreateTicket.Size = new System.Drawing.Size(1288, 784);
             this.rPnl_CreateTicket.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateTicket.TabIndex = 2;
             // 
@@ -1522,7 +1522,7 @@ namespace DemoApp
             this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescriptionCT.Multiline = true;
             this.txtDescriptionCT.Name = "txtDescriptionCT";
-            this.txtDescriptionCT.Size = new System.Drawing.Size(997, 178);
+            this.txtDescriptionCT.Size = new System.Drawing.Size(800, 178);
             this.txtDescriptionCT.TabIndex = 15;
             // 
             // cmbDeadlineCT
@@ -1535,7 +1535,7 @@ namespace DemoApp
             this.cmbDeadlineCT.Location = new System.Drawing.Point(194, 206);
             this.cmbDeadlineCT.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDeadlineCT.Name = "cmbDeadlineCT";
-            this.cmbDeadlineCT.Size = new System.Drawing.Size(997, 28);
+            this.cmbDeadlineCT.Size = new System.Drawing.Size(800, 28);
             this.cmbDeadlineCT.TabIndex = 14;
             // 
             // cmbPriorityCT
@@ -1548,7 +1548,7 @@ namespace DemoApp
             this.cmbPriorityCT.Location = new System.Drawing.Point(194, 174);
             this.cmbPriorityCT.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPriorityCT.Name = "cmbPriorityCT";
-            this.cmbPriorityCT.Size = new System.Drawing.Size(997, 28);
+            this.cmbPriorityCT.Size = new System.Drawing.Size(800, 28);
             this.cmbPriorityCT.TabIndex = 13;
             // 
             // cmbUserCT
@@ -1561,7 +1561,7 @@ namespace DemoApp
             this.cmbUserCT.Location = new System.Drawing.Point(194, 142);
             this.cmbUserCT.Margin = new System.Windows.Forms.Padding(2);
             this.cmbUserCT.Name = "cmbUserCT";
-            this.cmbUserCT.Size = new System.Drawing.Size(997, 28);
+            this.cmbUserCT.Size = new System.Drawing.Size(800, 28);
             this.cmbUserCT.TabIndex = 12;
             // 
             // cmbIncidentTypeCT
@@ -1574,7 +1574,7 @@ namespace DemoApp
             this.cmbIncidentTypeCT.Location = new System.Drawing.Point(194, 110);
             this.cmbIncidentTypeCT.Margin = new System.Windows.Forms.Padding(2);
             this.cmbIncidentTypeCT.Name = "cmbIncidentTypeCT";
-            this.cmbIncidentTypeCT.Size = new System.Drawing.Size(997, 28);
+            this.cmbIncidentTypeCT.Size = new System.Drawing.Size(800, 28);
             this.cmbIncidentTypeCT.TabIndex = 11;
             // 
             // txtSubjectOfIncidentCT
@@ -1585,7 +1585,7 @@ namespace DemoApp
             this.txtSubjectOfIncidentCT.Location = new System.Drawing.Point(194, 78);
             this.txtSubjectOfIncidentCT.Margin = new System.Windows.Forms.Padding(2);
             this.txtSubjectOfIncidentCT.Name = "txtSubjectOfIncidentCT";
-            this.txtSubjectOfIncidentCT.Size = new System.Drawing.Size(997, 26);
+            this.txtSubjectOfIncidentCT.Size = new System.Drawing.Size(800, 26);
             this.txtSubjectOfIncidentCT.TabIndex = 10;
             // 
             // lblDescription
@@ -1664,7 +1664,7 @@ namespace DemoApp
             this.dtpReportedCT.Location = new System.Drawing.Point(194, 46);
             this.dtpReportedCT.Margin = new System.Windows.Forms.Padding(2);
             this.dtpReportedCT.Name = "dtpReportedCT";
-            this.dtpReportedCT.Size = new System.Drawing.Size(997, 26);
+            this.dtpReportedCT.Size = new System.Drawing.Size(800, 26);
             this.dtpReportedCT.TabIndex = 3;
             // 
             // lblDateTimeReportedCT
@@ -1685,7 +1685,7 @@ namespace DemoApp
             this.header_CreateTicket.Location = new System.Drawing.Point(0, 0);
             this.header_CreateTicket.Margin = new System.Windows.Forms.Padding(2);
             this.header_CreateTicket.Name = "header_CreateTicket";
-            this.header_CreateTicket.Size = new System.Drawing.Size(1485, 40);
+            this.header_CreateTicket.Size = new System.Drawing.Size(1288, 40);
             this.header_CreateTicket.TabIndex = 1;
             // 
             // lbl_HeaderCreateTicket
@@ -1709,7 +1709,7 @@ namespace DemoApp
             this.tab_UserManagement.Location = new System.Drawing.Point(4, 22);
             this.tab_UserManagement.Margin = new System.Windows.Forms.Padding(2);
             this.tab_UserManagement.Name = "tab_UserManagement";
-            this.tab_UserManagement.Size = new System.Drawing.Size(1485, 784);
+            this.tab_UserManagement.Size = new System.Drawing.Size(1288, 784);
             this.tab_UserManagement.TabIndex = 3;
             this.tab_UserManagement.Text = "User Management";
             // 
@@ -1724,7 +1724,7 @@ namespace DemoApp
             this.rPnl_UserManagement.Location = new System.Drawing.Point(0, 0);
             this.rPnl_UserManagement.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_UserManagement.Name = "rPnl_UserManagement";
-            this.rPnl_UserManagement.Size = new System.Drawing.Size(1485, 784);
+            this.rPnl_UserManagement.Size = new System.Drawing.Size(1288, 784);
             this.rPnl_UserManagement.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_UserManagement.TabIndex = 3;
             // 
@@ -1735,7 +1735,7 @@ namespace DemoApp
             this.header_UserManagement.Location = new System.Drawing.Point(0, 0);
             this.header_UserManagement.Margin = new System.Windows.Forms.Padding(2);
             this.header_UserManagement.Name = "header_UserManagement";
-            this.header_UserManagement.Size = new System.Drawing.Size(1485, 40);
+            this.header_UserManagement.Size = new System.Drawing.Size(1288, 40);
             this.header_UserManagement.TabIndex = 1;
             // 
             // lbl_HeaderUserManagement
@@ -1759,7 +1759,7 @@ namespace DemoApp
             this.tab_CreateUser.Location = new System.Drawing.Point(4, 22);
             this.tab_CreateUser.Margin = new System.Windows.Forms.Padding(2);
             this.tab_CreateUser.Name = "tab_CreateUser";
-            this.tab_CreateUser.Size = new System.Drawing.Size(1485, 784);
+            this.tab_CreateUser.Size = new System.Drawing.Size(1288, 784);
             this.tab_CreateUser.TabIndex = 4;
             this.tab_CreateUser.Text = "Create User";
             // 
@@ -1774,7 +1774,7 @@ namespace DemoApp
             this.rPnl_CreateUser.Location = new System.Drawing.Point(0, 0);
             this.rPnl_CreateUser.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_CreateUser.Name = "rPnl_CreateUser";
-            this.rPnl_CreateUser.Size = new System.Drawing.Size(1485, 784);
+            this.rPnl_CreateUser.Size = new System.Drawing.Size(1288, 784);
             this.rPnl_CreateUser.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateUser.TabIndex = 4;
             // 
@@ -1785,7 +1785,7 @@ namespace DemoApp
             this.header_CreateUser.Location = new System.Drawing.Point(0, 0);
             this.header_CreateUser.Margin = new System.Windows.Forms.Padding(2);
             this.header_CreateUser.Name = "header_CreateUser";
-            this.header_CreateUser.Size = new System.Drawing.Size(1485, 40);
+            this.header_CreateUser.Size = new System.Drawing.Size(1288, 40);
             this.header_CreateUser.TabIndex = 1;
             // 
             // lbl_HeaderCreateUser

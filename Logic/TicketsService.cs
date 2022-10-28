@@ -401,11 +401,9 @@ namespace Logic
 
             try
             {
-                var status = TicketStatus.Closed;
-                ticket.Status = status;
 
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
-                var update = Builders<BsonDocument>.Update.Set("status", (int)ticket.Status);
+                var update = Builders<BsonDocument>.Update.Set("IsClosed", true);
 
                 ticketsdb.Update(filter, update);
                 return new StatusStruct(0);

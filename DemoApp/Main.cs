@@ -482,10 +482,6 @@ namespace DemoApp
                     // Load resolved tickets
                     tickets = ticketService.GetTicketsByStatus(TicketStatus.Resolved, employee);
                     break;
-                case TicketLoadStatus.Closed:
-                    // Load resolved tickets
-                    tickets = ticketService.GetTicketsByStatus(TicketStatus.Closed, employee);
-                    break;
                 default:
                     ticketService.GetTickets(out tickets, employee);
                     // Load all tickets
