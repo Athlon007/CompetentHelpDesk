@@ -111,12 +111,9 @@ namespace DemoApp
         {
             cmbDetailsIncidentType.DataSource = Enum.GetValues(typeof(IncidentTypes));
             
-            cmbDetailsPriority.DataSource = Enum.GetValues(typeof(IncidentTypes));
+            cmbDetailsPriority.DataSource = Enum.GetValues(typeof(TicketPriority));
             cmbDetailsPriority.FormattingEnabled = true;
-            cmbDetailsPriority.Format += delegate (object sender, ListControlConvertEventArgs e)
-            {
-                e.Value = e.Value.ToString().Prettify();
-            };
+            cmbDetailsPriority.Format += (object s, ListControlConvertEventArgs e) => e.Value = e.Value.ToString().Prettify();
 
             foreach (TicketStatus status in Enum.GetValues(typeof(TicketStatus)))
             {
