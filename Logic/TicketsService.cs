@@ -391,5 +391,28 @@ namespace Logic
             issues = sb.ToString();
             return issues.Length == 0;
         }
+
+        /// <summary>
+        /// Close the provided ticket.
+        /// </summary>
+        /// <param name="ticket">Ticket to Close.</param>
+        public StatusStruct CloseTicket(Ticket ticket)
+        {
+
+            try
+            {
+
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
+                var update = Builders<BsonDocument>.Update.Set("IsClosed", true);
+
+                ticketsdb.Update(filter, update);
+                return new StatusStruct(0);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.Instance.WriteError(ex);
+                return new StatusStruct(1, "Unable to update the ticket. Try again later.");
+            }
+        }
     }
 }
