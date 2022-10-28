@@ -243,6 +243,7 @@ namespace DemoApp
             btnDetailsEscalate.Enabled = false;
 
             lblDetailsWarning.Text = "";
+            btnDetailsUpdate.Text = "Update";
         }
 
 
@@ -281,11 +282,6 @@ namespace DemoApp
                 btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
 
-            }
-
-            if ((int)employee.Type == Enum.GetValues(typeof(EmployeeType)).Length - 1)
-            {
-                btnDetailsEscalate.Hide();
             }
         }
 
@@ -724,11 +720,23 @@ namespace DemoApp
             {
                 cmbDetailsDeadline.Show();
                 lblDetailsDeadlineDays.Show();
+                btnDetailsUpdate.Text = "Turn into a ticket";
+                btnDetailsEscalate.Hide();
             }
             else
             {
                 cmbDetailsDeadline.Hide();
                 lblDetailsDeadlineDays.Hide();
+                btnDetailsUpdate.Text = "Update";
+
+                if ((int)employee.Type == Enum.GetValues(typeof(EmployeeType)).Length - 1)
+                {
+                    btnDetailsEscalate.Hide();
+                }
+                else
+                {
+                    btnDetailsEscalate.Show();
+                }
             }
 
             txtDetailsSubject.Enabled = true;
@@ -740,7 +748,6 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = true;
             btnDetailsUpdate.Enabled = true;
-            btnDetailsEscalate.Enabled = ticketEscalationService.IsTicketEscalatable(ticket);
         }
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
