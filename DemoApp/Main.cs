@@ -92,10 +92,7 @@ namespace DemoApp
         /// </summary>
         private void InitAddTicketComboBoxes()
         {
-            foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
-            {
-                cmbIncidentTypeCT.Items.Add(incidentType);
-            }
+            cmbIncidentTypeCT.DataSource = Enum.GetValues(typeof(IncidentTypes));
 
             foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
             {
@@ -112,15 +109,9 @@ namespace DemoApp
 
         private void InitTicketDetailsView()
         {
-            foreach (IncidentTypes incidentType in Enum.GetValues(typeof(IncidentTypes)))
-            {
-                cmbDetailsIncidentType.Items.Add(incidentType);
-            }
-
-            foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
-            {
-                cmbDetailsPriority.Items.Add(priority);
-            }
+            cmbDetailsIncidentType.DataSource = Enum.GetValues(typeof(IncidentTypes));
+            
+            cmbDetailsPriority.DataSource = Enum.GetValues(typeof(IncidentTypes));
             cmbDetailsPriority.FormattingEnabled = true;
             cmbDetailsPriority.Format += delegate (object sender, ListControlConvertEventArgs e)
             {
