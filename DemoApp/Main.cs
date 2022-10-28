@@ -47,7 +47,7 @@ namespace DemoApp
         private TicketLoadStatus currentTicketLoadStatus;
         private enum TicketLoadStatus
         {
-            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5, Closed = 6
+            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
         }
 
         //public Main(Employee employee)
@@ -82,7 +82,8 @@ namespace DemoApp
             }
             else
             {
-                splitContainer1.SplitterDistance = btn_Display_Tickets_All.Width * 5 + 50;
+                int buttons = flowPnl_TicketManagement_SearchButtons.Controls.Count;
+                splitContainer1.SplitterDistance = btn_Display_Tickets_All.Width * buttons + 50;
                 splitContainer1.Panel1MinSize = splitContainer1.SplitterDistance;
             }
         }
@@ -710,21 +711,24 @@ namespace DemoApp
                 cmbDetailsDeadline.Show();
                 lblDetailsDeadlineDays.Show();
                 btnDetailsUpdate.Text = "Turn into a ticket";
-                btnDetailsEscalate.Hide();
+                btnDetailsEscalate.Enabled = false;
+                btnDetailsClose.Enabled = false;
             }
             else
             {
                 cmbDetailsDeadline.Hide();
                 lblDetailsDeadlineDays.Hide();
                 btnDetailsUpdate.Text = "Update";
+                btnDetailsClose.Enabled = true;
 
+                // Is currently logged employee the highest level? Then he cannot escalate it further.
                 if ((int)employee.Type == Enum.GetValues(typeof(EmployeeType)).Length - 1)
                 {
-                    btnDetailsEscalate.Hide();
+                    btnDetailsEscalate.Enabled = false;
                 }
                 else
                 {
-                    btnDetailsEscalate.Show();
+                    btnDetailsEscalate.Enabled = true;
                 }
             }
 
@@ -737,8 +741,6 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = true;
             btnDetailsUpdate.Enabled = true;
-            btnDetailsClose.Enabled = true;
-            btnDetailsEscalate.Enabled = ticketEscalationService.IsTicketEscalatable(ticket);
         }
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
@@ -895,7 +897,6 @@ namespace DemoApp
 
         private void btn_Display_Tickets_Closed_Click(object sender, EventArgs e)
         {
-            LoadTickets(TicketLoadStatus.Closed);
             SetTicketManagementButtonStyling(5);
         }
     }
