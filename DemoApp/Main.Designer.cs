@@ -189,7 +189,7 @@ namespace DemoApp
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(1737, 830);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1540, 830);
             this.tableLayoutPanel.TabIndex = 1;
             // 
             // sideBar
@@ -498,7 +498,7 @@ namespace DemoApp
             this.tabControl.Name = "tabControl";
             this.tabControl.Padding = new System.Drawing.Point(0, 0);
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1493, 810);
+            this.tabControl.Size = new System.Drawing.Size(1296, 810);
             this.tabControl.TabIndex = 2;
             this.tabControl.TabStop = false;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_IndexChanged);
@@ -511,7 +511,7 @@ namespace DemoApp
             this.tab_Dashboard.Location = new System.Drawing.Point(4, 22);
             this.tab_Dashboard.Margin = new System.Windows.Forms.Padding(0);
             this.tab_Dashboard.Name = "tab_Dashboard";
-            this.tab_Dashboard.Size = new System.Drawing.Size(1485, 784);
+            this.tab_Dashboard.Size = new System.Drawing.Size(1288, 784);
             this.tab_Dashboard.TabIndex = 0;
             this.tab_Dashboard.Text = "Dashboard";
             // 
@@ -528,7 +528,7 @@ namespace DemoApp
             this.rPnl_Dashboard.Location = new System.Drawing.Point(0, 0);
             this.rPnl_Dashboard.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_Dashboard.Name = "rPnl_Dashboard";
-            this.rPnl_Dashboard.Size = new System.Drawing.Size(1485, 784);
+            this.rPnl_Dashboard.Size = new System.Drawing.Size(1288, 784);
             this.rPnl_Dashboard.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_Dashboard.TabIndex = 0;
             // 
@@ -861,7 +861,7 @@ namespace DemoApp
             this.pnl_DashBoard_Title.Location = new System.Drawing.Point(0, 40);
             this.pnl_DashBoard_Title.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_DashBoard_Title.Name = "pnl_DashBoard_Title";
-            this.pnl_DashBoard_Title.Size = new System.Drawing.Size(1485, 40);
+            this.pnl_DashBoard_Title.Size = new System.Drawing.Size(1288, 40);
             this.pnl_DashBoard_Title.TabIndex = 3;
             // 
             // btn_ShowAllIncidents
@@ -902,7 +902,7 @@ namespace DemoApp
             this.header_Dashboard.Location = new System.Drawing.Point(0, 0);
             this.header_Dashboard.Margin = new System.Windows.Forms.Padding(2);
             this.header_Dashboard.Name = "header_Dashboard";
-            this.header_Dashboard.Size = new System.Drawing.Size(1485, 40);
+            this.header_Dashboard.Size = new System.Drawing.Size(1288, 40);
             this.header_Dashboard.TabIndex = 0;
             // 
             // lbl_HeaderDashboard
@@ -926,7 +926,7 @@ namespace DemoApp
             this.tab_TicketManagement.Location = new System.Drawing.Point(4, 22);
             this.tab_TicketManagement.Margin = new System.Windows.Forms.Padding(0);
             this.tab_TicketManagement.Name = "tab_TicketManagement";
-            this.tab_TicketManagement.Size = new System.Drawing.Size(1485, 784);
+            this.tab_TicketManagement.Size = new System.Drawing.Size(1288, 784);
             this.tab_TicketManagement.TabIndex = 2;
             this.tab_TicketManagement.Text = "Ticket Management";
             // 
@@ -942,7 +942,7 @@ namespace DemoApp
             this.rPnl_TicketManagement.Location = new System.Drawing.Point(0, 0);
             this.rPnl_TicketManagement.Margin = new System.Windows.Forms.Padding(0);
             this.rPnl_TicketManagement.Name = "rPnl_TicketManagement";
-            this.rPnl_TicketManagement.Size = new System.Drawing.Size(1485, 784);
+            this.rPnl_TicketManagement.Size = new System.Drawing.Size(1288, 784);
             this.rPnl_TicketManagement.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_TicketManagement.TabIndex = 1;
             // 
@@ -957,7 +957,7 @@ namespace DemoApp
             this.pnl_TicketManagement.Location = new System.Drawing.Point(0, 40);
             this.pnl_TicketManagement.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_TicketManagement.Name = "pnl_TicketManagement";
-            this.pnl_TicketManagement.Size = new System.Drawing.Size(1485, 744);
+            this.pnl_TicketManagement.Size = new System.Drawing.Size(1288, 744);
             this.pnl_TicketManagement.SurfaceColor = System.Drawing.Color.Empty;
             this.pnl_TicketManagement.TabIndex = 7;
             // 
@@ -997,7 +997,7 @@ namespace DemoApp
             this.splitContainer1.Panel2.Controls.Add(this.txtDetailsSubject);
             this.splitContainer1.Panel2.Controls.Add(this.lblTicketDetailsSubjectOfIncident);
             this.splitContainer1.Panel2MinSize = 300;
-            this.splitContainer1.Size = new System.Drawing.Size(1485, 744);
+            this.splitContainer1.Size = new System.Drawing.Size(1288, 744);
             this.splitContainer1.SplitterDistance = 969;
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 15;
@@ -1185,7 +1185,7 @@ namespace DemoApp
             this.btnDetailsClose.Location = new System.Drawing.Point(0, 543);
             this.btnDetailsClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetailsClose.Name = "btnDetailsClose";
-            this.btnDetailsClose.Size = new System.Drawing.Size(508, 40);
+            this.btnDetailsClose.Size = new System.Drawing.Size(311, 40);
             this.btnDetailsClose.TabIndex = 28;
             this.btnDetailsClose.Text = "Close";
             this.btnDetailsClose.UseVisualStyleBackColor = false;
@@ -1199,7 +1199,7 @@ namespace DemoApp
             this.lblDetailsWarning.Location = new System.Drawing.Point(0, 583);
             this.lblDetailsWarning.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDetailsWarning.Name = "lblDetailsWarning";
-            this.lblDetailsWarning.Size = new System.Drawing.Size(508, 39);
+            this.lblDetailsWarning.Size = new System.Drawing.Size(311, 39);
             this.lblDetailsWarning.TabIndex = 27;
             this.lblDetailsWarning.Text = "Line1\r\nLine2\r\n";
             this.lblDetailsWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1216,7 +1216,7 @@ namespace DemoApp
             this.btnDetailsUpdate.Location = new System.Drawing.Point(0, 622);
             this.btnDetailsUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetailsUpdate.Name = "btnDetailsUpdate";
-            this.btnDetailsUpdate.Size = new System.Drawing.Size(508, 40);
+            this.btnDetailsUpdate.Size = new System.Drawing.Size(311, 40);
             this.btnDetailsUpdate.TabIndex = 23;
             this.btnDetailsUpdate.Text = "Update";
             this.btnDetailsUpdate.UseVisualStyleBackColor = false;
@@ -1234,7 +1234,7 @@ namespace DemoApp
             this.btnDetailsEscalate.Location = new System.Drawing.Point(0, 662);
             this.btnDetailsEscalate.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetailsEscalate.Name = "btnDetailsEscalate";
-            this.btnDetailsEscalate.Size = new System.Drawing.Size(508, 40);
+            this.btnDetailsEscalate.Size = new System.Drawing.Size(311, 40);
             this.btnDetailsEscalate.TabIndex = 24;
             this.btnDetailsEscalate.Text = "Escalate";
             this.btnDetailsEscalate.UseVisualStyleBackColor = false;
@@ -1250,7 +1250,7 @@ namespace DemoApp
             this.cmbDetailsStatus.Location = new System.Drawing.Point(6, 231);
             this.cmbDetailsStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDetailsStatus.Name = "cmbDetailsStatus";
-            this.cmbDetailsStatus.Size = new System.Drawing.Size(722, 28);
+            this.cmbDetailsStatus.Size = new System.Drawing.Size(523, 28);
             this.cmbDetailsStatus.TabIndex = 21;
             // 
             // lblDetailsStatus
@@ -1276,7 +1276,7 @@ namespace DemoApp
             this.btnDetailsDelete.Location = new System.Drawing.Point(0, 702);
             this.btnDetailsDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetailsDelete.Name = "btnDetailsDelete";
-            this.btnDetailsDelete.Size = new System.Drawing.Size(508, 40);
+            this.btnDetailsDelete.Size = new System.Drawing.Size(311, 40);
             this.btnDetailsDelete.TabIndex = 25;
             this.btnDetailsDelete.Text = "Delete";
             this.btnDetailsDelete.UseVisualStyleBackColor = false;
@@ -1292,7 +1292,7 @@ namespace DemoApp
             this.txtDetailsDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDetailsDescription.Multiline = true;
             this.txtDetailsDescription.Name = "txtDetailsDescription";
-            this.txtDetailsDescription.Size = new System.Drawing.Size(722, 256);
+            this.txtDetailsDescription.Size = new System.Drawing.Size(523, 256);
             this.txtDetailsDescription.TabIndex = 22;
             // 
             // lblDetailsDescription
@@ -1316,7 +1316,7 @@ namespace DemoApp
             this.cmbDetailsPriority.Location = new System.Drawing.Point(6, 179);
             this.cmbDetailsPriority.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDetailsPriority.Name = "cmbDetailsPriority";
-            this.cmbDetailsPriority.Size = new System.Drawing.Size(722, 28);
+            this.cmbDetailsPriority.Size = new System.Drawing.Size(523, 28);
             this.cmbDetailsPriority.TabIndex = 19;
             // 
             // lblDetailsPriority
@@ -1340,7 +1340,7 @@ namespace DemoApp
             this.cmbDetailsReporter.Location = new System.Drawing.Point(6, 127);
             this.cmbDetailsReporter.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDetailsReporter.Name = "cmbDetailsReporter";
-            this.cmbDetailsReporter.Size = new System.Drawing.Size(722, 28);
+            this.cmbDetailsReporter.Size = new System.Drawing.Size(523, 28);
             this.cmbDetailsReporter.TabIndex = 17;
             // 
             // lblDetailsUser
@@ -1364,7 +1364,7 @@ namespace DemoApp
             this.cmbDetailsIncidentType.Location = new System.Drawing.Point(6, 75);
             this.cmbDetailsIncidentType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDetailsIncidentType.Name = "cmbDetailsIncidentType";
-            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(722, 28);
+            this.cmbDetailsIncidentType.Size = new System.Drawing.Size(523, 28);
             this.cmbDetailsIncidentType.TabIndex = 15;
             // 
             // lblDetailsIncidentType
@@ -1386,7 +1386,7 @@ namespace DemoApp
             this.txtDetailsSubject.Location = new System.Drawing.Point(6, 24);
             this.txtDetailsSubject.Margin = new System.Windows.Forms.Padding(2);
             this.txtDetailsSubject.Name = "txtDetailsSubject";
-            this.txtDetailsSubject.Size = new System.Drawing.Size(722, 26);
+            this.txtDetailsSubject.Size = new System.Drawing.Size(523, 26);
             this.txtDetailsSubject.TabIndex = 12;
             // 
             // lblTicketDetailsSubjectOfIncident
@@ -1408,7 +1408,7 @@ namespace DemoApp
             this.header_TicketManagement.Location = new System.Drawing.Point(0, 0);
             this.header_TicketManagement.Margin = new System.Windows.Forms.Padding(0);
             this.header_TicketManagement.Name = "header_TicketManagement";
-            this.header_TicketManagement.Size = new System.Drawing.Size(1485, 40);
+            this.header_TicketManagement.Size = new System.Drawing.Size(1288, 40);
             this.header_TicketManagement.TabIndex = 1;
             // 
             // lbl_HeaderTicketManagement
@@ -1807,7 +1807,7 @@ namespace DemoApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
-            this.ClientSize = new System.Drawing.Size(1737, 830);
+            this.ClientSize = new System.Drawing.Size(1540, 830);
             this.Controls.Add(this.tableLayoutPanel);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
