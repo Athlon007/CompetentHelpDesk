@@ -72,7 +72,11 @@ namespace TestDbConnectionNew
         public void TestInsertValidationTrue()
         {
             PrivateObject obj = new PrivateObject(service);
-            var retVal = obj.Invoke("IsTicketSubmissionValid", "", DateTime.Now, "Subject", IncidentTypes.Service, new Employee(), TicketPriority.Low, 7, "Description");
+            var retVal = obj.Invoke("IsTicketSubmissionValid", "", 
+                new TicketTextTransfer("Subject", "Description"), 
+                new TicketDateTransfer(DateTime.Now, 7), 
+                new TicketEnumsTransfer(IncidentTypes.Service, TicketPriority.Low), 
+                new TicketEmployeeTransfer(new Employee(), new Employee()));
             Assert.AreEqual(true, retVal);
         }
 
@@ -80,7 +84,12 @@ namespace TestDbConnectionNew
         public void TestInsertValidationFalse()
         {
             PrivateObject obj = new PrivateObject(service);
-            object[] args = new object[] { "", DateTime.Now, "", IncidentTypes.Service, new Employee(), TicketPriority.Low, 7, "Description" };
+            object[] args = new object[] { "", 
+                new TicketTextTransfer("", "Description"), 
+                new TicketDateTransfer(DateTime.Now, 7), 
+                new TicketEnumsTransfer(IncidentTypes.Service, TicketPriority.Low),
+                new TicketEmployeeTransfer(new Employee(), new Employee()) 
+            };
             var retVal = obj.Invoke("IsTicketSubmissionValid", args);
             Trace.WriteLine("Response: " + args[0]);
             Assert.AreEqual(false, retVal);
@@ -99,7 +108,7 @@ namespace TestDbConnectionNew
         public void TestTicketUpdateTrue()
         {
             PrivateObject obj = new PrivateObject(service);
-            object[] args = new object[] { null, "Subject", "Description", TicketPriority.Low };
+            object[] args = new object[] { null, new TicketTextTransfer("Subject", "Description"), new TicketEnumsTransfer(IncidentTypes.Software, TicketPriority.Medium)};
             var retVal = obj.Invoke("IsTicketEditValid", args);
             Trace.WriteLine($"Responce: " + args[0]);
             Assert.AreEqual(true, retVal);
@@ -109,7 +118,7 @@ namespace TestDbConnectionNew
         public void TestTicketUpdateFalse()
         {
             PrivateObject obj = new PrivateObject(service);
-            object[] args = new object[] { null, "", "", TicketPriority.ToBeDetermined };
+            object[] args = new object[] { null, new TicketTextTransfer(), new TicketEnumsTransfer(IncidentTypes.Hardware, TicketPriority.ToBeDetermined) };
             var retVal = obj.Invoke("IsTicketEditValid", args);
             Trace.WriteLine($"Responce: " + args[0]);
             Assert.AreEqual(false, retVal);
