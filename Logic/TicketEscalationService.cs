@@ -49,7 +49,7 @@ namespace Logic
         /// <param name="loggedInEmployee">Employee, that is currently logged in.</param>
         public bool IsTicketEscalatable(Ticket ticket, Employee loggedInEmployee)
         {
-            int employeeLevels = Enum.GetValues(typeof(Employee)).Length;
+            int employeeLevels = Enum.GetValues(typeof(EmployeeType)).Length;
             return ticket.EscalationLevel < employeeLevels - 2 && (int)loggedInEmployee.Type < employeeLevels - 2;
         }
     }
