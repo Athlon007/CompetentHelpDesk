@@ -48,7 +48,7 @@ namespace DemoApp
         private TicketLoadStatus currentTicketLoadStatus;
         private enum TicketLoadStatus
         {
-            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5
+            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5,Closed=6
         }
 
         //public Main(Employee employee)
@@ -488,6 +488,10 @@ namespace DemoApp
                     // Load resolved tickets
                     tickets = ticketService.GetTicketsByStatus(TicketStatus.Resolved, employee);
                     break;
+                case TicketLoadStatus.Closed:
+                    // Load Closed tickets
+                    tickets = ticketService.GetClosedTickets(employee);
+                    break;
                 default:
                     ticketService.GetTickets(out tickets, employee);
                     // Load all tickets
@@ -513,6 +517,14 @@ namespace DemoApp
                 item.SubItems.Add(ticket.Reporter.FirstName);
                 item.SubItems.Add(ticket.Date.ToString());
                 item.SubItems.Add(ticket.Status.ToString());
+                if (ticket.IsClosed == true)
+                {
+                    item.SubItems.Add("Yes");
+                }
+                else 
+                {
+                    item.SubItems.Add("No");
+                }
 
                 item.Tag = ticket;
 
@@ -899,6 +911,7 @@ namespace DemoApp
 
         private void btn_Display_Tickets_Closed_Click(object sender, EventArgs e)
         {
+            LoadTickets(TicketLoadStatus.Closed);
             SetTicketManagementButtonStyling(5);
         }
     }
