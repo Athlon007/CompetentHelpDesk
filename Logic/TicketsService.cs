@@ -69,7 +69,7 @@ namespace Logic
                 matchForEmployeeLevel = new BsonDocument("$match", new BsonDocument("reporter", employee.Id));
             }
 
-            return new List<BsonDocument>(){ lookUp, unwind, lookUpEmployee, unwindEmployee, matchForEmployeeLevel };
+            return new List<BsonDocument>() { lookUp, unwind, lookUpEmployee, unwindEmployee, matchForEmployeeLevel };
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace Logic
                     new BsonElement("status", enumsData.Status),
                     new BsonElement("escalationLevel", enumsData.EscalationLevel)
                 };
-                if (employeeData.AssignedEmployee!= null)
+                if (employeeData.AssignedEmployee != null)
                 {
                     doc.Add(new BsonElement("employee", employeeData.AssignedEmployee.Id));
                 }
@@ -423,7 +423,6 @@ namespace Logic
         {
             try
             {
-
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
                 var update = Builders<BsonDocument>.Update.Set("IsClosed", true);
 
@@ -434,6 +433,27 @@ namespace Logic
             {
                 ErrorHandler.Instance.WriteError(ex);
                 return new StatusStruct(1, "Unable to update the ticket. Try again later.");
+            }
+        }
+        /// <summary>
+        /// Gets a list of Closed Tickets  from a specific employee
+        /// </summary>
+        /// <param name="employee">Employee to find specific tickets for.</param>
+        public List<Ticket> GetClosedTickets(Employee employee)
+        {
+            try
+            {
+                // Create stages for the pipeline
+                var pipeline = GetTicketPipeline(employee);
+
+                pipeline.Add(new BsonDocument("$match", new BsonDocument("IsClosed", true)));
+                // Return tickets by status
+                return ConvertToTicketList(ticketsdb.Get(pipeline));
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.Instance.WriteError(ex);
+                return new List<Ticket>();
             }
         }
     }

@@ -64,6 +64,13 @@ namespace Model
         public TicketStatus Status { get; set; }
 
         /// <summary>
+        /// The open or closed status of a ticket.
+        /// </summary>
+        [BsonElement("IsClosed")]
+
+        public bool IsClosed { get; set; }
+
+        /// <summary>
         /// Level of the escalation of the ticket. <br></br> 
         /// 0 = Support, <br></br>
         /// 1 = Specialist, <br></br>
