@@ -19,6 +19,7 @@ namespace TestDbConnectionNew
             Program program = new Program();
             program.Start();
 
+
             Console.ReadKey();
         }
 
@@ -27,13 +28,13 @@ namespace TestDbConnectionNew
             //TestDbConnection();
             //TestEmployeeDatabase();
             //TestTicketDatabase();
+
         }
 
         void TestDbConnection()
         {
             List<DatabasesModel> databases = baseDAO.GetDatabases();
             TestDbConnection(databases);
-
 
         }
 
@@ -75,6 +76,7 @@ namespace TestDbConnectionNew
                 Console.WriteLine(ticket);
             }
         }
+
     }
 
 }

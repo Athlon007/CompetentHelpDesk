@@ -164,6 +164,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeType.cs" />
     <Compile Include="HashedPasswordWithSalt.cs" />
+    <Compile Include="Incident.cs" />
     <Compile Include="IncidentTypes.cs" />
     <Compile Include="PasswordWithSaltHasher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

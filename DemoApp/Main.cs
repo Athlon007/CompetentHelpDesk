@@ -6,6 +6,8 @@ using Model;
 using System.Drawing;
 using System.Collections.Generic;
 using DemoApp.Common;
+using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace DemoApp
 {
@@ -14,6 +16,8 @@ namespace DemoApp
         private readonly TicketsService ticketService;
         private readonly EmployeeService employeeService;
         private readonly TicketEscalationService ticketEscalationService;
+        private readonly IncidentService incidentService = new IncidentService();
+
         private List<Ticket> allTickets;
 
         /// <summary> Currently logged-in employee.</summary>
@@ -48,7 +52,7 @@ namespace DemoApp
         private TicketLoadStatus currentTicketLoadStatus;
         private enum TicketLoadStatus
         {
-            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5,Closed=6
+            None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5, Closed = 6
         }
 
         //public Main(Employee employee)
@@ -107,6 +111,12 @@ namespace DemoApp
             {
                 cmbDeadlineCT.Items.Add(kvp.Key);
             }
+        }
+
+        public void InItAddTicketByRegularEmployeeComboBoxes()
+        {
+            cmbIncidentType.DataSource = Enum.GetValues(typeof(IncidentTypes));
+
         }
 
         private void InitTicketDetailsView()
@@ -257,11 +267,12 @@ namespace DemoApp
                 splitContainer1.Panel2.Hide();
                 hideControlsForViewingTickets();
                 btn_Dashboard.Hide();
-                btn_TicketManagement.Text = "Show my tickets";
+                btn_TicketManagement.Text = "My requests";
                 btn_CreateTicket.Text = "Report incident";
-                lbl_HeaderTicketManagement.Text = "My Tickets";
+                lbl_HeaderTicketManagement.Text = "My Requests";
                 btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
+                btnIncidentManagement.Hide();
                 tabControl.SelectedIndex = 1;
                 LoadTickets(TicketLoadStatus.Open);
                 CleanTicketDetails();
@@ -281,29 +292,30 @@ namespace DemoApp
 
         public void DisplayTicketFormForEmployee(Employee employee)
         {
+            InItAddTicketByRegularEmployeeComboBoxes();
+
+            if (employee.Type == EmployeeType.ServiceDesk)
+            {
+                tblCreateIncident.Hide();
+                tblCreateTicket.Show();
+                btnCreateIncident.Hide();
+                btnSubmitTicketCT.Show(); 
+            }
 
             if (employee.Type == EmployeeType.Regular)
             {
                 lbl_HeaderCreateTicket.Text = "Report incident";
-                lblDateTimeReportedCT.Hide();
-                lblPriorityCT.Hide();
-                lblReportedByUserCT.Hide();
-                lblDeadlineCT.Text = "Please provide a short description also specifing when the problem occured.";
-                dtpReportedCT.Hide();
-                cmbUserCT.Hide();
-                cmbPriorityCT.Hide();
-                cmbDeadlineCT.Hide();
-                btnSubmitTicketCT.Text = "Submit incident";
 
-                tblCreateTicket.RowStyles[0].SizeType = SizeType.Absolute;
-                tblCreateTicket.RowStyles[0].Height = 0;
-                tblCreateTicket.RowStyles[3].SizeType = SizeType.Absolute;
-                tblCreateTicket.RowStyles[3].Height = 0;
-                tblCreateTicket.RowStyles[4].SizeType = SizeType.Absolute;
-                tblCreateTicket.RowStyles[4].Height = 0;
-                tblCreateTicket.RowStyles[5].SizeType = SizeType.Absolute;
-                tblCreateTicket.RowStyles[5].Height = 0;
+                tblCreateTicket.Hide();
+                tblCreateIncident.Show();
+                btnSubmitTicketCT.Hide();
+                btnCreateIncident.Show();
+                cmbIncidentType.SelectedIndex = -1;
             }
+
+            lblValidationMessageForIncident.Hide();
+
+
         }
 
 
@@ -521,7 +533,7 @@ namespace DemoApp
                 {
                     item.SubItems.Add("Yes");
                 }
-                else 
+                else
                 {
                     item.SubItems.Add("No");
                 }
@@ -585,24 +597,17 @@ namespace DemoApp
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
             //setting the attributes that are different based on employee type
-            TicketTextTransfer text = new TicketTextTransfer(txtSubjectOfIncidentCT.Text, txtDescriptionCT.Text);
+            TicketTextTransfer text = new TicketTextTransfer(txtIncidentSubject.Text, txtIncidentDescription.Text);
             TicketDateTransfer date;
             TicketEnumsTransfer enums;
             TicketEmployeeTransfer employeeData;
 
-            if (employee.Type == EmployeeType.Regular)
-            {
-                date = new TicketDateTransfer(DateTime.Now, 0);
-                enums = new TicketEnumsTransfer((IncidentTypes)(cmbIncidentTypeCT.SelectedItem ?? -1), 0);
-                employeeData = new TicketEmployeeTransfer(employee, null);
-            }
-            else
-            {
-                int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? -1 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-                date = new TicketDateTransfer(dtpReportedCT.Value, followUpDays);
-                enums = new TicketEnumsTransfer((IncidentTypes)(cmbIncidentTypeCT.SelectedItem ?? -1), (TicketPriority)(cmbPriorityCT.SelectedItem ?? -1));
-                employeeData = new TicketEmployeeTransfer((Employee)cmbUserCT.SelectedItem, null);
-            }
+
+            int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? -1 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
+            date = new TicketDateTransfer(dtpReportedCT.Value, followUpDays);
+            enums = new TicketEnumsTransfer((IncidentTypes)(cmbIncidentTypeCT.SelectedItem ?? -1), (TicketPriority)(cmbPriorityCT.SelectedItem ?? -1));
+            employeeData = new TicketEmployeeTransfer((Employee)cmbUserCT.SelectedItem, null);
+            
 
             StatusStruct status = ticketService.InsertTicket(text, date, enums, employeeData);
 
@@ -914,5 +919,209 @@ namespace DemoApp
             LoadTickets(TicketLoadStatus.Closed);
             SetTicketManagementButtonStyling(5);
         }
+
+
+        public void SetInitialValuesForIncidentData()
+        {
+            cmbNewIncidentType.SelectedIndex = -1;
+            cmbUser.SelectedIndex = -1;
+            cmbPriority.SelectedIndex = -1;
+            cmbStatus.SelectedIndex = -1;
+            cmbDeadlineInterval.SelectedIndex = -1;
+
+        }
+
+        private void btnIncidentManagement_Click(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedIndex != 5)
+            {
+                tabControl.SelectedIndex = 5;
+
+                lblValidationForIncidentList.Hide();
+
+                try
+                {
+                    CreateIncidentsListView();
+                }
+                catch (Exception exception)
+                {
+                    lblValidationForIncidentList.Show();
+                    lblValidationForIncidentList.Text = exception.Message;
+                }
+
+                InItCreateTicketFromIncidentComboBoxes();
+                SetInitialValuesForIncidentData();
+
+            }
+        }
+
+
+        public void InItCreateTicketFromIncidentComboBoxes()
+        {
+            cmbNewIncidentType.DataSource = Enum.GetValues(typeof(IncidentTypes));
+
+            List<Employee> employees = employeeService.GetEmployees();
+
+            foreach (Employee employee in employees)
+            {
+                cmbUser.Items.Add(employee.Username);
+            }
+
+            cmbPriority.DataSource = Enum.GetValues(typeof(TicketPriority));
+            cmbStatus.DataSource = Enum.GetValues(typeof(TicketStatus));
+
+            foreach (KeyValuePair<string, int> interval in deadlineDays)
+            {
+                cmbDeadlineInterval.Items.Add(interval.Key);
+
+            }
+        }
+
+
+        public void CreateIncidentsListView()
+        {
+
+            // clear the listview before adding data
+            listViewIncidents.Clear();
+
+            //set the listView to details view
+
+            listViewIncidents.View = View.Details;
+
+            // Allow the user to rearrange columns.
+
+            listViewIncidents.AllowColumnReorder = false;
+
+
+            // Select the item and subitems when selection is made.
+            listViewIncidents.FullRowSelect = true;
+
+            // Display grid lines.
+            listViewIncidents.GridLines = true;
+
+
+            //created the columns for the attributes of the incident class
+            listViewIncidents.Columns.Add("Id", 70, HorizontalAlignment.Left);
+            listViewIncidents.Columns.Add("Subject", 475, HorizontalAlignment.Left);
+            listViewIncidents.Columns.Add("UserId", 270, HorizontalAlignment.Left);
+            listViewIncidents.Columns.Add("Incident type", 270, HorizontalAlignment.Left);
+            listViewIncidents.Columns.Add("Logged on", 270, HorizontalAlignment.Left);
+            listViewIncidents.Columns.Add("Description", 150, HorizontalAlignment.Left);
+
+            listViewIncidents.Columns[2].Width = 0;
+            listViewIncidents.Columns[5].Width = 0;
+
+
+            IMongoCollection<BsonDocument> incidents = incidentService.GetAllIncidents();
+            List<Incident> incidentList = incidentService.ConvertAllDocumentsToIncidentList(incidents);
+           
+            if (incidentList.Count == 0)
+            {
+                throw new Exception("There are currently no incidents");
+            }
+
+
+            for (int i = 0; i < incidentList.Count; i++)
+                {
+                    ListViewItem incident = new ListViewItem(incidentList[i].Id.ToString());
+
+                    //Add the tag used to update a record in the database
+                    incident.Tag = incidentList[i];
+
+                    incident.SubItems.Add(incidentList[i].Subject.ToString());
+                    incident.SubItems.Add(incidentList[i].UserId.ToString());
+                    incident.SubItems.Add(incidentList[i].IncidentType.ToString());
+                    incident.SubItems.Add(incidentList[i].LoggedOn.ToString());
+                    incident.SubItems.Add(incidentList[i].Description.ToString());
+
+                    listViewIncidents.Items.Add(incident);
+
+                }
+        }
+
+        private void listViewIncidents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IMongoCollection<BsonDocument> incidents = incidentService.GetAllIncidents();
+
+            List<Incident> incidentList = incidentService.ConvertAllDocumentsToIncidentList(incidents);
+
+
+                if (listViewIncidents.SelectedItems.Count > 0)
+                {
+
+                    ListViewItem selectedItem = listViewIncidents.SelectedItems[0];
+                    Incident incident = (Incident)selectedItem.Tag;
+                    Employee reportingUser = employeeService.GetById(incident.UserId);
+                    lblSubmittedByUser.Text = $" Submitted by {reportingUser.FirstName} " + $" {reportingUser.LastName}";
+                    txtSubjectOfIncident.Text = incident.Subject.ToString();
+                    txtTypeOfIncident.Text = incident.IncidentType.ToString();
+                    txtDescriptionOfIncident.Text = incident.Description.ToString();
+                
+                }
+
+                else
+                {
+                    return;
+                }
+            
+        }
+
+        public void CreateIncident()
+        {
+            IMongoCollection<BsonDocument> incidents = incidentService.GetAllIncidents();
+
+            int incidentCount = incidentService.RetrieveDocumentsCount(incidents);
+            int incidentId;
+            BsonDocument document;
+            if (incidentCount == 0) { incidentId = 0; }
+            else { incidentId = incidentCount++; }
+            string subject = txtIncidentSubject.Text;
+            int userId = employee.Id;
+            int idxCmbIncidentType = cmbIncidentType.SelectedIndex;
+            IncidentTypes incidentType = (IncidentTypes)idxCmbIncidentType;
+            DateTime loggedOn = DateTime.Now;
+            string description = txtIncidentDescription.Text;
+            Incident incident = new Incident(incidentId, subject, userId, incidentType, loggedOn, description);
+
+            if (subject.Length == 0 || idxCmbIncidentType == -1 || description.Length == 0) { throw new Exception("All fields are required"); }
+
+            else
+            {
+                document = new BsonDocument { { "Id", incident.Id }, { "Subject", incident.Subject }, { "UserId", incident.UserId }, { "IncidentType", incident.IncidentType }, { "LoggedOn", incident.LoggedOn }, { "Description", incident.Description } };
+            }
+
+            incidentService.CreateIncident(document);
+        
+        }
+
+
+
+        public void CleanIncidentFormFields() 
+        {
+              txtIncidentSubject.Clear();
+              cmbIncidentType.SelectedIndex = -1;
+              txtIncidentDescription.Clear();
+        }
+
+
+        private void btnCreateIncident_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CreateIncident();
+                CleanIncidentFormFields();
+                lblValidationMessageForIncident.Show();
+                lblValidationMessageForIncident.ForeColor = Color.Green;
+                lblValidationMessageForIncident.Text = "Your request was registered";
+            }
+
+            catch (Exception exp)
+            {
+                lblValidationMessageForIncident.Show();
+                lblValidationMessageForIncident.Text = exp.Message;
+            
+            }
+        }
+
     }
 }
