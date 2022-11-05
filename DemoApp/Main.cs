@@ -281,10 +281,7 @@ namespace DemoApp
 
             else if (employee.Type >= EmployeeType.Specialist)
             {
-                hideControlsForViewingTickets();
-                btn_UserManagement.Hide();
-                btn_CreateUser.Hide();
-
+                tblCreateIncident.Hide();
             }
         }
 
@@ -597,7 +594,7 @@ namespace DemoApp
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
             //setting the attributes that are different based on employee type
-            TicketTextTransfer text = new TicketTextTransfer(txtIncidentSubject.Text, txtIncidentDescription.Text);
+            TicketTextTransfer text = new TicketTextTransfer(txtSubjectOfIncidentCT.Text, txtDescriptionCT.Text);
             TicketDateTransfer date;
             TicketEnumsTransfer enums;
             TicketEmployeeTransfer employeeData;

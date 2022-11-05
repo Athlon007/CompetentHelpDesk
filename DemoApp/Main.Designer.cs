@@ -31,6 +31,13 @@ namespace DemoApp
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.sideBar = new System.Windows.Forms.TableLayoutPanel();
+            this.tblPnl_UserInfo = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_Welcome = new System.Windows.Forms.Label();
+            this.lbl_Username = new System.Windows.Forms.Label();
+            this.lbl_Role = new System.Windows.Forms.Label();
+            this.flowPnl_Navigation = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbl_LogOut = new System.Windows.Forms.Label();
             this.tabControl = new DemoApp.Custom_Controls.TabControlWithoutBorder();
             this.tab_Dashboard = new System.Windows.Forms.TabPage();
             this.rPnl_Dashboard = new DemoApp.Custom_Controls.RoundedPanel();
@@ -161,24 +168,20 @@ namespace DemoApp
             this.lblPriority = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblNewIncidentType = new System.Windows.Forms.Label();
-            this.sideBar = new System.Windows.Forms.TableLayoutPanel();
-            this.tblPnl_UserInfo = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_Welcome = new System.Windows.Forms.Label();
-            this.lbl_Username = new System.Windows.Forms.Label();
-            this.lbl_Role = new System.Windows.Forms.Label();
-            this.flowPnl_Navigation = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Dashboard = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_TicketManagement = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_CreateTicket = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_UserManagement = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_CreateUser = new DemoApp.Custom_Controls.RoundedButton();
             this.btnIncidentManagement = new DemoApp.Custom_Controls.RoundedButton();
-            this.lbl_LogOut = new System.Windows.Forms.Label();
             this.tblPnl_Logo = new DemoApp.Custom_Controls.FasterTableLayoutPanel();
             this.pic_Logo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
+            this.sideBar.SuspendLayout();
+            this.tblPnl_UserInfo.SuspendLayout();
+            this.flowPnl_Navigation.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tab_Dashboard.SuspendLayout();
             this.rPnl_Dashboard.SuspendLayout();
@@ -213,9 +216,6 @@ namespace DemoApp
             this.tab_IncidentManagement.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.sideBar.SuspendLayout();
-            this.tblPnl_UserInfo.SuspendLayout();
-            this.flowPnl_Navigation.SuspendLayout();
             this.tblPnl_Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).BeginInit();
             this.SuspendLayout();
@@ -237,6 +237,118 @@ namespace DemoApp
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(1568, 958);
             this.tableLayoutPanel.TabIndex = 1;
+            // 
+            // sideBar
+            // 
+            this.sideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.sideBar.ColumnCount = 1;
+            this.sideBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.sideBar.Controls.Add(this.tblPnl_UserInfo, 0, 2);
+            this.sideBar.Controls.Add(this.flowPnl_Navigation, 0, 3);
+            this.sideBar.Controls.Add(this.lbl_LogOut, 0, 4);
+            this.sideBar.Controls.Add(this.tblPnl_Logo, 0, 0);
+            this.sideBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sideBar.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.sideBar.Location = new System.Drawing.Point(3, 3);
+            this.sideBar.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.sideBar.Name = "sideBar";
+            this.sideBar.RowCount = 5;
+            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.sideBar.Size = new System.Drawing.Size(348, 952);
+            this.sideBar.TabIndex = 1;
+            // 
+            // tblPnl_UserInfo
+            // 
+            this.tblPnl_UserInfo.ColumnCount = 1;
+            this.tblPnl_UserInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblPnl_UserInfo.Controls.Add(this.lbl_Welcome, 0, 0);
+            this.tblPnl_UserInfo.Controls.Add(this.lbl_Username, 0, 1);
+            this.tblPnl_UserInfo.Controls.Add(this.lbl_Role, 0, 2);
+            this.tblPnl_UserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblPnl_UserInfo.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.tblPnl_UserInfo.Location = new System.Drawing.Point(0, 201);
+            this.tblPnl_UserInfo.Margin = new System.Windows.Forms.Padding(0);
+            this.tblPnl_UserInfo.Name = "tblPnl_UserInfo";
+            this.tblPnl_UserInfo.RowCount = 3;
+            this.tblPnl_UserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblPnl_UserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblPnl_UserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblPnl_UserInfo.Size = new System.Drawing.Size(348, 99);
+            this.tblPnl_UserInfo.TabIndex = 1;
+            // 
+            // lbl_Welcome
+            // 
+            this.lbl_Welcome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_Welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbl_Welcome.ForeColor = System.Drawing.Color.White;
+            this.lbl_Welcome.Location = new System.Drawing.Point(3, 0);
+            this.lbl_Welcome.Name = "lbl_Welcome";
+            this.lbl_Welcome.Size = new System.Drawing.Size(342, 33);
+            this.lbl_Welcome.TabIndex = 0;
+            this.lbl_Welcome.Text = "Welcome,";
+            this.lbl_Welcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_Username
+            // 
+            this.lbl_Username.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.lbl_Username.ForeColor = System.Drawing.Color.White;
+            this.lbl_Username.Location = new System.Drawing.Point(0, 33);
+            this.lbl_Username.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_Username.Name = "lbl_Username";
+            this.lbl_Username.Size = new System.Drawing.Size(348, 33);
+            this.lbl_Username.TabIndex = 1;
+            this.lbl_Username.Text = "{Username}";
+            this.lbl_Username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_Role
+            // 
+            this.lbl_Role.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_Role.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbl_Role.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbl_Role.Location = new System.Drawing.Point(3, 66);
+            this.lbl_Role.Name = "lbl_Role";
+            this.lbl_Role.Size = new System.Drawing.Size(342, 33);
+            this.lbl_Role.TabIndex = 2;
+            this.lbl_Role.Text = "{Role}";
+            this.lbl_Role.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flowPnl_Navigation
+            // 
+            this.flowPnl_Navigation.Controls.Add(this.btn_Dashboard);
+            this.flowPnl_Navigation.Controls.Add(this.btn_TicketManagement);
+            this.flowPnl_Navigation.Controls.Add(this.btn_CreateTicket);
+            this.flowPnl_Navigation.Controls.Add(this.btn_UserManagement);
+            this.flowPnl_Navigation.Controls.Add(this.btn_CreateUser);
+            this.flowPnl_Navigation.Controls.Add(this.btnIncidentManagement);
+            this.flowPnl_Navigation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPnl_Navigation.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowPnl_Navigation.Location = new System.Drawing.Point(0, 351);
+            this.flowPnl_Navigation.Margin = new System.Windows.Forms.Padding(0, 51, 0, 0);
+            this.flowPnl_Navigation.Name = "flowPnl_Navigation";
+            this.flowPnl_Navigation.Size = new System.Drawing.Size(348, 541);
+            this.flowPnl_Navigation.TabIndex = 2;
+            this.flowPnl_Navigation.WrapContents = false;
+            // 
+            // lbl_LogOut
+            // 
+            this.lbl_LogOut.AutoSize = true;
+            this.lbl_LogOut.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_LogOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_LogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lbl_LogOut.ForeColor = System.Drawing.Color.White;
+            this.lbl_LogOut.Location = new System.Drawing.Point(3, 892);
+            this.lbl_LogOut.Name = "lbl_LogOut";
+            this.lbl_LogOut.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.lbl_LogOut.Size = new System.Drawing.Size(342, 60);
+            this.lbl_LogOut.TabIndex = 3;
+            this.lbl_LogOut.Text = "Log out";
+            this.lbl_LogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_LogOut.Click += new System.EventHandler(this.LogOut_Click);
             // 
             // tabControl
             // 
@@ -1218,7 +1330,7 @@ namespace DemoApp
             this.tblCreateIncident.Controls.Add(this.txtIncidentSubject, 1, 0);
             this.tblCreateIncident.Controls.Add(this.cmbIncidentType, 1, 1);
             this.tblCreateIncident.Controls.Add(this.txtIncidentDescription, 1, 2);
-            this.tblCreateIncident.Location = new System.Drawing.Point(7, 63);
+            this.tblCreateIncident.Location = new System.Drawing.Point(7, 61);
             this.tblCreateIncident.Name = "tblCreateIncident";
             this.tblCreateIncident.RowCount = 3;
             this.tblCreateIncident.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.05882F));
@@ -1951,102 +2063,6 @@ namespace DemoApp
             this.lblNewIncidentType.TabIndex = 11;
             this.lblNewIncidentType.Text = "Type:";
             // 
-            // sideBar
-            // 
-            this.sideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
-            this.sideBar.ColumnCount = 1;
-            this.sideBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.sideBar.Controls.Add(this.tblPnl_UserInfo, 0, 2);
-            this.sideBar.Controls.Add(this.flowPnl_Navigation, 0, 3);
-            this.sideBar.Controls.Add(this.lbl_LogOut, 0, 4);
-            this.sideBar.Controls.Add(this.tblPnl_Logo, 0, 0);
-            this.sideBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sideBar.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.sideBar.Location = new System.Drawing.Point(3, 3);
-            this.sideBar.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.sideBar.Name = "sideBar";
-            this.sideBar.RowCount = 5;
-            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
-            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.sideBar.Size = new System.Drawing.Size(348, 952);
-            this.sideBar.TabIndex = 1;
-            // 
-            // tblPnl_UserInfo
-            // 
-            this.tblPnl_UserInfo.ColumnCount = 1;
-            this.tblPnl_UserInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblPnl_UserInfo.Controls.Add(this.lbl_Welcome, 0, 0);
-            this.tblPnl_UserInfo.Controls.Add(this.lbl_Username, 0, 1);
-            this.tblPnl_UserInfo.Controls.Add(this.lbl_Role, 0, 2);
-            this.tblPnl_UserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblPnl_UserInfo.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.tblPnl_UserInfo.Location = new System.Drawing.Point(0, 201);
-            this.tblPnl_UserInfo.Margin = new System.Windows.Forms.Padding(0);
-            this.tblPnl_UserInfo.Name = "tblPnl_UserInfo";
-            this.tblPnl_UserInfo.RowCount = 3;
-            this.tblPnl_UserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tblPnl_UserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tblPnl_UserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tblPnl_UserInfo.Size = new System.Drawing.Size(348, 99);
-            this.tblPnl_UserInfo.TabIndex = 1;
-            // 
-            // lbl_Welcome
-            // 
-            this.lbl_Welcome.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_Welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbl_Welcome.ForeColor = System.Drawing.Color.White;
-            this.lbl_Welcome.Location = new System.Drawing.Point(3, 0);
-            this.lbl_Welcome.Name = "lbl_Welcome";
-            this.lbl_Welcome.Size = new System.Drawing.Size(342, 33);
-            this.lbl_Welcome.TabIndex = 0;
-            this.lbl_Welcome.Text = "Welcome,";
-            this.lbl_Welcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_Username
-            // 
-            this.lbl_Username.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.lbl_Username.ForeColor = System.Drawing.Color.White;
-            this.lbl_Username.Location = new System.Drawing.Point(0, 33);
-            this.lbl_Username.Margin = new System.Windows.Forms.Padding(0);
-            this.lbl_Username.Name = "lbl_Username";
-            this.lbl_Username.Size = new System.Drawing.Size(348, 33);
-            this.lbl_Username.TabIndex = 1;
-            this.lbl_Username.Text = "{Username}";
-            this.lbl_Username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_Role
-            // 
-            this.lbl_Role.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_Role.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbl_Role.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lbl_Role.Location = new System.Drawing.Point(3, 66);
-            this.lbl_Role.Name = "lbl_Role";
-            this.lbl_Role.Size = new System.Drawing.Size(342, 33);
-            this.lbl_Role.TabIndex = 2;
-            this.lbl_Role.Text = "{Role}";
-            this.lbl_Role.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // flowPnl_Navigation
-            // 
-            this.flowPnl_Navigation.Controls.Add(this.btn_Dashboard);
-            this.flowPnl_Navigation.Controls.Add(this.btn_TicketManagement);
-            this.flowPnl_Navigation.Controls.Add(this.btn_CreateTicket);
-            this.flowPnl_Navigation.Controls.Add(this.btn_UserManagement);
-            this.flowPnl_Navigation.Controls.Add(this.btn_CreateUser);
-            this.flowPnl_Navigation.Controls.Add(this.btnIncidentManagement);
-            this.flowPnl_Navigation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPnl_Navigation.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowPnl_Navigation.Location = new System.Drawing.Point(0, 351);
-            this.flowPnl_Navigation.Margin = new System.Windows.Forms.Padding(0, 51, 0, 0);
-            this.flowPnl_Navigation.Name = "flowPnl_Navigation";
-            this.flowPnl_Navigation.Size = new System.Drawing.Size(348, 541);
-            this.flowPnl_Navigation.TabIndex = 2;
-            this.flowPnl_Navigation.WrapContents = false;
-            // 
             // btn_Dashboard
             // 
             this.btn_Dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(222)))));
@@ -2191,22 +2207,6 @@ namespace DemoApp
             this.btnIncidentManagement.UseVisualStyleBackColor = false;
             this.btnIncidentManagement.Click += new System.EventHandler(this.btnIncidentManagement_Click);
             // 
-            // lbl_LogOut
-            // 
-            this.lbl_LogOut.AutoSize = true;
-            this.lbl_LogOut.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_LogOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_LogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lbl_LogOut.ForeColor = System.Drawing.Color.White;
-            this.lbl_LogOut.Location = new System.Drawing.Point(3, 892);
-            this.lbl_LogOut.Name = "lbl_LogOut";
-            this.lbl_LogOut.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.lbl_LogOut.Size = new System.Drawing.Size(342, 60);
-            this.lbl_LogOut.TabIndex = 3;
-            this.lbl_LogOut.Text = "Log out";
-            this.lbl_LogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbl_LogOut.Click += new System.EventHandler(this.LogOut_Click);
-            // 
             // tblPnl_Logo
             // 
             this.tblPnl_Logo.ColumnCount = 1;
@@ -2271,13 +2271,20 @@ namespace DemoApp
             this.ClientSize = new System.Drawing.Size(1568, 958);
             this.Controls.Add(this.tableLayoutPanel);
             this.DoubleBuffered = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1152, 618);
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Form_Load);
             this.ResizeBegin += new System.EventHandler(this.Main_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.Main_ResizeEnd);
             this.tableLayoutPanel.ResumeLayout(false);
+            this.sideBar.ResumeLayout(false);
+            this.sideBar.PerformLayout();
+            this.tblPnl_UserInfo.ResumeLayout(false);
+            this.flowPnl_Navigation.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.tab_Dashboard.ResumeLayout(false);
             this.rPnl_Dashboard.ResumeLayout(false);
@@ -2326,10 +2333,6 @@ namespace DemoApp
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.sideBar.ResumeLayout(false);
-            this.sideBar.PerformLayout();
-            this.tblPnl_UserInfo.ResumeLayout(false);
-            this.flowPnl_Navigation.ResumeLayout(false);
             this.tblPnl_Logo.ResumeLayout(false);
             this.tblPnl_Logo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).EndInit();
