@@ -15,6 +15,8 @@ namespace DAL
 
         private ConfigFile config;
 
+     
+
         public BaseDAO()
         {
             config = new ConfigFile();
@@ -26,15 +28,16 @@ namespace DAL
         {
             client = new MongoClient(configString);
             Database = client.GetDatabase(databaseName);
-        }       
+        }
+
+        public IMongoDatabase GetDatabase()
+        { return Database; }
 
         public List<DatabasesModel> GetDatabases()
         {
             //list with existing databases 
             List<DatabasesModel> allDatabases = new List<DatabasesModel>();
 
-
-            //create a document
             
             foreach (BsonDocument db in client.ListDatabases().ToList())
             {
@@ -46,15 +49,7 @@ namespace DAL
 
         }
 
-
-
-        public int RetrieveDocumentsCount(IMongoCollection<BsonDocument> db)
-        {
-            List<BsonDocument> documentsList = db.Find(new BsonDocument()).ToList();
-            int count = documentsList.Count();
-            return count;
-
-        }
+     
 
 
     }

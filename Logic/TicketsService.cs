@@ -15,8 +15,11 @@ namespace Logic
     {
         protected TicketsDAO ticketsdb;
 
+        BaseDAO baseDAO = new BaseDAO();
+
         public TicketsService()
         {
+            GetSortedTicketsByPriority();
             ticketsdb = new TicketsDAO();
         }
 
@@ -69,7 +72,14 @@ namespace Logic
                 matchForEmployeeLevel = new BsonDocument("$match", new BsonDocument("reporter", employee.Id));
             }
 
+
             return new List<BsonDocument>() { lookUp, unwind, lookUpEmployee, unwindEmployee, matchForEmployeeLevel };
+        }
+
+
+        public void  GetSortedTicketsByPriority()
+        {
+            baseDAO.GetDatabase().Aggregate().Sort("{Priority:-1}");
         }
 
         /// <summary>
@@ -456,5 +466,7 @@ namespace Logic
                 return new List<Ticket>();
             }
         }
+
+  
     }
 }

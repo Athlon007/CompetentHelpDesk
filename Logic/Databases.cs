@@ -20,10 +20,6 @@ namespace Logic
             return baseDao.GetDatabases();
         }
 
-        public int RetrieveDocumentsCount(IMongoCollection<BsonDocument> db)
-        {
-            return baseDao.RetrieveDocumentsCount(db);  
-
-        }
+    
     }
 }
