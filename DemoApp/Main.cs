@@ -292,7 +292,7 @@ namespace DemoApp
         {
             InItAddTicketByRegularEmployeeComboBoxes();
 
-            if (employee.Type == EmployeeType.ServiceDesk)
+            if (employee.Type >= EmployeeType.ServiceDesk)
             {
                 tblCreateIncident.Hide();
                 tblCreateTicket.Show();
@@ -594,17 +594,11 @@ namespace DemoApp
         private void btnSubmitTicketCT_Click(object sender, EventArgs e)
         {
             //setting the attributes that are different based on employee type
-            TicketTextTransfer text = new TicketTextTransfer(txtSubjectOfIncidentCT.Text, txtDescriptionCT.Text);
-            TicketDateTransfer date;
-            TicketEnumsTransfer enums;
-            TicketEmployeeTransfer employeeData;
-
-
+            var text = new TicketTextTransfer(txtSubjectOfIncidentCT.Text, txtDescriptionCT.Text);
             int followUpDays = cmbDeadlineCT.SelectedIndex == -1 ? -1 : deadlineDays[cmbDeadlineCT.SelectedItem.ToString()];
-            date = new TicketDateTransfer(dtpReportedCT.Value, followUpDays);
-            enums = new TicketEnumsTransfer((IncidentTypes)(cmbIncidentTypeCT.SelectedItem ?? -1), (TicketPriority)(cmbPriorityCT.SelectedItem ?? -1));
-            employeeData = new TicketEmployeeTransfer((Employee)cmbUserCT.SelectedItem, null);
-            
+            var date = new TicketDateTransfer(dtpReportedCT.Value, followUpDays);
+            var enums = new TicketEnumsTransfer((IncidentTypes)(cmbIncidentTypeCT.SelectedItem ?? -1), (TicketPriority)(cmbPriorityCT.SelectedItem ?? -1));
+            var employeeData = new TicketEmployeeTransfer((Employee)cmbUserCT.SelectedItem, null);
 
             StatusStruct status = ticketService.InsertTicket(text, date, enums, employeeData);
 
@@ -761,25 +755,13 @@ namespace DemoApp
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
         {
-            TicketTextTransfer text = new TicketTextTransfer(txtDetailsSubject.Text, txtDetailsDescription.Text);
-            TicketEnumsTransfer enums = new TicketEnumsTransfer((IncidentTypes)cmbDetailsIncidentType.SelectedItem,
-                                                                (TicketPriority)cmbDetailsPriority.SelectedItem,
-                                                                (TicketStatus)cmbDetailsStatus.SelectedItem);
-            TicketEmployeeTransfer employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem, null);
+            var text = new TicketTextTransfer(txtDetailsSubject.Text, txtDetailsDescription.Text);
+            var enums = new TicketEnumsTransfer((IncidentTypes)cmbDetailsIncidentType.SelectedItem,
+                                                (TicketPriority)cmbDetailsPriority.SelectedItem,
+                                                (TicketStatus)cmbDetailsStatus.SelectedItem);
+            var employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem, null);
 
-            StatusStruct status;
-            if (detailedTicket.Priority == TicketPriority.ToBeDetermined)
-            {
-                // Ticket is TBA? This is an incident, and must be upgraded to a ticket.
-                int days = cmbDetailsDeadline.SelectedIndex == -1 ? -1 : deadlineDays[cmbDetailsDeadline.SelectedItem.ToString()];
-                TicketDateTransfer date = new TicketDateTransfer(DateTime.Now, days);
-                status = ticketService.UpgradeIncidentToTicket(detailedTicket, text, date, enums, employeeTransfer);
-            }
-            else
-            {
-                // Otherwise do the regular update.
-                status = ticketService.UpdateTicket(detailedTicket, text, enums, employeeTransfer);
-            }
+            StatusStruct status = ticketService.UpdateTicket(detailedTicket, text, enums, employeeTransfer);
 
             if (status.Code == 0)
             {
