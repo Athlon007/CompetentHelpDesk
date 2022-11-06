@@ -336,7 +336,7 @@ namespace Logic
         /// <summary>
         /// Returns the highest ticket ID in the database.
         /// </summary>
-        protected int GetHighestId()
+        public int GetHighestId()
         {
             try
             {

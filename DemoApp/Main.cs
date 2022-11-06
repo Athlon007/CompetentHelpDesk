@@ -282,6 +282,7 @@ namespace DemoApp
             else if (employee.Type >= EmployeeType.Specialist)
             {
                 tblCreateIncident.Hide();
+                btnCreateIncident.Hide();
             }
         }
 
@@ -308,10 +309,10 @@ namespace DemoApp
                 btnSubmitTicketCT.Hide();
                 btnCreateIncident.Show();
                 cmbIncidentType.SelectedIndex = -1;
+
             }
 
             lblValidationMessageForIncident.Hide();
-
 
         }
 
@@ -930,6 +931,7 @@ namespace DemoApp
 
                 InItCreateTicketFromIncidentComboBoxes();
                 SetInitialValuesForIncidentData();
+                lblValidationCreateTicket.Hide();
 
             }
         }
@@ -1048,12 +1050,13 @@ namespace DemoApp
         public void CreateIncident()
         {
             IMongoCollection<BsonDocument> incidents = incidentService.GetAllIncidents();
+            List<Incident> incidentList = incidentService.ConvertAllDocumentsToIncidentList(incidents);
 
             int incidentCount = incidentService.RetrieveDocumentsCount(incidents);
+            int previousIncidentId = incidentList[incidentList.Count - 1].Id;
             int incidentId;
-            BsonDocument document;
             if (incidentCount == 0) { incidentId = 0; }
-            else { incidentId = incidentCount++; }
+            else { incidentId = ++previousIncidentId; }
             string subject = txtIncidentSubject.Text;
             int userId = employee.Id;
             int idxCmbIncidentType = cmbIncidentType.SelectedIndex;
@@ -1066,11 +1069,9 @@ namespace DemoApp
 
             else
             {
-                document = new BsonDocument { { "Id", incident.Id }, { "Subject", incident.Subject }, { "UserId", incident.UserId }, { "IncidentType", incident.IncidentType }, { "LoggedOn", incident.LoggedOn }, { "Description", incident.Description } };
-            }
+                incidentService.CreateIncident(incident);
 
-            incidentService.CreateIncident(document);
-        
+            }
         }
 
 
@@ -1081,6 +1082,8 @@ namespace DemoApp
               cmbIncidentType.SelectedIndex = -1;
               txtIncidentDescription.Clear();
         }
+
+
 
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
@@ -1102,5 +1105,73 @@ namespace DemoApp
             }
         }
 
+
+        public void createTicketFromIncident()
+        {
+
+            int cmbNewIncidentTypeValue = (int)cmbNewIncidentType.SelectedIndex;
+            int cmbSelectedUserValue = (int)cmbUser.SelectedIndex;
+            int cmbPriorityValue = (int)cmbPriority.SelectedIndex;
+            int cmbStatusValue = (int)cmbStatus.SelectedIndex;
+            int deadlineIntervalValue = (int)cmbDeadlineInterval.SelectedIndex;
+            if (cmbNewIncidentTypeValue == -1 ||
+                cmbSelectedUserValue == -1 ||
+                cmbPriorityValue == -1 ||
+                cmbStatusValue == -1 ||
+                deadlineIntervalValue == -1) { throw new Exception("All fields are required"); }
+
+            else { 
+            int ticketCount = ticketService.GetTotalTicketCount();
+            int previousTicketId = ticketService.GetHighestId();
+            int ticketId;
+            if (ticketCount == 0) { ticketId = 0; }
+            else { ticketId = ++previousTicketId; }
+            IncidentTypes incidentType = (IncidentTypes)cmbNewIncidentType.SelectedIndex;
+            string subject = txtSubjectOfIncident.Text;
+            string description = txtDescriptionOfIncident.Text;
+            Employee reporter = employeeService.GetByUsername(cmbUser.SelectedItem.ToString());
+            DateTime date = DateTime.Now;
+            int deadlineDays = (int)cmbDeadlineInterval.SelectedIndex;
+            DateTime deadline = date.AddDays(deadlineDays);
+            TicketPriority priority = (TicketPriority)cmbPriority.SelectedIndex;
+            TicketStatus status = (TicketStatus)cmbStatus.SelectedIndex;
+            int escalationLevel = 0;
+
+
+            Ticket ticket = new Ticket();
+            ticket.Id = ticketId;
+            ticket.IncidentType = incidentType;
+            ticket.Subject = subject;
+            ticket.Description = description;
+            ticket.Reporter = reporter;
+            ticket.Date = date;
+            ticket.Deadline = deadline;
+            ticket.Priority = priority;
+            ticket.Status = status;
+            ticket.EscalationLevel = escalationLevel;
+            ticket.IsClosed = false;
+
+            incidentService.CreateTicketFromIncident(ticket);
+            }  
+        }
+
+        private void btnCreateTicket_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                createTicketFromIncident();
+                SetInitialValuesForIncidentData();
+                lblValidationCreateTicket.Show();
+                lblValidationCreateTicket.ForeColor = Color.Green;
+                lblValidationCreateTicket.Text = "The ticket was created";
+            }
+            catch (Exception exp)
+            {
+                lblValidationCreateTicket.Show();
+                lblValidationCreateTicket.Text = exp.Message;
+            }
+        }
+
+   
     }
 }
