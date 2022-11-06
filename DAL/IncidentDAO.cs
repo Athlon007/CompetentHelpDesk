@@ -18,6 +18,7 @@ namespace DAL
         private IMongoCollection<BsonDocument> incidents;
 
 
+
         public IMongoCollection<BsonDocument> Incidents
         {
             get { return incidents; }
@@ -83,6 +84,7 @@ namespace DAL
 
         }
 
+      
 
     }
 }

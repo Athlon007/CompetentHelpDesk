@@ -142,10 +142,10 @@ namespace DemoApp
             this.cmbPriority = new System.Windows.Forms.ComboBox();
             this.cmbUser = new System.Windows.Forms.ComboBox();
             this.cmbNewIncidentType = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblCreateTicket = new System.Windows.Forms.Label();
             this.listViewIncidents = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlIncidentDetails = new System.Windows.Forms.Panel();
             this.lblDescriptionOfIncident = new System.Windows.Forms.Label();
             this.lblTypeOfIncident = new System.Windows.Forms.Label();
             this.lblSubjectOfIncident = new System.Windows.Forms.Label();
@@ -153,7 +153,8 @@ namespace DemoApp
             this.txtTypeOfIncident = new System.Windows.Forms.TextBox();
             this.txtDescriptionOfIncident = new System.Windows.Forms.TextBox();
             this.lblSubmittedByUser = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlCreateTicket = new System.Windows.Forms.Panel();
+            this.lblValidationCreateTicket = new System.Windows.Forms.Label();
             this.lblDeadline = new System.Windows.Forms.Label();
             this.cmbDeadlineInterval = new System.Windows.Forms.ComboBox();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -211,8 +212,8 @@ namespace DemoApp
             this.rPnl_CreateUser.SuspendLayout();
             this.header_CreateUser.SuspendLayout();
             this.tab_IncidentManagement.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlIncidentDetails.SuspendLayout();
+            this.pnlCreateTicket.SuspendLayout();
             this.sideBar.SuspendLayout();
             this.tblPnl_UserInfo.SuspendLayout();
             this.flowPnl_Navigation.SuspendLayout();
@@ -1697,11 +1698,11 @@ namespace DemoApp
             this.tab_IncidentManagement.Controls.Add(this.cmbPriority);
             this.tab_IncidentManagement.Controls.Add(this.cmbUser);
             this.tab_IncidentManagement.Controls.Add(this.cmbNewIncidentType);
-            this.tab_IncidentManagement.Controls.Add(this.label5);
+            this.tab_IncidentManagement.Controls.Add(this.lblCreateTicket);
             this.tab_IncidentManagement.Controls.Add(this.listViewIncidents);
             this.tab_IncidentManagement.Controls.Add(this.label3);
-            this.tab_IncidentManagement.Controls.Add(this.panel1);
-            this.tab_IncidentManagement.Controls.Add(this.panel2);
+            this.tab_IncidentManagement.Controls.Add(this.pnlIncidentDetails);
+            this.tab_IncidentManagement.Controls.Add(this.pnlCreateTicket);
             this.tab_IncidentManagement.Location = new System.Drawing.Point(4, 29);
             this.tab_IncidentManagement.Name = "tab_IncidentManagement";
             this.tab_IncidentManagement.Padding = new System.Windows.Forms.Padding(3);
@@ -1716,7 +1717,7 @@ namespace DemoApp
             this.lblValidationForIncidentList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblValidationForIncidentList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValidationForIncidentList.ForeColor = System.Drawing.Color.Red;
-            this.lblValidationForIncidentList.Location = new System.Drawing.Point(34, 310);
+            this.lblValidationForIncidentList.Location = new System.Drawing.Point(34, 298);
             this.lblValidationForIncidentList.MinimumSize = new System.Drawing.Size(1102, 35);
             this.lblValidationForIncidentList.Name = "lblValidationForIncidentList";
             this.lblValidationForIncidentList.Size = new System.Drawing.Size(1102, 35);
@@ -1726,7 +1727,7 @@ namespace DemoApp
             // btnCreateTicket
             // 
             this.btnCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateTicket.Location = new System.Drawing.Point(790, 817);
+            this.btnCreateTicket.Location = new System.Drawing.Point(794, 792);
             this.btnCreateTicket.Name = "btnCreateTicket";
             this.btnCreateTicket.Size = new System.Drawing.Size(136, 43);
             this.btnCreateTicket.TabIndex = 15;
@@ -1737,7 +1738,7 @@ namespace DemoApp
             // cmbPriority
             // 
             this.cmbPriority.FormattingEnabled = true;
-            this.cmbPriority.Location = new System.Drawing.Point(632, 642);
+            this.cmbPriority.Location = new System.Drawing.Point(632, 617);
             this.cmbPriority.MinimumSize = new System.Drawing.Size(453, 0);
             this.cmbPriority.Name = "cmbPriority";
             this.cmbPriority.Size = new System.Drawing.Size(453, 28);
@@ -1746,7 +1747,7 @@ namespace DemoApp
             // cmbUser
             // 
             this.cmbUser.FormattingEnabled = true;
-            this.cmbUser.Location = new System.Drawing.Point(630, 573);
+            this.cmbUser.Location = new System.Drawing.Point(630, 552);
             this.cmbUser.MinimumSize = new System.Drawing.Size(453, 0);
             this.cmbUser.Name = "cmbUser";
             this.cmbUser.Size = new System.Drawing.Size(453, 28);
@@ -1755,26 +1756,26 @@ namespace DemoApp
             // cmbNewIncidentType
             // 
             this.cmbNewIncidentType.FormattingEnabled = true;
-            this.cmbNewIncidentType.Location = new System.Drawing.Point(629, 507);
+            this.cmbNewIncidentType.Location = new System.Drawing.Point(629, 487);
             this.cmbNewIncidentType.MinimumSize = new System.Drawing.Size(453, 0);
             this.cmbNewIncidentType.Name = "cmbNewIncidentType";
             this.cmbNewIncidentType.Size = new System.Drawing.Size(453, 28);
             this.cmbNewIncidentType.TabIndex = 11;
             // 
-            // label5
+            // lblCreateTicket
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(755, 408);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(195, 37);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Create ticket";
+            this.lblCreateTicket.AutoSize = true;
+            this.lblCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreateTicket.Location = new System.Drawing.Point(755, 389);
+            this.lblCreateTicket.Name = "lblCreateTicket";
+            this.lblCreateTicket.Size = new System.Drawing.Size(195, 37);
+            this.lblCreateTicket.TabIndex = 8;
+            this.lblCreateTicket.Text = "Create ticket";
             // 
             // listViewIncidents
             // 
             this.listViewIncidents.HideSelection = false;
-            this.listViewIncidents.Location = new System.Drawing.Point(34, 96);
+            this.listViewIncidents.Location = new System.Drawing.Point(34, 84);
             this.listViewIncidents.Name = "listViewIncidents";
             this.listViewIncidents.Size = new System.Drawing.Size(1102, 249);
             this.listViewIncidents.TabIndex = 2;
@@ -1792,25 +1793,25 @@ namespace DemoApp
             this.label3.TabIndex = 1;
             this.label3.Text = "Incident Management";
             // 
-            // panel1
+            // pnlIncidentDetails
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lblDescriptionOfIncident);
-            this.panel1.Controls.Add(this.lblTypeOfIncident);
-            this.panel1.Controls.Add(this.lblSubjectOfIncident);
-            this.panel1.Controls.Add(this.txtSubjectOfIncident);
-            this.panel1.Controls.Add(this.txtTypeOfIncident);
-            this.panel1.Controls.Add(this.txtDescriptionOfIncident);
-            this.panel1.Controls.Add(this.lblSubmittedByUser);
-            this.panel1.Location = new System.Drawing.Point(34, 379);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(515, 500);
-            this.panel1.TabIndex = 16;
+            this.pnlIncidentDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlIncidentDetails.Controls.Add(this.lblDescriptionOfIncident);
+            this.pnlIncidentDetails.Controls.Add(this.lblTypeOfIncident);
+            this.pnlIncidentDetails.Controls.Add(this.lblSubjectOfIncident);
+            this.pnlIncidentDetails.Controls.Add(this.txtSubjectOfIncident);
+            this.pnlIncidentDetails.Controls.Add(this.txtTypeOfIncident);
+            this.pnlIncidentDetails.Controls.Add(this.txtDescriptionOfIncident);
+            this.pnlIncidentDetails.Controls.Add(this.lblSubmittedByUser);
+            this.pnlIncidentDetails.Location = new System.Drawing.Point(34, 356);
+            this.pnlIncidentDetails.Name = "pnlIncidentDetails";
+            this.pnlIncidentDetails.Size = new System.Drawing.Size(515, 533);
+            this.pnlIncidentDetails.TabIndex = 16;
             // 
             // lblDescriptionOfIncident
             // 
             this.lblDescriptionOfIncident.AutoSize = true;
-            this.lblDescriptionOfIncident.Location = new System.Drawing.Point(43, 256);
+            this.lblDescriptionOfIncident.Location = new System.Drawing.Point(43, 269);
             this.lblDescriptionOfIncident.Name = "lblDescriptionOfIncident";
             this.lblDescriptionOfIncident.Size = new System.Drawing.Size(93, 24);
             this.lblDescriptionOfIncident.TabIndex = 12;
@@ -1820,7 +1821,7 @@ namespace DemoApp
             // lblTypeOfIncident
             // 
             this.lblTypeOfIncident.AutoSize = true;
-            this.lblTypeOfIncident.Location = new System.Drawing.Point(38, 178);
+            this.lblTypeOfIncident.Location = new System.Drawing.Point(38, 191);
             this.lblTypeOfIncident.Name = "lblTypeOfIncident";
             this.lblTypeOfIncident.Size = new System.Drawing.Size(47, 20);
             this.lblTypeOfIncident.TabIndex = 11;
@@ -1829,7 +1830,7 @@ namespace DemoApp
             // lblSubjectOfIncident
             // 
             this.lblSubjectOfIncident.AutoSize = true;
-            this.lblSubjectOfIncident.Location = new System.Drawing.Point(38, 94);
+            this.lblSubjectOfIncident.Location = new System.Drawing.Point(38, 107);
             this.lblSubjectOfIncident.Name = "lblSubjectOfIncident";
             this.lblSubjectOfIncident.Size = new System.Drawing.Size(67, 20);
             this.lblSubjectOfIncident.TabIndex = 10;
@@ -1838,7 +1839,7 @@ namespace DemoApp
             // txtSubjectOfIncident
             // 
             this.txtSubjectOfIncident.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSubjectOfIncident.Location = new System.Drawing.Point(33, 120);
+            this.txtSubjectOfIncident.Location = new System.Drawing.Point(33, 133);
             this.txtSubjectOfIncident.MinimumSize = new System.Drawing.Size(435, 35);
             this.txtSubjectOfIncident.Multiline = true;
             this.txtSubjectOfIncident.Name = "txtSubjectOfIncident";
@@ -1848,7 +1849,7 @@ namespace DemoApp
             // txtTypeOfIncident
             // 
             this.txtTypeOfIncident.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTypeOfIncident.Location = new System.Drawing.Point(33, 204);
+            this.txtTypeOfIncident.Location = new System.Drawing.Point(33, 217);
             this.txtTypeOfIncident.MinimumSize = new System.Drawing.Size(435, 35);
             this.txtTypeOfIncident.Multiline = true;
             this.txtTypeOfIncident.Name = "txtTypeOfIncident";
@@ -1858,7 +1859,7 @@ namespace DemoApp
             // txtDescriptionOfIncident
             // 
             this.txtDescriptionOfIncident.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescriptionOfIncident.Location = new System.Drawing.Point(37, 286);
+            this.txtDescriptionOfIncident.Location = new System.Drawing.Point(37, 299);
             this.txtDescriptionOfIncident.Multiline = true;
             this.txtDescriptionOfIncident.Name = "txtDescriptionOfIncident";
             this.txtDescriptionOfIncident.Size = new System.Drawing.Size(435, 131);
@@ -1868,31 +1869,45 @@ namespace DemoApp
             // 
             this.lblSubmittedByUser.AutoSize = true;
             this.lblSubmittedByUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubmittedByUser.Location = new System.Drawing.Point(26, 23);
+            this.lblSubmittedByUser.Location = new System.Drawing.Point(26, 38);
             this.lblSubmittedByUser.Name = "lblSubmittedByUser";
             this.lblSubmittedByUser.Size = new System.Drawing.Size(229, 37);
             this.lblSubmittedByUser.TabIndex = 7;
             this.lblSubmittedByUser.Text = "Incident details";
             // 
-            // panel2
+            // pnlCreateTicket
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.lblDeadline);
-            this.panel2.Controls.Add(this.cmbDeadlineInterval);
-            this.panel2.Controls.Add(this.lblStatus);
-            this.panel2.Controls.Add(this.cmbStatus);
-            this.panel2.Controls.Add(this.lblPriority);
-            this.panel2.Controls.Add(this.lblUser);
-            this.panel2.Controls.Add(this.lblNewIncidentType);
-            this.panel2.Location = new System.Drawing.Point(576, 379);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(560, 500);
-            this.panel2.TabIndex = 13;
+            this.pnlCreateTicket.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlCreateTicket.Controls.Add(this.lblValidationCreateTicket);
+            this.pnlCreateTicket.Controls.Add(this.lblDeadline);
+            this.pnlCreateTicket.Controls.Add(this.cmbDeadlineInterval);
+            this.pnlCreateTicket.Controls.Add(this.lblStatus);
+            this.pnlCreateTicket.Controls.Add(this.cmbStatus);
+            this.pnlCreateTicket.Controls.Add(this.lblPriority);
+            this.pnlCreateTicket.Controls.Add(this.lblUser);
+            this.pnlCreateTicket.Controls.Add(this.lblNewIncidentType);
+            this.pnlCreateTicket.Location = new System.Drawing.Point(576, 353);
+            this.pnlCreateTicket.Name = "pnlCreateTicket";
+            this.pnlCreateTicket.Size = new System.Drawing.Size(560, 533);
+            this.pnlCreateTicket.TabIndex = 13;
+            // 
+            // lblValidationCreateTicket
+            // 
+            this.lblValidationCreateTicket.AutoSize = true;
+            this.lblValidationCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValidationCreateTicket.ForeColor = System.Drawing.Color.Red;
+            this.lblValidationCreateTicket.Location = new System.Drawing.Point(3, 498);
+            this.lblValidationCreateTicket.MinimumSize = new System.Drawing.Size(552, 28);
+            this.lblValidationCreateTicket.Name = "lblValidationCreateTicket";
+            this.lblValidationCreateTicket.Size = new System.Drawing.Size(552, 28);
+            this.lblValidationCreateTicket.TabIndex = 17;
+            this.lblValidationCreateTicket.Text = "Validation message for creating ticket";
+            this.lblValidationCreateTicket.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblDeadline
             // 
             this.lblDeadline.AutoSize = true;
-            this.lblDeadline.Location = new System.Drawing.Point(58, 366);
+            this.lblDeadline.Location = new System.Drawing.Point(58, 360);
             this.lblDeadline.Name = "lblDeadline";
             this.lblDeadline.Size = new System.Drawing.Size(76, 20);
             this.lblDeadline.TabIndex = 16;
@@ -1901,7 +1916,7 @@ namespace DemoApp
             // cmbDeadlineInterval
             // 
             this.cmbDeadlineInterval.FormattingEnabled = true;
-            this.cmbDeadlineInterval.Location = new System.Drawing.Point(54, 389);
+            this.cmbDeadlineInterval.Location = new System.Drawing.Point(54, 383);
             this.cmbDeadlineInterval.MinimumSize = new System.Drawing.Size(453, 0);
             this.cmbDeadlineInterval.Name = "cmbDeadlineInterval";
             this.cmbDeadlineInterval.Size = new System.Drawing.Size(453, 28);
@@ -1910,7 +1925,7 @@ namespace DemoApp
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(58, 303);
+            this.lblStatus.Location = new System.Drawing.Point(58, 298);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(60, 20);
             this.lblStatus.TabIndex = 14;
@@ -1919,7 +1934,7 @@ namespace DemoApp
             // cmbStatus
             // 
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(55, 326);
+            this.cmbStatus.Location = new System.Drawing.Point(55, 323);
             this.cmbStatus.MinimumSize = new System.Drawing.Size(453, 0);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(453, 28);
@@ -1928,7 +1943,7 @@ namespace DemoApp
             // lblPriority
             // 
             this.lblPriority.AutoSize = true;
-            this.lblPriority.Location = new System.Drawing.Point(57, 237);
+            this.lblPriority.Location = new System.Drawing.Point(57, 238);
             this.lblPriority.Name = "lblPriority";
             this.lblPriority.Size = new System.Drawing.Size(60, 20);
             this.lblPriority.TabIndex = 13;
@@ -1937,7 +1952,7 @@ namespace DemoApp
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(56, 167);
+            this.lblUser.Location = new System.Drawing.Point(56, 175);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(47, 20);
             this.lblUser.TabIndex = 12;
@@ -1946,7 +1961,7 @@ namespace DemoApp
             // lblNewIncidentType
             // 
             this.lblNewIncidentType.AutoSize = true;
-            this.lblNewIncidentType.Location = new System.Drawing.Point(50, 101);
+            this.lblNewIncidentType.Location = new System.Drawing.Point(50, 107);
             this.lblNewIncidentType.Name = "lblNewIncidentType";
             this.lblNewIncidentType.Size = new System.Drawing.Size(47, 20);
             this.lblNewIncidentType.TabIndex = 11;
@@ -2326,10 +2341,10 @@ namespace DemoApp
             this.header_CreateUser.PerformLayout();
             this.tab_IncidentManagement.ResumeLayout(false);
             this.tab_IncidentManagement.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlIncidentDetails.ResumeLayout(false);
+            this.pnlIncidentDetails.PerformLayout();
+            this.pnlCreateTicket.ResumeLayout(false);
+            this.pnlCreateTicket.PerformLayout();
             this.sideBar.ResumeLayout(false);
             this.sideBar.PerformLayout();
             this.tblPnl_UserInfo.ResumeLayout(false);
@@ -2471,15 +2486,15 @@ namespace DemoApp
         private System.Windows.Forms.ComboBox cmbPriority;
         private System.Windows.Forms.ComboBox cmbUser;
         private System.Windows.Forms.ComboBox cmbNewIncidentType;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblCreateTicket;
+        private System.Windows.Forms.Panel pnlIncidentDetails;
         private System.Windows.Forms.Label lblDescriptionOfIncident;
         private System.Windows.Forms.Label lblTypeOfIncident;
         private System.Windows.Forms.Label lblSubjectOfIncident;
         private System.Windows.Forms.TextBox txtSubjectOfIncident;
         private System.Windows.Forms.TextBox txtDescriptionOfIncident;
         private System.Windows.Forms.Label lblSubmittedByUser;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlCreateTicket;
         private System.Windows.Forms.Label lblDeadline;
         private System.Windows.Forms.ComboBox cmbDeadlineInterval;
         private System.Windows.Forms.Label lblStatus;
@@ -2491,5 +2506,6 @@ namespace DemoApp
         private System.Windows.Forms.Button btnCreateIncident;
         private System.Windows.Forms.Label lblValidationMessageForIncident;
         private System.Windows.Forms.Label lblValidationForIncidentList;
+        private System.Windows.Forms.Label lblValidationCreateTicket;
     }
 }
