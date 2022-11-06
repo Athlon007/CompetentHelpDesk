@@ -309,6 +309,7 @@ namespace DemoApp
                 btnSubmitTicketCT.Hide();
                 btnCreateIncident.Show();
                 cmbIncidentType.SelectedIndex = -1;
+
             }
 
             lblValidationMessageForIncident.Hide();
@@ -1170,5 +1171,7 @@ namespace DemoApp
                 lblValidationCreateTicket.Text = exp.Message;
             }
         }
+
+   
     }
 }
