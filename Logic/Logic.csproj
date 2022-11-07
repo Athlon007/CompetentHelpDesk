@@ -169,6 +169,7 @@
     <Compile Include="StatusStruct.cs" />
     <Compile Include="TicketEscalationService.cs" />
     <Compile Include="TicketsService.cs" />
+    <Compile Include="TicketTransferService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

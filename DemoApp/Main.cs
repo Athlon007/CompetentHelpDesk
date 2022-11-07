@@ -17,6 +17,8 @@ namespace DemoApp
         private readonly EmployeeService employeeService;
         private readonly TicketEscalationService ticketEscalationService;
         private readonly IncidentService incidentService = new IncidentService();
+        private readonly TicketTransferService ticketTransferService;
+        private readonly LoginService loginService;
 
         private List<Ticket> allTickets;
 
@@ -208,6 +210,8 @@ namespace DemoApp
                 // Load all tickets
                 LoadTickets(TicketLoadStatus.All);
                 CleanTicketDetails();
+                //Fill assigned employee combobox
+                LoadAssignedEmployees();
             }
         }
 
@@ -347,6 +351,8 @@ namespace DemoApp
             if (tabControl.SelectedIndex != 4)
             {
                 tabControl.SelectedIndex = 4;
+                LoadUserTypes();
+                ClearRegisterForm();
             }
         }
 
@@ -1172,6 +1178,69 @@ namespace DemoApp
             }
         }
 
-   
+        private void btnRegisterUser_Click(object sender, EventArgs e)
+        {
+            int length = 8;
+            string email = txtEmail.Text;
+            string username = txtUsername.Text;
+            string firsname = txtFirstName.Text;
+            string lastname = txtLastName.Text;
+            EmployeeType type = (EmployeeType)comboEmployeeType.SelectedIndex;
+            HashedPasswordWithSalt password = loginService.CreateHashedPasswordWithSalt(employeeService.GetRandomPassword(length));
+            string passwordHash = password.HashedPassword;
+            string salt = password.Salt;
+
+            StatusStruct status = employeeService.CreateUser(email, username, firsname, lastname, type, passwordHash, salt);
+
+            if (status.Code == 0)
+            {
+                ClearRegisterForm();
+            }
+            else
+            {
+                MessageBox.Show(status.Message);
+            }
+        }
+
+        private void LoadUserTypes()
+        {
+            foreach (var item in Enum.GetValues(typeof(EmployeeType)))
+            {
+                comboEmployeeType.Items.Add(item);
+            }
+        }
+
+        private void ClearRegisterForm()
+        {
+            txtEmail.Text = "";
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtUsername.Text = "";
+            comboEmployeeType.SelectedIndex = -1;
+        }
+        private void LoadAssignedEmployees()
+        {
+            List<Employee> employees = employeeService.GetEmployeesByType(EmployeeType.ServiceDesk);
+            foreach (var item in employees)
+            {
+                comboEmployeeType.Items.Add(item);
+            }
+        }
+
+        private void btnTransfer_Click(object sender, EventArgs e)
+        {
+            Employee employee = (Employee)cmbEmployees.SelectedItem;
+            Ticket ticket = (Ticket)listView_TicketManagement.SelectedItems[0].Tag;
+            StatusStruct status = ticketTransferService.TransferTicket(ticket, employee);
+            if (status.Code == 0)
+            {
+                cmbEmployees.SelectedIndex = -1;
+                listView_TicketManagement.SelectedIndices.Clear();
+            }
+            else
+            {
+                MessageBox.Show(status.Message);
+            }
+        }
     }
 }

@@ -47,6 +47,14 @@ namespace DAL
             return instance;
         }
 
+        public IAsyncCursor<BsonDocument> Get(List<BsonDocument> pipeline)
+        {
+            return Get(pipeline.ToArray());
+        }
 
+        public void Insert(BsonDocument doc)
+        {
+            Database.GetCollection<BsonDocument>("Employees").InsertOne(doc);
+        }
     }
 }
