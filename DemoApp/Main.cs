@@ -17,6 +17,7 @@ namespace DemoApp
         private readonly EmployeeService employeeService;
         private readonly TicketEscalationService ticketEscalationService;
         private readonly IncidentService incidentService = new IncidentService();
+        private readonly ArchivedTicketService archivedTicketService = new ArchivedTicketService();
 
         private List<Ticket> allTickets;
 
@@ -208,6 +209,7 @@ namespace DemoApp
                 // Load all tickets
                 LoadTickets(TicketLoadStatus.All);
                 CleanTicketDetails();
+                lblValidationForArchiving.Hide();
             }
         }
 
@@ -273,6 +275,8 @@ namespace DemoApp
                 btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
                 btnIncidentManagement.Hide();
+                btnTicketArchive.Hide();
+                pnlArchiveTickets.Hide();
                 tabControl.SelectedIndex = 1;
                 LoadTickets(TicketLoadStatus.Open);
                 CleanTicketDetails();
@@ -297,7 +301,7 @@ namespace DemoApp
                 tblCreateIncident.Hide();
                 tblCreateTicket.Show();
                 btnCreateIncident.Hide();
-                btnSubmitTicketCT.Show(); 
+                btnSubmitTicketCT.Show();
             }
 
             if (employee.Type == EmployeeType.Regular)
@@ -993,9 +997,9 @@ namespace DemoApp
             listViewIncidents.Columns[5].Width = 0;
 
 
-            IMongoCollection<BsonDocument> incidents = incidentService.GetAllIncidents();
+            List<BsonDocument> incidents = incidentService.GetAllIncidents();
             List<Incident> incidentList = incidentService.ConvertAllDocumentsToIncidentList(incidents);
-           
+
             if (incidentList.Count == 0)
             {
                 throw new Exception("There are currently no incidents");
@@ -1003,60 +1007,56 @@ namespace DemoApp
 
 
             for (int i = 0; i < incidentList.Count; i++)
-                {
-                    ListViewItem incident = new ListViewItem(incidentList[i].Id.ToString());
+            {
+                ListViewItem incident = new ListViewItem(incidentList[i].Id.ToString());
 
-                    //Add the tag used to update a record in the database
-                    incident.Tag = incidentList[i];
+                //Add the tag used to update a record in the database
+                incident.Tag = incidentList[i];
 
-                    incident.SubItems.Add(incidentList[i].Subject.ToString());
-                    incident.SubItems.Add(incidentList[i].UserId.ToString());
-                    incident.SubItems.Add(incidentList[i].IncidentType.ToString());
-                    incident.SubItems.Add(incidentList[i].LoggedOn.ToString());
-                    incident.SubItems.Add(incidentList[i].Description.ToString());
+                incident.SubItems.Add(incidentList[i].Subject.ToString());
+                incident.SubItems.Add(incidentList[i].UserId.ToString());
+                incident.SubItems.Add(incidentList[i].IncidentType.ToString());
+                incident.SubItems.Add(incidentList[i].LoggedOn.ToString());
+                incident.SubItems.Add(incidentList[i].Description.ToString());
 
-                    listViewIncidents.Items.Add(incident);
+                listViewIncidents.Items.Add(incident);
 
-                }
+            }
         }
 
         private void listViewIncidents_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IMongoCollection<BsonDocument> incidents = incidentService.GetAllIncidents();
+            List<BsonDocument> incidents = incidentService.GetAllIncidents();
 
             List<Incident> incidentList = incidentService.ConvertAllDocumentsToIncidentList(incidents);
 
 
-                if (listViewIncidents.SelectedItems.Count > 0)
-                {
+            if (listViewIncidents.SelectedItems.Count > 0)
+            {
 
-                    ListViewItem selectedItem = listViewIncidents.SelectedItems[0];
-                    Incident incident = (Incident)selectedItem.Tag;
-                    Employee reportingUser = employeeService.GetById(incident.UserId);
-                    lblSubmittedByUser.Text = $" Submitted by {reportingUser.FirstName} " + $" {reportingUser.LastName}";
-                    txtSubjectOfIncident.Text = incident.Subject.ToString();
-                    txtTypeOfIncident.Text = incident.IncidentType.ToString();
-                    txtDescriptionOfIncident.Text = incident.Description.ToString();
-                
-                }
+                ListViewItem selectedItem = listViewIncidents.SelectedItems[0];
+                Incident incident = (Incident)selectedItem.Tag;
+                Employee reportingUser = employeeService.GetById(incident.UserId);
+                lblSubmittedByUser.Text = $" Submitted by {reportingUser.FirstName} " + $" {reportingUser.LastName}";
+                txtSubjectOfIncident.Text = incident.Subject.ToString();
+                txtTypeOfIncident.Text = incident.IncidentType.ToString();
+                txtDescriptionOfIncident.Text = incident.Description.ToString();
 
-                else
-                {
-                    return;
-                }
-            
+            }
+
+            else
+            {
+                return;
+            }
+
         }
 
         public void CreateIncident()
         {
-            IMongoCollection<BsonDocument> incidents = incidentService.GetAllIncidents();
+            List<BsonDocument> incidents = incidentService.GetAllIncidents();
             List<Incident> incidentList = incidentService.ConvertAllDocumentsToIncidentList(incidents);
 
-            int incidentCount = incidentService.RetrieveDocumentsCount(incidents);
-            int previousIncidentId = incidentList[incidentList.Count - 1].Id;
-            int incidentId;
-            if (incidentCount == 0) { incidentId = 0; }
-            else { incidentId = ++previousIncidentId; }
+            int incidentId = incidentService.RetrievePreviousIncidentId();
             string subject = txtIncidentSubject.Text;
             int userId = employee.Id;
             int idxCmbIncidentType = cmbIncidentType.SelectedIndex;
@@ -1076,11 +1076,11 @@ namespace DemoApp
 
 
 
-        public void CleanIncidentFormFields() 
+        public void CleanIncidentFormFields()
         {
-              txtIncidentSubject.Clear();
-              cmbIncidentType.SelectedIndex = -1;
-              txtIncidentDescription.Clear();
+            txtIncidentSubject.Clear();
+            cmbIncidentType.SelectedIndex = -1;
+            txtIncidentDescription.Clear();
         }
 
 
@@ -1101,7 +1101,7 @@ namespace DemoApp
             {
                 lblValidationMessageForIncident.Show();
                 lblValidationMessageForIncident.Text = exp.Message;
-            
+
             }
         }
 
@@ -1120,39 +1120,40 @@ namespace DemoApp
                 cmbStatusValue == -1 ||
                 deadlineIntervalValue == -1) { throw new Exception("All fields are required"); }
 
-            else { 
-            int ticketCount = ticketService.GetTotalTicketCount();
-            int previousTicketId = ticketService.GetHighestId();
-            int ticketId;
-            if (ticketCount == 0) { ticketId = 0; }
-            else { ticketId = ++previousTicketId; }
-            IncidentTypes incidentType = (IncidentTypes)cmbNewIncidentType.SelectedIndex;
-            string subject = txtSubjectOfIncident.Text;
-            string description = txtDescriptionOfIncident.Text;
-            Employee reporter = employeeService.GetByUsername(cmbUser.SelectedItem.ToString());
-            DateTime date = DateTime.Now;
-            int deadlineDays = (int)cmbDeadlineInterval.SelectedIndex;
-            DateTime deadline = date.AddDays(deadlineDays);
-            TicketPriority priority = (TicketPriority)cmbPriority.SelectedIndex;
-            TicketStatus status = (TicketStatus)cmbStatus.SelectedIndex;
-            int escalationLevel = 0;
+            else
+            {
+                int ticketCount = ticketService.GetTotalTicketCount();
+                int previousTicketId = ticketService.GetHighestId();
+                int ticketId;
+                if (ticketCount == 0) { ticketId = 0; }
+                else { ticketId = ++previousTicketId; }
+                IncidentTypes incidentType = (IncidentTypes)cmbNewIncidentType.SelectedIndex;
+                string subject = txtSubjectOfIncident.Text;
+                string description = txtDescriptionOfIncident.Text;
+                Employee reporter = employeeService.GetByUsername(cmbUser.SelectedItem.ToString());
+                DateTime date = DateTime.Now;
+                int deadlineDays = (int)cmbDeadlineInterval.SelectedIndex;
+                DateTime deadline = date.AddDays(deadlineDays);
+                TicketPriority priority = (TicketPriority)cmbPriority.SelectedIndex;
+                TicketStatus status = (TicketStatus)cmbStatus.SelectedIndex;
+                int escalationLevel = 0;
 
 
-            Ticket ticket = new Ticket();
-            ticket.Id = ticketId;
-            ticket.IncidentType = incidentType;
-            ticket.Subject = subject;
-            ticket.Description = description;
-            ticket.Reporter = reporter;
-            ticket.Date = date;
-            ticket.Deadline = deadline;
-            ticket.Priority = priority;
-            ticket.Status = status;
-            ticket.EscalationLevel = escalationLevel;
-            ticket.IsClosed = false;
+                Ticket ticket = new Ticket();
+                ticket.Id = ticketId;
+                ticket.IncidentType = incidentType;
+                ticket.Subject = subject;
+                ticket.Description = description;
+                ticket.Reporter = reporter;
+                ticket.Date = date;
+                ticket.Deadline = deadline;
+                ticket.Priority = priority;
+                ticket.Status = status;
+                ticket.EscalationLevel = escalationLevel;
+                ticket.IsClosed = false;
 
-            incidentService.CreateTicketFromIncident(ticket);
-            }  
+                incidentService.CreateTicketFromIncident(ticket);
+            }
         }
 
         private void btnCreateTicket_Click(object sender, EventArgs e)
@@ -1172,6 +1173,196 @@ namespace DemoApp
             }
         }
 
-   
+        private void btnArchiveTickets_Click(object sender, EventArgs e)
+        {
+            lblValidationForArchiving.Show();
+            try
+            {
+                archivedTicketService.ArchiveTickets(this.employee);
+                
+                lblValidationForArchiving.ForeColor = Color.Green;
+                lblValidationForArchiving.Text = "The tickets were archived";
+            }
+            catch (Exception exception)
+            { 
+                lblValidationForArchiving.Text = exception.Message;
+            }
+        }
+
+        public void CreateArchivedTicketsListView()
+        {
+
+            // clear the listview before adding data
+            listViewArchivedTickets.Clear();
+
+            //set the listView to details view
+
+            listViewArchivedTickets.View = View.Details;
+
+            // Allow the user to rearrange columns.
+
+            listViewArchivedTickets.AllowColumnReorder = false;
+
+
+            // Select the item and subitems when selection is made.
+            listViewArchivedTickets.FullRowSelect = true;
+
+            // Display grid lines.
+            listViewArchivedTickets.GridLines = true;
+
+
+            //created the columns for the attributes of the incident class
+            listViewArchivedTickets.Columns.Add("Id", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Type", 100, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Subject", 280, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Description", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("TicketId", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Date", 200, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Deadline", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Priority", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Status", 100, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Escalation level", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("IsClosed", 100, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("ArchivingDate", 200, HorizontalAlignment.Left);
+
+            listViewArchivedTickets.Columns[3].Width = 0;
+            listViewArchivedTickets.Columns[4].Width = 0;
+            listViewArchivedTickets.Columns[6].Width = 0;
+            listViewArchivedTickets.Columns[7].Width = 0;
+            listViewArchivedTickets.Columns[9].Width = 0;
+
+            List<BsonDocument> archivedTickets = archivedTicketService.GetAllArchivedTickets();
+            List<ArchivedTicket> archivedTicketList = archivedTicketService.ConvertAllDocumentsToArchivedTicketList(archivedTickets);
+
+            if (archivedTicketList.Count == 0)
+            {
+                throw new Exception("There are currently no archived tickets");
+            }
+
+            for (int i = 0; i < archivedTicketList.Count; i++)
+            {
+                ListViewItem archivedTicket = new ListViewItem(archivedTicketList[i].Id.ToString());
+
+                //Add the tag used to update a record in the database
+                archivedTicket.Tag = archivedTicketList[i];
+
+                archivedTicket.SubItems.Add(archivedTicketList[i].IncidentType.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].Subject);
+                archivedTicket.SubItems.Add(archivedTicketList[i].Description);
+                archivedTicket.SubItems.Add(archivedTicketList[i].TicketId.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].Date.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].Deadline.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].Priority.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].Status.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].EscalationLevel.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].IsClosed.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].ArchivingDate.ToString());
+
+                listViewArchivedTickets.Items.Add(archivedTicket);
+            }
+        }
+
+        private void btnTicketArchive_Click(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedIndex != 6)
+            {
+                tabControl.SelectedIndex = 6;
+
+                lblValidationForArchivedTicketList.Hide();
+
+                try
+                {
+                    CreateArchivedTicketsListView();
+                }
+                catch (Exception exception)
+                {
+                    lblValidationForArchivedTicketList.Show();
+                    lblValidationForArchivedTicketList.Text = exception.Message;
+                }
+
+            }
+        }
+
+        private void listViewArchivedTickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<BsonDocument> archivedTickets = archivedTicketService.GetAllArchivedTickets();
+
+            List<ArchivedTicket> archivedTicketList = archivedTicketService.ConvertAllDocumentsToArchivedTicketList(archivedTickets);
+
+            if (listViewArchivedTickets.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = listViewArchivedTickets.SelectedItems[0];
+                ArchivedTicket archivedTicket = (ArchivedTicket)selectedItem.Tag;
+                txtSubject.Text = archivedTicket.Subject.ToString();
+                txtIncidentType.Text = archivedTicket.IncidentType.ToString();
+                txtDescription.Text = archivedTicket.Description.ToString();
+            }
+
+            else
+            {
+                return;
+            }
+        }
+
+        private void btnSelectAllIncidents_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listViewIncidents.Items)
+            {
+                item.Selected = true;
+            }
+
+        }
+
+        private void btnDeleteSelectedIncidents_Click(object sender, EventArgs e)
+        {
+
+            if (listViewIncidents.SelectedItems.Count > 0)
+            {
+                foreach (ListViewItem item in listViewIncidents.Items)
+                {
+                    if (item.Selected == true)
+                    {
+                        Incident incident = (Incident)item.Tag;
+                        incidentService.RemoveIncidentFromIncidentDb(incident.Id);
+                        listViewIncidents.Items.Remove(item);   
+
+                    }
+                }
+
+                txtSubjectOfIncident.Clear();
+                txtTypeOfIncident.Clear();
+                txtDescriptionOfIncident.Clear();   
+            }
+        }
+
+
+        private void btnSelectAllArchivedTickets_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listViewArchivedTickets.Items)
+            {
+                item.Selected = true;
+            }
+        }
+
+        private void btnDeleteSelectionFromArchive_Click(object sender, EventArgs e)
+        {
+            if (listViewArchivedTickets.SelectedItems.Count > 0)
+            {
+                foreach (ListViewItem item in listViewArchivedTickets.Items)
+                {
+                    if (item.Selected == true)
+                    {
+                        ArchivedTicket archivedTicket = (ArchivedTicket)item.Tag;
+                        archivedTicketService.RemoveArchivedTicketFromArchivedTicketDb(archivedTicket.Id);
+                        listViewArchivedTickets.Items.Remove(item);
+                    }
+                }
+
+                txtSubject.Clear();
+                txtIncidentType.Clear();
+                txtDescription.Clear();
+            }
+
+        }
     }
 }

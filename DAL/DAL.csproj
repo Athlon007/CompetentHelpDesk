@@ -163,6 +163,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchivedTicketDAO.cs" />
     <Compile Include="BaseDAO.cs" />
     <Compile Include="ConfigFile.cs" />
     <Compile Include="EmployeesDAO.cs" />
