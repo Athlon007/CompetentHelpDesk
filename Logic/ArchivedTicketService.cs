@@ -23,9 +23,9 @@ namespace Logic
             archivedTicketDb = new ArchivedTicketDAO();
         }
 
-        public List<BsonDocument> GetAllTicketsToCheckArchivingDate()
+        public List<BsonDocument> GetAllTicketsToCheckArchivingDate(Employee employee)
         {
-            return archivedTicketDb.GetAllTicketsToCheckArchivingDate();
+            return archivedTicketDb.GetAllTicketsToCheckArchivingDate(employee);
         }
 
 
@@ -66,11 +66,13 @@ namespace Logic
             archivedTicketDb.RemoveArchivedTicketFromTicketDb(id);
         }
 
-        public void ArchiveTickets()
+        public void ArchiveTickets(Employee employee)
         {
             DateTime currentDate = DateTime.Now;
 
-            List<BsonDocument>tickets = GetAllTicketsToCheckArchivingDate();
+            List<BsonDocument>tickets = GetAllTicketsToCheckArchivingDate(employee);
+            if (tickets.Count == 0)
+            { throw new Exception("Error while loading ticket data"); }
             int archivedTicketId = archivedTicketDb.RetrievePreviousDocumentId();   
 
             foreach (BsonDocument document in tickets)
@@ -97,9 +99,17 @@ namespace Logic
                     BsonDocument archivedTicketDocument = CreateDocumentFromArchivedTicketInstance(archivedTicket);
                     CreateArchivedTicket(archivedTicketDocument);
                     RemoveArchivedTicketFromTicketDb(ticket.Id);
-
                 }
+            
             }
+
+        }
+
+
+        public void RemoveArchivedTicketFromArchivedTicketDb(int id) 
+        {
+            archivedTicketDb.RemoveArchivedTicketFromArchivedTicketDb(id);
+        
         }
     }
 }

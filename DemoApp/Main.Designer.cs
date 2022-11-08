@@ -141,6 +141,9 @@ namespace DemoApp
             this.header_CreateUser = new System.Windows.Forms.Panel();
             this.lbl_HeaderCreateUser = new System.Windows.Forms.Label();
             this.tab_IncidentManagement = new System.Windows.Forms.TabPage();
+            this.pnlIncidentManagementEditControls = new System.Windows.Forms.Panel();
+            this.btnSelectAllIncidents = new System.Windows.Forms.Button();
+            this.btnDeleteSelectedIncidents = new System.Windows.Forms.Button();
             this.lblValidationForIncidentList = new System.Windows.Forms.Label();
             this.listViewIncidents = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
@@ -167,6 +170,9 @@ namespace DemoApp
             this.lblUser = new System.Windows.Forms.Label();
             this.lblNewIncidentType = new System.Windows.Forms.Label();
             this.tab_TicketArchive = new System.Windows.Forms.TabPage();
+            this.pnlTicketArchiveEditControls = new System.Windows.Forms.Panel();
+            this.btnSelectAllArchivedTickets = new System.Windows.Forms.Button();
+            this.btnDeleteSelectionFromArchive = new System.Windows.Forms.Button();
             this.pnlTicketDetails = new System.Windows.Forms.Panel();
             this.lblTicketDescription = new System.Windows.Forms.Label();
             this.lblTypeOfTheIncident = new System.Windows.Forms.Label();
@@ -196,6 +202,7 @@ namespace DemoApp
             this.pic_Logo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblValidationForArchiving = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tab_Dashboard.SuspendLayout();
@@ -230,9 +237,11 @@ namespace DemoApp
             this.rPnl_CreateUser.SuspendLayout();
             this.header_CreateUser.SuspendLayout();
             this.tab_IncidentManagement.SuspendLayout();
+            this.pnlIncidentManagementEditControls.SuspendLayout();
             this.pnlIncidentDetails.SuspendLayout();
             this.pnlCreateTicket.SuspendLayout();
             this.tab_TicketArchive.SuspendLayout();
+            this.pnlTicketArchiveEditControls.SuspendLayout();
             this.pnlTicketDetails.SuspendLayout();
             this.sideBar.SuspendLayout();
             this.tblPnl_UserInfo.SuspendLayout();
@@ -271,6 +280,7 @@ namespace DemoApp
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(351, 15);
             this.tabControl.Margin = new System.Windows.Forms.Padding(0, 15, 15, 15);
+            this.tabControl.MinimumSize = new System.Drawing.Size(1004, 0);
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.Padding = new System.Drawing.Point(0, 0);
@@ -775,12 +785,13 @@ namespace DemoApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlArchiveTickets.AutoSize = true;
             this.pnlArchiveTickets.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlArchiveTickets.Controls.Add(this.lblValidationForArchiving);
             this.pnlArchiveTickets.Controls.Add(this.btnArchiveTickets);
             this.pnlArchiveTickets.Controls.Add(this.lblArchiveTicketsMessage);
             this.pnlArchiveTickets.Controls.Add(this.lblArchiveTickets);
-            this.pnlArchiveTickets.Location = new System.Drawing.Point(-2, 712);
+            this.pnlArchiveTickets.Location = new System.Drawing.Point(-2, 673);
             this.pnlArchiveTickets.Name = "pnlArchiveTickets";
-            this.pnlArchiveTickets.Size = new System.Drawing.Size(505, 121);
+            this.pnlArchiveTickets.Size = new System.Drawing.Size(505, 160);
             this.pnlArchiveTickets.TabIndex = 2;
             // 
             // btnArchiveTickets
@@ -1763,6 +1774,7 @@ namespace DemoApp
             // 
             // tab_IncidentManagement
             // 
+            this.tab_IncidentManagement.Controls.Add(this.pnlIncidentManagementEditControls);
             this.tab_IncidentManagement.Controls.Add(this.lblValidationForIncidentList);
             this.tab_IncidentManagement.Controls.Add(this.listViewIncidents);
             this.tab_IncidentManagement.Controls.Add(this.label3);
@@ -1776,6 +1788,38 @@ namespace DemoApp
             this.tab_IncidentManagement.Text = "Incident Management";
             this.tab_IncidentManagement.UseVisualStyleBackColor = true;
             // 
+            // pnlIncidentManagementEditControls
+            // 
+            this.pnlIncidentManagementEditControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlIncidentManagementEditControls.Controls.Add(this.btnSelectAllIncidents);
+            this.pnlIncidentManagementEditControls.Controls.Add(this.btnDeleteSelectedIncidents);
+            this.pnlIncidentManagementEditControls.Location = new System.Drawing.Point(1038, 96);
+            this.pnlIncidentManagementEditControls.Name = "pnlIncidentManagementEditControls";
+            this.pnlIncidentManagementEditControls.Size = new System.Drawing.Size(97, 249);
+            this.pnlIncidentManagementEditControls.TabIndex = 18;
+            // 
+            // btnSelectAllIncidents
+            // 
+            this.btnSelectAllIncidents.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectAllIncidents.Location = new System.Drawing.Point(-1, -1);
+            this.btnSelectAllIncidents.Name = "btnSelectAllIncidents";
+            this.btnSelectAllIncidents.Size = new System.Drawing.Size(97, 60);
+            this.btnSelectAllIncidents.TabIndex = 20;
+            this.btnSelectAllIncidents.Text = "Select all";
+            this.btnSelectAllIncidents.UseVisualStyleBackColor = true;
+            this.btnSelectAllIncidents.Click += new System.EventHandler(this.btnSelectAllIncidents_Click);
+            // 
+            // btnDeleteSelectedIncidents
+            // 
+            this.btnDeleteSelectedIncidents.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSelectedIncidents.Location = new System.Drawing.Point(-1, 57);
+            this.btnDeleteSelectedIncidents.Name = "btnDeleteSelectedIncidents";
+            this.btnDeleteSelectedIncidents.Size = new System.Drawing.Size(97, 60);
+            this.btnDeleteSelectedIncidents.TabIndex = 19;
+            this.btnDeleteSelectedIncidents.Text = "Delete selection";
+            this.btnDeleteSelectedIncidents.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedIncidents.Click += new System.EventHandler(this.btnDeleteSelectedIncidents_Click);
+            // 
             // lblValidationForIncidentList
             // 
             this.lblValidationForIncidentList.AutoSize = true;
@@ -1783,9 +1827,9 @@ namespace DemoApp
             this.lblValidationForIncidentList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValidationForIncidentList.ForeColor = System.Drawing.Color.Red;
             this.lblValidationForIncidentList.Location = new System.Drawing.Point(34, 310);
-            this.lblValidationForIncidentList.MinimumSize = new System.Drawing.Size(1102, 35);
+            this.lblValidationForIncidentList.MinimumSize = new System.Drawing.Size(1004, 35);
             this.lblValidationForIncidentList.Name = "lblValidationForIncidentList";
-            this.lblValidationForIncidentList.Size = new System.Drawing.Size(1102, 35);
+            this.lblValidationForIncidentList.Size = new System.Drawing.Size(1004, 35);
             this.lblValidationForIncidentList.TabIndex = 17;
             this.lblValidationForIncidentList.Text = "Validation for loading incident data";
             // 
@@ -1794,7 +1838,7 @@ namespace DemoApp
             this.listViewIncidents.HideSelection = false;
             this.listViewIncidents.Location = new System.Drawing.Point(34, 96);
             this.listViewIncidents.Name = "listViewIncidents";
-            this.listViewIncidents.Size = new System.Drawing.Size(1102, 249);
+            this.listViewIncidents.Size = new System.Drawing.Size(1004, 249);
             this.listViewIncidents.TabIndex = 2;
             this.listViewIncidents.UseCompatibleStateImageBehavior = false;
             this.listViewIncidents.SelectedIndexChanged += new System.EventHandler(this.listViewIncidents_SelectedIndexChanged);
@@ -2036,6 +2080,7 @@ namespace DemoApp
             // 
             // tab_TicketArchive
             // 
+            this.tab_TicketArchive.Controls.Add(this.pnlTicketArchiveEditControls);
             this.tab_TicketArchive.Controls.Add(this.pnlTicketDetails);
             this.tab_TicketArchive.Controls.Add(this.lblValidationForArchivedTicketList);
             this.tab_TicketArchive.Controls.Add(this.listViewArchivedTickets);
@@ -2047,6 +2092,38 @@ namespace DemoApp
             this.tab_TicketArchive.TabIndex = 6;
             this.tab_TicketArchive.Text = "TicketArchive";
             this.tab_TicketArchive.UseVisualStyleBackColor = true;
+            // 
+            // pnlTicketArchiveEditControls
+            // 
+            this.pnlTicketArchiveEditControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTicketArchiveEditControls.Controls.Add(this.btnSelectAllArchivedTickets);
+            this.pnlTicketArchiveEditControls.Controls.Add(this.btnDeleteSelectionFromArchive);
+            this.pnlTicketArchiveEditControls.Location = new System.Drawing.Point(1036, 110);
+            this.pnlTicketArchiveEditControls.Name = "pnlTicketArchiveEditControls";
+            this.pnlTicketArchiveEditControls.Size = new System.Drawing.Size(97, 249);
+            this.pnlTicketArchiveEditControls.TabIndex = 21;
+            // 
+            // btnSelectAllArchivedTickets
+            // 
+            this.btnSelectAllArchivedTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectAllArchivedTickets.Location = new System.Drawing.Point(-1, -1);
+            this.btnSelectAllArchivedTickets.Name = "btnSelectAllArchivedTickets";
+            this.btnSelectAllArchivedTickets.Size = new System.Drawing.Size(97, 60);
+            this.btnSelectAllArchivedTickets.TabIndex = 20;
+            this.btnSelectAllArchivedTickets.Text = "Select all";
+            this.btnSelectAllArchivedTickets.UseVisualStyleBackColor = true;
+            this.btnSelectAllArchivedTickets.Click += new System.EventHandler(this.btnSelectAllArchivedTickets_Click);
+            // 
+            // btnDeleteSelectionFromArchive
+            // 
+            this.btnDeleteSelectionFromArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSelectionFromArchive.Location = new System.Drawing.Point(-1, 57);
+            this.btnDeleteSelectionFromArchive.Name = "btnDeleteSelectionFromArchive";
+            this.btnDeleteSelectionFromArchive.Size = new System.Drawing.Size(97, 60);
+            this.btnDeleteSelectionFromArchive.TabIndex = 19;
+            this.btnDeleteSelectionFromArchive.Text = "Delete selection";
+            this.btnDeleteSelectionFromArchive.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectionFromArchive.Click += new System.EventHandler(this.btnDeleteSelectionFromArchive_Click);
             // 
             // pnlTicketDetails
             // 
@@ -2142,9 +2219,9 @@ namespace DemoApp
             this.lblValidationForArchivedTicketList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValidationForArchivedTicketList.ForeColor = System.Drawing.Color.Red;
             this.lblValidationForArchivedTicketList.Location = new System.Drawing.Point(33, 324);
-            this.lblValidationForArchivedTicketList.MinimumSize = new System.Drawing.Size(1102, 35);
+            this.lblValidationForArchivedTicketList.MinimumSize = new System.Drawing.Size(1004, 35);
             this.lblValidationForArchivedTicketList.Name = "lblValidationForArchivedTicketList";
-            this.lblValidationForArchivedTicketList.Size = new System.Drawing.Size(1102, 35);
+            this.lblValidationForArchivedTicketList.Size = new System.Drawing.Size(1004, 35);
             this.lblValidationForArchivedTicketList.TabIndex = 18;
             this.lblValidationForArchivedTicketList.Text = "Validation for loading archived ticket data";
             // 
@@ -2152,8 +2229,10 @@ namespace DemoApp
             // 
             this.listViewArchivedTickets.HideSelection = false;
             this.listViewArchivedTickets.Location = new System.Drawing.Point(33, 110);
+            this.listViewArchivedTickets.MaximumSize = new System.Drawing.Size(1004, 249);
+            this.listViewArchivedTickets.MinimumSize = new System.Drawing.Size(1004, 249);
             this.listViewArchivedTickets.Name = "listViewArchivedTickets";
-            this.listViewArchivedTickets.Size = new System.Drawing.Size(1102, 249);
+            this.listViewArchivedTickets.Size = new System.Drawing.Size(1004, 249);
             this.listViewArchivedTickets.TabIndex = 3;
             this.listViewArchivedTickets.UseCompatibleStateImageBehavior = false;
             this.listViewArchivedTickets.SelectedIndexChanged += new System.EventHandler(this.listViewArchivedTickets_SelectedIndexChanged);
@@ -2516,6 +2595,18 @@ namespace DemoApp
             this.label2.Text = "NoDesk";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // lblValidationForArchiving
+            // 
+            this.lblValidationForArchiving.AutoSize = true;
+            this.lblValidationForArchiving.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValidationForArchiving.ForeColor = System.Drawing.Color.Red;
+            this.lblValidationForArchiving.Location = new System.Drawing.Point(14, 117);
+            this.lblValidationForArchiving.MinimumSize = new System.Drawing.Size(470, 35);
+            this.lblValidationForArchiving.Name = "lblValidationForArchiving";
+            this.lblValidationForArchiving.Size = new System.Drawing.Size(470, 35);
+            this.lblValidationForArchiving.TabIndex = 16;
+            this.lblValidationForArchiving.Text = "Validation message for archiving tickets";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -2578,12 +2669,14 @@ namespace DemoApp
             this.header_CreateUser.PerformLayout();
             this.tab_IncidentManagement.ResumeLayout(false);
             this.tab_IncidentManagement.PerformLayout();
+            this.pnlIncidentManagementEditControls.ResumeLayout(false);
             this.pnlIncidentDetails.ResumeLayout(false);
             this.pnlIncidentDetails.PerformLayout();
             this.pnlCreateTicket.ResumeLayout(false);
             this.pnlCreateTicket.PerformLayout();
             this.tab_TicketArchive.ResumeLayout(false);
             this.tab_TicketArchive.PerformLayout();
+            this.pnlTicketArchiveEditControls.ResumeLayout(false);
             this.pnlTicketDetails.ResumeLayout(false);
             this.pnlTicketDetails.PerformLayout();
             this.sideBar.ResumeLayout(false);
@@ -2765,5 +2858,12 @@ namespace DemoApp
         private System.Windows.Forms.Label lblTicketDetails;
         private System.Windows.Forms.Label lblTicketDescription;
         private System.Windows.Forms.Label lblTypeOfTheIncident;
+        private System.Windows.Forms.Panel pnlIncidentManagementEditControls;
+        private System.Windows.Forms.Button btnSelectAllIncidents;
+        private System.Windows.Forms.Button btnDeleteSelectedIncidents;
+        private System.Windows.Forms.Panel pnlTicketArchiveEditControls;
+        private System.Windows.Forms.Button btnSelectAllArchivedTickets;
+        private System.Windows.Forms.Button btnDeleteSelectionFromArchive;
+        public System.Windows.Forms.Label lblValidationForArchiving;
     }
 }

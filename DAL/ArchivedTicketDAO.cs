@@ -13,30 +13,25 @@ namespace DAL
     public class ArchivedTicketDAO : BaseDAO
     {
 
-        private IMongoDatabase database;
         private List<BsonDocument> tickets;
-        private IMongoCollection<BsonDocument> archivedTickets;
+        private List<BsonDocument> archivedTickets;
         private IMongoCollection<BsonDocument> ticketsDatabase;
+        private IMongoCollection<BsonDocument> archivedTicketsDatabase;
 
 
-
-        public ArchivedTicketDAO()
+        public List<BsonDocument> GetAllTicketsToCheckArchivingDate(Employee employee)
         {
-            database = Client.GetDatabase("GardenGroup");
-        }
-
-
-        public List<BsonDocument> GetAllTicketsToCheckArchivingDate()
-        {
-            List<BsonDocument>tickets = database.GetCollection<BsonDocument>("Tickets").Find(new BsonDocument()).ToList();
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("reporter", employee.Id);
+            tickets = Database.GetCollection<BsonDocument>("Tickets").Find(filter).ToList();
             return tickets;
         }
 
 
         public List<BsonDocument> GetAllArchivedTickets()
         {
-            List<BsonDocument> tickets = database.GetCollection<BsonDocument>("ArchivedTickets").Find(new BsonDocument()).ToList();
-            return tickets;
+            archivedTickets = Database.GetCollection<BsonDocument>("ArchivedTickets").Find(new BsonDocument()).ToList();
+            return archivedTickets;
         }
 
 
@@ -85,9 +80,9 @@ namespace DAL
 
         public int RetrievePreviousDocumentId() 
         {
-            List<BsonDocument> archivedTicketsDb = GetAllArchivedTickets();
-            List<ArchivedTicket> archivedTicketsList = ConvertAllDocumentsToArchivedTicketList(archivedTicketsDb);
-            int documentsCount = archivedTicketsDb.Count;
+            List<BsonDocument> archivedTickets = GetAllArchivedTickets();   
+            List<ArchivedTicket> archivedTicketsList = ConvertAllDocumentsToArchivedTicketList(archivedTickets);
+            int documentsCount = archivedTicketsList.Count;
             int archivedTicketId;
             if (documentsCount == 0)
             { archivedTicketId = 0; }
@@ -127,12 +122,22 @@ namespace DAL
 
         public void RemoveArchivedTicketFromTicketDb(int id)
         {
-            ticketsDatabase = database.GetCollection<BsonDocument>("Tickets");
+            ticketsDatabase = Database.GetCollection<BsonDocument>("Tickets");
             var builder = Builders<BsonDocument>.Filter;
             var filter = builder.Eq("_id", id);
             var document = ticketsDatabase.Find(filter).FirstOrDefault();
 
-            Database.GetCollection<Ticket>("Tickets").DeleteOne(document);
+            Database.GetCollection<BsonDocument>("Tickets").DeleteOne(document);
+        }
+
+        public void RemoveArchivedTicketFromArchivedTicketDb(int id)
+        {
+            ticketsDatabase = Database.GetCollection<BsonDocument>("ArchivedTickets");
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("Id", id);
+            var document = ticketsDatabase.Find(filter).FirstOrDefault();
+
+            Database.GetCollection<BsonDocument>("ArchivedTickets").DeleteOne(document);
         }
     }
 }

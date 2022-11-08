@@ -13,31 +13,19 @@ namespace DAL
     public class IncidentDAO: BaseDAO
     {
 
-        private IMongoDatabase database;
-        private IMongoCollection<BsonDocument> incidents;
+        private List<BsonDocument> incidents;
+        private IMongoCollection<BsonDocument> incidentDatabase;
 
 
-        public IncidentDAO()
+        public List<BsonDocument> GetAllIncidents()
         {
-            database = Client.GetDatabase("GardenGroup");
-        }
-        public IMongoCollection<BsonDocument> GetAllIncidents()
-        {
-            incidents = database.GetCollection<BsonDocument>("Incidents");
+            incidents = Database.GetCollection<BsonDocument>("Incidents").Find(new BsonDocument()).ToList();
             return incidents;
-        }
-
-        public int RetrieveDocumentsCount(IMongoCollection<BsonDocument> db)
-        {
-            List<BsonDocument> documentsList = db.Find(new BsonDocument()).ToList();
-            int count = documentsList.Count();
-            return count;
-
         }
 
         //Using collection Incidents
         //deserialize document to use instance of class in the UI
-        public Incident ConvertDocumentToObject(BsonDocument bsonDocument)
+        public Incident ConvertDocumentToIncidentInstance(BsonDocument bsonDocument)
         {
             Incident instance = BsonSerializer.Deserialize<Incident>(bsonDocument);
 
@@ -46,28 +34,56 @@ namespace DAL
         }
 
 
-
-        public List<Incident> ConvertAllDocumentsToIncidentList(IMongoCollection<BsonDocument> incidentsdb)
+        public List<Incident> ConvertAllDocumentsToIncidentList(List<BsonDocument> incidentsDb)
         {
-            int dbdocuments = RetrieveDocumentsCount(incidentsdb);
-            List<Incident> incidentsList = new List<Incident>();
 
-            for (int i = 0; i < dbdocuments; i++)
+            int dbdocuments = incidentsDb.Count;
+            List<Incident> incidentList = new List<Incident>();
+            if (dbdocuments > 0)
             {
-                var builder = Builders<BsonDocument>.Filter;
-                var filter = builder.Gte("Id", i);
-                var document = incidentsdb.Find(filter).FirstOrDefault();
-                Incident incident = ConvertDocumentToObject((BsonDocument)document);
-                incidentsList.Add(incident);
+                foreach (BsonDocument document in incidentsDb)
+                {
+                   Incident incident = ConvertDocumentToIncidentInstance((BsonDocument)document);
+                   incidentList.Add(incident);
+                }
             }
-            return incidentsList;
+            return incidentList;
+        }
 
+
+        public int RetrievePreviousDocumentId()
+        {
+            List<BsonDocument> incidents = GetAllIncidents();
+            List<Incident> incidentList = ConvertAllDocumentsToIncidentList(incidents);
+            int documentsCount = incidentList.Count;
+            int incidentId;
+            if (documentsCount == 0)
+            { incidentId = 0; }
+            else
+            {
+                int previousIncidentId = incidentList[incidentList.Count - 1].Id;
+
+                incidentId = ++previousIncidentId;
+            }
+
+            return incidentId;
         }
 
 
         public void CreateIncident(BsonDocument document)
         {
             Database.GetCollection<BsonDocument>("Incidents").InsertOne(document);
+        }
+
+
+        public void RemoveIncidentFromIncidentDb(int id)
+        {
+            incidentDatabase = Database.GetCollection<BsonDocument>("Incidents");
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("Id", id);
+            var document = incidentDatabase.Find(filter).FirstOrDefault();
+
+            Database.GetCollection<BsonDocument>("Incidents").DeleteOne(document);
         }
 
     }
