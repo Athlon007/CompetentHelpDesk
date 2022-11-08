@@ -18,7 +18,7 @@ namespace DemoApp
         private readonly TicketEscalationService ticketEscalationService;
         private readonly IncidentService incidentService = new IncidentService();
         private readonly TicketTransferService ticketTransferService;
-        private readonly LoginService loginService;
+        private LoginService loginService;
 
         private List<Ticket> allTickets;
 
@@ -1186,6 +1186,10 @@ namespace DemoApp
             string firsname = txtFirstName.Text;
             string lastname = txtLastName.Text;
             EmployeeType type = (EmployeeType)comboEmployeeType.SelectedIndex;
+            if (loginService == null)
+            {
+                loginService = new LoginService();
+            }     
             HashedPasswordWithSalt password = loginService.CreateHashedPasswordWithSalt(employeeService.GetRandomPassword(length));
             string passwordHash = password.HashedPassword;
             string salt = password.Salt;
@@ -1204,6 +1208,7 @@ namespace DemoApp
 
         private void LoadUserTypes()
         {
+            comboEmployeeType.Items.Clear();
             foreach (var item in Enum.GetValues(typeof(EmployeeType)))
             {
                 comboEmployeeType.Items.Add(item);
