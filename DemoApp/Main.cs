@@ -17,6 +17,7 @@ namespace DemoApp
         private readonly EmployeeService employeeService;
         private readonly TicketEscalationService ticketEscalationService;
         private readonly IncidentService incidentService = new IncidentService();
+        private readonly ArchivedTicketService archivedTicketService = new ArchivedTicketService();
 
         private List<Ticket> allTickets;
 
@@ -273,6 +274,8 @@ namespace DemoApp
                 btn_UserManagement.Hide();
                 btn_CreateUser.Hide();
                 btnIncidentManagement.Hide();
+                btnTicketArchive.Hide();
+                pnlArchiveTickets.Hide();
                 tabControl.SelectedIndex = 1;
                 LoadTickets(TicketLoadStatus.Open);
                 CleanTicketDetails();
@@ -1172,6 +1175,124 @@ namespace DemoApp
             }
         }
 
-   
+        private void btnArchiveTickets_Click(object sender, EventArgs e)
+        {
+            archivedTicketService.ArchiveTickets();
+        }
+
+        public void CreateArchivedTicketsListView()
+        {
+
+            // clear the listview before adding data
+            listViewArchivedTickets.Clear();
+
+            //set the listView to details view
+
+            listViewArchivedTickets.View = View.Details;
+
+            // Allow the user to rearrange columns.
+
+            listViewArchivedTickets.AllowColumnReorder = false;
+
+
+            // Select the item and subitems when selection is made.
+            listViewArchivedTickets.FullRowSelect = true;
+
+            // Display grid lines.
+            listViewArchivedTickets.GridLines = true;
+
+
+            //created the columns for the attributes of the incident class
+            listViewArchivedTickets.Columns.Add("Id", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Type", 100, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Subject",310, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Description", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("TicketId", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Date", 200, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Deadline", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Priority", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Status", 100, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("Escalation level", 70, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("IsClosed", 100, HorizontalAlignment.Left);
+            listViewArchivedTickets.Columns.Add("ArchivingDate", 200, HorizontalAlignment.Left);
+            
+            listViewArchivedTickets.Columns[3].Width = 0;
+            listViewArchivedTickets.Columns[4].Width = 0;
+            listViewArchivedTickets.Columns[6].Width = 0;
+            listViewArchivedTickets.Columns[7].Width = 0;
+            listViewArchivedTickets.Columns[9].Width = 0;
+
+            List<BsonDocument> archivedTickets = archivedTicketService.GetAllArchivedTickets();
+            List<ArchivedTicket> archivedTicketList = archivedTicketService.ConvertAllDocumentsToArchivedTicketList(archivedTickets);
+
+            if (archivedTicketList.Count == 0)
+            {
+                throw new Exception("There are currently no archived tickets");
+            }
+
+            for (int i = 0; i < archivedTicketList.Count; i++)
+            {
+                ListViewItem archivedTicket = new ListViewItem(archivedTicketList[i].Id.ToString());
+
+                //Add the tag used to update a record in the database
+                archivedTicket.Tag = archivedTicketList[i];
+
+                archivedTicket.SubItems.Add(archivedTicketList[i].IncidentType.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].Subject);
+                archivedTicket.SubItems.Add(archivedTicketList[i].Description);
+                archivedTicket.SubItems.Add(archivedTicketList[i].TicketId.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].Date.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].Deadline.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].Priority.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].Status.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].EscalationLevel.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].IsClosed.ToString());
+                archivedTicket.SubItems.Add(archivedTicketList[i].ArchivingDate.ToString());
+
+                listViewArchivedTickets.Items.Add(archivedTicket);
+            }
+        }
+
+        private void btnTicketArchive_Click(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedIndex != 6)
+            {
+                tabControl.SelectedIndex = 6;
+
+                lblValidationForArchivedTicketList.Hide();
+
+                try
+                {
+                    CreateArchivedTicketsListView();
+                }
+                catch (Exception exception)
+                {
+                    lblValidationForArchivedTicketList.Show();
+                    lblValidationForArchivedTicketList.Text = exception.Message;
+                }
+
+            }
+        }
+
+        private void listViewArchivedTickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<BsonDocument> archivedTickets = archivedTicketService.GetAllArchivedTickets();
+
+            List<ArchivedTicket> archivedTicketList = archivedTicketService.ConvertAllDocumentsToArchivedTicketList(archivedTickets);
+
+            if (listViewArchivedTickets.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = listViewArchivedTickets.SelectedItems[0];
+                ArchivedTicket archivedTicket = (ArchivedTicket)selectedItem.Tag;
+                txtSubject.Text = archivedTicket.Subject.ToString();
+                txtIncidentType.Text = archivedTicket.IncidentType.ToString();
+                txtDescription.Text = archivedTicket.Description.ToString();
+            }
+
+            else
+            {
+                return;
+            }
+        }
     }
 }

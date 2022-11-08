@@ -38,7 +38,7 @@ namespace DAL
             //list with existing databases 
             List<DatabasesModel> allDatabases = new List<DatabasesModel>();
 
-            
+
             foreach (BsonDocument db in client.ListDatabases().ToList())
             {
                 //convert string for db to object with fields from the db model
@@ -48,9 +48,6 @@ namespace DAL
             return allDatabases;
 
         }
-
-     
-
 
     }
 }

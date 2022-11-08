@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using MongoDB.Bson;
 using Model;
 
 namespace DAL
@@ -18,15 +17,6 @@ namespace DAL
         private IMongoCollection<BsonDocument> incidents;
 
 
-
-        public IMongoCollection<BsonDocument> Incidents
-        {
-            get { return incidents; }
-
-            set { incidents = value; }
-        }
-
-
         public IncidentDAO()
         {
             database = Client.GetDatabase("GardenGroup");
@@ -34,11 +24,16 @@ namespace DAL
         public IMongoCollection<BsonDocument> GetAllIncidents()
         {
             incidents = database.GetCollection<BsonDocument>("Incidents");
-            return Incidents;
+            return incidents;
         }
 
+        public int RetrieveDocumentsCount(IMongoCollection<BsonDocument> db)
+        {
+            List<BsonDocument> documentsList = db.Find(new BsonDocument()).ToList();
+            int count = documentsList.Count();
+            return count;
 
-
+        }
 
         //Using collection Incidents
         //deserialize document to use instance of class in the UI
@@ -50,14 +45,6 @@ namespace DAL
 
         }
 
-
-        public int RetrieveDocumentsCount(IMongoCollection<BsonDocument> db)
-        {
-            List<BsonDocument> documentsList = db.Find(new BsonDocument()).ToList();
-            int count = documentsList.Count();
-            return count;
-
-        }
 
 
         public List<Incident> ConvertAllDocumentsToIncidentList(IMongoCollection<BsonDocument> incidentsdb)
@@ -81,10 +68,7 @@ namespace DAL
         public void CreateIncident(BsonDocument document)
         {
             Database.GetCollection<BsonDocument>("Incidents").InsertOne(document);
-
         }
-
-      
 
     }
 }

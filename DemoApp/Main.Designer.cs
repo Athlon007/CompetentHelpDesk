@@ -60,6 +60,10 @@ namespace DemoApp
             this.rPnl_TicketManagement = new DemoApp.Custom_Controls.RoundedPanel();
             this.pnl_TicketManagement = new DemoApp.Custom_Controls.RoundedPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pnlArchiveTickets = new System.Windows.Forms.Panel();
+            this.btnArchiveTickets = new System.Windows.Forms.Button();
+            this.lblArchiveTicketsMessage = new System.Windows.Forms.Label();
+            this.lblArchiveTickets = new System.Windows.Forms.Label();
             this.listView_TicketManagement = new System.Windows.Forms.ListView();
             this.col_Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_Subject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -162,6 +166,18 @@ namespace DemoApp
             this.lblPriority = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblNewIncidentType = new System.Windows.Forms.Label();
+            this.tab_TicketArchive = new System.Windows.Forms.TabPage();
+            this.pnlTicketDetails = new System.Windows.Forms.Panel();
+            this.lblTicketDescription = new System.Windows.Forms.Label();
+            this.lblTypeOfTheIncident = new System.Windows.Forms.Label();
+            this.lblSubject = new System.Windows.Forms.Label();
+            this.lblTicketDetails = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtIncidentType = new System.Windows.Forms.TextBox();
+            this.txtSubject = new System.Windows.Forms.TextBox();
+            this.lblValidationForArchivedTicketList = new System.Windows.Forms.Label();
+            this.listViewArchivedTickets = new System.Windows.Forms.ListView();
+            this.lblTicketArchive = new System.Windows.Forms.Label();
             this.sideBar = new System.Windows.Forms.TableLayoutPanel();
             this.tblPnl_UserInfo = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_Welcome = new System.Windows.Forms.Label();
@@ -174,6 +190,7 @@ namespace DemoApp
             this.btn_UserManagement = new DemoApp.Custom_Controls.RoundedButton();
             this.btn_CreateUser = new DemoApp.Custom_Controls.RoundedButton();
             this.btnIncidentManagement = new DemoApp.Custom_Controls.RoundedButton();
+            this.btnTicketArchive = new DemoApp.Custom_Controls.RoundedButton();
             this.lbl_LogOut = new System.Windows.Forms.Label();
             this.tblPnl_Logo = new DemoApp.Custom_Controls.FasterTableLayoutPanel();
             this.pic_Logo = new System.Windows.Forms.PictureBox();
@@ -197,6 +214,7 @@ namespace DemoApp
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.pnlArchiveTickets.SuspendLayout();
             this.flowPnl_TicketManagement_SearchButtons.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.header_TicketManagement.SuspendLayout();
@@ -214,6 +232,8 @@ namespace DemoApp
             this.tab_IncidentManagement.SuspendLayout();
             this.pnlIncidentDetails.SuspendLayout();
             this.pnlCreateTicket.SuspendLayout();
+            this.tab_TicketArchive.SuspendLayout();
+            this.pnlTicketDetails.SuspendLayout();
             this.sideBar.SuspendLayout();
             this.tblPnl_UserInfo.SuspendLayout();
             this.flowPnl_Navigation.SuspendLayout();
@@ -247,6 +267,7 @@ namespace DemoApp
             this.tabControl.Controls.Add(this.tab_UserManagement);
             this.tabControl.Controls.Add(this.tab_CreateUser);
             this.tabControl.Controls.Add(this.tab_IncidentManagement);
+            this.tabControl.Controls.Add(this.tab_TicketArchive);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(351, 15);
             this.tabControl.Margin = new System.Windows.Forms.Padding(0, 15, 15, 15);
@@ -718,6 +739,7 @@ namespace DemoApp
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.pnlArchiveTickets);
             this.splitContainer1.Panel1.Controls.Add(this.listView_TicketManagement);
             this.splitContainer1.Panel1.Controls.Add(this.txtBox_SearchBar);
             this.splitContainer1.Panel1.Controls.Add(this.flowPnl_TicketManagement_SearchButtons);
@@ -745,6 +767,53 @@ namespace DemoApp
             this.splitContainer1.SplitterDistance = 500;
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 15;
+            // 
+            // pnlArchiveTickets
+            // 
+            this.pnlArchiveTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlArchiveTickets.AutoSize = true;
+            this.pnlArchiveTickets.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlArchiveTickets.Controls.Add(this.btnArchiveTickets);
+            this.pnlArchiveTickets.Controls.Add(this.lblArchiveTicketsMessage);
+            this.pnlArchiveTickets.Controls.Add(this.lblArchiveTickets);
+            this.pnlArchiveTickets.Location = new System.Drawing.Point(-2, 712);
+            this.pnlArchiveTickets.Name = "pnlArchiveTickets";
+            this.pnlArchiveTickets.Size = new System.Drawing.Size(505, 121);
+            this.pnlArchiveTickets.TabIndex = 2;
+            // 
+            // btnArchiveTickets
+            // 
+            this.btnArchiveTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArchiveTickets.Location = new System.Drawing.Point(9, 62);
+            this.btnArchiveTickets.Name = "btnArchiveTickets";
+            this.btnArchiveTickets.Size = new System.Drawing.Size(120, 52);
+            this.btnArchiveTickets.TabIndex = 15;
+            this.btnArchiveTickets.Text = "Archive";
+            this.btnArchiveTickets.UseVisualStyleBackColor = true;
+            this.btnArchiveTickets.Click += new System.EventHandler(this.btnArchiveTickets_Click);
+            // 
+            // lblArchiveTicketsMessage
+            // 
+            this.lblArchiveTicketsMessage.AutoSize = true;
+            this.lblArchiveTicketsMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArchiveTicketsMessage.Location = new System.Drawing.Point(4, 35);
+            this.lblArchiveTicketsMessage.Name = "lblArchiveTicketsMessage";
+            this.lblArchiveTicketsMessage.Size = new System.Drawing.Size(451, 25);
+            this.lblArchiveTicketsMessage.TabIndex = 1;
+            this.lblArchiveTicketsMessage.Text = "Tickets older than two weeks will be sent to archive";
+            // 
+            // lblArchiveTickets
+            // 
+            this.lblArchiveTickets.AutoSize = true;
+            this.lblArchiveTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArchiveTickets.Location = new System.Drawing.Point(3, 0);
+            this.lblArchiveTickets.MinimumSize = new System.Drawing.Size(200, 35);
+            this.lblArchiveTickets.Name = "lblArchiveTickets";
+            this.lblArchiveTickets.Size = new System.Drawing.Size(200, 35);
+            this.lblArchiveTickets.TabIndex = 0;
+            this.lblArchiveTickets.Text = "Archive tickets";
             // 
             // listView_TicketManagement
             // 
@@ -1219,14 +1288,14 @@ namespace DemoApp
             this.tblCreateIncident.Controls.Add(this.txtIncidentSubject, 1, 0);
             this.tblCreateIncident.Controls.Add(this.cmbIncidentType, 1, 1);
             this.tblCreateIncident.Controls.Add(this.txtIncidentDescription, 1, 2);
-            this.tblCreateIncident.Location = new System.Drawing.Point(7, 58);
+            this.tblCreateIncident.Location = new System.Drawing.Point(3, 60);
             this.tblCreateIncident.Name = "tblCreateIncident";
             this.tblCreateIncident.RowCount = 3;
             this.tblCreateIncident.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.05882F));
             this.tblCreateIncident.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.94118F));
             this.tblCreateIncident.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 341F));
             this.tblCreateIncident.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblCreateIncident.Size = new System.Drawing.Size(768, 475);
+            this.tblCreateIncident.Size = new System.Drawing.Size(787, 646);
             this.tblCreateIncident.TabIndex = 3;
             // 
             // lblIncidentSubject
@@ -1234,7 +1303,7 @@ namespace DemoApp
             this.lblIncidentSubject.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblIncidentSubject.AutoSize = true;
             this.lblIncidentSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIncidentSubject.Location = new System.Drawing.Point(3, 1);
+            this.lblIncidentSubject.Location = new System.Drawing.Point(3, 41);
             this.lblIncidentSubject.MinimumSize = new System.Drawing.Size(279, 60);
             this.lblIncidentSubject.Name = "lblIncidentSubject";
             this.lblIncidentSubject.Size = new System.Drawing.Size(279, 60);
@@ -1246,7 +1315,7 @@ namespace DemoApp
             // 
             this.lblIncidentType.AutoSize = true;
             this.lblIncidentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIncidentType.Location = new System.Drawing.Point(3, 63);
+            this.lblIncidentType.Location = new System.Drawing.Point(3, 143);
             this.lblIncidentType.MinimumSize = new System.Drawing.Size(279, 60);
             this.lblIncidentType.Name = "lblIncidentType";
             this.lblIncidentType.Size = new System.Drawing.Size(279, 60);
@@ -1257,7 +1326,7 @@ namespace DemoApp
             // 
             this.lblIncidentDescription.AutoSize = true;
             this.lblIncidentDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIncidentDescription.Location = new System.Drawing.Point(3, 133);
+            this.lblIncidentDescription.Location = new System.Drawing.Point(3, 304);
             this.lblIncidentDescription.MinimumSize = new System.Drawing.Size(279, 60);
             this.lblIncidentDescription.Name = "lblIncidentDescription";
             this.lblIncidentDescription.Size = new System.Drawing.Size(279, 60);
@@ -1267,7 +1336,7 @@ namespace DemoApp
             // txtIncidentSubject
             // 
             this.txtIncidentSubject.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtIncidentSubject.Location = new System.Drawing.Point(305, 14);
+            this.txtIncidentSubject.Location = new System.Drawing.Point(313, 54);
             this.txtIncidentSubject.MinimumSize = new System.Drawing.Size(453, 35);
             this.txtIncidentSubject.Multiline = true;
             this.txtIncidentSubject.Name = "txtIncidentSubject";
@@ -1278,7 +1347,7 @@ namespace DemoApp
             // 
             this.cmbIncidentType.FormattingEnabled = true;
             this.cmbIncidentType.ItemHeight = 20;
-            this.cmbIncidentType.Location = new System.Drawing.Point(305, 66);
+            this.cmbIncidentType.Location = new System.Drawing.Point(313, 146);
             this.cmbIncidentType.MinimumSize = new System.Drawing.Size(453, 0);
             this.cmbIncidentType.Name = "cmbIncidentType";
             this.cmbIncidentType.Size = new System.Drawing.Size(453, 28);
@@ -1286,7 +1355,7 @@ namespace DemoApp
             // 
             // txtIncidentDescription
             // 
-            this.txtIncidentDescription.Location = new System.Drawing.Point(305, 136);
+            this.txtIncidentDescription.Location = new System.Drawing.Point(313, 307);
             this.txtIncidentDescription.MinimumSize = new System.Drawing.Size(453, 35);
             this.txtIncidentDescription.Multiline = true;
             this.txtIncidentDescription.Name = "txtIncidentDescription";
@@ -1363,7 +1432,7 @@ namespace DemoApp
             this.tblCreateTicket.Controls.Add(this.lblReportedByUserCT, 0, 3);
             this.tblCreateTicket.Controls.Add(this.cmbUserCT, 1, 3);
             this.tblCreateTicket.Controls.Add(this.lblPriorityCT, 0, 4);
-            this.tblCreateTicket.Location = new System.Drawing.Point(6, 66);
+            this.tblCreateTicket.Location = new System.Drawing.Point(5, 66);
             this.tblCreateTicket.Name = "tblCreateTicket";
             this.tblCreateTicket.RowCount = 7;
             this.tblCreateTicket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
@@ -1420,12 +1489,13 @@ namespace DemoApp
             // 
             // txtDescriptionCT
             // 
-            this.txtDescriptionCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDescriptionCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDescriptionCT.Location = new System.Drawing.Point(288, 363);
+            this.txtDescriptionCT.MaximumSize = new System.Drawing.Size(494, 270);
+            this.txtDescriptionCT.MinimumSize = new System.Drawing.Size(494, 150);
             this.txtDescriptionCT.Multiline = true;
             this.txtDescriptionCT.Name = "txtDescriptionCT";
-            this.txtDescriptionCT.Size = new System.Drawing.Size(494, 274);
+            this.txtDescriptionCT.Size = new System.Drawing.Size(494, 270);
             this.txtDescriptionCT.TabIndex = 15;
             // 
             // lblTypeOfIncidentCT
@@ -1964,6 +2034,141 @@ namespace DemoApp
             this.lblNewIncidentType.TabIndex = 11;
             this.lblNewIncidentType.Text = "Type:";
             // 
+            // tab_TicketArchive
+            // 
+            this.tab_TicketArchive.Controls.Add(this.pnlTicketDetails);
+            this.tab_TicketArchive.Controls.Add(this.lblValidationForArchivedTicketList);
+            this.tab_TicketArchive.Controls.Add(this.listViewArchivedTickets);
+            this.tab_TicketArchive.Controls.Add(this.lblTicketArchive);
+            this.tab_TicketArchive.Location = new System.Drawing.Point(4, 29);
+            this.tab_TicketArchive.Name = "tab_TicketArchive";
+            this.tab_TicketArchive.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_TicketArchive.Size = new System.Drawing.Size(1194, 895);
+            this.tab_TicketArchive.TabIndex = 6;
+            this.tab_TicketArchive.Text = "TicketArchive";
+            this.tab_TicketArchive.UseVisualStyleBackColor = true;
+            // 
+            // pnlTicketDetails
+            // 
+            this.pnlTicketDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTicketDetails.Controls.Add(this.lblTicketDescription);
+            this.pnlTicketDetails.Controls.Add(this.lblTypeOfTheIncident);
+            this.pnlTicketDetails.Controls.Add(this.lblSubject);
+            this.pnlTicketDetails.Controls.Add(this.lblTicketDetails);
+            this.pnlTicketDetails.Controls.Add(this.txtDescription);
+            this.pnlTicketDetails.Controls.Add(this.txtIncidentType);
+            this.pnlTicketDetails.Controls.Add(this.txtSubject);
+            this.pnlTicketDetails.Location = new System.Drawing.Point(33, 408);
+            this.pnlTicketDetails.Name = "pnlTicketDetails";
+            this.pnlTicketDetails.Size = new System.Drawing.Size(1102, 467);
+            this.pnlTicketDetails.TabIndex = 20;
+            // 
+            // lblTicketDescription
+            // 
+            this.lblTicketDescription.AutoSize = true;
+            this.lblTicketDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTicketDescription.Location = new System.Drawing.Point(70, 257);
+            this.lblTicketDescription.MinimumSize = new System.Drawing.Size(100, 35);
+            this.lblTicketDescription.Name = "lblTicketDescription";
+            this.lblTicketDescription.Size = new System.Drawing.Size(141, 35);
+            this.lblTicketDescription.TabIndex = 11;
+            this.lblTicketDescription.Text = "Description:";
+            // 
+            // lblTypeOfTheIncident
+            // 
+            this.lblTypeOfTheIncident.AutoSize = true;
+            this.lblTypeOfTheIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTypeOfTheIncident.Location = new System.Drawing.Point(70, 194);
+            this.lblTypeOfTheIncident.MinimumSize = new System.Drawing.Size(100, 35);
+            this.lblTypeOfTheIncident.Name = "lblTypeOfTheIncident";
+            this.lblTypeOfTheIncident.Size = new System.Drawing.Size(154, 35);
+            this.lblTypeOfTheIncident.TabIndex = 10;
+            this.lblTypeOfTheIncident.Text = "Incident type:";
+            // 
+            // lblSubject
+            // 
+            this.lblSubject.AutoSize = true;
+            this.lblSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubject.Location = new System.Drawing.Point(70, 128);
+            this.lblSubject.MinimumSize = new System.Drawing.Size(100, 35);
+            this.lblSubject.Name = "lblSubject";
+            this.lblSubject.Size = new System.Drawing.Size(100, 35);
+            this.lblSubject.TabIndex = 9;
+            this.lblSubject.Text = "Subject:";
+            // 
+            // lblTicketDetails
+            // 
+            this.lblTicketDetails.AutoSize = true;
+            this.lblTicketDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTicketDetails.Location = new System.Drawing.Point(409, 34);
+            this.lblTicketDetails.Name = "lblTicketDetails";
+            this.lblTicketDetails.Size = new System.Drawing.Size(203, 37);
+            this.lblTicketDetails.TabIndex = 8;
+            this.lblTicketDetails.Text = "Ticket details";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescription.Location = new System.Drawing.Point(246, 257);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(625, 180);
+            this.txtDescription.TabIndex = 6;
+            // 
+            // txtIncidentType
+            // 
+            this.txtIncidentType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIncidentType.Location = new System.Drawing.Point(246, 194);
+            this.txtIncidentType.MinimumSize = new System.Drawing.Size(435, 35);
+            this.txtIncidentType.Multiline = true;
+            this.txtIncidentType.Name = "txtIncidentType";
+            this.txtIncidentType.Size = new System.Drawing.Size(625, 35);
+            this.txtIncidentType.TabIndex = 5;
+            // 
+            // txtSubject
+            // 
+            this.txtSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSubject.Location = new System.Drawing.Point(246, 128);
+            this.txtSubject.MinimumSize = new System.Drawing.Size(435, 35);
+            this.txtSubject.Multiline = true;
+            this.txtSubject.Name = "txtSubject";
+            this.txtSubject.Size = new System.Drawing.Size(625, 35);
+            this.txtSubject.TabIndex = 4;
+            // 
+            // lblValidationForArchivedTicketList
+            // 
+            this.lblValidationForArchivedTicketList.AutoSize = true;
+            this.lblValidationForArchivedTicketList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblValidationForArchivedTicketList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValidationForArchivedTicketList.ForeColor = System.Drawing.Color.Red;
+            this.lblValidationForArchivedTicketList.Location = new System.Drawing.Point(33, 324);
+            this.lblValidationForArchivedTicketList.MinimumSize = new System.Drawing.Size(1102, 35);
+            this.lblValidationForArchivedTicketList.Name = "lblValidationForArchivedTicketList";
+            this.lblValidationForArchivedTicketList.Size = new System.Drawing.Size(1102, 35);
+            this.lblValidationForArchivedTicketList.TabIndex = 18;
+            this.lblValidationForArchivedTicketList.Text = "Validation for loading archived ticket data";
+            // 
+            // listViewArchivedTickets
+            // 
+            this.listViewArchivedTickets.HideSelection = false;
+            this.listViewArchivedTickets.Location = new System.Drawing.Point(33, 110);
+            this.listViewArchivedTickets.Name = "listViewArchivedTickets";
+            this.listViewArchivedTickets.Size = new System.Drawing.Size(1102, 249);
+            this.listViewArchivedTickets.TabIndex = 3;
+            this.listViewArchivedTickets.UseCompatibleStateImageBehavior = false;
+            this.listViewArchivedTickets.SelectedIndexChanged += new System.EventHandler(this.listViewArchivedTickets_SelectedIndexChanged);
+            // 
+            // lblTicketArchive
+            // 
+            this.lblTicketArchive.AutoSize = true;
+            this.lblTicketArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTicketArchive.Location = new System.Drawing.Point(26, 35);
+            this.lblTicketArchive.MinimumSize = new System.Drawing.Size(344, 37);
+            this.lblTicketArchive.Name = "lblTicketArchive";
+            this.lblTicketArchive.Size = new System.Drawing.Size(344, 37);
+            this.lblTicketArchive.TabIndex = 2;
+            this.lblTicketArchive.Text = "Ticket Archive";
+            // 
             // sideBar
             // 
             this.sideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
@@ -2061,6 +2266,7 @@ namespace DemoApp
             this.flowPnl_Navigation.Controls.Add(this.btn_UserManagement);
             this.flowPnl_Navigation.Controls.Add(this.btn_CreateUser);
             this.flowPnl_Navigation.Controls.Add(this.btnIncidentManagement);
+            this.flowPnl_Navigation.Controls.Add(this.btnTicketArchive);
             this.flowPnl_Navigation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPnl_Navigation.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowPnl_Navigation.Location = new System.Drawing.Point(0, 338);
@@ -2214,6 +2420,30 @@ namespace DemoApp
             this.btnIncidentManagement.UseVisualStyleBackColor = false;
             this.btnIncidentManagement.Click += new System.EventHandler(this.btnIncidentManagement_Click);
             // 
+            // btnTicketArchive
+            // 
+            this.btnTicketArchive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.btnTicketArchive.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnTicketArchive.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTicketArchive.FlatAppearance.BorderSize = 0;
+            this.btnTicketArchive.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
+            this.btnTicketArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTicketArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.btnTicketArchive.ForeColor = System.Drawing.Color.White;
+            this.btnTicketArchive.Image = ((System.Drawing.Image)(resources.GetObject("btnTicketArchive.Image")));
+            this.btnTicketArchive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTicketArchive.Location = new System.Drawing.Point(9, 399);
+            this.btnTicketArchive.Margin = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.btnTicketArchive.Name = "btnTicketArchive";
+            this.btnTicketArchive.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.btnTicketArchive.Size = new System.Drawing.Size(345, 60);
+            this.btnTicketArchive.TabIndex = 10;
+            this.btnTicketArchive.Text = "Ticket Archive";
+            this.btnTicketArchive.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTicketArchive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTicketArchive.UseVisualStyleBackColor = false;
+            this.btnTicketArchive.Click += new System.EventHandler(this.btnTicketArchive_Click);
+            // 
             // lbl_LogOut
             // 
             this.lbl_LogOut.AutoSize = true;
@@ -2323,6 +2553,8 @@ namespace DemoApp
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.pnlArchiveTickets.ResumeLayout(false);
+            this.pnlArchiveTickets.PerformLayout();
             this.flowPnl_TicketManagement_SearchButtons.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.header_TicketManagement.ResumeLayout(false);
@@ -2350,6 +2582,10 @@ namespace DemoApp
             this.pnlIncidentDetails.PerformLayout();
             this.pnlCreateTicket.ResumeLayout(false);
             this.pnlCreateTicket.PerformLayout();
+            this.tab_TicketArchive.ResumeLayout(false);
+            this.tab_TicketArchive.PerformLayout();
+            this.pnlTicketDetails.ResumeLayout(false);
+            this.pnlTicketDetails.PerformLayout();
             this.sideBar.ResumeLayout(false);
             this.sideBar.PerformLayout();
             this.tblPnl_UserInfo.ResumeLayout(false);
@@ -2512,5 +2748,22 @@ namespace DemoApp
         private System.Windows.Forms.Label lblValidationMessageForIncident;
         private System.Windows.Forms.Label lblValidationForIncidentList;
         private System.Windows.Forms.Label lblValidationCreateTicket;
+        private System.Windows.Forms.Panel pnlArchiveTickets;
+        private System.Windows.Forms.Button btnArchiveTickets;
+        private System.Windows.Forms.Label lblArchiveTicketsMessage;
+        private System.Windows.Forms.Label lblArchiveTickets;
+        private System.Windows.Forms.TabPage tab_TicketArchive;
+        private System.Windows.Forms.Label lblValidationForArchivedTicketList;
+        private System.Windows.Forms.ListView listViewArchivedTickets;
+        private System.Windows.Forms.Label lblTicketArchive;
+        private Custom_Controls.RoundedButton btnTicketArchive;
+        private System.Windows.Forms.Panel pnlTicketDetails;
+        private System.Windows.Forms.TextBox txtIncidentType;
+        private System.Windows.Forms.TextBox txtSubject;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Label lblSubject;
+        private System.Windows.Forms.Label lblTicketDetails;
+        private System.Windows.Forms.Label lblTicketDescription;
+        private System.Windows.Forms.Label lblTypeOfTheIncident;
     }
 }
