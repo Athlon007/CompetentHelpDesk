@@ -139,11 +139,6 @@ namespace DemoApp
                 if (status == TicketStatus.PastDeadline) continue;
                 cmbDetailsStatus.Items.Add(status);
             }
-
-            foreach (KeyValuePair<string, int> kvp in deadlineDays)
-            {
-                cmbDetailsDeadline.Items.Add(kvp.Key);
-            }
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -242,9 +237,6 @@ namespace DemoApp
             cmbDetailsPriority.Enabled = false;
             cmbDetailsReporter.Enabled = false;
             cmbDetailsStatus.Enabled = false;
-
-            lblDetailsDeadlineDays.Hide();
-            cmbDetailsDeadline.Hide();
 
             btnDetailsDelete.Enabled = false;
             btnDetailsUpdate.Enabled = false;
@@ -727,30 +719,13 @@ namespace DemoApp
             cmbDetailsStatus.SelectedItem = detailedTicket.Status;
             cmbDetailsReporter.SelectedItem = detailedTicket.Reporter;
 
-            if (ticket.Priority == TicketPriority.ToBeDetermined)
-            {
-                cmbDetailsDeadline.Show();
-                lblDetailsDeadlineDays.Show();
-                btnDetailsUpdate.Text = "Turn into a ticket";
-                btnDetailsEscalate.Enabled = false;
-                btnDetailsClose.Enabled = false;
-            }
-            else
-            {
-                cmbDetailsDeadline.Hide();
-                lblDetailsDeadlineDays.Hide();
-                btnDetailsUpdate.Text = "Update";
-                btnDetailsClose.Enabled = true;
+            btnDetailsEscalate.Enabled = ticketEscalationService.IsTicketEscalatable(ticket, employee);
 
-                // Is currently logged employee the highest level? Then he cannot escalate it further.
-                if ((int)employee.Type == Enum.GetValues(typeof(EmployeeType)).Length - 1)
-                {
-                    btnDetailsEscalate.Enabled = false;
-                }
-                else
-                {
-                    btnDetailsEscalate.Enabled = true;
-                }
+            // Do not let editing, if ticket's closed.
+            if (ticket.IsClosed)
+            {
+                btnDetailsClose.Enabled = false;
+                return;
             }
 
             txtDetailsSubject.Enabled = true;
@@ -762,6 +737,7 @@ namespace DemoApp
 
             btnDetailsDelete.Enabled = true;
             btnDetailsUpdate.Enabled = true;
+            btnDetailsClose.Enabled = true;
         }
 
         private void btnDetailsUpdate_Click(object sender, EventArgs e)
