@@ -18,8 +18,14 @@ namespace DemoApp
         private readonly TicketEscalationService ticketEscalationService;
         private readonly IncidentService incidentService = new IncidentService();
         private readonly ArchivedTicketService archivedTicketService = new ArchivedTicketService();
+        private readonly IncidentFilteringService incidentFilterService = new IncidentFilteringService();
 
+        // Tickets
         private List<Ticket> allTickets;
+
+        // Incidents
+        private List<Incident> incidentList;
+        private List<Incident> filteredIncidents; 
 
         /// <summary> Currently logged-in employee.</summary>
         private readonly Employee employee;
@@ -996,41 +1002,47 @@ namespace DemoApp
             listViewIncidents.Columns[2].Width = 0;
             listViewIncidents.Columns[5].Width = 0;
 
-
+            // Get all incidents
             List<BsonDocument> incidents = incidentService.GetAllIncidents();
-            List<Incident> incidentList = incidentService.ConvertAllDocumentsToIncidentList(incidents);
+            incidentList = incidentService.ConvertAllDocumentsToIncidentList(incidents);
 
+            // Create a filtered list of incidents for display, avoids messing with the pre-loaded list for filtering.
+            filteredIncidents = incidentList;
+
+            // Populate listview
+            PopulateIncidentList();
+        }
+
+        private void PopulateIncidentList()
+        {
             if (incidentList.Count == 0)
             {
                 throw new Exception("There are currently no incidents");
             }
 
+            // Clear listview before populating to avoid duplicates.
+            listViewIncidents.Items.Clear();
 
-            for (int i = 0; i < incidentList.Count; i++)
+            // Populate the listview
+            for (int i = 0; i < filteredIncidents.Count; i++)
             {
-                ListViewItem incident = new ListViewItem(incidentList[i].Id.ToString());
+                ListViewItem incident = new ListViewItem(filteredIncidents[i].Id.ToString());
 
                 //Add the tag used to update a record in the database
-                incident.Tag = incidentList[i];
+                incident.Tag = filteredIncidents[i];
 
-                incident.SubItems.Add(incidentList[i].Subject.ToString());
-                incident.SubItems.Add(incidentList[i].UserId.ToString());
-                incident.SubItems.Add(incidentList[i].IncidentType.ToString());
-                incident.SubItems.Add(incidentList[i].LoggedOn.ToString());
-                incident.SubItems.Add(incidentList[i].Description.ToString());
+                incident.SubItems.Add(filteredIncidents[i].Subject.ToString());
+                incident.SubItems.Add(filteredIncidents[i].UserId.ToString());
+                incident.SubItems.Add(filteredIncidents[i].IncidentType.ToString());
+                incident.SubItems.Add(filteredIncidents[i].LoggedOn.ToString());
+                incident.SubItems.Add(filteredIncidents[i].Description.ToString());
 
                 listViewIncidents.Items.Add(incident);
-
             }
         }
 
         private void listViewIncidents_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<BsonDocument> incidents = incidentService.GetAllIncidents();
-
-            List<Incident> incidentList = incidentService.ConvertAllDocumentsToIncidentList(incidents);
-
-
             if (listViewIncidents.SelectedItems.Count > 0)
             {
 
@@ -1053,9 +1065,6 @@ namespace DemoApp
 
         public void CreateIncident()
         {
-            List<BsonDocument> incidents = incidentService.GetAllIncidents();
-            List<Incident> incidentList = incidentService.ConvertAllDocumentsToIncidentList(incidents);
-
             int incidentId = incidentService.RetrievePreviousIncidentId();
             string subject = txtIncidentSubject.Text;
             int userId = employee.Id;
@@ -1074,7 +1083,44 @@ namespace DemoApp
             }
         }
 
+        /// <summary>
+        /// Attempts to filter the pre-loaded incident list.
+        /// </summary>
+        private void btnFilterIncidents_Click(object sender, EventArgs e)
+        {
+            // If values have been entered, filter the list
+            if (!string.IsNullOrWhiteSpace(txtBox_IncidentKeywords.Text))
+            {
+                // Get string out of the keywords textbox
+                string filter = txtBox_IncidentKeywords.Text;
 
+                // Filter the list
+                filteredIncidents = incidentFilterService.FilterIncidents(incidentList, filter);
+            }
+            else
+            {
+                // Set filtered list to display all
+                filteredIncidents = incidentList;
+            }
+
+            // Repopulate list
+            PopulateIncidentList();
+        }
+
+        /// <summary>
+        /// Removes all filters and loads the default pre-loaded incident list.
+        /// </summary>
+        private void btnClearIncidentFilters_Click(object sender, EventArgs e)
+        {
+            // Remove filters
+            txtBox_IncidentKeywords.Text = "";
+
+            // Load default pre-loaded list
+            filteredIncidents = incidentList;
+
+            // Repopulate listview
+            PopulateIncidentList();
+        }
 
         public void CleanIncidentFormFields()
         {
@@ -1082,9 +1128,6 @@ namespace DemoApp
             cmbIncidentType.SelectedIndex = -1;
             txtIncidentDescription.Clear();
         }
-
-
-
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
         {
@@ -1104,7 +1147,6 @@ namespace DemoApp
 
             }
         }
-
 
         public void createTicketFromIncident()
         {
