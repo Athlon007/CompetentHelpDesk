@@ -25,6 +25,9 @@ namespace DemoApp
         /// <summary> Currently logged-in employee.</summary>
         private readonly Employee employee;
 
+        //Generated password
+        private HashedPasswordWithSalt password;
+
         // Styling variables
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
         readonly Color lightGreen = ColorTranslator.FromHtml("#479B74");
@@ -351,9 +354,16 @@ namespace DemoApp
             if (tabControl.SelectedIndex != 4)
             {
                 tabControl.SelectedIndex = 4;
-                LoadUserTypes();
-                ClearRegisterForm();
+                LoadCreateTicketPage();
             }
+        }
+
+        private void LoadCreateTicketPage()
+        {
+            LoadUserTypes();
+            ClearRegisterForm();
+            btnRegisterUser.Enabled = false;
+            btnCreatePassword.Enabled = true;
         }
 
         private void LogOut_Click(object sender, EventArgs e)
@@ -1180,29 +1190,31 @@ namespace DemoApp
 
         private void btnRegisterUser_Click(object sender, EventArgs e)
         {
-            int length = 8;
-            string email = txtEmail.Text;
-            string username = txtUsername.Text;
-            string firsname = txtFirstName.Text;
-            string lastname = txtLastName.Text;
-            EmployeeType type = (EmployeeType)comboEmployeeType.SelectedIndex;
-            if (loginService == null)
+            if (IsTextBoxesEmpty())
             {
-                loginService = new LoginService();
-            }     
-            HashedPasswordWithSalt password = loginService.CreateHashedPasswordWithSalt(employeeService.GetRandomPassword(length));
-            string passwordHash = password.HashedPassword;
-            string salt = password.Salt;
-
-            StatusStruct status = employeeService.CreateUser(email, username, firsname, lastname, type, passwordHash, salt);
-
-            if (status.Code == 0)
-            {
-                ClearRegisterForm();
+                lblWarning.Text = "Please fill in all the blanks.";
             }
             else
             {
-                MessageBox.Show(status.Message);
+                string email = txtEmail.Text;
+                string username = txtUsername.Text;
+                string firsname = txtFirstName.Text;
+                string lastname = txtLastName.Text;
+                EmployeeType type = (EmployeeType)comboEmployeeType.SelectedIndex;
+                string passwordHash = password.HashedPassword;
+                string salt = password.Salt;
+
+                StatusStruct status = employeeService.CreateUser(email, username, firsname, lastname, type, passwordHash, salt);
+
+                if (status.Code == 0)
+                {
+                    password = null;
+                    LoadCreateTicketPage();
+                }
+                else
+                {
+                    MessageBox.Show(status.Message);
+                }
             }
         }
 
@@ -1215,6 +1227,21 @@ namespace DemoApp
             }
         }
 
+        private bool IsTextBoxesEmpty()
+        {
+            bool empty = false;
+
+            foreach (TextBox tb in rPnl_CreateUser.Controls)
+            {
+                if (string.IsNullOrEmpty(tb.Text))
+                {
+                    empty = true;
+                    break;
+                }
+            }
+            return empty;
+        }
+
         private void ClearRegisterForm()
         {
             txtEmail.Text = "";
@@ -1222,13 +1249,15 @@ namespace DemoApp
             txtLastName.Text = "";
             txtUsername.Text = "";
             comboEmployeeType.SelectedIndex = -1;
+            txtPassword.Text = "";
         }
         private void LoadAssignedEmployees()
         {
+            cmbEmployees.Items.Clear();
             List<Employee> employees = employeeService.GetEmployeesByType(EmployeeType.ServiceDesk);
             foreach (var item in employees)
             {
-                comboEmployeeType.Items.Add(item);
+                cmbEmployees.Items.Add(item);
             }
         }
 
@@ -1246,6 +1275,19 @@ namespace DemoApp
             {
                 MessageBox.Show(status.Message);
             }
+        }
+
+        private void btnCreatePassword_Click(object sender, EventArgs e)
+        {
+            if (loginService == null)
+            {
+                loginService = new LoginService();
+            }
+            int length = 8;
+            string passwrd = employeeService.GetRandomPassword(length);
+            password = loginService.CreateHashedPasswordWithSalt(passwrd);
+            txtPassword.Text = passwrd;
+            btnCreatePassword.Enabled = false;
         }
     }
 }
