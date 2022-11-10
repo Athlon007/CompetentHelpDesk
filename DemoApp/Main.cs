@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using DemoApp.Common;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DemoApp
 {
@@ -1284,18 +1285,26 @@ namespace DemoApp
 
         private void btnTransfer_Click(object sender, EventArgs e)
         {
-            Employee employee = (Employee)cmbEmployees.SelectedItem;
             Ticket ticket = (Ticket)listView_TicketManagement.SelectedItems[0].Tag;
-            StatusStruct status = ticketTransferService.TransferTicket(ticket, employee);
-            if (status.Code == 0)
+            if(ticket.AssignedEmployee == employee)
             {
-                cmbEmployees.SelectedIndex = -1;
-                listView_TicketManagement.SelectedIndices.Clear();
+                Employee transferEmployee = (Employee)cmbEmployees.SelectedItem;
+                StatusStruct status = ticketTransferService.TransferTicket(ticket, transferEmployee);
+                if (status.Code == 0)
+                {
+                    cmbEmployees.SelectedIndex = -1;
+                    listView_TicketManagement.SelectedIndices.Clear();
+                }
+                else
+                {
+                    MessageBox.Show(status.Message);
+                }
             }
             else
             {
-                MessageBox.Show(status.Message);
+                MessageBox.Show("You are not the assigned employee of selected ticket.");
             }
+
         }
 
         private void btnCreatePassword_Click(object sender, EventArgs e)
