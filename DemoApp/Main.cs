@@ -114,8 +114,6 @@ namespace DemoApp
 
             foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
             {
-                // We don't want to let the service desk to set TBA, as a priority.
-                if (priority == TicketPriority.ToBeDetermined) continue;
                 cmbPriorityCT.Items.Add(priority);
             }
 
@@ -563,13 +561,6 @@ namespace DemoApp
 
                 item.Tag = ticket;
 
-                if (ticket.Priority == TicketPriority.ToBeDetermined)
-                {
-                    item.ForeColor = Color.Red;
-                    Font bold = new Font(item.Font, FontStyle.Bold);
-                    item.Font = bold;
-                }
-
                 // Add item to listview
                 listView_TicketManagement.Items.Add(item);
             }
@@ -769,7 +760,7 @@ namespace DemoApp
             var enums = new TicketEnumsTransfer((IncidentTypes)cmbDetailsIncidentType.SelectedItem,
                                                 (TicketPriority)cmbDetailsPriority.SelectedItem,
                                                 (TicketStatus)cmbDetailsStatus.SelectedItem);
-            var employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem, null);
+            var employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem);
 
             StatusStruct status = ticketService.UpdateTicket(detailedTicket, text, enums, employeeTransfer);
 
@@ -788,8 +779,7 @@ namespace DemoApp
         private void btnDetailsDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show($"Are you sure you want to delete ticket:\n\n" +
-                                                  $"ID: {detailedTicket.Id}\n" +
-                                                  $"Subject: {detailedTicket.Subject}\n\n" +
+                                                  $"[{detailedTicket.Id}]{detailedTicket.Subject}\n\n" +
                                                   $"This operation is irreversible!", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
@@ -1292,18 +1282,26 @@ namespace DemoApp
 
         private void btnTransfer_Click(object sender, EventArgs e)
         {
-            Employee employee = (Employee)cmbEmployees.SelectedItem;
             Ticket ticket = (Ticket)listView_TicketManagement.SelectedItems[0].Tag;
-            StatusStruct status = ticketTransferService.TransferTicket(ticket, employee);
-            if (status.Code == 0)
+            if(ticket.AssignedEmployee == employee)
             {
-                cmbEmployees.SelectedIndex = -1;
-                listView_TicketManagement.SelectedIndices.Clear();
+                Employee transferEmployee = (Employee)cmbEmployees.SelectedItem;
+                StatusStruct status = ticketTransferService.TransferTicket(ticket, transferEmployee);
+                if (status.Code == 0)
+                {
+                    cmbEmployees.SelectedIndex = -1;
+                    listView_TicketManagement.SelectedIndices.Clear();
+                }
+                else
+                {
+                    MessageBox.Show(status.Message);
+                }
             }
             else
             {
-                MessageBox.Show(status.Message);
+                MessageBox.Show("You are not the assigned employee of selected ticket.");
             }
+
         }
 
         private void btnCreatePassword_Click(object sender, EventArgs e)

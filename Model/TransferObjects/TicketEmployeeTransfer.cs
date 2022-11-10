@@ -16,6 +16,16 @@
         /// Create data transfer object for employee info.
         /// </summary>
         /// <param name="Reporter">Employee which reported the incident.</param>
+        public TicketEmployeeTransfer(Employee Reporter)
+        {
+            this.Reporter = Reporter;
+            this.AssignedEmployee = null;
+        }
+
+        /// <summary>
+        /// Create data transfer object for employee info.
+        /// </summary>
+        /// <param name="Reporter">Employee which reported the incident.</param>
         /// <param name="AssignedEmployee">Employee tasked with fixing the ticket.</param>
         public TicketEmployeeTransfer(Employee Reporter, Employee AssignedEmployee)
         {

@@ -266,7 +266,7 @@ namespace Logic
                 };
                 if (employeeData.AssignedEmployee != null)
                 {
-                    doc.Add(new BsonElement("employee", employeeData.AssignedEmployee.Id));
+                    doc.Add(new BsonElement("assignedEmployee", employeeData.AssignedEmployee.Id));
                 }
 
                 ticketsdb.Insert(doc);
@@ -404,9 +404,6 @@ namespace Logic
 
             if (string.IsNullOrEmpty(textData.Description))
                 sb.AppendLine("Description is empty");
-
-            if (enumsData.Priority == TicketPriority.ToBeDetermined)
-                sb.AppendLine("Ticket priority must be defined");
 
             issues = sb.ToString();
             return issues.Length == 0;
