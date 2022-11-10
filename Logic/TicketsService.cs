@@ -266,7 +266,7 @@ namespace Logic
                 };
                 if (employeeData.AssignedEmployee != null)
                 {
-                    doc.Add(new BsonElement("employee", employeeData.AssignedEmployee.Id));
+                    doc.Add(new BsonElement("assignedEmployee", employeeData.AssignedEmployee.Id));
                 }
 
                 ticketsdb.Insert(doc);
