@@ -270,9 +270,9 @@ namespace DemoApp
             this.tblPnl_Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // tableLayoutPanel
-            //
+            // 
             this.tableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.tableLayoutPanel.ColumnCount = 2;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 468F));
@@ -288,9 +288,9 @@ namespace DemoApp
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(2092, 1276);
             this.tableLayoutPanel.TabIndex = 1;
-            //
+            // 
             // tabControl
-            //
+            // 
             this.tabControl.Controls.Add(this.tab_Dashboard);
             this.tabControl.Controls.Add(this.tab_TicketManagement);
             this.tabControl.Controls.Add(this.tab_CreateTicket);
@@ -310,9 +310,9 @@ namespace DemoApp
             this.tabControl.TabIndex = 2;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_IndexChanged);
             this.tabControl.TabIndexChanged += new System.EventHandler(this.TabControl_IndexChanged);
-            //
+            // 
             // tab_Dashboard
-            //
+            // 
             this.tab_Dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.tab_Dashboard.Controls.Add(this.rPnl_Dashboard);
             this.tab_Dashboard.Location = new System.Drawing.Point(8, 43);
@@ -321,9 +321,9 @@ namespace DemoApp
             this.tab_Dashboard.Size = new System.Drawing.Size(1588, 1185);
             this.tab_Dashboard.TabIndex = 0;
             this.tab_Dashboard.Text = "Dashboard";
-            //
+            // 
             // rPnl_Dashboard
-            //
+            // 
             this.rPnl_Dashboard.BackColor = System.Drawing.Color.White;
             this.rPnl_Dashboard.BorderAngle = 90F;
             this.rPnl_Dashboard.BorderRadius = 40;
@@ -338,9 +338,9 @@ namespace DemoApp
             this.rPnl_Dashboard.Size = new System.Drawing.Size(1588, 1185);
             this.rPnl_Dashboard.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_Dashboard.TabIndex = 0;
-            //
+            // 
             // tblPnl_Dashboard
-            //
+            // 
             this.tblPnl_Dashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tblPnl_Dashboard.ColumnCount = 2;
             this.tblPnl_Dashboard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -359,9 +359,9 @@ namespace DemoApp
             this.tblPnl_Dashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblPnl_Dashboard.Size = new System.Drawing.Size(1172, 1128);
             this.tblPnl_Dashboard.TabIndex = 2;
-            //
+            // 
             // rPnl_D1_Open
-            //
+            // 
             this.rPnl_D1_Open.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rPnl_D1_Open.BackColor = System.Drawing.Color.White;
             this.rPnl_D1_Open.BorderAngle = 90F;
@@ -380,9 +380,9 @@ namespace DemoApp
             this.rPnl_D1_Open.SurfaceColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.rPnl_D1_Open.TabIndex = 0;
             this.rPnl_D1_Open.Click += new System.EventHandler(this.RPnl_D1_Open_Click);
-            //
+            // 
             // circleBar_Open
-            //
+            // 
             this.circleBar_Open.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.circleBar_Open.BorderSize = 25;
             this.circleBar_Open.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
@@ -399,9 +399,9 @@ namespace DemoApp
             this.circleBar_Open.ValueMax = -1F;
             this.circleBar_Open.ValueSize = -1F;
             this.circleBar_Open.Click += new System.EventHandler(this.RPnl_D1_Open_Click);
-            //
+            // 
             // lbl_OpenIncidents_Desc
-            //
+            // 
             this.lbl_OpenIncidents_Desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.lbl_OpenIncidents_Desc.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbl_OpenIncidents_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -417,9 +417,9 @@ namespace DemoApp
             this.lbl_OpenIncidents_Desc.Text = "These tickets are currently open and require resolving.";
             this.lbl_OpenIncidents_Desc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl_OpenIncidents_Desc.Click += new System.EventHandler(this.RPnl_D1_Open_Click);
-            //
+            // 
             // lbl_OpenIncidents_Title
-            //
+            // 
             this.lbl_OpenIncidents_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.lbl_OpenIncidents_Title.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbl_OpenIncidents_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -434,9 +434,9 @@ namespace DemoApp
             this.lbl_OpenIncidents_Title.Text = "Open incidents";
             this.lbl_OpenIncidents_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_OpenIncidents_Title.Click += new System.EventHandler(this.RPnl_D1_Open_Click);
-            //
+            // 
             // rPnl_D3_Unresolved
-            //
+            // 
             this.rPnl_D3_Unresolved.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rPnl_D3_Unresolved.BackColor = System.Drawing.Color.White;
             this.rPnl_D3_Unresolved.BorderAngle = 90F;
@@ -455,9 +455,9 @@ namespace DemoApp
             this.rPnl_D3_Unresolved.SurfaceColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.rPnl_D3_Unresolved.TabIndex = 1;
             this.rPnl_D3_Unresolved.Click += new System.EventHandler(this.RPnl_D3_Unresolved_Click);
-            //
+            // 
             // circleBar_Unresolved
-            //
+            // 
             this.circleBar_Unresolved.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.circleBar_Unresolved.BorderSize = 25;
             this.circleBar_Unresolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
@@ -474,9 +474,9 @@ namespace DemoApp
             this.circleBar_Unresolved.ValueMax = -1F;
             this.circleBar_Unresolved.ValueSize = -1F;
             this.circleBar_Unresolved.Click += new System.EventHandler(this.RPnl_D3_Unresolved_Click);
-            //
+            // 
             // lbl_PastDeadline_Desc
-            //
+            // 
             this.lbl_PastDeadline_Desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.lbl_PastDeadline_Desc.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbl_PastDeadline_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -492,9 +492,9 @@ namespace DemoApp
             this.lbl_PastDeadline_Desc.Text = "These tickets were closed without solution.";
             this.lbl_PastDeadline_Desc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl_PastDeadline_Desc.Click += new System.EventHandler(this.RPnl_D3_Unresolved_Click);
-            //
+            // 
             // lbl_PastDeadline_Title
-            //
+            // 
             this.lbl_PastDeadline_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.lbl_PastDeadline_Title.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbl_PastDeadline_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -509,9 +509,9 @@ namespace DemoApp
             this.lbl_PastDeadline_Title.Text = "Incidents closed without resolve";
             this.lbl_PastDeadline_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_PastDeadline_Title.Click += new System.EventHandler(this.RPnl_D3_Unresolved_Click);
-            //
+            // 
             // rPnl_D2_Past
-            //
+            // 
             this.rPnl_D2_Past.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rPnl_D2_Past.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.rPnl_D2_Past.BorderAngle = 90F;
@@ -530,9 +530,9 @@ namespace DemoApp
             this.rPnl_D2_Past.SurfaceColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.rPnl_D2_Past.TabIndex = 2;
             this.rPnl_D2_Past.Click += new System.EventHandler(this.RPnl_D2_Past_Click);
-            //
+            // 
             // circleBar_PastDeadline
-            //
+            // 
             this.circleBar_PastDeadline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.circleBar_PastDeadline.BorderSize = 25;
             this.circleBar_PastDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
@@ -549,9 +549,9 @@ namespace DemoApp
             this.circleBar_PastDeadline.ValueMax = -1F;
             this.circleBar_PastDeadline.ValueSize = -1F;
             this.circleBar_PastDeadline.Click += new System.EventHandler(this.RPnl_D2_Past_Click);
-            //
+            // 
             // lbl_Unresolved_Desc
-            //
+            // 
             this.lbl_Unresolved_Desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.lbl_Unresolved_Desc.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbl_Unresolved_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -567,9 +567,9 @@ namespace DemoApp
             this.lbl_Unresolved_Desc.Text = "These tickets require your immediate attention.";
             this.lbl_Unresolved_Desc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl_Unresolved_Desc.Click += new System.EventHandler(this.RPnl_D2_Past_Click);
-            //
+            // 
             // lbl_Unresolved_Title
-            //
+            // 
             this.lbl_Unresolved_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.lbl_Unresolved_Title.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbl_Unresolved_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -584,9 +584,9 @@ namespace DemoApp
             this.lbl_Unresolved_Title.Text = "Incidents past deadline";
             this.lbl_Unresolved_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_Unresolved_Title.Click += new System.EventHandler(this.RPnl_D2_Past_Click);
-            //
+            // 
             // rPnl_D4_Resolved
-            //
+            // 
             this.rPnl_D4_Resolved.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rPnl_D4_Resolved.BackColor = System.Drawing.Color.White;
             this.rPnl_D4_Resolved.BorderAngle = 90F;
@@ -605,9 +605,9 @@ namespace DemoApp
             this.rPnl_D4_Resolved.SurfaceColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.rPnl_D4_Resolved.TabIndex = 3;
             this.rPnl_D4_Resolved.Click += new System.EventHandler(this.RPnl_D4_Resolved_Click);
-            //
+            // 
             // circleBar_Resolved
-            //
+            // 
             this.circleBar_Resolved.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.circleBar_Resolved.BorderSize = 25;
             this.circleBar_Resolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
@@ -624,9 +624,9 @@ namespace DemoApp
             this.circleBar_Resolved.ValueMax = -1F;
             this.circleBar_Resolved.ValueSize = -1F;
             this.circleBar_Resolved.Click += new System.EventHandler(this.RPnl_D4_Resolved_Click);
-            //
+            // 
             // lbl_Resolved_Desc
-            //
+            // 
             this.lbl_Resolved_Desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.lbl_Resolved_Desc.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbl_Resolved_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -642,9 +642,9 @@ namespace DemoApp
             this.lbl_Resolved_Desc.Text = "Good job! These tickets were succesfully resolved.";
             this.lbl_Resolved_Desc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl_Resolved_Desc.Click += new System.EventHandler(this.RPnl_D4_Resolved_Click);
-            //
+            // 
             // lbl_Resolved_Title
-            //
+            // 
             this.lbl_Resolved_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.lbl_Resolved_Title.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbl_Resolved_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -659,9 +659,9 @@ namespace DemoApp
             this.lbl_Resolved_Title.Text = "Resolved incidents";
             this.lbl_Resolved_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_Resolved_Title.Click += new System.EventHandler(this.RPnl_D4_Resolved_Click);
-            //
+            // 
             // pnl_DashBoard_Title
-            //
+            // 
             this.pnl_DashBoard_Title.Controls.Add(this.btn_ShowAllIncidents);
             this.pnl_DashBoard_Title.Controls.Add(this.lbl_CurrentIncidents);
             this.pnl_DashBoard_Title.Dock = System.Windows.Forms.DockStyle.Top;
@@ -670,9 +670,9 @@ namespace DemoApp
             this.pnl_DashBoard_Title.Name = "pnl_DashBoard_Title";
             this.pnl_DashBoard_Title.Size = new System.Drawing.Size(1588, 80);
             this.pnl_DashBoard_Title.TabIndex = 3;
-            //
+            // 
             // btn_ShowAllIncidents
-            //
+            // 
             this.btn_ShowAllIncidents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btn_ShowAllIncidents.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_ShowAllIncidents.FlatAppearance.BorderSize = 0;
@@ -687,9 +687,9 @@ namespace DemoApp
             this.btn_ShowAllIncidents.Text = "Show all incidents";
             this.btn_ShowAllIncidents.UseVisualStyleBackColor = false;
             this.btn_ShowAllIncidents.Click += new System.EventHandler(this.Btn_ShowAllIncidents_Click);
-            //
+            // 
             // lbl_CurrentIncidents
-            //
+            // 
             this.lbl_CurrentIncidents.AutoSize = true;
             this.lbl_CurrentIncidents.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbl_CurrentIncidents.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
@@ -701,9 +701,9 @@ namespace DemoApp
             this.lbl_CurrentIncidents.TabIndex = 0;
             this.lbl_CurrentIncidents.Text = "Current incidents";
             this.lbl_CurrentIncidents.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            //
+            // 
             // header_Dashboard
-            //
+            // 
             this.header_Dashboard.Controls.Add(this.lbl_HeaderDashboard);
             this.header_Dashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.header_Dashboard.Location = new System.Drawing.Point(0, 0);
@@ -711,9 +711,9 @@ namespace DemoApp
             this.header_Dashboard.Name = "header_Dashboard";
             this.header_Dashboard.Size = new System.Drawing.Size(1588, 80);
             this.header_Dashboard.TabIndex = 0;
-            //
+            // 
             // lbl_HeaderDashboard
-            //
+            // 
             this.lbl_HeaderDashboard.AutoSize = true;
             this.lbl_HeaderDashboard.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbl_HeaderDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
@@ -725,9 +725,9 @@ namespace DemoApp
             this.lbl_HeaderDashboard.TabIndex = 0;
             this.lbl_HeaderDashboard.Text = "Dashboard";
             this.lbl_HeaderDashboard.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            //
+            // 
             // tab_TicketManagement
-            //
+            // 
             this.tab_TicketManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.tab_TicketManagement.Controls.Add(this.rPnl_TicketManagement);
             this.tab_TicketManagement.Location = new System.Drawing.Point(8, 43);
@@ -736,9 +736,9 @@ namespace DemoApp
             this.tab_TicketManagement.Size = new System.Drawing.Size(1588, 1185);
             this.tab_TicketManagement.TabIndex = 2;
             this.tab_TicketManagement.Text = "Ticket Management";
-            //
+            // 
             // rPnl_TicketManagement
-            //
+            // 
             this.rPnl_TicketManagement.BackColor = System.Drawing.Color.White;
             this.rPnl_TicketManagement.BorderAngle = 90F;
             this.rPnl_TicketManagement.BorderRadius = 40;
@@ -752,9 +752,9 @@ namespace DemoApp
             this.rPnl_TicketManagement.Size = new System.Drawing.Size(1588, 1185);
             this.rPnl_TicketManagement.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_TicketManagement.TabIndex = 1;
-            //
+            // 
             // pnl_TicketManagement
-            //
+            // 
             this.pnl_TicketManagement.BackColor = System.Drawing.Color.White;
             this.pnl_TicketManagement.BorderAngle = 90F;
             this.pnl_TicketManagement.BorderRadius = 40;
@@ -767,26 +767,26 @@ namespace DemoApp
             this.pnl_TicketManagement.Size = new System.Drawing.Size(1588, 1105);
             this.pnl_TicketManagement.SurfaceColor = System.Drawing.Color.Empty;
             this.pnl_TicketManagement.TabIndex = 7;
-            //
+            // 
             // splitContainer1
-            //
+            // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
-            //
+            // 
             // splitContainer1.Panel1
-            //
+            // 
             this.splitContainer1.Panel1.Controls.Add(this.pnlArchiveTickets);
             this.splitContainer1.Panel1.Controls.Add(this.listView_TicketManagement);
             this.splitContainer1.Panel1.Controls.Add(this.txtBox_SearchBar);
             this.splitContainer1.Panel1.Controls.Add(this.flowPnl_TicketManagement_SearchButtons);
             this.splitContainer1.Panel1MinSize = 500;
-            //
+            // 
             // splitContainer1.Panel2
-            //
+            // 
             this.splitContainer1.Panel2.Controls.Add(this.txtDetailsDescription);
             this.splitContainer1.Panel2.Controls.Add(this.lblDetailsDescription);
             this.splitContainer1.Panel2.Controls.Add(this.lblDetailsWarning);
@@ -805,9 +805,9 @@ namespace DemoApp
             this.splitContainer1.SplitterDistance = 1166;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 15;
-            //
+            // 
             // pnlArchiveTickets
-            //
+            // 
             this.pnlArchiveTickets.AutoSize = true;
             this.pnlArchiveTickets.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlArchiveTickets.Controls.Add(this.cmbEmployees);
@@ -822,9 +822,9 @@ namespace DemoApp
             this.pnlArchiveTickets.Name = "pnlArchiveTickets";
             this.pnlArchiveTickets.Size = new System.Drawing.Size(1164, 223);
             this.pnlArchiveTickets.TabIndex = 2;
-            //
+            // 
             // cmbEmployees
-            //
+            // 
             this.cmbEmployees.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -833,9 +833,9 @@ namespace DemoApp
             this.cmbEmployees.Name = "cmbEmployees";
             this.cmbEmployees.Size = new System.Drawing.Size(395, 45);
             this.cmbEmployees.TabIndex = 43;
-            //
+            // 
             // btnTransfer
-            //
+            // 
             this.btnTransfer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTransfer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btnTransfer.FlatAppearance.BorderSize = 0;
@@ -849,9 +849,9 @@ namespace DemoApp
             this.btnTransfer.Text = "Transfer Ticket";
             this.btnTransfer.UseVisualStyleBackColor = false;
             this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
-            //
+            // 
             // lblValidationForArchiving
-            //
+            // 
             this.lblValidationForArchiving.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblValidationForArchiving.AutoSize = true;
             this.lblValidationForArchiving.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -863,9 +863,9 @@ namespace DemoApp
             this.lblValidationForArchiving.Size = new System.Drawing.Size(628, 48);
             this.lblValidationForArchiving.TabIndex = 42;
             this.lblValidationForArchiving.Text = "Validation message for archiving tickets";
-            //
+            // 
             // btnArchiveTickets
-            //
+            // 
             this.btnArchiveTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnArchiveTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnArchiveTickets.Location = new System.Drawing.Point(12, 92);
@@ -875,9 +875,9 @@ namespace DemoApp
             this.btnArchiveTickets.TabIndex = 41;
             this.btnArchiveTickets.Text = "Archive";
             this.btnArchiveTickets.UseVisualStyleBackColor = true;
-            //
+            // 
             // lblArchiveTicketsMessage
-            //
+            // 
             this.lblArchiveTicketsMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblArchiveTicketsMessage.AutoSize = true;
             this.lblArchiveTicketsMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -887,9 +887,9 @@ namespace DemoApp
             this.lblArchiveTicketsMessage.Size = new System.Drawing.Size(630, 31);
             this.lblArchiveTicketsMessage.TabIndex = 40;
             this.lblArchiveTicketsMessage.Text = "Tickets older than two weeks will be sent to archive";
-            //
+            // 
             // lblArchiveTickets
-            //
+            // 
             this.lblArchiveTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblArchiveTickets.AutoSize = true;
             this.lblArchiveTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -900,9 +900,9 @@ namespace DemoApp
             this.lblArchiveTickets.Size = new System.Drawing.Size(268, 48);
             this.lblArchiveTickets.TabIndex = 39;
             this.lblArchiveTickets.Text = "Archive tickets";
-            //
+            // 
             // listView_TicketManagement
-            //
+            // 
             this.listView_TicketManagement.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col_Id,
             this.col_Subject,
@@ -923,37 +923,37 @@ namespace DemoApp
             this.listView_TicketManagement.UseCompatibleStateImageBehavior = false;
             this.listView_TicketManagement.View = System.Windows.Forms.View.Details;
             this.listView_TicketManagement.SelectedIndexChanged += new System.EventHandler(this.listView_TicketManagement_SelectedIndexChanged);
-            //
+            // 
             // col_Id
-            //
+            // 
             this.col_Id.Text = "Id";
-            //
+            // 
             // col_Subject
-            //
+            // 
             this.col_Subject.Text = "Subject";
             this.col_Subject.Width = 200;
-            //
+            // 
             // col_User
-            //
+            // 
             this.col_User.Text = "User";
             this.col_User.Width = 120;
-            //
+            // 
             // col_Date
-            //
+            // 
             this.col_Date.Text = "Date";
             this.col_Date.Width = 180;
-            //
+            // 
             // col_Status
-            //
+            // 
             this.col_Status.Text = "Status";
             this.col_Status.Width = 180;
-            //
+            // 
             // col_IsClosed
-            //
+            // 
             this.col_IsClosed.Text = "Closed";
-            //
+            // 
             // txtBox_SearchBar
-            //
+            // 
             this.txtBox_SearchBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtBox_SearchBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBox_SearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -964,9 +964,9 @@ namespace DemoApp
             this.txtBox_SearchBar.Size = new System.Drawing.Size(1164, 44);
             this.txtBox_SearchBar.TabIndex = 11;
             this.txtBox_SearchBar.TextChanged += new System.EventHandler(this.txtBox_SearchBar_TextChanged);
-            //
+            // 
             // flowPnl_TicketManagement_SearchButtons
-            //
+            // 
             this.flowPnl_TicketManagement_SearchButtons.Controls.Add(this.btn_Display_Tickets_All);
             this.flowPnl_TicketManagement_SearchButtons.Controls.Add(this.btn_Display_Tickets_Open);
             this.flowPnl_TicketManagement_SearchButtons.Controls.Add(this.btn_Display_Tickets_PastDeadline);
@@ -980,9 +980,9 @@ namespace DemoApp
             this.flowPnl_TicketManagement_SearchButtons.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
             this.flowPnl_TicketManagement_SearchButtons.Size = new System.Drawing.Size(1164, 88);
             this.flowPnl_TicketManagement_SearchButtons.TabIndex = 14;
-            //
+            // 
             // btn_Display_Tickets_All
-            //
+            // 
             this.btn_Display_Tickets_All.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btn_Display_Tickets_All.FlatAppearance.BorderSize = 0;
             this.btn_Display_Tickets_All.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -996,9 +996,9 @@ namespace DemoApp
             this.btn_Display_Tickets_All.Text = "All";
             this.btn_Display_Tickets_All.UseVisualStyleBackColor = false;
             this.btn_Display_Tickets_All.Click += new System.EventHandler(this.Btn_Display_Tickets_All_Click);
-            //
+            // 
             // btn_Display_Tickets_Open
-            //
+            // 
             this.btn_Display_Tickets_Open.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btn_Display_Tickets_Open.FlatAppearance.BorderSize = 0;
             this.btn_Display_Tickets_Open.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -1012,9 +1012,9 @@ namespace DemoApp
             this.btn_Display_Tickets_Open.Text = "Open";
             this.btn_Display_Tickets_Open.UseVisualStyleBackColor = false;
             this.btn_Display_Tickets_Open.Click += new System.EventHandler(this.Btn_Display_Tickets_Open_Click);
-            //
+            // 
             // btn_Display_Tickets_PastDeadline
-            //
+            // 
             this.btn_Display_Tickets_PastDeadline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btn_Display_Tickets_PastDeadline.FlatAppearance.BorderSize = 0;
             this.btn_Display_Tickets_PastDeadline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -1028,9 +1028,9 @@ namespace DemoApp
             this.btn_Display_Tickets_PastDeadline.Text = "Past Deadline";
             this.btn_Display_Tickets_PastDeadline.UseVisualStyleBackColor = false;
             this.btn_Display_Tickets_PastDeadline.Click += new System.EventHandler(this.Btn_Display_Tickets_PastDeadline_Click);
-            //
+            // 
             // btn_Display_Tickets_Unresolved
-            //
+            // 
             this.btn_Display_Tickets_Unresolved.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btn_Display_Tickets_Unresolved.FlatAppearance.BorderSize = 0;
             this.btn_Display_Tickets_Unresolved.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -1044,9 +1044,9 @@ namespace DemoApp
             this.btn_Display_Tickets_Unresolved.Text = "Unresolved";
             this.btn_Display_Tickets_Unresolved.UseVisualStyleBackColor = false;
             this.btn_Display_Tickets_Unresolved.Click += new System.EventHandler(this.Btn_Display_Tickets_Unresolved_Click);
-            //
+            // 
             // btn_Display_Tickets_Resolved
-            //
+            // 
             this.btn_Display_Tickets_Resolved.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btn_Display_Tickets_Resolved.FlatAppearance.BorderSize = 0;
             this.btn_Display_Tickets_Resolved.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -1060,9 +1060,9 @@ namespace DemoApp
             this.btn_Display_Tickets_Resolved.Text = "Resolved";
             this.btn_Display_Tickets_Resolved.UseVisualStyleBackColor = false;
             this.btn_Display_Tickets_Resolved.Click += new System.EventHandler(this.btn_Display_Tickets_Resolved_Click);
-            //
+            // 
             // btn_Display_Tickets_Closed
-            //
+            // 
             this.btn_Display_Tickets_Closed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btn_Display_Tickets_Closed.FlatAppearance.BorderSize = 0;
             this.btn_Display_Tickets_Closed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -1076,9 +1076,9 @@ namespace DemoApp
             this.btn_Display_Tickets_Closed.Text = "Closed";
             this.btn_Display_Tickets_Closed.UseVisualStyleBackColor = false;
             this.btn_Display_Tickets_Closed.Click += new System.EventHandler(this.btn_Display_Tickets_Closed_Click);
-            //
+            // 
             // txtDetailsDescription
-            //
+            // 
             this.txtDetailsDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDetailsDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDetailsDescription.Location = new System.Drawing.Point(0, 518);
@@ -1087,9 +1087,9 @@ namespace DemoApp
             this.txtDetailsDescription.Name = "txtDetailsDescription";
             this.txtDetailsDescription.Size = new System.Drawing.Size(412, 309);
             this.txtDetailsDescription.TabIndex = 22;
-            //
+            // 
             // lblDetailsDescription
-            //
+            // 
             this.lblDetailsDescription.AutoSize = true;
             this.lblDetailsDescription.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDetailsDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1100,9 +1100,9 @@ namespace DemoApp
             this.lblDetailsDescription.Size = new System.Drawing.Size(177, 49);
             this.lblDetailsDescription.TabIndex = 20;
             this.lblDetailsDescription.Text = "Description";
-            //
+            // 
             // lblDetailsWarning
-            //
+            // 
             this.lblDetailsWarning.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblDetailsWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.lblDetailsWarning.ForeColor = System.Drawing.Color.Red;
@@ -1114,9 +1114,9 @@ namespace DemoApp
             this.lblDetailsWarning.TabIndex = 27;
             this.lblDetailsWarning.Text = "Line1\r\nLine2\r\nLine3";
             this.lblDetailsWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // cmbDetailsStatus
-            //
+            // 
             this.cmbDetailsStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmbDetailsStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDetailsStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1126,9 +1126,9 @@ namespace DemoApp
             this.cmbDetailsStatus.Name = "cmbDetailsStatus";
             this.cmbDetailsStatus.Size = new System.Drawing.Size(412, 45);
             this.cmbDetailsStatus.TabIndex = 21;
-            //
+            // 
             // lblDetailsStatus
-            //
+            // 
             this.lblDetailsStatus.AutoSize = true;
             this.lblDetailsStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDetailsStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1139,9 +1139,9 @@ namespace DemoApp
             this.lblDetailsStatus.Size = new System.Drawing.Size(108, 49);
             this.lblDetailsStatus.TabIndex = 24;
             this.lblDetailsStatus.Text = "Status";
-            //
+            // 
             // cmbDetailsPriority
-            //
+            // 
             this.cmbDetailsPriority.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmbDetailsPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDetailsPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1151,9 +1151,9 @@ namespace DemoApp
             this.cmbDetailsPriority.Name = "cmbDetailsPriority";
             this.cmbDetailsPriority.Size = new System.Drawing.Size(412, 45);
             this.cmbDetailsPriority.TabIndex = 19;
-            //
+            // 
             // lblDetailsPriority
-            //
+            // 
             this.lblDetailsPriority.AutoSize = true;
             this.lblDetailsPriority.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDetailsPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1164,9 +1164,9 @@ namespace DemoApp
             this.lblDetailsPriority.Size = new System.Drawing.Size(116, 49);
             this.lblDetailsPriority.TabIndex = 18;
             this.lblDetailsPriority.Text = "Priority";
-            //
+            // 
             // cmbDetailsReporter
-            //
+            // 
             this.cmbDetailsReporter.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmbDetailsReporter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDetailsReporter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1176,9 +1176,9 @@ namespace DemoApp
             this.cmbDetailsReporter.Name = "cmbDetailsReporter";
             this.cmbDetailsReporter.Size = new System.Drawing.Size(412, 45);
             this.cmbDetailsReporter.TabIndex = 17;
-            //
+            // 
             // lblDetailsUser
-            //
+            // 
             this.lblDetailsUser.AutoSize = true;
             this.lblDetailsUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDetailsUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1189,9 +1189,9 @@ namespace DemoApp
             this.lblDetailsUser.Size = new System.Drawing.Size(260, 49);
             this.lblDetailsUser.TabIndex = 16;
             this.lblDetailsUser.Text = "Reported by user";
-            //
+            // 
             // cmbDetailsIncidentType
-            //
+            // 
             this.cmbDetailsIncidentType.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmbDetailsIncidentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDetailsIncidentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1201,9 +1201,9 @@ namespace DemoApp
             this.cmbDetailsIncidentType.Name = "cmbDetailsIncidentType";
             this.cmbDetailsIncidentType.Size = new System.Drawing.Size(412, 45);
             this.cmbDetailsIncidentType.TabIndex = 15;
-            //
+            // 
             // lblDetailsIncidentType
-            //
+            // 
             this.lblDetailsIncidentType.AutoSize = true;
             this.lblDetailsIncidentType.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDetailsIncidentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1214,9 +1214,9 @@ namespace DemoApp
             this.lblDetailsIncidentType.Size = new System.Drawing.Size(242, 49);
             this.lblDetailsIncidentType.TabIndex = 13;
             this.lblDetailsIncidentType.Text = "Type of incident";
-            //
+            // 
             // txtDetailsSubject
-            //
+            // 
             this.txtDetailsSubject.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtDetailsSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDetailsSubject.Location = new System.Drawing.Point(0, 49);
@@ -1224,9 +1224,9 @@ namespace DemoApp
             this.txtDetailsSubject.Name = "txtDetailsSubject";
             this.txtDetailsSubject.Size = new System.Drawing.Size(412, 44);
             this.txtDetailsSubject.TabIndex = 12;
-            //
+            // 
             // lblTicketDetailsSubjectOfIncident
-            //
+            // 
             this.lblTicketDetailsSubjectOfIncident.AutoSize = true;
             this.lblTicketDetailsSubjectOfIncident.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTicketDetailsSubjectOfIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1237,9 +1237,9 @@ namespace DemoApp
             this.lblTicketDetailsSubjectOfIncident.Size = new System.Drawing.Size(278, 49);
             this.lblTicketDetailsSubjectOfIncident.TabIndex = 11;
             this.lblTicketDetailsSubjectOfIncident.Text = "Subject of incident";
-            //
+            // 
             // tableLayoutPanel1
-            //
+            // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1256,9 +1256,9 @@ namespace DemoApp
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(412, 156);
             this.tableLayoutPanel1.TabIndex = 30;
-            //
+            // 
             // btnDetailsEscalate
-            //
+            // 
             this.btnDetailsEscalate.BackColor = System.Drawing.Color.White;
             this.btnDetailsEscalate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDetailsEscalate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -1274,9 +1274,9 @@ namespace DemoApp
             this.btnDetailsEscalate.Text = "Escalate";
             this.btnDetailsEscalate.UseVisualStyleBackColor = false;
             this.btnDetailsEscalate.Click += new System.EventHandler(this.btnDetailsEscalate_Click);
-            //
+            // 
             // btnDetailsUpdate
-            //
+            // 
             this.btnDetailsUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btnDetailsUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDetailsUpdate.FlatAppearance.BorderSize = 0;
@@ -1292,9 +1292,9 @@ namespace DemoApp
             this.btnDetailsUpdate.Text = "Update";
             this.btnDetailsUpdate.UseVisualStyleBackColor = false;
             this.btnDetailsUpdate.Click += new System.EventHandler(this.btnDetailsUpdate_Click);
-            //
+            // 
             // btnDetailsClose
-            //
+            // 
             this.btnDetailsClose.BackColor = System.Drawing.Color.Coral;
             this.btnDetailsClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDetailsClose.FlatAppearance.BorderSize = 0;
@@ -1310,9 +1310,9 @@ namespace DemoApp
             this.btnDetailsClose.Text = "Close";
             this.btnDetailsClose.UseVisualStyleBackColor = false;
             this.btnDetailsClose.Click += new System.EventHandler(this.btnDetailsClose_Click);
-            //
+            // 
             // btnDetailsDelete
-            //
+            // 
             this.btnDetailsDelete.BackColor = System.Drawing.Color.Brown;
             this.btnDetailsDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDetailsDelete.FlatAppearance.BorderSize = 0;
@@ -1328,9 +1328,9 @@ namespace DemoApp
             this.btnDetailsDelete.Text = "Delete";
             this.btnDetailsDelete.UseVisualStyleBackColor = false;
             this.btnDetailsDelete.Click += new System.EventHandler(this.btnDetailsDelete_Click);
-            //
+            // 
             // header_TicketManagement
-            //
+            // 
             this.header_TicketManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.header_TicketManagement.Controls.Add(this.lbl_HeaderTicketManagement);
             this.header_TicketManagement.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1339,9 +1339,9 @@ namespace DemoApp
             this.header_TicketManagement.Name = "header_TicketManagement";
             this.header_TicketManagement.Size = new System.Drawing.Size(1588, 80);
             this.header_TicketManagement.TabIndex = 1;
-            //
+            // 
             // lbl_HeaderTicketManagement
-            //
+            // 
             this.lbl_HeaderTicketManagement.AutoSize = true;
             this.lbl_HeaderTicketManagement.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbl_HeaderTicketManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
@@ -1353,9 +1353,9 @@ namespace DemoApp
             this.lbl_HeaderTicketManagement.TabIndex = 0;
             this.lbl_HeaderTicketManagement.Text = "Ticket Management";
             this.lbl_HeaderTicketManagement.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            //
+            // 
             // tab_CreateTicket
-            //
+            // 
             this.tab_CreateTicket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.tab_CreateTicket.Controls.Add(this.tblCreateIncident);
             this.tab_CreateTicket.Controls.Add(this.rPnl_CreateTicket);
@@ -1365,9 +1365,9 @@ namespace DemoApp
             this.tab_CreateTicket.Size = new System.Drawing.Size(1588, 1185);
             this.tab_CreateTicket.TabIndex = 1;
             this.tab_CreateTicket.Text = "Create Ticket";
-            //
+            // 
             // tblCreateIncident
-            //
+            // 
             this.tblCreateIncident.BackColor = System.Drawing.Color.White;
             this.tblCreateIncident.ColumnCount = 2;
             this.tblCreateIncident.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.43472F));
@@ -1388,9 +1388,9 @@ namespace DemoApp
             this.tblCreateIncident.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tblCreateIncident.Size = new System.Drawing.Size(1048, 860);
             this.tblCreateIncident.TabIndex = 3;
-            //
+            // 
             // lblIncidentSubject
-            //
+            // 
             this.lblIncidentSubject.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblIncidentSubject.AutoSize = true;
             this.lblIncidentSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1402,9 +1402,9 @@ namespace DemoApp
             this.lblIncidentSubject.TabIndex = 0;
             this.lblIncidentSubject.Text = "Incident subject";
             this.lblIncidentSubject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //
+            // 
             // lblIncidentType
-            //
+            // 
             this.lblIncidentType.AutoSize = true;
             this.lblIncidentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIncidentType.Location = new System.Drawing.Point(4, 190);
@@ -1414,9 +1414,9 @@ namespace DemoApp
             this.lblIncidentType.Size = new System.Drawing.Size(372, 80);
             this.lblIncidentType.TabIndex = 2;
             this.lblIncidentType.Text = "Incident type";
-            //
+            // 
             // lblIncidentDescription
-            //
+            // 
             this.lblIncidentDescription.AutoSize = true;
             this.lblIncidentDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIncidentDescription.Location = new System.Drawing.Point(4, 403);
@@ -1426,9 +1426,9 @@ namespace DemoApp
             this.lblIncidentDescription.Size = new System.Drawing.Size(372, 80);
             this.lblIncidentDescription.TabIndex = 1;
             this.lblIncidentDescription.Text = "Incident description";
-            //
+            // 
             // txtIncidentSubject
-            //
+            // 
             this.txtIncidentSubject.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtIncidentSubject.Location = new System.Drawing.Point(417, 73);
             this.txtIncidentSubject.Margin = new System.Windows.Forms.Padding(4);
@@ -1437,9 +1437,9 @@ namespace DemoApp
             this.txtIncidentSubject.Name = "txtIncidentSubject";
             this.txtIncidentSubject.Size = new System.Drawing.Size(604, 44);
             this.txtIncidentSubject.TabIndex = 3;
-            //
+            // 
             // cmbIncidentType
-            //
+            // 
             this.cmbIncidentType.FormattingEnabled = true;
             this.cmbIncidentType.ItemHeight = 25;
             this.cmbIncidentType.Location = new System.Drawing.Point(417, 194);
@@ -1448,9 +1448,9 @@ namespace DemoApp
             this.cmbIncidentType.Name = "cmbIncidentType";
             this.cmbIncidentType.Size = new System.Drawing.Size(604, 33);
             this.cmbIncidentType.TabIndex = 4;
-            //
+            // 
             // txtIncidentDescription
-            //
+            // 
             this.txtIncidentDescription.Location = new System.Drawing.Point(417, 407);
             this.txtIncidentDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtIncidentDescription.MinimumSize = new System.Drawing.Size(604, 44);
@@ -1458,9 +1458,9 @@ namespace DemoApp
             this.txtIncidentDescription.Name = "txtIncidentDescription";
             this.txtIncidentDescription.Size = new System.Drawing.Size(612, 304);
             this.txtIncidentDescription.TabIndex = 5;
-            //
+            // 
             // rPnl_CreateTicket
-            //
+            // 
             this.rPnl_CreateTicket.BackColor = System.Drawing.Color.White;
             this.rPnl_CreateTicket.BorderAngle = 90F;
             this.rPnl_CreateTicket.BorderRadius = 40;
@@ -1479,9 +1479,9 @@ namespace DemoApp
             this.rPnl_CreateTicket.Size = new System.Drawing.Size(1588, 1185);
             this.rPnl_CreateTicket.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateTicket.TabIndex = 2;
-            //
+            // 
             // lblValidationMessageForIncident
-            //
+            // 
             this.lblValidationMessageForIncident.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblValidationMessageForIncident.AutoSize = true;
             this.lblValidationMessageForIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1493,9 +1493,9 @@ namespace DemoApp
             this.lblValidationMessageForIncident.Size = new System.Drawing.Size(221, 80);
             this.lblValidationMessageForIncident.TabIndex = 21;
             this.lblValidationMessageForIncident.Text = "Validation message";
-            //
+            // 
             // btnCreateIncident
-            //
+            // 
             this.btnCreateIncident.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCreateIncident.BackColor = System.Drawing.Color.SeaGreen;
             this.btnCreateIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1508,11 +1508,11 @@ namespace DemoApp
             this.btnCreateIncident.Text = "Submit incident";
             this.btnCreateIncident.UseVisualStyleBackColor = false;
             this.btnCreateIncident.Click += new System.EventHandler(this.btnCreateIncident_Click);
-            //
+            // 
             // tblCreateTicket
-            //
-            this.tblCreateTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.tblCreateTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tblCreateTicket.ColumnCount = 2;
             this.tblCreateTicket.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 380F));
@@ -1544,9 +1544,9 @@ namespace DemoApp
             this.tblCreateTicket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblCreateTicket.Size = new System.Drawing.Size(1042, 845);
             this.tblCreateTicket.TabIndex = 19;
-            //
+            // 
             // lblDateTimeReportedCT
-            //
+            // 
             this.lblDateTimeReportedCT.AutoSize = true;
             this.lblDateTimeReportedCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDateTimeReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1556,9 +1556,9 @@ namespace DemoApp
             this.lblDateTimeReportedCT.Size = new System.Drawing.Size(372, 80);
             this.lblDateTimeReportedCT.TabIndex = 2;
             this.lblDateTimeReportedCT.Text = "Date/Time reported";
-            //
+            // 
             // dtpReportedCT
-            //
+            // 
             this.dtpReportedCT.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dtpReportedCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpReportedCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1568,9 +1568,9 @@ namespace DemoApp
             this.dtpReportedCT.Name = "dtpReportedCT";
             this.dtpReportedCT.Size = new System.Drawing.Size(654, 44);
             this.dtpReportedCT.TabIndex = 3;
-            //
+            // 
             // lblSubjectOfIncidentCT
-            //
+            // 
             this.lblSubjectOfIncidentCT.AutoSize = true;
             this.lblSubjectOfIncidentCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSubjectOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1580,9 +1580,9 @@ namespace DemoApp
             this.lblSubjectOfIncidentCT.Size = new System.Drawing.Size(372, 80);
             this.lblSubjectOfIncidentCT.TabIndex = 4;
             this.lblSubjectOfIncidentCT.Text = "Subject of incident";
-            //
+            // 
             // txtSubjectOfIncidentCT
-            //
+            // 
             this.txtSubjectOfIncidentCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSubjectOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtSubjectOfIncidentCT.Location = new System.Drawing.Point(384, 84);
@@ -1590,9 +1590,9 @@ namespace DemoApp
             this.txtSubjectOfIncidentCT.Name = "txtSubjectOfIncidentCT";
             this.txtSubjectOfIncidentCT.Size = new System.Drawing.Size(654, 44);
             this.txtSubjectOfIncidentCT.TabIndex = 10;
-            //
+            // 
             // txtDescriptionCT
-            //
+            // 
             this.txtDescriptionCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDescriptionCT.Location = new System.Drawing.Point(384, 484);
             this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4);
@@ -1600,11 +1600,11 @@ namespace DemoApp
             this.txtDescriptionCT.MinimumSize = new System.Drawing.Size(656, 200);
             this.txtDescriptionCT.Multiline = true;
             this.txtDescriptionCT.Name = "txtDescriptionCT";
-            this.txtDescriptionCT.Size = new System.Drawing.Size(656, 324);
+            this.txtDescriptionCT.Size = new System.Drawing.Size(656, 357);
             this.txtDescriptionCT.TabIndex = 15;
-            //
+            // 
             // lblTypeOfIncidentCT
-            //
+            // 
             this.lblTypeOfIncidentCT.AutoSize = true;
             this.lblTypeOfIncidentCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTypeOfIncidentCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1614,9 +1614,9 @@ namespace DemoApp
             this.lblTypeOfIncidentCT.Size = new System.Drawing.Size(372, 80);
             this.lblTypeOfIncidentCT.TabIndex = 5;
             this.lblTypeOfIncidentCT.Text = "Type of indicent";
-            //
+            // 
             // lblDescription
-            //
+            // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1626,9 +1626,9 @@ namespace DemoApp
             this.lblDescription.Size = new System.Drawing.Size(372, 365);
             this.lblDescription.TabIndex = 9;
             this.lblDescription.Text = "Description";
-            //
+            // 
             // cmbDeadlineCT
-            //
+            // 
             this.cmbDeadlineCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbDeadlineCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDeadlineCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1638,9 +1638,9 @@ namespace DemoApp
             this.cmbDeadlineCT.Name = "cmbDeadlineCT";
             this.cmbDeadlineCT.Size = new System.Drawing.Size(654, 45);
             this.cmbDeadlineCT.TabIndex = 14;
-            //
+            // 
             // cmbIncidentTypeCT
-            //
+            // 
             this.cmbIncidentTypeCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbIncidentTypeCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIncidentTypeCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1650,9 +1650,9 @@ namespace DemoApp
             this.cmbIncidentTypeCT.Name = "cmbIncidentTypeCT";
             this.cmbIncidentTypeCT.Size = new System.Drawing.Size(654, 45);
             this.cmbIncidentTypeCT.TabIndex = 11;
-            //
+            // 
             // cmbPriorityCT
-            //
+            // 
             this.cmbPriorityCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbPriorityCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPriorityCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1662,9 +1662,9 @@ namespace DemoApp
             this.cmbPriorityCT.Name = "cmbPriorityCT";
             this.cmbPriorityCT.Size = new System.Drawing.Size(654, 45);
             this.cmbPriorityCT.TabIndex = 13;
-            //
+            // 
             // lblDeadlineCT
-            //
+            // 
             this.lblDeadlineCT.AutoSize = true;
             this.lblDeadlineCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDeadlineCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1674,9 +1674,9 @@ namespace DemoApp
             this.lblDeadlineCT.Size = new System.Drawing.Size(372, 80);
             this.lblDeadlineCT.TabIndex = 8;
             this.lblDeadlineCT.Text = "Deadline/follow up";
-            //
+            // 
             // lblReportedByUserCT
-            //
+            // 
             this.lblReportedByUserCT.AutoSize = true;
             this.lblReportedByUserCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblReportedByUserCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1686,9 +1686,9 @@ namespace DemoApp
             this.lblReportedByUserCT.Size = new System.Drawing.Size(372, 80);
             this.lblReportedByUserCT.TabIndex = 6;
             this.lblReportedByUserCT.Text = "Reported by user";
-            //
+            // 
             // cmbUserCT
-            //
+            // 
             this.cmbUserCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbUserCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUserCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1698,9 +1698,9 @@ namespace DemoApp
             this.cmbUserCT.Name = "cmbUserCT";
             this.cmbUserCT.Size = new System.Drawing.Size(654, 45);
             this.cmbUserCT.TabIndex = 12;
-            //
+            // 
             // lblPriorityCT
-            //
+            // 
             this.lblPriorityCT.AutoSize = true;
             this.lblPriorityCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblPriorityCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1710,9 +1710,9 @@ namespace DemoApp
             this.lblPriorityCT.Size = new System.Drawing.Size(372, 80);
             this.lblPriorityCT.TabIndex = 7;
             this.lblPriorityCT.Text = "Priority";
-            //
+            // 
             // lblWarningsCT
-            //
+            // 
             this.lblWarningsCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblWarningsCT.AutoSize = true;
             this.lblWarningsCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
@@ -1723,9 +1723,9 @@ namespace DemoApp
             this.lblWarningsCT.Size = new System.Drawing.Size(199, 78);
             this.lblWarningsCT.TabIndex = 18;
             this.lblWarningsCT.Text = "wow, such errors.\r\nmany mistakes.\r\nvery issues.";
-            //
+            // 
             // btnCancelCT
-            //
+            // 
             this.btnCancelCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancelCT.BackColor = System.Drawing.Color.White;
             this.btnCancelCT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
@@ -1741,9 +1741,9 @@ namespace DemoApp
             this.btnCancelCT.Text = "Cancel";
             this.btnCancelCT.UseVisualStyleBackColor = false;
             this.btnCancelCT.Click += new System.EventHandler(this.btnCancelCT_Click);
-            //
+            // 
             // btnSubmitTicketCT
-            //
+            // 
             this.btnSubmitTicketCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSubmitTicketCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnSubmitTicketCT.FlatAppearance.BorderSize = 0;
@@ -1758,9 +1758,9 @@ namespace DemoApp
             this.btnSubmitTicketCT.Text = "Submit Ticket";
             this.btnSubmitTicketCT.UseVisualStyleBackColor = false;
             this.btnSubmitTicketCT.Click += new System.EventHandler(this.btnSubmitTicketCT_Click);
-            //
+            // 
             // header_CreateTicket
-            //
+            // 
             this.header_CreateTicket.Controls.Add(this.lbl_HeaderCreateTicket);
             this.header_CreateTicket.Dock = System.Windows.Forms.DockStyle.Top;
             this.header_CreateTicket.Location = new System.Drawing.Point(0, 0);
@@ -1768,9 +1768,9 @@ namespace DemoApp
             this.header_CreateTicket.Name = "header_CreateTicket";
             this.header_CreateTicket.Size = new System.Drawing.Size(1588, 80);
             this.header_CreateTicket.TabIndex = 1;
-            //
+            // 
             // lbl_HeaderCreateTicket
-            //
+            // 
             this.lbl_HeaderCreateTicket.AutoSize = true;
             this.lbl_HeaderCreateTicket.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbl_HeaderCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
@@ -1782,9 +1782,9 @@ namespace DemoApp
             this.lbl_HeaderCreateTicket.TabIndex = 0;
             this.lbl_HeaderCreateTicket.Text = "Create Ticket";
             this.lbl_HeaderCreateTicket.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            //
+            // 
             // tab_UserManagement
-            //
+            // 
             this.tab_UserManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.tab_UserManagement.Controls.Add(this.rPnl_UserManagement);
             this.tab_UserManagement.Location = new System.Drawing.Point(8, 43);
@@ -1793,9 +1793,9 @@ namespace DemoApp
             this.tab_UserManagement.Size = new System.Drawing.Size(1588, 1185);
             this.tab_UserManagement.TabIndex = 3;
             this.tab_UserManagement.Text = "User Management";
-            //
+            // 
             // rPnl_UserManagement
-            //
+            // 
             this.rPnl_UserManagement.BackColor = System.Drawing.Color.White;
             this.rPnl_UserManagement.BorderAngle = 90F;
             this.rPnl_UserManagement.BorderRadius = 40;
@@ -1808,9 +1808,9 @@ namespace DemoApp
             this.rPnl_UserManagement.Size = new System.Drawing.Size(1588, 1185);
             this.rPnl_UserManagement.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_UserManagement.TabIndex = 3;
-            //
+            // 
             // header_UserManagement
-            //
+            // 
             this.header_UserManagement.Controls.Add(this.lbl_HeaderUserManagement);
             this.header_UserManagement.Dock = System.Windows.Forms.DockStyle.Top;
             this.header_UserManagement.Location = new System.Drawing.Point(0, 0);
@@ -1818,9 +1818,9 @@ namespace DemoApp
             this.header_UserManagement.Name = "header_UserManagement";
             this.header_UserManagement.Size = new System.Drawing.Size(1588, 80);
             this.header_UserManagement.TabIndex = 1;
-            //
+            // 
             // lbl_HeaderUserManagement
-            //
+            // 
             this.lbl_HeaderUserManagement.AutoSize = true;
             this.lbl_HeaderUserManagement.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbl_HeaderUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
@@ -1832,9 +1832,9 @@ namespace DemoApp
             this.lbl_HeaderUserManagement.TabIndex = 0;
             this.lbl_HeaderUserManagement.Text = "User Management";
             this.lbl_HeaderUserManagement.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            //
+            // 
             // tab_CreateUser
-            //
+            // 
             this.tab_CreateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.tab_CreateUser.Controls.Add(this.rPnl_CreateUser);
             this.tab_CreateUser.Location = new System.Drawing.Point(8, 43);
@@ -1843,9 +1843,9 @@ namespace DemoApp
             this.tab_CreateUser.Size = new System.Drawing.Size(1588, 1185);
             this.tab_CreateUser.TabIndex = 4;
             this.tab_CreateUser.Text = "Create User";
-            //
+            // 
             // rPnl_CreateUser
-            //
+            // 
             this.rPnl_CreateUser.BackColor = System.Drawing.Color.White;
             this.rPnl_CreateUser.BorderAngle = 90F;
             this.rPnl_CreateUser.BorderRadius = 40;
@@ -1873,9 +1873,9 @@ namespace DemoApp
             this.rPnl_CreateUser.Size = new System.Drawing.Size(1588, 1185);
             this.rPnl_CreateUser.SurfaceColor = System.Drawing.Color.Empty;
             this.rPnl_CreateUser.TabIndex = 4;
-            //
+            // 
             // lblWarning
-            //
+            // 
             this.lblWarning.AutoSize = true;
             this.lblWarning.ForeColor = System.Drawing.Color.Red;
             this.lblWarning.Location = new System.Drawing.Point(362, 546);
@@ -1883,9 +1883,9 @@ namespace DemoApp
             this.lblWarning.Name = "lblWarning";
             this.lblWarning.Size = new System.Drawing.Size(0, 25);
             this.lblWarning.TabIndex = 74;
-            //
+            // 
             // label9
-            //
+            // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label9.Location = new System.Drawing.Point(39, 444);
@@ -1893,9 +1893,9 @@ namespace DemoApp
             this.label9.Size = new System.Drawing.Size(167, 37);
             this.label9.TabIndex = 73;
             this.label9.Text = "Password:";
-            //
+            // 
             // btnCreatePassword
-            //
+            // 
             this.btnCreatePassword.BackColor = System.Drawing.Color.Coral;
             this.btnCreatePassword.FlatAppearance.BorderSize = 0;
             this.btnCreatePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1908,10 +1908,10 @@ namespace DemoApp
             this.btnCreatePassword.Text = "Create Password";
             this.btnCreatePassword.UseVisualStyleBackColor = false;
             this.btnCreatePassword.Click += new System.EventHandler(this.btnCreatePassword_Click);
-            //
+            // 
             // txtPassword
-            //
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPassword.BackColor = System.Drawing.SystemColors.Window;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1920,10 +1920,10 @@ namespace DemoApp
             this.txtPassword.ReadOnly = true;
             this.txtPassword.Size = new System.Drawing.Size(513, 44);
             this.txtPassword.TabIndex = 71;
-            //
+            // 
             // comboEmployeeType
-            //
-            this.comboEmployeeType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.comboEmployeeType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboEmployeeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEmployeeType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -1932,49 +1932,49 @@ namespace DemoApp
             this.comboEmployeeType.Name = "comboEmployeeType";
             this.comboEmployeeType.Size = new System.Drawing.Size(782, 45);
             this.comboEmployeeType.TabIndex = 70;
-            //
+            // 
             // txtLastName
-            //
-            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtLastName.Location = new System.Drawing.Point(367, 173);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(782, 44);
             this.txtLastName.TabIndex = 69;
-            //
+            // 
             // txtEmail
-            //
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtEmail.Location = new System.Drawing.Point(367, 237);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(782, 44);
             this.txtEmail.TabIndex = 68;
-            //
+            // 
             // txtUsername
-            //
-            this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtUsername.Location = new System.Drawing.Point(367, 306);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(782, 44);
             this.txtUsername.TabIndex = 67;
-            //
+            // 
             // txtFirstName
-            //
-            this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtFirstName.Location = new System.Drawing.Point(367, 111);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(782, 44);
             this.txtFirstName.TabIndex = 66;
-            //
+            // 
             // btnRegisterUser
-            //
+            // 
             this.btnRegisterUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnRegisterUser.FlatAppearance.BorderSize = 0;
             this.btnRegisterUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1987,9 +1987,9 @@ namespace DemoApp
             this.btnRegisterUser.Text = "Register User";
             this.btnRegisterUser.UseVisualStyleBackColor = false;
             this.btnRegisterUser.Click += new System.EventHandler(this.btnRegisterUser_Click);
-            //
+            // 
             // label7
-            //
+            // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label7.Location = new System.Drawing.Point(39, 377);
@@ -1997,9 +1997,9 @@ namespace DemoApp
             this.label7.Size = new System.Drawing.Size(245, 37);
             this.label7.TabIndex = 64;
             this.label7.Text = "Employee Type:";
-            //
+            // 
             // label6
-            //
+            // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label6.Location = new System.Drawing.Point(39, 181);
@@ -2007,9 +2007,9 @@ namespace DemoApp
             this.label6.Size = new System.Drawing.Size(182, 37);
             this.label6.TabIndex = 63;
             this.label6.Text = "Last Name:";
-            //
+            // 
             // label5
-            //
+            // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label5.Location = new System.Drawing.Point(39, 245);
@@ -2017,9 +2017,9 @@ namespace DemoApp
             this.label5.Size = new System.Drawing.Size(106, 37);
             this.label5.TabIndex = 62;
             this.label5.Text = "Email:";
-            //
+            // 
             // label4
-            //
+            // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label4.Location = new System.Drawing.Point(39, 311);
@@ -2027,9 +2027,9 @@ namespace DemoApp
             this.label4.Size = new System.Drawing.Size(173, 37);
             this.label4.TabIndex = 61;
             this.label4.Text = "Username:";
-            //
+            // 
             // label8
-            //
+            // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label8.Location = new System.Drawing.Point(39, 116);
@@ -2037,9 +2037,9 @@ namespace DemoApp
             this.label8.Size = new System.Drawing.Size(184, 37);
             this.label8.TabIndex = 60;
             this.label8.Text = "First Name:";
-            //
+            // 
             // header_CreateUser
-            //
+            // 
             this.header_CreateUser.Controls.Add(this.lbl_HeaderCreateUser);
             this.header_CreateUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.header_CreateUser.Location = new System.Drawing.Point(0, 0);
@@ -2047,9 +2047,9 @@ namespace DemoApp
             this.header_CreateUser.Name = "header_CreateUser";
             this.header_CreateUser.Size = new System.Drawing.Size(1588, 80);
             this.header_CreateUser.TabIndex = 1;
-            //
+            // 
             // lbl_HeaderCreateUser
-            //
+            // 
             this.lbl_HeaderCreateUser.AutoSize = true;
             this.lbl_HeaderCreateUser.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbl_HeaderCreateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
@@ -2061,9 +2061,9 @@ namespace DemoApp
             this.lbl_HeaderCreateUser.TabIndex = 0;
             this.lbl_HeaderCreateUser.Text = "Create User";
             this.lbl_HeaderCreateUser.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            //
+            // 
             // tab_IncidentManagement
-            //
+            // 
             this.tab_IncidentManagement.Controls.Add(this.flowPnl_IncidentFilters);
             this.tab_IncidentManagement.Controls.Add(this.pnlIncidentManagementEditControls);
             this.tab_IncidentManagement.Controls.Add(this.lblValidationForIncidentList);
@@ -2079,9 +2079,9 @@ namespace DemoApp
             this.tab_IncidentManagement.TabIndex = 5;
             this.tab_IncidentManagement.Text = "Incident Management";
             this.tab_IncidentManagement.UseVisualStyleBackColor = true;
-            //
+            // 
             // flowPnl_IncidentFilters
-            //
+            // 
             this.flowPnl_IncidentFilters.Controls.Add(this.lbl_IncidentKeywords);
             this.flowPnl_IncidentFilters.Controls.Add(this.txtBox_IncidentKeywords);
             this.flowPnl_IncidentFilters.Controls.Add(this.btnFilterIncidents);
@@ -2091,9 +2091,9 @@ namespace DemoApp
             this.flowPnl_IncidentFilters.Name = "flowPnl_IncidentFilters";
             this.flowPnl_IncidentFilters.Size = new System.Drawing.Size(1474, 58);
             this.flowPnl_IncidentFilters.TabIndex = 19;
-            //
+            // 
             // lbl_IncidentKeywords
-            //
+            // 
             this.lbl_IncidentKeywords.AutoSize = true;
             this.lbl_IncidentKeywords.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_IncidentKeywords.Location = new System.Drawing.Point(6, 12);
@@ -2102,18 +2102,18 @@ namespace DemoApp
             this.lbl_IncidentKeywords.Size = new System.Drawing.Size(123, 26);
             this.lbl_IncidentKeywords.TabIndex = 7;
             this.lbl_IncidentKeywords.Text = "Keywords:";
-            //
+            // 
             // txtBox_IncidentKeywords
-            //
+            // 
             this.txtBox_IncidentKeywords.Location = new System.Drawing.Point(141, 6);
             this.txtBox_IncidentKeywords.Margin = new System.Windows.Forms.Padding(6);
             this.txtBox_IncidentKeywords.Name = "txtBox_IncidentKeywords";
             this.txtBox_IncidentKeywords.PromptText = "Enter your keywords (Separate by using spaces or commas)";
             this.txtBox_IncidentKeywords.Size = new System.Drawing.Size(932, 31);
             this.txtBox_IncidentKeywords.TabIndex = 11;
-            //
+            // 
             // btnFilterIncidents
-            //
+            // 
             this.btnFilterIncidents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnFilterIncidents.FlatAppearance.BorderSize = 0;
             this.btnFilterIncidents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -2126,9 +2126,9 @@ namespace DemoApp
             this.btnFilterIncidents.Text = "Filter";
             this.btnFilterIncidents.UseVisualStyleBackColor = false;
             this.btnFilterIncidents.Click += new System.EventHandler(this.btnFilterIncidents_Click);
-            //
+            // 
             // btnClearIncidentFilters
-            //
+            // 
             this.btnClearIncidentFilters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnClearIncidentFilters.FlatAppearance.BorderSize = 0;
             this.btnClearIncidentFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -2141,9 +2141,9 @@ namespace DemoApp
             this.btnClearIncidentFilters.Text = "Clear Filters";
             this.btnClearIncidentFilters.UseVisualStyleBackColor = false;
             this.btnClearIncidentFilters.Click += new System.EventHandler(this.btnClearIncidentFilters_Click);
-            //
+            // 
             // pnlIncidentManagementEditControls
-            //
+            // 
             this.pnlIncidentManagementEditControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlIncidentManagementEditControls.Controls.Add(this.btnSelectAllIncidents);
             this.pnlIncidentManagementEditControls.Controls.Add(this.btnDeleteSelectedIncidents);
@@ -2152,9 +2152,9 @@ namespace DemoApp
             this.pnlIncidentManagementEditControls.Name = "pnlIncidentManagementEditControls";
             this.pnlIncidentManagementEditControls.Size = new System.Drawing.Size(130, 324);
             this.pnlIncidentManagementEditControls.TabIndex = 18;
-            //
+            // 
             // btnSelectAllIncidents
-            //
+            // 
             this.btnSelectAllIncidents.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectAllIncidents.Location = new System.Drawing.Point(0, 0);
             this.btnSelectAllIncidents.Margin = new System.Windows.Forms.Padding(4);
@@ -2164,9 +2164,9 @@ namespace DemoApp
             this.btnSelectAllIncidents.Text = "Select all";
             this.btnSelectAllIncidents.UseVisualStyleBackColor = true;
             this.btnSelectAllIncidents.Click += new System.EventHandler(this.btnSelectAllIncidents_Click);
-            //
+            // 
             // btnDeleteSelectedIncidents
-            //
+            // 
             this.btnDeleteSelectedIncidents.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteSelectedIncidents.Location = new System.Drawing.Point(0, 76);
             this.btnDeleteSelectedIncidents.Margin = new System.Windows.Forms.Padding(4);
@@ -2176,9 +2176,9 @@ namespace DemoApp
             this.btnDeleteSelectedIncidents.Text = "Delete selection";
             this.btnDeleteSelectedIncidents.UseVisualStyleBackColor = true;
             this.btnDeleteSelectedIncidents.Click += new System.EventHandler(this.btnDeleteSelectedIncidents_Click);
-            //
+            // 
             // lblValidationForIncidentList
-            //
+            // 
             this.lblValidationForIncidentList.AutoSize = true;
             this.lblValidationForIncidentList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblValidationForIncidentList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2190,9 +2190,9 @@ namespace DemoApp
             this.lblValidationForIncidentList.Size = new System.Drawing.Size(1338, 46);
             this.lblValidationForIncidentList.TabIndex = 17;
             this.lblValidationForIncidentList.Text = "Validation for loading incident data";
-            //
+            // 
             // listViewIncidents
-            //
+            // 
             this.listViewIncidents.HideSelection = false;
             this.listViewIncidents.Location = new System.Drawing.Point(44, 138);
             this.listViewIncidents.Margin = new System.Windows.Forms.Padding(4);
@@ -2201,9 +2201,9 @@ namespace DemoApp
             this.listViewIncidents.TabIndex = 2;
             this.listViewIncidents.UseCompatibleStateImageBehavior = false;
             this.listViewIncidents.SelectedIndexChanged += new System.EventHandler(this.listViewIncidents_SelectedIndexChanged);
-            //
+            // 
             // label3
-            //
+            // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(36, 28);
@@ -2213,9 +2213,9 @@ namespace DemoApp
             this.label3.Size = new System.Drawing.Size(460, 51);
             this.label3.TabIndex = 1;
             this.label3.Text = "Incident Management";
-            //
+            // 
             // pnlIncidentDetails
-            //
+            // 
             this.pnlIncidentDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlIncidentDetails.Controls.Add(this.lblDescriptionOfIncident);
             this.pnlIncidentDetails.Controls.Add(this.lblTypeOfIncident);
@@ -2229,9 +2229,9 @@ namespace DemoApp
             this.pnlIncidentDetails.Name = "pnlIncidentDetails";
             this.pnlIncidentDetails.Size = new System.Drawing.Size(686, 686);
             this.pnlIncidentDetails.TabIndex = 16;
-            //
+            // 
             // lblDescriptionOfIncident
-            //
+            // 
             this.lblDescriptionOfIncident.AutoSize = true;
             this.lblDescriptionOfIncident.Location = new System.Drawing.Point(56, 340);
             this.lblDescriptionOfIncident.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -2240,9 +2240,9 @@ namespace DemoApp
             this.lblDescriptionOfIncident.TabIndex = 12;
             this.lblDescriptionOfIncident.Text = "Description:";
             this.lblDescriptionOfIncident.UseCompatibleTextRendering = true;
-            //
+            // 
             // lblTypeOfIncident
-            //
+            // 
             this.lblTypeOfIncident.AutoSize = true;
             this.lblTypeOfIncident.Location = new System.Drawing.Point(52, 236);
             this.lblTypeOfIncident.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -2250,9 +2250,9 @@ namespace DemoApp
             this.lblTypeOfIncident.Size = new System.Drawing.Size(66, 25);
             this.lblTypeOfIncident.TabIndex = 11;
             this.lblTypeOfIncident.Text = "Type:";
-            //
+            // 
             // lblSubjectOfIncident
-            //
+            // 
             this.lblSubjectOfIncident.AutoSize = true;
             this.lblSubjectOfIncident.Location = new System.Drawing.Point(52, 124);
             this.lblSubjectOfIncident.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -2260,9 +2260,9 @@ namespace DemoApp
             this.lblSubjectOfIncident.Size = new System.Drawing.Size(90, 25);
             this.lblSubjectOfIncident.TabIndex = 10;
             this.lblSubjectOfIncident.Text = "Subject:";
-            //
+            // 
             // txtSubjectOfIncident
-            //
+            // 
             this.txtSubjectOfIncident.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSubjectOfIncident.Location = new System.Drawing.Point(44, 160);
             this.txtSubjectOfIncident.Margin = new System.Windows.Forms.Padding(4);
@@ -2271,9 +2271,9 @@ namespace DemoApp
             this.txtSubjectOfIncident.Name = "txtSubjectOfIncident";
             this.txtSubjectOfIncident.Size = new System.Drawing.Size(578, 46);
             this.txtSubjectOfIncident.TabIndex = 3;
-            //
+            // 
             // txtTypeOfIncident
-            //
+            // 
             this.txtTypeOfIncident.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTypeOfIncident.Location = new System.Drawing.Point(44, 272);
             this.txtTypeOfIncident.Margin = new System.Windows.Forms.Padding(4);
@@ -2282,9 +2282,9 @@ namespace DemoApp
             this.txtTypeOfIncident.Name = "txtTypeOfIncident";
             this.txtTypeOfIncident.Size = new System.Drawing.Size(578, 46);
             this.txtTypeOfIncident.TabIndex = 9;
-            //
+            // 
             // txtDescriptionOfIncident
-            //
+            // 
             this.txtDescriptionOfIncident.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescriptionOfIncident.Location = new System.Drawing.Point(48, 384);
             this.txtDescriptionOfIncident.Margin = new System.Windows.Forms.Padding(4);
@@ -2292,9 +2292,9 @@ namespace DemoApp
             this.txtDescriptionOfIncident.Name = "txtDescriptionOfIncident";
             this.txtDescriptionOfIncident.Size = new System.Drawing.Size(578, 174);
             this.txtDescriptionOfIncident.TabIndex = 4;
-            //
+            // 
             // lblSubmittedByUser
-            //
+            // 
             this.lblSubmittedByUser.AutoSize = true;
             this.lblSubmittedByUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubmittedByUser.Location = new System.Drawing.Point(36, 32);
@@ -2303,9 +2303,9 @@ namespace DemoApp
             this.lblSubmittedByUser.Size = new System.Drawing.Size(311, 51);
             this.lblSubmittedByUser.TabIndex = 7;
             this.lblSubmittedByUser.Text = "Incident details";
-            //
+            // 
             // pnlCreateTicket
-            //
+            // 
             this.pnlCreateTicket.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCreateTicket.Controls.Add(this.lblValidationCreateTicket);
             this.pnlCreateTicket.Controls.Add(this.btnCreateTicket);
@@ -2325,18 +2325,18 @@ namespace DemoApp
             this.pnlCreateTicket.Name = "pnlCreateTicket";
             this.pnlCreateTicket.Size = new System.Drawing.Size(706, 690);
             this.pnlCreateTicket.TabIndex = 13;
-            //
+            // 
             // lblValidationCreateTicket
-            //
+            // 
             this.lblValidationCreateTicket.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblValidationCreateTicket.Location = new System.Drawing.Point(0, 632);
             this.lblValidationCreateTicket.Margin = new System.Windows.Forms.Padding(4);
             this.lblValidationCreateTicket.Name = "lblValidationCreateTicket";
             this.lblValidationCreateTicket.Size = new System.Drawing.Size(706, 54);
             this.lblValidationCreateTicket.TabIndex = 13;
-            //
+            // 
             // btnCreateTicket
-            //
+            // 
             this.btnCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateTicket.Location = new System.Drawing.Point(264, 560);
             this.btnCreateTicket.Margin = new System.Windows.Forms.Padding(4);
@@ -2346,9 +2346,9 @@ namespace DemoApp
             this.btnCreateTicket.Text = "Create";
             this.btnCreateTicket.UseVisualStyleBackColor = true;
             this.btnCreateTicket.Click += new System.EventHandler(this.btnCreateTicket_Click);
-            //
+            // 
             // lblDeadline
-            //
+            // 
             this.lblDeadline.AutoSize = true;
             this.lblDeadline.Location = new System.Drawing.Point(56, 468);
             this.lblDeadline.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -2356,9 +2356,9 @@ namespace DemoApp
             this.lblDeadline.Size = new System.Drawing.Size(103, 25);
             this.lblDeadline.TabIndex = 16;
             this.lblDeadline.Text = "Deadline:";
-            //
+            // 
             // lblCreateTicket
-            //
+            // 
             this.lblCreateTicket.AutoSize = true;
             this.lblCreateTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCreateTicket.Location = new System.Drawing.Point(208, 24);
@@ -2367,9 +2367,9 @@ namespace DemoApp
             this.lblCreateTicket.Size = new System.Drawing.Size(264, 51);
             this.lblCreateTicket.TabIndex = 8;
             this.lblCreateTicket.Text = "Create ticket";
-            //
+            // 
             // cmbPriority
-            //
+            // 
             this.cmbPriority.FormattingEnabled = true;
             this.cmbPriority.Location = new System.Drawing.Point(52, 332);
             this.cmbPriority.Margin = new System.Windows.Forms.Padding(4);
@@ -2377,9 +2377,9 @@ namespace DemoApp
             this.cmbPriority.Name = "cmbPriority";
             this.cmbPriority.Size = new System.Drawing.Size(604, 33);
             this.cmbPriority.TabIndex = 13;
-            //
+            // 
             // cmbDeadlineInterval
-            //
+            // 
             this.cmbDeadlineInterval.FormattingEnabled = true;
             this.cmbDeadlineInterval.Location = new System.Drawing.Point(52, 504);
             this.cmbDeadlineInterval.Margin = new System.Windows.Forms.Padding(4);
@@ -2387,9 +2387,9 @@ namespace DemoApp
             this.cmbDeadlineInterval.Name = "cmbDeadlineInterval";
             this.cmbDeadlineInterval.Size = new System.Drawing.Size(604, 33);
             this.cmbDeadlineInterval.TabIndex = 15;
-            //
+            // 
             // cmbUser
-            //
+            // 
             this.cmbUser.FormattingEnabled = true;
             this.cmbUser.Location = new System.Drawing.Point(52, 244);
             this.cmbUser.Margin = new System.Windows.Forms.Padding(4);
@@ -2397,9 +2397,9 @@ namespace DemoApp
             this.cmbUser.Name = "cmbUser";
             this.cmbUser.Size = new System.Drawing.Size(604, 33);
             this.cmbUser.TabIndex = 12;
-            //
+            // 
             // lblStatus
-            //
+            // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(56, 384);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -2407,9 +2407,9 @@ namespace DemoApp
             this.lblStatus.Size = new System.Drawing.Size(79, 25);
             this.lblStatus.TabIndex = 14;
             this.lblStatus.Text = "Status:";
-            //
+            // 
             // cmbNewIncidentType
-            //
+            // 
             this.cmbNewIncidentType.FormattingEnabled = true;
             this.cmbNewIncidentType.Location = new System.Drawing.Point(52, 160);
             this.cmbNewIncidentType.Margin = new System.Windows.Forms.Padding(4);
@@ -2417,9 +2417,9 @@ namespace DemoApp
             this.cmbNewIncidentType.Name = "cmbNewIncidentType";
             this.cmbNewIncidentType.Size = new System.Drawing.Size(604, 33);
             this.cmbNewIncidentType.TabIndex = 11;
-            //
+            // 
             // cmbStatus
-            //
+            // 
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Location = new System.Drawing.Point(52, 416);
             this.cmbStatus.Margin = new System.Windows.Forms.Padding(4);
@@ -2427,9 +2427,9 @@ namespace DemoApp
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(604, 33);
             this.cmbStatus.TabIndex = 14;
-            //
+            // 
             // lblPriority
-            //
+            // 
             this.lblPriority.AutoSize = true;
             this.lblPriority.Location = new System.Drawing.Point(56, 300);
             this.lblPriority.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -2437,9 +2437,9 @@ namespace DemoApp
             this.lblPriority.Size = new System.Drawing.Size(85, 25);
             this.lblPriority.TabIndex = 13;
             this.lblPriority.Text = "Priority:";
-            //
+            // 
             // lblUser
-            //
+            // 
             this.lblUser.AutoSize = true;
             this.lblUser.Location = new System.Drawing.Point(52, 212);
             this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -2447,9 +2447,9 @@ namespace DemoApp
             this.lblUser.Size = new System.Drawing.Size(63, 25);
             this.lblUser.TabIndex = 12;
             this.lblUser.Text = "User:";
-            //
+            // 
             // lblNewIncidentType
-            //
+            // 
             this.lblNewIncidentType.AutoSize = true;
             this.lblNewIncidentType.Location = new System.Drawing.Point(52, 124);
             this.lblNewIncidentType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -2457,9 +2457,9 @@ namespace DemoApp
             this.lblNewIncidentType.Size = new System.Drawing.Size(66, 25);
             this.lblNewIncidentType.TabIndex = 11;
             this.lblNewIncidentType.Text = "Type:";
-            //
+            // 
             // tab_TicketArchive
-            //
+            // 
             this.tab_TicketArchive.Controls.Add(this.pnlTicketArchiveEditControls);
             this.tab_TicketArchive.Controls.Add(this.pnlTicketDetails);
             this.tab_TicketArchive.Controls.Add(this.lblValidationForArchivedTicketList);
@@ -2473,9 +2473,9 @@ namespace DemoApp
             this.tab_TicketArchive.TabIndex = 6;
             this.tab_TicketArchive.Text = "TicketArchive";
             this.tab_TicketArchive.UseVisualStyleBackColor = true;
-            //
+            // 
             // pnlTicketArchiveEditControls
-            //
+            // 
             this.pnlTicketArchiveEditControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlTicketArchiveEditControls.Controls.Add(this.btnSelectAllArchivedTickets);
             this.pnlTicketArchiveEditControls.Controls.Add(this.btnDeleteSelectionFromArchive);
@@ -2484,9 +2484,9 @@ namespace DemoApp
             this.pnlTicketArchiveEditControls.Name = "pnlTicketArchiveEditControls";
             this.pnlTicketArchiveEditControls.Size = new System.Drawing.Size(130, 330);
             this.pnlTicketArchiveEditControls.TabIndex = 21;
-            //
+            // 
             // btnSelectAllArchivedTickets
-            //
+            // 
             this.btnSelectAllArchivedTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectAllArchivedTickets.Location = new System.Drawing.Point(0, 0);
             this.btnSelectAllArchivedTickets.Margin = new System.Windows.Forms.Padding(4);
@@ -2496,9 +2496,9 @@ namespace DemoApp
             this.btnSelectAllArchivedTickets.Text = "Select all";
             this.btnSelectAllArchivedTickets.UseVisualStyleBackColor = true;
             this.btnSelectAllArchivedTickets.Click += new System.EventHandler(this.btnSelectAllArchivedTickets_Click);
-            //
+            // 
             // btnDeleteSelectionFromArchive
-            //
+            // 
             this.btnDeleteSelectionFromArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteSelectionFromArchive.Location = new System.Drawing.Point(0, 76);
             this.btnDeleteSelectionFromArchive.Margin = new System.Windows.Forms.Padding(4);
@@ -2508,9 +2508,9 @@ namespace DemoApp
             this.btnDeleteSelectionFromArchive.Text = "Delete selection";
             this.btnDeleteSelectionFromArchive.UseVisualStyleBackColor = true;
             this.btnDeleteSelectionFromArchive.Click += new System.EventHandler(this.btnDeleteSelectionFromArchive_Click);
-            //
+            // 
             // pnlTicketDetails
-            //
+            // 
             this.pnlTicketDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlTicketDetails.Controls.Add(this.lblTicketDescription);
             this.pnlTicketDetails.Controls.Add(this.lblTypeOfTheIncident);
@@ -2524,9 +2524,9 @@ namespace DemoApp
             this.pnlTicketDetails.Name = "pnlTicketDetails";
             this.pnlTicketDetails.Size = new System.Drawing.Size(1470, 622);
             this.pnlTicketDetails.TabIndex = 20;
-            //
+            // 
             // lblTicketDescription
-            //
+            // 
             this.lblTicketDescription.AutoSize = true;
             this.lblTicketDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTicketDescription.Location = new System.Drawing.Point(92, 344);
@@ -2536,9 +2536,9 @@ namespace DemoApp
             this.lblTicketDescription.Size = new System.Drawing.Size(186, 48);
             this.lblTicketDescription.TabIndex = 11;
             this.lblTicketDescription.Text = "Description:";
-            //
+            // 
             // lblTypeOfTheIncident
-            //
+            // 
             this.lblTypeOfTheIncident.AutoSize = true;
             this.lblTypeOfTheIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTypeOfTheIncident.Location = new System.Drawing.Point(92, 260);
@@ -2548,9 +2548,9 @@ namespace DemoApp
             this.lblTypeOfTheIncident.Size = new System.Drawing.Size(205, 48);
             this.lblTypeOfTheIncident.TabIndex = 10;
             this.lblTypeOfTheIncident.Text = "Incident type:";
-            //
+            // 
             // lblSubject
-            //
+            // 
             this.lblSubject.AutoSize = true;
             this.lblSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubject.Location = new System.Drawing.Point(92, 172);
@@ -2560,9 +2560,9 @@ namespace DemoApp
             this.lblSubject.Size = new System.Drawing.Size(132, 48);
             this.lblSubject.TabIndex = 9;
             this.lblSubject.Text = "Subject:";
-            //
+            // 
             // lblTicketDetails
-            //
+            // 
             this.lblTicketDetails.AutoSize = true;
             this.lblTicketDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTicketDetails.Location = new System.Drawing.Point(544, 44);
@@ -2571,9 +2571,9 @@ namespace DemoApp
             this.lblTicketDetails.Size = new System.Drawing.Size(275, 51);
             this.lblTicketDetails.TabIndex = 8;
             this.lblTicketDetails.Text = "Ticket details";
-            //
+            // 
             // txtDescription
-            //
+            // 
             this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescription.Location = new System.Drawing.Point(328, 344);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
@@ -2581,9 +2581,9 @@ namespace DemoApp
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(834, 238);
             this.txtDescription.TabIndex = 6;
-            //
+            // 
             // txtIncidentType
-            //
+            // 
             this.txtIncidentType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIncidentType.Location = new System.Drawing.Point(328, 260);
             this.txtIncidentType.Margin = new System.Windows.Forms.Padding(4);
@@ -2592,9 +2592,9 @@ namespace DemoApp
             this.txtIncidentType.Name = "txtIncidentType";
             this.txtIncidentType.Size = new System.Drawing.Size(834, 46);
             this.txtIncidentType.TabIndex = 5;
-            //
+            // 
             // txtSubject
-            //
+            // 
             this.txtSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSubject.Location = new System.Drawing.Point(328, 172);
             this.txtSubject.Margin = new System.Windows.Forms.Padding(4);
@@ -2603,9 +2603,9 @@ namespace DemoApp
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(834, 46);
             this.txtSubject.TabIndex = 4;
-            //
+            // 
             // lblValidationForArchivedTicketList
-            //
+            // 
             this.lblValidationForArchivedTicketList.AutoSize = true;
             this.lblValidationForArchivedTicketList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblValidationForArchivedTicketList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2617,9 +2617,9 @@ namespace DemoApp
             this.lblValidationForArchivedTicketList.Size = new System.Drawing.Size(1338, 46);
             this.lblValidationForArchivedTicketList.TabIndex = 18;
             this.lblValidationForArchivedTicketList.Text = "Validation for loading archived ticket data";
-            //
+            // 
             // listViewArchivedTickets
-            //
+            // 
             this.listViewArchivedTickets.HideSelection = false;
             this.listViewArchivedTickets.Location = new System.Drawing.Point(44, 148);
             this.listViewArchivedTickets.Margin = new System.Windows.Forms.Padding(4);
@@ -2630,9 +2630,9 @@ namespace DemoApp
             this.listViewArchivedTickets.TabIndex = 3;
             this.listViewArchivedTickets.UseCompatibleStateImageBehavior = false;
             this.listViewArchivedTickets.SelectedIndexChanged += new System.EventHandler(this.listViewArchivedTickets_SelectedIndexChanged);
-            //
+            // 
             // lblTicketArchive
-            //
+            // 
             this.lblTicketArchive.AutoSize = true;
             this.lblTicketArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTicketArchive.Location = new System.Drawing.Point(36, 48);
@@ -2642,9 +2642,9 @@ namespace DemoApp
             this.lblTicketArchive.Size = new System.Drawing.Size(460, 51);
             this.lblTicketArchive.TabIndex = 2;
             this.lblTicketArchive.Text = "Ticket Archive";
-            //
+            // 
             // sideBar
-            //
+            // 
             this.sideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.sideBar.ColumnCount = 1;
             this.sideBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2671,9 +2671,9 @@ namespace DemoApp
             this.sideBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.sideBar.Size = new System.Drawing.Size(464, 1268);
             this.sideBar.TabIndex = 1;
-            //
+            // 
             // tblPnl_UserInfo
-            //
+            // 
             this.tblPnl_UserInfo.ColumnCount = 1;
             this.tblPnl_UserInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblPnl_UserInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2694,9 +2694,9 @@ namespace DemoApp
             this.tblPnl_UserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tblPnl_UserInfo.Size = new System.Drawing.Size(464, 132);
             this.tblPnl_UserInfo.TabIndex = 1;
-            //
+            // 
             // lbl_Welcome
-            //
+            // 
             this.lbl_Welcome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.lbl_Welcome.ForeColor = System.Drawing.Color.White;
@@ -2707,9 +2707,9 @@ namespace DemoApp
             this.lbl_Welcome.TabIndex = 0;
             this.lbl_Welcome.Text = "Welcome,";
             this.lbl_Welcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // lbl_Username
-            //
+            // 
             this.lbl_Username.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.lbl_Username.ForeColor = System.Drawing.Color.White;
@@ -2720,9 +2720,9 @@ namespace DemoApp
             this.lbl_Username.TabIndex = 1;
             this.lbl_Username.Text = "{Username}";
             this.lbl_Username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // lbl_Role
-            //
+            // 
             this.lbl_Role.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Role.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.lbl_Role.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -2733,9 +2733,9 @@ namespace DemoApp
             this.lbl_Role.TabIndex = 2;
             this.lbl_Role.Text = "{Role}";
             this.lbl_Role.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // flowPnl_Navigation
-            //
+            // 
             this.flowPnl_Navigation.Controls.Add(this.btn_Dashboard);
             this.flowPnl_Navigation.Controls.Add(this.btn_TicketManagement);
             this.flowPnl_Navigation.Controls.Add(this.btn_CreateTicket);
@@ -2751,9 +2751,9 @@ namespace DemoApp
             this.flowPnl_Navigation.Size = new System.Drawing.Size(464, 736);
             this.flowPnl_Navigation.TabIndex = 2;
             this.flowPnl_Navigation.WrapContents = false;
-            //
+            // 
             // btn_Dashboard
-            //
+            // 
             this.btn_Dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(222)))));
             this.btn_Dashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_Dashboard.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2775,9 +2775,9 @@ namespace DemoApp
             this.btn_Dashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Dashboard.UseVisualStyleBackColor = false;
             this.btn_Dashboard.Click += new System.EventHandler(this.Btn_Dashboard_Click);
-            //
+            // 
             // btn_TicketManagement
-            //
+            // 
             this.btn_TicketManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btn_TicketManagement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_TicketManagement.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2799,9 +2799,9 @@ namespace DemoApp
             this.btn_TicketManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_TicketManagement.UseVisualStyleBackColor = false;
             this.btn_TicketManagement.Click += new System.EventHandler(this.Btn_TicketManagement_Click);
-            //
+            // 
             // btn_CreateTicket
-            //
+            // 
             this.btn_CreateTicket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btn_CreateTicket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_CreateTicket.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2823,9 +2823,9 @@ namespace DemoApp
             this.btn_CreateTicket.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_CreateTicket.UseVisualStyleBackColor = false;
             this.btn_CreateTicket.Click += new System.EventHandler(this.Btn_CreateTicket_Click);
-            //
+            // 
             // btn_UserManagement
-            //
+            // 
             this.btn_UserManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btn_UserManagement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_UserManagement.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2848,9 +2848,9 @@ namespace DemoApp
             this.btn_UserManagement.UseVisualStyleBackColor = false;
             this.btn_UserManagement.Visible = false;
             this.btn_UserManagement.Click += new System.EventHandler(this.Btn_UserManagement_Click);
-            //
+            // 
             // btn_CreateUser
-            //
+            // 
             this.btn_CreateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btn_CreateUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_CreateUser.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2872,9 +2872,9 @@ namespace DemoApp
             this.btn_CreateUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_CreateUser.UseVisualStyleBackColor = false;
             this.btn_CreateUser.Click += new System.EventHandler(this.Btn_CreateUser_Click);
-            //
+            // 
             // btnIncidentManagement
-            //
+            // 
             this.btnIncidentManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btnIncidentManagement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnIncidentManagement.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2896,9 +2896,9 @@ namespace DemoApp
             this.btnIncidentManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnIncidentManagement.UseVisualStyleBackColor = false;
             this.btnIncidentManagement.Click += new System.EventHandler(this.btnIncidentManagement_Click);
-            //
+            // 
             // btnTicketArchive
-            //
+            // 
             this.btnTicketArchive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
             this.btnTicketArchive.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnTicketArchive.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2920,9 +2920,9 @@ namespace DemoApp
             this.btnTicketArchive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTicketArchive.UseVisualStyleBackColor = false;
             this.btnTicketArchive.Click += new System.EventHandler(this.btnTicketArchive_Click);
-            //
+            // 
             // lbl_LogOut
-            //
+            // 
             this.lbl_LogOut.AutoSize = true;
             this.lbl_LogOut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_LogOut.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2937,9 +2937,9 @@ namespace DemoApp
             this.lbl_LogOut.Text = "Log out";
             this.lbl_LogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbl_LogOut.Click += new System.EventHandler(this.LogOut_Click);
-            //
+            // 
             // tblPnl_Logo
-            //
+            // 
             this.tblPnl_Logo.ColumnCount = 1;
             this.tblPnl_Logo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblPnl_Logo.Controls.Add(this.pic_Logo, 0, 2);
@@ -2955,9 +2955,9 @@ namespace DemoApp
             this.tblPnl_Logo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tblPnl_Logo.Size = new System.Drawing.Size(456, 232);
             this.tblPnl_Logo.TabIndex = 4;
-            //
+            // 
             // pic_Logo
-            //
+            // 
             this.pic_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pic_Logo.Image = ((System.Drawing.Image)(resources.GetObject("pic_Logo.Image")));
             this.pic_Logo.Location = new System.Drawing.Point(8, 112);
@@ -2967,9 +2967,9 @@ namespace DemoApp
             this.pic_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pic_Logo.TabIndex = 1;
             this.pic_Logo.TabStop = false;
-            //
+            // 
             // label1
-            //
+            // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2981,9 +2981,9 @@ namespace DemoApp
             this.label1.TabIndex = 2;
             this.label1.Text = "Licensed to:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            //
+            // 
             // label2
-            //
+            // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2995,9 +2995,9 @@ namespace DemoApp
             this.label2.TabIndex = 3;
             this.label2.Text = "NoDesk";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            //
+            // 
             // Main
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
