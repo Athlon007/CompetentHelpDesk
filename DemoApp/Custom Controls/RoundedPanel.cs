@@ -36,7 +36,9 @@ namespace DemoApp.Custom_Controls
             set { surfaceColor = value; this.Invalidate(); }
         }
 
-        // Methods
+        /// <summary>
+        /// Creates a path with the given Rectangle object and radius.
+        /// </summary>
         private GraphicsPath GetPath(RectangleF rectangle, float radius)
         {
             GraphicsPath graphicsPath = new GraphicsPath();
@@ -49,7 +51,9 @@ namespace DemoApp.Custom_Controls
             return graphicsPath;
         }
 
-        // Override
+        /// <summary>
+        /// Overrides the OnPaint event and creates a new panel with rounded borders.
+        /// </summary>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);

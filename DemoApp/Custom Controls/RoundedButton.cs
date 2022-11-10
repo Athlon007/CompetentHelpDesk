@@ -24,7 +24,9 @@ namespace DemoApp.Custom_Controls
             this.DoubleBuffered = true;
         }
 
-        // Methods 
+        /// <summary>
+        /// Creates the shape with a given rectangle and radius.
+        /// </summary>
         private GraphicsPath GetPath(RectangleF rect, float radius)
         {
             // Create path
@@ -39,6 +41,9 @@ namespace DemoApp.Custom_Controls
             return path;
         }
 
+        /// <summary>
+        /// Overrides the OnPaint event and creates the shape of the button
+        /// </summary>
         protected override void OnPaint(PaintEventArgs pevent)
         {
             // Set mode to anti-alias
