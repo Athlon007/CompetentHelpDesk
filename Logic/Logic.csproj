@@ -160,6 +160,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchivedTicketService.cs" />
     <Compile Include="Databases.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="ErrorHandler.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusStruct.cs" />
     <Compile Include="TicketEscalationService.cs" />
+    <Compile Include="IncidentFilteringService.cs" />
     <Compile Include="TicketsService.cs" />
     <Compile Include="TicketTransferService.cs" />
   </ItemGroup>

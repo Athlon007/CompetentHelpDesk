@@ -22,25 +22,25 @@ namespace Logic
             incidentdb = new IncidentDAO();
         }
 
-        public IMongoCollection<BsonDocument> GetAllIncidents() 
+        public List<BsonDocument> GetAllIncidents() 
         {
             return incidentdb.GetAllIncidents();    
         }
 
-        public Incident ConvertDocumentToObject(BsonDocument bsonDocument) { 
+        public Incident ConvertDocumentToIncidentInstance(BsonDocument bsonDocument) { 
 
-            return incidentdb.ConvertDocumentToObject(bsonDocument);
+            return incidentdb.ConvertDocumentToIncidentInstance(bsonDocument);
         }
 
-        public int RetrieveDocumentsCount(IMongoCollection<BsonDocument> db)
-        {
-            return incidentdb.RetrieveDocumentsCount(db);
-        }
 
-        public List<Incident> ConvertAllDocumentsToIncidentList(IMongoCollection<BsonDocument> incidentsdb)
+        public List<Incident> ConvertAllDocumentsToIncidentList(List<BsonDocument> incidentsdb)
         {
             return incidentdb.ConvertAllDocumentsToIncidentList(incidentsdb);
         }
+
+        public int RetrievePreviousIncidentId() 
+        { return incidentdb.RetrievePreviousDocumentId(); }
+
 
         public void CreateIncident(Incident incident) 
         {
@@ -73,6 +73,13 @@ namespace Logic
             };
             ticketdb.Insert(document);
 
+        }
+
+
+        public void RemoveIncidentFromIncidentDb(int id) 
+        {
+            incidentdb.RemoveIncidentFromIncidentDb(id);
+        
         }
     }
 }
