@@ -1597,7 +1597,6 @@ namespace DemoApp
             this.txtDescriptionCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDescriptionCT.Location = new System.Drawing.Point(384, 484);
             this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescriptionCT.MaximumSize = new System.Drawing.Size(656, 360);
             this.txtDescriptionCT.MinimumSize = new System.Drawing.Size(656, 200);
             this.txtDescriptionCT.Multiline = true;
             this.txtDescriptionCT.Name = "txtDescriptionCT";
