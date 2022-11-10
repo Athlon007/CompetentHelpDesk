@@ -761,7 +761,7 @@ namespace DemoApp
             var enums = new TicketEnumsTransfer((IncidentTypes)cmbDetailsIncidentType.SelectedItem,
                                                 (TicketPriority)cmbDetailsPriority.SelectedItem,
                                                 (TicketStatus)cmbDetailsStatus.SelectedItem);
-            var employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem, null);
+            var employeeTransfer = new TicketEmployeeTransfer((Employee)cmbDetailsReporter.SelectedItem);
 
             StatusStruct status = ticketService.UpdateTicket(detailedTicket, text, enums, employeeTransfer);
 
