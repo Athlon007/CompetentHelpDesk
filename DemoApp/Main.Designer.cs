@@ -1593,6 +1593,7 @@ namespace DemoApp
             // 
             // txtDescriptionCT
             // 
+            this.txtDescriptionCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDescriptionCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDescriptionCT.Location = new System.Drawing.Point(384, 484);
             this.txtDescriptionCT.Margin = new System.Windows.Forms.Padding(4);
