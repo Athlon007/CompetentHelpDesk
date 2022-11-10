@@ -362,7 +362,6 @@ namespace DemoApp
         {
             LoadUserTypes();
             ClearRegisterForm();
-            btnRegisterUser.Enabled = false;
             btnCreatePassword.Enabled = true;
         }
 
@@ -1231,12 +1230,15 @@ namespace DemoApp
         {
             bool empty = false;
 
-            foreach (TextBox tb in rPnl_CreateUser.Controls)
+            foreach (Control tb in rPnl_CreateUser.Controls)
             {
-                if (string.IsNullOrEmpty(tb.Text))
+                if (tb is TextBox)
                 {
-                    empty = true;
-                    break;
+                    if (string.IsNullOrEmpty(tb.Text))
+                    {
+                        empty = true;
+                        break;
+                    }
                 }
             }
             return empty;
