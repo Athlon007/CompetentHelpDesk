@@ -60,5 +60,24 @@ namespace DemoApp
 
         }
 
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(this, new EventArgs());
+                e.SuppressKeyPress = true;
+                
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(this, new EventArgs());
+                e.SuppressKeyPress = true;
+            }
+        }
+
     }
 }
