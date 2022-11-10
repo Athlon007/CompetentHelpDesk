@@ -157,7 +157,7 @@ namespace DemoApp
         }
 
         /// <summary>
-        /// Loads the dashboard data into the circle progression bars
+        /// Loads the dashboard data into the circle progression bars.
         /// </summary>
         private void LoadDashboardData()
         {
