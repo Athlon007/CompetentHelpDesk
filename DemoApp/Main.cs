@@ -17,6 +17,8 @@ namespace DemoApp
         private readonly EmployeeService employeeService;
         private readonly TicketEscalationService ticketEscalationService;
         private readonly IncidentService incidentService = new IncidentService();
+        private readonly TicketTransferService ticketTransferService;
+        private LoginService loginService;
         private readonly ArchivedTicketService archivedTicketService = new ArchivedTicketService();
         private readonly IncidentFilteringService incidentFilterService = new IncidentFilteringService();
 
@@ -25,10 +27,13 @@ namespace DemoApp
 
         // Incidents
         private List<Incident> incidentList;
-        private List<Incident> filteredIncidents; 
+        private List<Incident> filteredIncidents;
 
         /// <summary> Currently logged-in employee.</summary>
         private readonly Employee employee;
+
+        //Generated password
+        private HashedPasswordWithSalt password;
 
         // Styling variables
         readonly Color themeGreen = ColorTranslator.FromHtml("#3E8061");
@@ -210,6 +215,8 @@ namespace DemoApp
                 // Load all tickets
                 LoadTickets(TicketLoadStatus.All);
                 CleanTicketDetails();
+                //Fill assigned employee combobox
+                LoadAssignedEmployees();
                 lblValidationForArchiving.Hide();
             }
         }
@@ -349,7 +356,15 @@ namespace DemoApp
             if (tabControl.SelectedIndex != 4)
             {
                 tabControl.SelectedIndex = 4;
+                LoadCreateTicketPage();
             }
+        }
+
+        private void LoadCreateTicketPage()
+        {
+            LoadUserTypes();
+            ClearRegisterForm();
+            btnCreatePassword.Enabled = true;
         }
 
         private void LogOut_Click(object sender, EventArgs e)
@@ -1191,18 +1206,123 @@ namespace DemoApp
             }
         }
 
+        private void btnRegisterUser_Click(object sender, EventArgs e)
+        {
+            if (IsTextBoxesEmpty())
+            {
+                lblWarning.Text = "Please fill in all the blanks.";
+            }
+            else
+            {
+                string email = txtEmail.Text;
+                string username = txtUsername.Text;
+                string firsname = txtFirstName.Text;
+                string lastname = txtLastName.Text;
+                EmployeeType type = (EmployeeType)comboEmployeeType.SelectedIndex;
+                string passwordHash = password.HashedPassword;
+                string salt = password.Salt;
+
+                StatusStruct status = employeeService.CreateUser(email, username, firsname, lastname, type, passwordHash, salt);
+
+                if (status.Code == 0)
+                {
+                    password = null;
+                    LoadCreateTicketPage();
+                }
+                else
+                {
+                    MessageBox.Show(status.Message);
+                }
+            }
+        }
+
+        private void LoadUserTypes()
+        {
+            comboEmployeeType.Items.Clear();
+            foreach (var item in Enum.GetValues(typeof(EmployeeType)))
+            {
+                comboEmployeeType.Items.Add(item);
+            }
+        }
+
+        private bool IsTextBoxesEmpty()
+        {
+            bool empty = false;
+
+            foreach (Control tb in rPnl_CreateUser.Controls)
+            {
+                if (tb is TextBox)
+                {
+                    if (string.IsNullOrEmpty(tb.Text))
+                    {
+                        empty = true;
+                        break;
+                    }
+                }
+            }
+            return empty;
+        }
+
+        private void ClearRegisterForm()
+        {
+            txtEmail.Text = "";
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtUsername.Text = "";
+            comboEmployeeType.SelectedIndex = -1;
+            txtPassword.Text = "";
+        }
+        private void LoadAssignedEmployees()
+        {
+            cmbEmployees.Items.Clear();
+            List<Employee> employees = employeeService.GetEmployeesByType(EmployeeType.ServiceDesk);
+            foreach (var item in employees)
+            {
+                cmbEmployees.Items.Add(item);
+            }
+        }
+
+        private void btnTransfer_Click(object sender, EventArgs e)
+        {
+            Employee employee = (Employee)cmbEmployees.SelectedItem;
+            Ticket ticket = (Ticket)listView_TicketManagement.SelectedItems[0].Tag;
+            StatusStruct status = ticketTransferService.TransferTicket(ticket, employee);
+            if (status.Code == 0)
+            {
+                cmbEmployees.SelectedIndex = -1;
+                listView_TicketManagement.SelectedIndices.Clear();
+            }
+            else
+            {
+                MessageBox.Show(status.Message);
+            }
+        }
+
+        private void btnCreatePassword_Click(object sender, EventArgs e)
+        {
+            if (loginService == null)
+            {
+                loginService = new LoginService();
+            }
+            int length = 8;
+            string passwrd = employeeService.GetRandomPassword(length);
+            password = loginService.CreateHashedPasswordWithSalt(passwrd);
+            txtPassword.Text = passwrd;
+            btnCreatePassword.Enabled = false;
+        }
+
         private void btnArchiveTickets_Click(object sender, EventArgs e)
         {
             lblValidationForArchiving.Show();
             try
             {
                 archivedTicketService.ArchiveTickets(this.employee);
-                
+
                 lblValidationForArchiving.ForeColor = Color.Green;
                 lblValidationForArchiving.Text = "The tickets were archived";
             }
             catch (Exception exception)
-            { 
+            {
                 lblValidationForArchiving.Text = exception.Message;
             }
         }
@@ -1342,14 +1462,14 @@ namespace DemoApp
                     {
                         Incident incident = (Incident)item.Tag;
                         incidentService.RemoveIncidentFromIncidentDb(incident.Id);
-                        listViewIncidents.Items.Remove(item);   
+                        listViewIncidents.Items.Remove(item);
 
                     }
                 }
 
                 txtSubjectOfIncident.Clear();
                 txtTypeOfIncident.Clear();
-                txtDescriptionOfIncident.Clear();   
+                txtDescriptionOfIncident.Clear();
             }
         }
 
@@ -1380,7 +1500,6 @@ namespace DemoApp
                 txtIncidentType.Clear();
                 txtDescription.Clear();
             }
-
         }
     }
 }
