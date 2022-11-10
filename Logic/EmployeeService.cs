@@ -55,7 +55,7 @@ namespace Logic
         }
         public List<Employee> GetEmployeesByType(EmployeeType employeeType)
         {
-            List<BsonDocument> pipeline = new List<BsonDocument>() { new BsonDocument("$match", new BsonDocument("type", employeeType.ToString())) };
+            List<BsonDocument> pipeline = new List<BsonDocument>() { new BsonDocument("$match", new BsonDocument("type", employeeType)) };
             return ConvertToEmployeeList(employeedb.Get(pipeline));
         }
 
