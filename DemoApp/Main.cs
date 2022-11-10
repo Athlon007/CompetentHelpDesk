@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using DemoApp.Common;
 using MongoDB.Driver;
 using MongoDB.Bson;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DemoApp
 {
@@ -115,8 +114,6 @@ namespace DemoApp
 
             foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
             {
-                // We don't want to let the service desk to set TBA, as a priority.
-                if (priority == TicketPriority.ToBeDetermined) continue;
                 cmbPriorityCT.Items.Add(priority);
             }
 
@@ -556,13 +553,6 @@ namespace DemoApp
 
                 item.Tag = ticket;
 
-                if (ticket.Priority == TicketPriority.ToBeDetermined)
-                {
-                    item.ForeColor = Color.Red;
-                    Font bold = new Font(item.Font, FontStyle.Bold);
-                    item.Font = bold;
-                }
-
                 // Add item to listview
                 listView_TicketManagement.Items.Add(item);
             }
@@ -781,8 +771,7 @@ namespace DemoApp
         private void btnDetailsDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show($"Are you sure you want to delete ticket:\n\n" +
-                                                  $"ID: {detailedTicket.Id}\n" +
-                                                  $"Subject: {detailedTicket.Subject}\n\n" +
+                                                  $"[{detailedTicket.Id}]{detailedTicket.Subject}\n\n" +
                                                   $"This operation is irreversible!", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
