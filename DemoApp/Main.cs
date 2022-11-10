@@ -1288,8 +1288,8 @@ namespace DemoApp
             Ticket ticket = (Ticket)listView_TicketManagement.SelectedItems[0].Tag;
             if(ticket.AssignedEmployee == employee)
             {
-                Employee employee = (Employee)cmbEmployees.SelectedItem;
-                StatusStruct status = ticketTransferService.TransferTicket(ticket, employee);
+                Employee transferEmployee = (Employee)cmbEmployees.SelectedItem;
+                StatusStruct status = ticketTransferService.TransferTicket(ticket, transferEmployee);
                 if (status.Code == 0)
                 {
                     cmbEmployees.SelectedIndex = -1;
