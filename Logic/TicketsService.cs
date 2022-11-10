@@ -405,9 +405,6 @@ namespace Logic
             if (string.IsNullOrEmpty(textData.Description))
                 sb.AppendLine("Description is empty");
 
-            if (enumsData.Priority == TicketPriority.ToBeDetermined)
-                sb.AppendLine("Ticket priority must be defined");
-
             issues = sb.ToString();
             return issues.Length == 0;
         }
