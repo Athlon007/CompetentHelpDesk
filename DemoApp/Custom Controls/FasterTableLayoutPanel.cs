@@ -6,6 +6,7 @@ namespace DemoApp.Custom_Controls
     {
         public FasterTableLayoutPanel()
         {
+            // Enable double buffering for the control. 
             this.DoubleBuffered = true;
         }
     }

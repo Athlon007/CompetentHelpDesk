@@ -48,9 +48,10 @@
             this.lblHelpDesk.BackColor = System.Drawing.Color.SeaGreen;
             this.lblHelpDesk.Font = new System.Drawing.Font("Candara", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHelpDesk.ForeColor = System.Drawing.Color.White;
-            this.lblHelpDesk.Location = new System.Drawing.Point(309, 159);
+            this.lblHelpDesk.Location = new System.Drawing.Point(206, 103);
+            this.lblHelpDesk.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblHelpDesk.Name = "lblHelpDesk";
-            this.lblHelpDesk.Size = new System.Drawing.Size(213, 68);
+            this.lblHelpDesk.Size = new System.Drawing.Size(146, 46);
             this.lblHelpDesk.TabIndex = 0;
             this.lblHelpDesk.Text = "NoDesk";
             // 
@@ -60,11 +61,12 @@
             this.lblLoginInstruction.BackColor = System.Drawing.Color.SeaGreen;
             this.lblLoginInstruction.Font = new System.Drawing.Font("Candara", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoginInstruction.ForeColor = System.Drawing.Color.White;
-            this.lblLoginInstruction.Location = new System.Drawing.Point(817, 127);
-            this.lblLoginInstruction.MaximumSize = new System.Drawing.Size(600, 100);
-            this.lblLoginInstruction.MinimumSize = new System.Drawing.Size(600, 100);
+            this.lblLoginInstruction.Location = new System.Drawing.Point(545, 83);
+            this.lblLoginInstruction.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLoginInstruction.MaximumSize = new System.Drawing.Size(400, 65);
+            this.lblLoginInstruction.MinimumSize = new System.Drawing.Size(400, 65);
             this.lblLoginInstruction.Name = "lblLoginInstruction";
-            this.lblLoginInstruction.Size = new System.Drawing.Size(600, 100);
+            this.lblLoginInstruction.Size = new System.Drawing.Size(400, 65);
             this.lblLoginInstruction.TabIndex = 1;
             this.lblLoginInstruction.Text = "Please provide login credentials to login to NoDesk for the garden Group";
             this.lblLoginInstruction.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -75,9 +77,10 @@
             this.lblUsername.BackColor = System.Drawing.Color.SeaGreen;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(973, 314);
+            this.lblUsername.Location = new System.Drawing.Point(649, 204);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(124, 29);
+            this.lblUsername.Size = new System.Drawing.Size(83, 20);
             this.lblUsername.TabIndex = 2;
             this.lblUsername.Text = "Username";
             // 
@@ -85,12 +88,14 @@
             // 
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(977, 352);
-            this.txtUsername.MaximumSize = new System.Drawing.Size(317, 31);
-            this.txtUsername.MinimumSize = new System.Drawing.Size(350, 36);
+            this.txtUsername.Location = new System.Drawing.Point(651, 229);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.MaximumSize = new System.Drawing.Size(212, 31);
+            this.txtUsername.MinimumSize = new System.Drawing.Size(234, 36);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(350, 36);
-            this.txtUsername.TabIndex = 3;
+            this.txtUsername.Size = new System.Drawing.Size(234, 36);
+            this.txtUsername.TabIndex = 1;
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
             // lblPassword
             // 
@@ -98,9 +103,10 @@
             this.lblPassword.BackColor = System.Drawing.Color.SeaGreen;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.Color.White;
-            this.lblPassword.Location = new System.Drawing.Point(979, 435);
+            this.lblPassword.Location = new System.Drawing.Point(653, 283);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(120, 29);
+            this.lblPassword.Size = new System.Drawing.Size(78, 20);
             this.lblPassword.TabIndex = 4;
             this.lblPassword.Text = "Password";
             // 
@@ -110,10 +116,11 @@
             this.btnLogin.CausesValidation = false;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
-            this.btnLogin.Location = new System.Drawing.Point(1083, 571);
+            this.btnLogin.Location = new System.Drawing.Point(722, 371);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(148, 46);
-            this.btnLogin.TabIndex = 8;
+            this.btnLogin.Size = new System.Drawing.Size(99, 30);
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -121,9 +128,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(55, 280);
+            this.pictureBox1.Location = new System.Drawing.Point(37, 182);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(712, 398);
+            this.pictureBox1.Size = new System.Drawing.Size(475, 259);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
@@ -140,29 +148,33 @@
             this.pnlLogin.Controls.Add(this.lblHelpDesk);
             this.pnlLogin.Controls.Add(this.lblUsername);
             this.pnlLogin.Controls.Add(this.lblPassword);
-            this.pnlLogin.Location = new System.Drawing.Point(31, 41);
+            this.pnlLogin.Location = new System.Drawing.Point(21, 27);
+            this.pnlLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(1511, 885);
+            this.pnlLogin.Size = new System.Drawing.Size(1008, 576);
             this.pnlLogin.TabIndex = 11;
             // 
             // txtPassword
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(978, 469);
-            this.txtPassword.MaximumSize = new System.Drawing.Size(317, 31);
-            this.txtPassword.MinimumSize = new System.Drawing.Size(350, 36);
+            this.txtPassword.Location = new System.Drawing.Point(652, 305);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.MaximumSize = new System.Drawing.Size(212, 31);
+            this.txtPassword.MinimumSize = new System.Drawing.Size(234, 36);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(350, 36);
-            this.txtPassword.TabIndex = 9;
+            this.txtPassword.Size = new System.Drawing.Size(234, 36);
+            this.txtPassword.TabIndex = 2;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // LoginScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1568, 958);
+            this.ClientSize = new System.Drawing.Size(1045, 623);
             this.Controls.Add(this.pnlLogin);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginScreen";

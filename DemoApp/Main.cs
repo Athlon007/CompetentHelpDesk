@@ -154,9 +154,12 @@ namespace DemoApp
             LoadDashboardData();
         }
 
+        /// <summary>
+        /// Loads the dashboard data into the circle progression bars.
+        /// </summary>
         private void LoadDashboardData()
         {
-            // Variables (using long due to it being NoSQL/"Big Data")
+            // Sums of each ticket type 
             int ticketSum = -1, openTickets = -1, pastDeadlineTickets = -1, unresolvedTickets = -1, resolvedTickets = -1;
 
             try
@@ -265,7 +268,7 @@ namespace DemoApp
         }
 
 
-        public void DisplayDashboardForEmployee(Employee employee)
+        private void DisplayDashboardForEmployee(Employee employee)
         {
             if (employee.Type == EmployeeType.Regular)
             {
@@ -374,18 +377,16 @@ namespace DemoApp
             }
         }
 
-
-
-        // Tab control
         private void TabControl_IndexChanged(object sender, EventArgs e)
         {
             // Set active button
             SetDashboardButtonStyling(tabControl.SelectedIndex);
         }
 
-
-
-        // Styling
+        /// <summary>
+        /// Edits the navigation button styling when a tab change occurs. 
+        /// </summary>
+        /// <param name="buttonIndex">Navigation button to adjust.</param>
         private void SetDashboardButtonStyling(int buttonIndex)
         {
             int index = 0;
@@ -413,6 +414,10 @@ namespace DemoApp
             SetButtonImage(buttonIndex);
         }
 
+        /// <summary>
+        /// Inverts the color of the button image.
+        /// </summary>
+        /// <param name="buttonIndex">Button to adjust.</param>
         private void SetButtonImage(int buttonIndex)
         {
             // Reset all navigation buttons to default
@@ -489,7 +494,10 @@ namespace DemoApp
             SetTicketManagementButtonStyling(4);
         }
 
-        // Methods
+        /// <summary>
+        /// Loads the tickets from the database.
+        /// </summary>
+        /// <param name="loadStatus">Status to filter by.</param>
         private void LoadTickets(TicketLoadStatus loadStatus)
         {
             List<Ticket> tickets;
