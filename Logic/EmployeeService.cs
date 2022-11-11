@@ -59,7 +59,7 @@ namespace Logic
             return ConvertToEmployeeList(employeedb.Get(pipeline));
         }
 
-        public string GetRandomPassword(int length)
+        public string CreateRandomPassword(int length)
         {
             const string chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
