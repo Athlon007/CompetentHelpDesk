@@ -817,7 +817,7 @@ namespace DemoApp
             this.splitContainer1.Panel2.Controls.Add(this.txtDetailsSubject);
             this.splitContainer1.Panel2.Controls.Add(this.lblTicketDetailsSubjectOfIncident);
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Panel2MinSize = 400;
+            this.splitContainer1.Panel2MinSize = 250;
             this.splitContainer1.Size = new System.Drawing.Size(1587, 1106);
             this.splitContainer1.SplitterDistance = 1165;
             this.splitContainer1.SplitterWidth = 8;

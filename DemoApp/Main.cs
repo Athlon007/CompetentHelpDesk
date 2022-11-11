@@ -108,6 +108,8 @@ namespace DemoApp
                 splitContainer1.SplitterDistance = btn_Display_Tickets_All.Width * buttons + 50;
                 splitContainer1.Panel1MinSize = splitContainer1.SplitterDistance;
             }
+
+            splitContainerArchiveAndTransfer.SplitterDistance = splitContainerArchiveAndTransfer.Width / 2;
         }
 
         /// <summary>
