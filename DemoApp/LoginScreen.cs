@@ -16,8 +16,13 @@ namespace DemoApp
         public LoginScreen()
         {
             InitializeComponent();
+            MaskPasswordCharacters();
         }
 
+        public void MaskPasswordCharacters()
+        {
+            txtPassword.PasswordChar = '•';
+        }
 
         public void LogInUser()
         {

@@ -60,10 +60,15 @@ namespace DemoApp
             this.rPnl_TicketManagement = new DemoApp.Custom_Controls.RoundedPanel();
             this.pnl_TicketManagement = new DemoApp.Custom_Controls.RoundedPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pnlArchiveTickets = new System.Windows.Forms.Panel();
-            this.btnArchiveAllTickets = new System.Windows.Forms.Button();
-            this.cmbEmployees = new System.Windows.Forms.ComboBox();
+            this.pnlTransferTickets = new System.Windows.Forms.Panel();
+            this.pictureBoxTickets = new System.Windows.Forms.PictureBox();
             this.btnTransfer = new DemoApp.Custom_Controls.RoundedButton();
+            this.cmbEmployees = new System.Windows.Forms.ComboBox();
+            this.lblTransferTicketsMessage = new System.Windows.Forms.Label();
+            this.lblTransferTickets = new System.Windows.Forms.Label();
+            this.pnlArchiveTickets = new System.Windows.Forms.Panel();
+            this.pictureBoxArchive = new System.Windows.Forms.PictureBox();
+            this.btnArchiveAllTickets = new System.Windows.Forms.Button();
             this.lblValidationForArchiving = new System.Windows.Forms.Label();
             this.btnArchiveMyTickets = new System.Windows.Forms.Button();
             this.lblArchiveTicketsMessage = new System.Windows.Forms.Label();
@@ -242,7 +247,10 @@ namespace DemoApp
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.pnlTransferTickets.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTickets)).BeginInit();
             this.pnlArchiveTickets.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArchive)).BeginInit();
             this.flowPnl_TicketManagement_SearchButtons.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.header_TicketManagement.SuspendLayout();
@@ -771,6 +779,7 @@ namespace DemoApp
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.pnlTransferTickets);
             this.splitContainer1.Panel1.Controls.Add(this.pnlArchiveTickets);
             this.splitContainer1.Panel1.Controls.Add(this.listView_TicketManagement);
             this.splitContainer1.Panel1.Controls.Add(this.txtBox_SearchBar);
@@ -798,46 +807,28 @@ namespace DemoApp
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 15;
             // 
-            // pnlArchiveTickets
+            // pnlTransferTickets
             // 
-            this.pnlArchiveTickets.AutoSize = true;
-            this.pnlArchiveTickets.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlArchiveTickets.Controls.Add(this.btnArchiveAllTickets);
-            this.pnlArchiveTickets.Controls.Add(this.cmbEmployees);
-            this.pnlArchiveTickets.Controls.Add(this.btnTransfer);
-            this.pnlArchiveTickets.Controls.Add(this.lblValidationForArchiving);
-            this.pnlArchiveTickets.Controls.Add(this.btnArchiveMyTickets);
-            this.pnlArchiveTickets.Controls.Add(this.lblArchiveTicketsMessage);
-            this.pnlArchiveTickets.Controls.Add(this.lblArchiveTickets);
-            this.pnlArchiveTickets.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlArchiveTickets.Location = new System.Drawing.Point(0, 665);
-            this.pnlArchiveTickets.Name = "pnlArchiveTickets";
-            this.pnlArchiveTickets.Size = new System.Drawing.Size(1163, 168);
-            this.pnlArchiveTickets.TabIndex = 2;
+            this.pnlTransferTickets.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTransferTickets.Controls.Add(this.pictureBoxTickets);
+            this.pnlTransferTickets.Controls.Add(this.btnTransfer);
+            this.pnlTransferTickets.Controls.Add(this.cmbEmployees);
+            this.pnlTransferTickets.Controls.Add(this.lblTransferTicketsMessage);
+            this.pnlTransferTickets.Controls.Add(this.lblTransferTickets);
+            this.pnlTransferTickets.Location = new System.Drawing.Point(565, 496);
+            this.pnlTransferTickets.Name = "pnlTransferTickets";
+            this.pnlTransferTickets.Size = new System.Drawing.Size(537, 308);
+            this.pnlTransferTickets.TabIndex = 46;
             // 
-            // btnArchiveAllTickets
+            // pictureBoxTickets
             // 
-            this.btnArchiveAllTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnArchiveAllTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchiveAllTickets.Location = new System.Drawing.Point(219, 72);
-            this.btnArchiveAllTickets.Name = "btnArchiveAllTickets";
-            this.btnArchiveAllTickets.Size = new System.Drawing.Size(199, 49);
-            this.btnArchiveAllTickets.TabIndex = 45;
-            this.btnArchiveAllTickets.Text = "Archive all tickets";
-            this.btnArchiveAllTickets.UseVisualStyleBackColor = true;
-            this.btnArchiveAllTickets.Click += new System.EventHandler(this.btnArchiveAllTickets_Click);
-            // 
-            // cmbEmployees
-            // 
-            this.cmbEmployees.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmbEmployees.FormattingEnabled = true;
-            this.cmbEmployees.Location = new System.Drawing.Point(854, 16);
-            this.cmbEmployees.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbEmployees.Name = "cmbEmployees";
-            this.cmbEmployees.Size = new System.Drawing.Size(297, 37);
-            this.cmbEmployees.TabIndex = 43;
+            this.pictureBoxTickets.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTickets.Image")));
+            this.pictureBoxTickets.Location = new System.Drawing.Point(24, 23);
+            this.pictureBoxTickets.Name = "pictureBoxTickets";
+            this.pictureBoxTickets.Size = new System.Drawing.Size(100, 87);
+            this.pictureBoxTickets.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxTickets.TabIndex = 42;
+            this.pictureBoxTickets.TabStop = false;
             // 
             // btnTransfer
             // 
@@ -847,7 +838,7 @@ namespace DemoApp
             this.btnTransfer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(155)))), ((int)(((byte)(116)))));
             this.btnTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTransfer.ForeColor = System.Drawing.Color.White;
-            this.btnTransfer.Location = new System.Drawing.Point(996, 54);
+            this.btnTransfer.Location = new System.Drawing.Point(32, 236);
             this.btnTransfer.Margin = new System.Windows.Forms.Padding(2);
             this.btnTransfer.Name = "btnTransfer";
             this.btnTransfer.Size = new System.Drawing.Size(154, 38);
@@ -856,13 +847,86 @@ namespace DemoApp
             this.btnTransfer.UseVisualStyleBackColor = false;
             this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
             // 
+            // cmbEmployees
+            // 
+            this.cmbEmployees.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbEmployees.FormattingEnabled = true;
+            this.cmbEmployees.Location = new System.Drawing.Point(32, 195);
+            this.cmbEmployees.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbEmployees.Name = "cmbEmployees";
+            this.cmbEmployees.Size = new System.Drawing.Size(297, 37);
+            this.cmbEmployees.TabIndex = 43;
+            // 
+            // lblTransferTicketsMessage
+            // 
+            this.lblTransferTicketsMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTransferTicketsMessage.AutoSize = true;
+            this.lblTransferTicketsMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransferTicketsMessage.Location = new System.Drawing.Point(27, 119);
+            this.lblTransferTicketsMessage.Name = "lblTransferTicketsMessage";
+            this.lblTransferTicketsMessage.Size = new System.Drawing.Size(407, 25);
+            this.lblTransferTicketsMessage.TabIndex = 41;
+            this.lblTransferTicketsMessage.Text = "The ticket will be assigned to a new employee";
+            // 
+            // lblTransferTickets
+            // 
+            this.lblTransferTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTransferTickets.AutoSize = true;
+            this.lblTransferTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransferTickets.Location = new System.Drawing.Point(136, 71);
+            this.lblTransferTickets.MinimumSize = new System.Drawing.Size(201, 36);
+            this.lblTransferTickets.Name = "lblTransferTickets";
+            this.lblTransferTickets.Size = new System.Drawing.Size(201, 36);
+            this.lblTransferTickets.TabIndex = 40;
+            this.lblTransferTickets.Text = "Transfer tickets";
+            this.lblTransferTickets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pnlArchiveTickets
+            // 
+            this.pnlArchiveTickets.AutoSize = true;
+            this.pnlArchiveTickets.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlArchiveTickets.Controls.Add(this.pictureBoxArchive);
+            this.pnlArchiveTickets.Controls.Add(this.btnArchiveAllTickets);
+            this.pnlArchiveTickets.Controls.Add(this.lblValidationForArchiving);
+            this.pnlArchiveTickets.Controls.Add(this.btnArchiveMyTickets);
+            this.pnlArchiveTickets.Controls.Add(this.lblArchiveTicketsMessage);
+            this.pnlArchiveTickets.Controls.Add(this.lblArchiveTickets);
+            this.pnlArchiveTickets.Location = new System.Drawing.Point(15, 496);
+            this.pnlArchiveTickets.Name = "pnlArchiveTickets";
+            this.pnlArchiveTickets.Size = new System.Drawing.Size(529, 311);
+            this.pnlArchiveTickets.TabIndex = 2;
+            // 
+            // pictureBoxArchive
+            // 
+            this.pictureBoxArchive.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxArchive.Image")));
+            this.pictureBoxArchive.Location = new System.Drawing.Point(15, 31);
+            this.pictureBoxArchive.Name = "pictureBoxArchive";
+            this.pictureBoxArchive.Size = new System.Drawing.Size(100, 87);
+            this.pictureBoxArchive.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxArchive.TabIndex = 46;
+            this.pictureBoxArchive.TabStop = false;
+            // 
+            // btnArchiveAllTickets
+            // 
+            this.btnArchiveAllTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnArchiveAllTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArchiveAllTickets.Location = new System.Drawing.Point(219, 199);
+            this.btnArchiveAllTickets.Name = "btnArchiveAllTickets";
+            this.btnArchiveAllTickets.Size = new System.Drawing.Size(199, 49);
+            this.btnArchiveAllTickets.TabIndex = 45;
+            this.btnArchiveAllTickets.Text = "Archive all tickets";
+            this.btnArchiveAllTickets.UseVisualStyleBackColor = true;
+            this.btnArchiveAllTickets.Click += new System.EventHandler(this.btnArchiveAllTickets_Click);
+            // 
             // lblValidationForArchiving
             // 
             this.lblValidationForArchiving.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblValidationForArchiving.AutoSize = true;
             this.lblValidationForArchiving.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValidationForArchiving.ForeColor = System.Drawing.Color.Red;
-            this.lblValidationForArchiving.Location = new System.Drawing.Point(13, 122);
+            this.lblValidationForArchiving.Location = new System.Drawing.Point(17, 256);
             this.lblValidationForArchiving.MinimumSize = new System.Drawing.Size(471, 36);
             this.lblValidationForArchiving.Name = "lblValidationForArchiving";
             this.lblValidationForArchiving.Size = new System.Drawing.Size(471, 36);
@@ -873,7 +937,7 @@ namespace DemoApp
             // 
             this.btnArchiveMyTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnArchiveMyTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchiveMyTickets.Location = new System.Drawing.Point(14, 71);
+            this.btnArchiveMyTickets.Location = new System.Drawing.Point(14, 199);
             this.btnArchiveMyTickets.Name = "btnArchiveMyTickets";
             this.btnArchiveMyTickets.Size = new System.Drawing.Size(188, 51);
             this.btnArchiveMyTickets.TabIndex = 41;
@@ -886,7 +950,7 @@ namespace DemoApp
             this.lblArchiveTicketsMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblArchiveTicketsMessage.AutoSize = true;
             this.lblArchiveTicketsMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArchiveTicketsMessage.Location = new System.Drawing.Point(4, 43);
+            this.lblArchiveTicketsMessage.Location = new System.Drawing.Point(17, 124);
             this.lblArchiveTicketsMessage.Name = "lblArchiveTicketsMessage";
             this.lblArchiveTicketsMessage.Size = new System.Drawing.Size(451, 25);
             this.lblArchiveTicketsMessage.TabIndex = 40;
@@ -897,7 +961,7 @@ namespace DemoApp
             this.lblArchiveTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblArchiveTickets.AutoSize = true;
             this.lblArchiveTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArchiveTickets.Location = new System.Drawing.Point(3, 14);
+            this.lblArchiveTickets.Location = new System.Drawing.Point(121, 80);
             this.lblArchiveTickets.MinimumSize = new System.Drawing.Size(201, 36);
             this.lblArchiveTickets.Name = "lblArchiveTickets";
             this.lblArchiveTickets.Size = new System.Drawing.Size(201, 36);
@@ -918,9 +982,11 @@ namespace DemoApp
             this.listView_TicketManagement.FullRowSelect = true;
             this.listView_TicketManagement.HideSelection = false;
             this.listView_TicketManagement.Location = new System.Drawing.Point(0, 101);
+            this.listView_TicketManagement.MaximumSize = new System.Drawing.Size(1163, 250);
+            this.listView_TicketManagement.MinimumSize = new System.Drawing.Size(1163, 270);
             this.listView_TicketManagement.MultiSelect = false;
             this.listView_TicketManagement.Name = "listView_TicketManagement";
-            this.listView_TicketManagement.Size = new System.Drawing.Size(1163, 732);
+            this.listView_TicketManagement.Size = new System.Drawing.Size(1163, 270);
             this.listView_TicketManagement.TabIndex = 13;
             this.listView_TicketManagement.UseCompatibleStateImageBehavior = false;
             this.listView_TicketManagement.View = System.Windows.Forms.View.Details;
@@ -1858,8 +1924,6 @@ namespace DemoApp
             // 
             // txtPassword
             // 
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPassword.BackColor = System.Drawing.SystemColors.Window;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtPassword.Location = new System.Drawing.Point(275, 333);
@@ -2758,13 +2822,12 @@ namespace DemoApp
             this.btn_UserManagement.Name = "btn_UserManagement";
             this.btn_UserManagement.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.btn_UserManagement.Size = new System.Drawing.Size(345, 60);
-            this.btn_UserManagement.TabIndex = 7;
+            this.btn_UserManagement.TabIndex = 11;
             this.btn_UserManagement.Text = "User Management";
             this.btn_UserManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_UserManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_UserManagement.UseVisualStyleBackColor = false;
             this.btn_UserManagement.Visible = false;
-            this.btn_UserManagement.Click += new System.EventHandler(this.Btn_UserManagement_Click);
             // 
             // btn_CreateUser
             // 
@@ -2947,8 +3010,12 @@ namespace DemoApp
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.pnlTransferTickets.ResumeLayout(false);
+            this.pnlTransferTickets.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTickets)).EndInit();
             this.pnlArchiveTickets.ResumeLayout(false);
             this.pnlArchiveTickets.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArchive)).EndInit();
             this.flowPnl_TicketManagement_SearchButtons.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.header_TicketManagement.ResumeLayout(false);
@@ -3008,13 +3075,14 @@ namespace DemoApp
         private Custom_Controls.RoundedButton btn_Dashboard;
         private Custom_Controls.RoundedButton btn_TicketManagement;
         private Custom_Controls.RoundedButton btn_CreateTicket;
-        private Custom_Controls.RoundedButton btn_UserManagement;
         private Custom_Controls.RoundedButton btn_CreateUser;
         private System.Windows.Forms.Label lbl_LogOut;
         private Custom_Controls.FasterTableLayoutPanel tblPnl_Logo;
         private System.Windows.Forms.PictureBox pic_Logo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private Custom_Controls.RoundedButton btnIncidentManagement;
+        private Custom_Controls.RoundedButton btnTicketArchive;
         private Custom_Controls.TabControlWithoutBorder tabControl;
         private System.Windows.Forms.TabPage tab_Dashboard;
         private Custom_Controls.RoundedPanel rPnl_Dashboard;
@@ -3044,6 +3112,19 @@ namespace DemoApp
         private Custom_Controls.RoundedPanel rPnl_TicketManagement;
         private Custom_Controls.RoundedPanel pnl_TicketManagement;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel pnlTransferTickets;
+        private System.Windows.Forms.PictureBox pictureBoxTickets;
+        private Custom_Controls.RoundedButton btnTransfer;
+        private System.Windows.Forms.ComboBox cmbEmployees;
+        private System.Windows.Forms.Label lblTransferTicketsMessage;
+        private System.Windows.Forms.Label lblTransferTickets;
+        private System.Windows.Forms.Panel pnlArchiveTickets;
+        private System.Windows.Forms.PictureBox pictureBoxArchive;
+        private System.Windows.Forms.Button btnArchiveAllTickets;
+        public System.Windows.Forms.Label lblValidationForArchiving;
+        private System.Windows.Forms.Button btnArchiveMyTickets;
+        private System.Windows.Forms.Label lblArchiveTicketsMessage;
+        private System.Windows.Forms.Label lblArchiveTickets;
         private System.Windows.Forms.ListView listView_TicketManagement;
         private System.Windows.Forms.ColumnHeader col_Id;
         private System.Windows.Forms.ColumnHeader col_Subject;
@@ -3080,7 +3161,16 @@ namespace DemoApp
         private System.Windows.Forms.Panel header_TicketManagement;
         private System.Windows.Forms.Label lbl_HeaderTicketManagement;
         private System.Windows.Forms.TabPage tab_CreateTicket;
+        private System.Windows.Forms.TableLayoutPanel tblCreateIncident;
+        private System.Windows.Forms.Label lblIncidentSubject;
+        private System.Windows.Forms.Label lblIncidentType;
+        private System.Windows.Forms.Label lblIncidentDescription;
+        private System.Windows.Forms.TextBox txtIncidentSubject;
+        private System.Windows.Forms.ComboBox cmbIncidentType;
+        private System.Windows.Forms.TextBox txtIncidentDescription;
         private Custom_Controls.RoundedPanel rPnl_CreateTicket;
+        private System.Windows.Forms.Label lblValidationMessageForIncident;
+        private System.Windows.Forms.Button btnCreateIncident;
         private System.Windows.Forms.TableLayoutPanel tblCreateTicket;
         private System.Windows.Forms.Label lblDateTimeReportedCT;
         private System.Windows.Forms.DateTimePicker dtpReportedCT;
@@ -3107,68 +3197,6 @@ namespace DemoApp
         private System.Windows.Forms.Label lbl_HeaderUserManagement;
         private System.Windows.Forms.TabPage tab_CreateUser;
         private Custom_Controls.RoundedPanel rPnl_CreateUser;
-        private System.Windows.Forms.Panel header_CreateUser;
-        private System.Windows.Forms.Label lbl_HeaderCreateUser;
-        private System.Windows.Forms.TableLayoutPanel tblCreateIncident;
-        private System.Windows.Forms.Label lblIncidentSubject;
-        private System.Windows.Forms.Label lblIncidentType;
-        private System.Windows.Forms.Label lblIncidentDescription;
-        private System.Windows.Forms.TextBox txtIncidentSubject;
-        private System.Windows.Forms.ComboBox cmbIncidentType;
-        private System.Windows.Forms.TextBox txtIncidentDescription;
-        private Custom_Controls.RoundedButton btnIncidentManagement;
-        private System.Windows.Forms.TabPage tab_IncidentManagement;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView listViewIncidents;
-        private System.Windows.Forms.Button btnCreateTicket;
-        private System.Windows.Forms.ComboBox cmbPriority;
-        private System.Windows.Forms.ComboBox cmbUser;
-        private System.Windows.Forms.ComboBox cmbNewIncidentType;
-        private System.Windows.Forms.Label lblCreateTicket;
-        private System.Windows.Forms.Panel pnlIncidentDetails;
-        private System.Windows.Forms.Label lblDescriptionOfIncident;
-        private System.Windows.Forms.Label lblTypeOfIncident;
-        private System.Windows.Forms.Label lblSubjectOfIncident;
-        private System.Windows.Forms.TextBox txtSubjectOfIncident;
-        private System.Windows.Forms.TextBox txtDescriptionOfIncident;
-        private System.Windows.Forms.Label lblSubmittedByUser;
-        private System.Windows.Forms.Panel pnlCreateTicket;
-        private System.Windows.Forms.Label lblDeadline;
-        private System.Windows.Forms.ComboBox cmbDeadlineInterval;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.ComboBox cmbStatus;
-        private System.Windows.Forms.Label lblPriority;
-        private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.Label lblNewIncidentType;
-        private System.Windows.Forms.TextBox txtTypeOfIncident;
-        private System.Windows.Forms.Button btnCreateIncident;
-        private System.Windows.Forms.Label lblValidationMessageForIncident;
-        private System.Windows.Forms.Label lblValidationForIncidentList;
-        private System.Windows.Forms.Label lblValidationCreateTicket;
-        private System.Windows.Forms.TabPage tab_TicketArchive;
-        private System.Windows.Forms.Label lblValidationForArchivedTicketList;
-        private System.Windows.Forms.ListView listViewArchivedTickets;
-        private System.Windows.Forms.Label lblTicketArchive;
-        private Custom_Controls.RoundedButton btnTicketArchive;
-        private System.Windows.Forms.Panel pnlTicketDetails;
-        private System.Windows.Forms.TextBox txtIncidentType;
-        private System.Windows.Forms.TextBox txtSubject;
-        private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.Label lblSubject;
-        private System.Windows.Forms.Label lblTicketDetails;
-        private System.Windows.Forms.Label lblTicketDescription;
-        private System.Windows.Forms.Label lblTypeOfTheIncident;
-        private System.Windows.Forms.Panel pnlIncidentManagementEditControls;
-        private System.Windows.Forms.Button btnSelectAllIncidents;
-        private System.Windows.Forms.Button btnDeleteSelectedIncidents;
-        private System.Windows.Forms.Panel pnlTicketArchiveEditControls;
-        private System.Windows.Forms.Button btnSelectAllArchivedTickets;
-        private System.Windows.Forms.Button btnDeleteSelectionFromArchive;
-        private System.Windows.Forms.FlowLayoutPanel flowPnl_IncidentFilters;
-        private System.Windows.Forms.Label lbl_IncidentKeywords;
-        private Custom_Controls.RoundedButton btnFilterIncidents;
-        private Custom_Controls.RoundedButton btnClearIncidentFilters;
-        private Custom_Controls.TextBoxWithPrompt txtBox_IncidentKeywords;
         private System.Windows.Forms.Label lblWarning;
         private System.Windows.Forms.Label label9;
         private Custom_Controls.RoundedButton btnCreatePassword;
@@ -3184,13 +3212,57 @@ namespace DemoApp
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel pnlArchiveTickets;
-        private System.Windows.Forms.ComboBox cmbEmployees;
-        private Custom_Controls.RoundedButton btnTransfer;
-        public System.Windows.Forms.Label lblValidationForArchiving;
-        private System.Windows.Forms.Button btnArchiveMyTickets;
-        private System.Windows.Forms.Label lblArchiveTicketsMessage;
-        private System.Windows.Forms.Label lblArchiveTickets;
-        private System.Windows.Forms.Button btnArchiveAllTickets;
+        private System.Windows.Forms.Panel header_CreateUser;
+        private System.Windows.Forms.Label lbl_HeaderCreateUser;
+        private System.Windows.Forms.TabPage tab_IncidentManagement;
+        private System.Windows.Forms.FlowLayoutPanel flowPnl_IncidentFilters;
+        private System.Windows.Forms.Label lbl_IncidentKeywords;
+        private Custom_Controls.TextBoxWithPrompt txtBox_IncidentKeywords;
+        private Custom_Controls.RoundedButton btnFilterIncidents;
+        private Custom_Controls.RoundedButton btnClearIncidentFilters;
+        private System.Windows.Forms.Panel pnlIncidentManagementEditControls;
+        private System.Windows.Forms.Button btnSelectAllIncidents;
+        private System.Windows.Forms.Button btnDeleteSelectedIncidents;
+        private System.Windows.Forms.Label lblValidationForIncidentList;
+        private System.Windows.Forms.ListView listViewIncidents;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel pnlIncidentDetails;
+        private System.Windows.Forms.Label lblDescriptionOfIncident;
+        private System.Windows.Forms.Label lblTypeOfIncident;
+        private System.Windows.Forms.Label lblSubjectOfIncident;
+        private System.Windows.Forms.TextBox txtSubjectOfIncident;
+        private System.Windows.Forms.TextBox txtTypeOfIncident;
+        private System.Windows.Forms.TextBox txtDescriptionOfIncident;
+        private System.Windows.Forms.Label lblSubmittedByUser;
+        private System.Windows.Forms.Panel pnlCreateTicket;
+        private System.Windows.Forms.Label lblValidationCreateTicket;
+        private System.Windows.Forms.Button btnCreateTicket;
+        private System.Windows.Forms.Label lblDeadline;
+        private System.Windows.Forms.Label lblCreateTicket;
+        private System.Windows.Forms.ComboBox cmbPriority;
+        private System.Windows.Forms.ComboBox cmbDeadlineInterval;
+        private System.Windows.Forms.ComboBox cmbUser;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.ComboBox cmbNewIncidentType;
+        private System.Windows.Forms.ComboBox cmbStatus;
+        private System.Windows.Forms.Label lblPriority;
+        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Label lblNewIncidentType;
+        private System.Windows.Forms.TabPage tab_TicketArchive;
+        private System.Windows.Forms.Panel pnlTicketArchiveEditControls;
+        private System.Windows.Forms.Button btnSelectAllArchivedTickets;
+        private System.Windows.Forms.Button btnDeleteSelectionFromArchive;
+        private System.Windows.Forms.Panel pnlTicketDetails;
+        private System.Windows.Forms.Label lblTicketDescription;
+        private System.Windows.Forms.Label lblTypeOfTheIncident;
+        private System.Windows.Forms.Label lblSubject;
+        private System.Windows.Forms.Label lblTicketDetails;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.TextBox txtIncidentType;
+        private System.Windows.Forms.TextBox txtSubject;
+        private System.Windows.Forms.Label lblValidationForArchivedTicketList;
+        private System.Windows.Forms.ListView listViewArchivedTickets;
+        private System.Windows.Forms.Label lblTicketArchive;
+        private Custom_Controls.RoundedButton btn_UserManagement;
     }
 }
