@@ -226,6 +226,7 @@ namespace DemoApp
                 //Fill assigned employee combobox
                 LoadAssignedEmployees();
                 lblValidationForArchiving.Hide();
+                lblTransferWarning.Text = "";
             }
         }
 
@@ -1297,6 +1298,11 @@ namespace DemoApp
 
         private void btnTransfer_Click(object sender, EventArgs e)
         {
+            if (listView_TicketManagement.SelectedItems.Count == 0)
+            {
+                lblTransferWarning.Text = "Select ticket first.";
+            }
+
             Ticket ticket = (Ticket)listView_TicketManagement.SelectedItems[0].Tag;
             if(ticket.AssignedEmployee == employee)
             {
@@ -1309,12 +1315,12 @@ namespace DemoApp
                 }
                 else
                 {
-                    //lblTransferWarning.Text = "Unable to transfer the ticket:\n" + status.Message;
+                    lblTransferWarning.Text = "Unable to transfer the ticket:\n" + status.Message;
                 }
             }
             else
             {
-                //lblTransferWarning.Text = "You are not the assigned employee of selected ticket.";
+                lblTransferWarning.Text = "You are not the assigned employee of selected ticket.";
             }
 
         }

@@ -231,6 +231,7 @@ namespace DemoApp
             this.pic_Logo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblTransferWarning = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tab_Dashboard.SuspendLayout();
@@ -997,6 +998,7 @@ namespace DemoApp
             // pnlTransferTickets
             // 
             this.pnlTransferTickets.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTransferTickets.Controls.Add(this.lblTransferWarning);
             this.pnlTransferTickets.Controls.Add(this.pictureBoxTickets);
             this.pnlTransferTickets.Controls.Add(this.btnTransfer);
             this.pnlTransferTickets.Controls.Add(this.cmbEmployees);
@@ -3120,6 +3122,19 @@ namespace DemoApp
             this.label2.Text = "NoDesk";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // lblTransferWarning
+            // 
+            this.lblTransferWarning.AutoSize = true;
+            this.lblTransferWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransferWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblTransferWarning.Location = new System.Drawing.Point(27, 368);
+            this.lblTransferWarning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTransferWarning.MinimumSize = new System.Drawing.Size(628, 48);
+            this.lblTransferWarning.Name = "lblTransferWarning";
+            this.lblTransferWarning.Size = new System.Drawing.Size(628, 48);
+            this.lblTransferWarning.TabIndex = 45;
+            this.lblTransferWarning.Text = "Validation message for archiving tickets";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -3420,5 +3435,6 @@ namespace DemoApp
         private Custom_Controls.RoundedButton btn_UserManagement;
         private System.Windows.Forms.Panel pnlTransferAndArchive;
         private System.Windows.Forms.SplitContainer splitContainerArchiveAndTransfer;
+        public System.Windows.Forms.Label lblTransferWarning;
     }
 }
