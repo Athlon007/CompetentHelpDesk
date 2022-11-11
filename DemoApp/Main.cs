@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using DemoApp.Common;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using System.Runtime.InteropServices;
+
 
 namespace DemoApp
 {
@@ -67,6 +69,9 @@ namespace DemoApp
             None = 0, All = 1, Open = 2, PastDeadline = 3, Unresolved = 4, Resolved = 5, Closed = 6
         }
 
+        //used for archiving the tickets of one employee or all tickets
+        public bool selectTicketsOfEmployee = false;
+
         //public Main(Employee employee)
         public Main(Employee employee)
         {
@@ -90,6 +95,7 @@ namespace DemoApp
 
             InitAddTicketComboBoxes();
             InitTicketDetailsView();
+            InItCreateTicketFromIncidentComboBoxes();
 
             // A small workaround for splitter in Table Management to be correctly positioned.
             if (this.employee.Type == EmployeeType.Regular)
@@ -928,7 +934,6 @@ namespace DemoApp
                     lblValidationForIncidentList.Text = exception.Message;
                 }
 
-                InItCreateTicketFromIncidentComboBoxes();
                 SetInitialValuesForIncidentData();
                 lblValidationCreateTicket.Hide();
 
@@ -956,6 +961,15 @@ namespace DemoApp
 
             }
         }
+
+        //public void ClearCreateTicketFromIncidentComboBoxes()
+        //{
+        //    cmbNewIncidentType.Items.Clear();
+        //    cmbUser.Items.Clear();
+        //    cmbPriority.Items.Clear();
+        //    cmbStatus.Items.Clear();
+        //    cmbDeadlineInterval.Items.Clear();
+        //}
 
 
         public void CreateIncidentsListView()
@@ -1052,25 +1066,7 @@ namespace DemoApp
 
         }
 
-        public void CreateIncident()
-        {
-            int incidentId = incidentService.RetrievePreviousIncidentId();
-            string subject = txtIncidentSubject.Text;
-            int userId = employee.Id;
-            int idxCmbIncidentType = cmbIncidentType.SelectedIndex;
-            IncidentTypes incidentType = (IncidentTypes)idxCmbIncidentType;
-            DateTime loggedOn = DateTime.Now;
-            string description = txtIncidentDescription.Text;
-            Incident incident = new Incident(incidentId, subject, userId, incidentType, loggedOn, description);
-
-            if (subject.Length == 0 || idxCmbIncidentType == -1 || description.Length == 0) { throw new Exception("All fields are required"); }
-
-            else
-            {
-                incidentService.CreateIncident(incident);
-
-            }
-        }
+    
 
         /// <summary>
         /// Attempts to filter the pre-loaded incident list.
@@ -1111,12 +1107,36 @@ namespace DemoApp
             PopulateIncidentList();
         }
 
+
+
+     
+        public void CreateIncident()
+        {
+            int incidentId = incidentService.RetrievePreviousIncidentId();
+            string subject = txtIncidentSubject.Text;
+            int userId = employee.Id;
+            int idxCmbIncidentType = cmbIncidentType.SelectedIndex;
+            IncidentTypes incidentType = (IncidentTypes)idxCmbIncidentType;
+            DateTime loggedOn = DateTime.Now;
+            string description = txtIncidentDescription.Text;
+            Incident incident = new Incident(incidentId, subject, userId, incidentType, loggedOn, description);
+
+            if (subject.Length == 0 || idxCmbIncidentType == -1 || description.Length == 0) { throw new Exception("All fields are required"); }
+
+            else
+            {
+                incidentService.CreateIncident(incident);
+
+            }
+        }
+
         public void CleanIncidentFormFields()
         {
             txtIncidentSubject.Clear();
             cmbIncidentType.SelectedIndex = -1;
             txtIncidentDescription.Clear();
         }
+
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
         {
@@ -1137,7 +1157,7 @@ namespace DemoApp
             }
         }
 
-        public void createTicketFromIncident()
+        public void CreateTicketFromIncident()
         {
 
             int cmbNewIncidentTypeValue = (int)cmbNewIncidentType.SelectedIndex;
@@ -1191,7 +1211,7 @@ namespace DemoApp
         {
             try
             {
-                createTicketFromIncident();
+                CreateTicketFromIncident();
                 SetInitialValuesForIncidentData();
                 lblValidationCreateTicket.Show();
                 lblValidationCreateTicket.ForeColor = Color.Green;
@@ -1200,6 +1220,7 @@ namespace DemoApp
             catch (Exception exp)
             {
                 lblValidationCreateTicket.Show();
+                lblValidationCreateTicket.ForeColor = Color.Red;
                 lblValidationCreateTicket.Text = exp.Message;
             }
         }
@@ -1317,21 +1338,46 @@ namespace DemoApp
             btnCreatePassword.Enabled = false;
         }
 
-        private void btnArchiveTickets_Click(object sender, EventArgs e)
+
+        public void ArchiveTickets(bool selectTicketsOfEmployee, string confirmationMessage) 
         {
-            lblValidationForArchiving.Show();
+
+            DialogResult result = MessageBox.Show(confirmationMessage, "archive", MessageBoxButtons.YesNo);
+
             try
             {
-                archivedTicketService.ArchiveTickets(this.employee);
-
-                lblValidationForArchiving.ForeColor = Color.Green;
-                lblValidationForArchiving.Text = "The tickets were archived";
+                if (result == DialogResult.Yes)
+                {
+                    archivedTicketService.ArchiveTickets(this.employee, selectTicketsOfEmployee);
+                    lblValidationForArchiving.Show();
+                    lblValidationForArchiving.ForeColor = Color.Green;
+                    lblValidationForArchiving.Text = "The tickets were archived";
+                }
             }
             catch (Exception exception)
             {
+                lblValidationForArchiving.Show();
                 lblValidationForArchiving.Text = exception.Message;
             }
+
         }
+
+
+        private void btnArchiveMyTickets_Click(object sender, EventArgs e)
+        {
+            selectTicketsOfEmployee = true;
+            string validationMessage = "Are you sure you want to archive your tickets?";
+            ArchiveTickets(selectTicketsOfEmployee, validationMessage);
+        }
+
+
+        private void btnArchiveAllTickets_Click(object sender, EventArgs e)
+        {
+            selectTicketsOfEmployee = false;
+            string validationMessage = "Are you sure you want to archive all tickets?";
+            ArchiveTickets(selectTicketsOfEmployee, validationMessage);
+        }
+
 
         public void CreateArchivedTicketsListView()
         {
@@ -1459,23 +1505,40 @@ namespace DemoApp
 
         private void btnDeleteSelectedIncidents_Click(object sender, EventArgs e)
         {
+            string confirmationMessage = "Are you sure you want to delete the selected incidents?";
 
             if (listViewIncidents.SelectedItems.Count > 0)
             {
-                foreach (ListViewItem item in listViewIncidents.Items)
+                DialogResult result = MessageBox.Show(confirmationMessage, "delete", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
                 {
-                    if (item.Selected == true)
+
+                    try
                     {
-                        Incident incident = (Incident)item.Tag;
-                        incidentService.RemoveIncidentFromIncidentDb(incident.Id);
-                        listViewIncidents.Items.Remove(item);
+
+                        foreach (ListViewItem item in listViewIncidents.Items)
+                        {
+                            if (item.Selected == true)
+                            {
+                                Incident incident = (Incident)item.Tag;
+                                incidentService.RemoveIncidentFromIncidentDb(incident.Id);
+                                listViewIncidents.Items.Remove(item);
+
+                            }
+                        }
+
+                        txtSubjectOfIncident.Clear();
+                        txtTypeOfIncident.Clear();
+                        txtDescriptionOfIncident.Clear();
+                    }
+                    catch
+                    {
+
+                        lblValidationForIncidentList.Text = "Error while deleting incident data";
 
                     }
                 }
-
-                txtSubjectOfIncident.Clear();
-                txtTypeOfIncident.Clear();
-                txtDescriptionOfIncident.Clear();
             }
         }
 
@@ -1490,22 +1553,37 @@ namespace DemoApp
 
         private void btnDeleteSelectionFromArchive_Click(object sender, EventArgs e)
         {
+            string confirmationMessage = "Are you sure you want to delete the selected archived tickets?";
+
             if (listViewArchivedTickets.SelectedItems.Count > 0)
             {
-                foreach (ListViewItem item in listViewArchivedTickets.Items)
-                {
-                    if (item.Selected == true)
-                    {
-                        ArchivedTicket archivedTicket = (ArchivedTicket)item.Tag;
-                        archivedTicketService.RemoveArchivedTicketFromArchivedTicketDb(archivedTicket.Id);
-                        listViewArchivedTickets.Items.Remove(item);
-                    }
-                }
+                DialogResult result = MessageBox.Show(confirmationMessage, "delete", MessageBoxButtons.YesNo);
 
-                txtSubject.Clear();
-                txtIncidentType.Clear();
-                txtDescription.Clear();
+                if (result == DialogResult.Yes)
+                {
+
+                    foreach (ListViewItem item in listViewArchivedTickets.Items)
+                    {
+                        if (item.Selected == true)
+                        {
+
+                            ArchivedTicket archivedTicket = (ArchivedTicket)item.Tag;
+                            archivedTicketService.RemoveArchivedTicketFromArchivedTicketDb(archivedTicket.Id);
+                            listViewArchivedTickets.Items.Remove(item);
+
+                            lblValidationForArchivedTicketList.Text = "Error while deleting archived tickets data";
+
+                        }
+                    }
+
+                    txtSubject.Clear();
+                    txtIncidentType.Clear();
+                    txtDescription.Clear();
+                }
             }
+            
         }
+
+      
     }
 }

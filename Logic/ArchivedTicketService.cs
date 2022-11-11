@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MongoDB.Bson.Serialization;
-using MongoDB.Driver;
-using MongoDB.Bson;
+﻿using DAL;
 using Model;
-using DAL;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+
 
 namespace Logic
 {
@@ -18,14 +16,20 @@ namespace Logic
         private IMongoCollection<BsonDocument> tickets;
 
 
+
         public ArchivedTicketService()
         {
             archivedTicketDb = new ArchivedTicketDAO();
         }
 
-        public List<BsonDocument> GetAllTicketsToCheckArchivingDate(Employee employee)
+        public List<BsonDocument> GetAllTicketsToCheckArchivingDate()
         {
-            return archivedTicketDb.GetAllTicketsToCheckArchivingDate(employee);
+            return archivedTicketDb.GetAllTicketsToCheckArchivingDate();
+        }
+
+        public List<BsonDocument> GetTicketsOfEmployeeToCheckArchivingDate(Employee employee)
+        {
+            return archivedTicketDb.GetTicketsOfEmployeeToCheckArchivingDate(employee);
         }
 
 
@@ -66,11 +70,29 @@ namespace Logic
             archivedTicketDb.RemoveArchivedTicketFromTicketDb(id);
         }
 
-        public void ArchiveTickets(Employee employee)
+        
+        public List<BsonDocument> RetrieveTicketsByUserSelection(Employee employee, bool selectTicketsOfEmployee)
+        {
+            List<BsonDocument> tickets = new List<BsonDocument>();
+
+            if (selectTicketsOfEmployee == true)
+            {
+                tickets = GetTicketsOfEmployeeToCheckArchivingDate(employee);
+            }
+            else if (selectTicketsOfEmployee == false)
+            {
+                tickets = GetAllTicketsToCheckArchivingDate();
+            }
+            return tickets;
+        }
+
+
+        public void ArchiveTickets(Employee employee, bool selectTicketsOfEmployee)
         {
             DateTime currentDate = DateTime.Now;
+            List<BsonDocument> tickets = RetrieveTicketsByUserSelection(employee, selectTicketsOfEmployee);
 
-            List<BsonDocument>tickets = GetAllTicketsToCheckArchivingDate(employee);
+
             if (tickets.Count == 0)
             { throw new Exception("Error while loading ticket data"); }
             int archivedTicketId = archivedTicketDb.RetrievePreviousDocumentId();   
