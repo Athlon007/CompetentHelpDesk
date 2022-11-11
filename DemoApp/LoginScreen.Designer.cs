@@ -66,7 +66,7 @@
             this.lblLoginInstruction.Name = "lblLoginInstruction";
             this.lblLoginInstruction.Size = new System.Drawing.Size(600, 100);
             this.lblLoginInstruction.TabIndex = 1;
-            this.lblLoginInstruction.Text = "Please provide login credentials to login to NoDesk for the garden Group";
+            this.lblLoginInstruction.Text = "Please provide login credentials to login to NoDesk for the Garden Group";
             this.lblLoginInstruction.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblUsername

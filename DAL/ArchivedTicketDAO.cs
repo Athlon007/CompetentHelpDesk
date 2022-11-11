@@ -1,30 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Model;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using Model;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace DAL
 {
     public class ArchivedTicketDAO : BaseDAO
     {
 
-        private List<BsonDocument> tickets;
+        private List<BsonDocument> myTickets;
+        private List<BsonDocument> allTickets;
         private List<BsonDocument> archivedTickets;
         private IMongoCollection<BsonDocument> ticketsDatabase;
         private IMongoCollection<BsonDocument> archivedTicketsDatabase;
 
 
-        public List<BsonDocument> GetAllTicketsToCheckArchivingDate(Employee employee)
+        public List<BsonDocument> GetAllTicketsToCheckArchivingDate()
+        {    
+            myTickets = Database.GetCollection<BsonDocument>("Tickets").Find(new BsonDocument()).ToList();
+            return myTickets;
+        }
+
+
+        public List<BsonDocument> GetTicketsOfEmployeeToCheckArchivingDate(Employee employee)
         {
             var builder = Builders<BsonDocument>.Filter;
             var filter = builder.Eq("reporter", employee.Id);
-            tickets = Database.GetCollection<BsonDocument>("Tickets").Find(filter).ToList();
-            return tickets;
+            allTickets = Database.GetCollection<BsonDocument>("Tickets").Find(filter).ToList();
+            return allTickets;
         }
 
 
@@ -132,10 +138,10 @@ namespace DAL
 
         public void RemoveArchivedTicketFromArchivedTicketDb(int id)
         {
-            ticketsDatabase = Database.GetCollection<BsonDocument>("ArchivedTickets");
+            archivedTicketsDatabase = Database.GetCollection<BsonDocument>("ArchivedTickets");
             var builder = Builders<BsonDocument>.Filter;
             var filter = builder.Eq("Id", id);
-            var document = ticketsDatabase.Find(filter).FirstOrDefault();
+            var document = archivedTicketsDatabase.Find(filter).FirstOrDefault();
 
             Database.GetCollection<BsonDocument>("ArchivedTickets").DeleteOne(document);
         }
