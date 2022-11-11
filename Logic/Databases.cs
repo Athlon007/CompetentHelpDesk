@@ -1,9 +1,7 @@
 ﻿using DAL;
 using Model;
 using System.Collections.Generic;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using System.Linq;
+
 
 namespace Logic
 {
