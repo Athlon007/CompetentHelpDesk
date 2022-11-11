@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "DemoApp\UI.csproj", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDbConnectionNew", "TestDbConnectionNew\TestDbConnectionNew.csproj", "{9E270AEF-3464-41E7-8192-68ED406ADA4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTicketInsertTool", "AutoTicketInsertTool\AutoTicketInsertTool.csproj", "{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Arm64|Any CPU = Arm64|Any CPU
@@ -105,6 +107,22 @@ Global
 		{9E270AEF-3464-41E7-8192-68ED406ADA4E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9E270AEF-3464-41E7-8192-68ED406ADA4E}.Release|ARM64.ActiveCfg = Release|Any CPU
 		{9E270AEF-3464-41E7-8192-68ED406ADA4E}.Release|ARM64.Build.0 = Release|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Arm64|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Arm64|Any CPU.Build.0 = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Arm64|ARM64.ActiveCfg = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Arm64|ARM64.Build.0 = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Arm64Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Arm64Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Arm64Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Arm64Debug|ARM64.Build.0 = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{A2069EA0-B4D4-428F-8DC7-5241C9EF583B}.Release|ARM64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
