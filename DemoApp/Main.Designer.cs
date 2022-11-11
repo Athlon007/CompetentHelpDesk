@@ -799,7 +799,7 @@ namespace DemoApp
             this.splitContainer1.Panel1.Controls.Add(this.pnlTransferAndArchive);
             this.splitContainer1.Panel1.Controls.Add(this.txtBox_SearchBar);
             this.splitContainer1.Panel1.Controls.Add(this.flowPnl_TicketManagement_SearchButtons);
-            this.splitContainer1.Panel1MinSize = 500;
+            this.splitContainer1.Panel1MinSize = 1165;
             // 
             // splitContainer1.Panel2
             // 
@@ -817,6 +817,7 @@ namespace DemoApp
             this.splitContainer1.Panel2.Controls.Add(this.txtDetailsSubject);
             this.splitContainer1.Panel2.Controls.Add(this.lblTicketDetailsSubjectOfIncident);
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer1.Panel2MinSize = 400;
             this.splitContainer1.Size = new System.Drawing.Size(1587, 1106);
             this.splitContainer1.SplitterDistance = 1165;
             this.splitContainer1.SplitterWidth = 8;
@@ -3128,7 +3129,7 @@ namespace DemoApp
             this.Controls.Add(this.tableLayoutPanel);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1514, 758);
+            this.MinimumSize = new System.Drawing.Size(2117, 1348);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
