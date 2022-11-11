@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using DemoApp.Common;
 using MongoDB.Driver;
 using MongoDB.Bson;
-using System.Runtime.InteropServices;
 
 
 namespace DemoApp
@@ -962,15 +961,6 @@ namespace DemoApp
 
             }
         }
-
-        //public void ClearCreateTicketFromIncidentComboBoxes()
-        //{
-        //    cmbNewIncidentType.Items.Clear();
-        //    cmbUser.Items.Clear();
-        //    cmbPriority.Items.Clear();
-        //    cmbStatus.Items.Clear();
-        //    cmbDeadlineInterval.Items.Clear();
-        //}
 
 
         public void CreateIncidentsListView()
