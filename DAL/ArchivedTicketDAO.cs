@@ -20,8 +20,8 @@ namespace DAL
 
         public List<BsonDocument> GetAllTicketsToCheckArchivingDate()
         {    
-            myTickets = Database.GetCollection<BsonDocument>("Tickets").Find(new BsonDocument()).ToList();
-            return myTickets;
+            allTickets = Database.GetCollection<BsonDocument>("Tickets").Find(new BsonDocument()).ToList();
+            return allTickets;
         }
 
 
@@ -29,8 +29,8 @@ namespace DAL
         {
             var builder = Builders<BsonDocument>.Filter;
             var filter = builder.Eq("reporter", employee.Id);
-            allTickets = Database.GetCollection<BsonDocument>("Tickets").Find(filter).ToList();
-            return allTickets;
+            myTickets = Database.GetCollection<BsonDocument>("Tickets").Find(filter).ToList();
+            return myTickets;
         }
 
 
