@@ -25,7 +25,7 @@ namespace Logic
 
 
 
-        public bool CheckPasswordUsingHashedPassword(String password, Employee employee)
+        public bool CheckPasswordUsingHashedPassword(string password, Employee employee)
         {
 
             byte[] saltBytes = Convert.FromBase64String(employee.Salt);
@@ -44,7 +44,7 @@ namespace Logic
             return correctPassword;
         }
 
-        public bool CheckUsernameAndPassword(String username, String password)
+        public bool CheckUsernameAndPassword(string username, string password)
         {
             bool correctUsernameAndPassword = false;
 
