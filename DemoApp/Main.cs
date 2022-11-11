@@ -286,6 +286,7 @@ namespace DemoApp
                 btnIncidentManagement.Hide();
                 btnTicketArchive.Hide();
                 pnlArchiveTickets.Hide();
+                pnlTransferTickets.Hide();  
                 tabControl.SelectedIndex = 1;
                 LoadTickets(TicketLoadStatus.Open);
                 CleanTicketDetails();
@@ -1576,6 +1577,5 @@ namespace DemoApp
             
         }
 
-      
     }
 }
