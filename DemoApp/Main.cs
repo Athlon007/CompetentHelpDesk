@@ -1241,7 +1241,8 @@ namespace DemoApp
                 }
                 else
                 {
-                    MessageBox.Show(status.Message);
+                    lblWarning.Text = "Unable to register the user:\n" + status.Message;
+
                 }
             }
         }
@@ -1306,12 +1307,12 @@ namespace DemoApp
                 }
                 else
                 {
-                    MessageBox.Show(status.Message);
+                    //lblTransferWarning.Text = "Unable to transfer the ticket:\n" + status.Message;
                 }
             }
             else
             {
-                MessageBox.Show("You are not the assigned employee of selected ticket.");
+                //lblTransferWarning.Text = "You are not the assigned employee of selected ticket.";
             }
 
         }
@@ -1323,7 +1324,7 @@ namespace DemoApp
                 loginService = new LoginService();
             }
             int length = 8;
-            string passwrd = employeeService.GetRandomPassword(length);
+            string passwrd = employeeService.CreateRandomPassword(length);
             password = loginService.CreateHashedPasswordWithSalt(passwrd);
             txtPassword.Text = passwrd;
             btnCreatePassword.Enabled = false;
